@@ -42,12 +42,11 @@
       "name": "Makinem1",
       "slug": "makinem1",
       "description": "Ürün açıklaması buraya gelecek.",
-      "price": 1000,
-      "stock": 1,
       "categoryId": "cat-mritogx7-o03hiu",
       "images": [
         "/uploads/products/1783923016897-8tlxwt.png"
       ],
+      "specs": [],
       "active": true,
       "createdAt": "2026-07-13T00:00:00.000Z"
     },
@@ -56,12 +55,37 @@
       "name": "Deneme",
       "slug": "deneme",
       "description": "Makine Deneme 2",
-      "price": 0,
-      "stock": 0,
       "categoryId": "cat-mriw9hwr-cnw2nf",
       "images": [],
+      "specs": [],
       "active": true,
       "createdAt": "2026-07-13T07:22:26.833Z"
     }
-  ]
+  ],
+  "slider": [
+    {
+      "id": "s-1783930011375",
+      "image": "https://i.ytimg.com/vi/v7ZUYGEe_5w/maxresdefault.jpg",
+      "title": "deneme başlık",
+      "subtitle": "Alt başlık",
+      "buttonText": "İncele",
+      "buttonLink": "/urunler"
+    },
+    {
+      "id": "s-1783930141739",
+      "image": "https://i.ytimg.com/vi/v7ZUYGEe_5w/maxresdefault.jpg",
+      "title": "",
+      "subtitle": "",
+      "buttonText": "İncele",
+      "buttonLink": "/urunler"
+    }
+  ],
+  "settings": {
+    "phone": "",
+    "email": "",
+    "address": "",
+    "instagram": "",
+    "facebook": "",
+    "linkedin": ""
+  }
 }

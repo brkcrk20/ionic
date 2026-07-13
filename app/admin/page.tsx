@@ -5,6 +5,8 @@ import { LogOut, ExternalLink, Package, Grid, Image as ImageIcon, Settings } fro
 import type { Category } from "@/lib/db";
 import ProductsPanel from "./ProductsPanel";
 import CategoriesPanel from "./CategoriesPanel";
+import SliderPanel from "./SliderPanel";
+import SettingsPanel from "./SettingsPanel";
 
 type Tab = "products" | "categories" | "slider" | "settings";
 
@@ -14,9 +16,13 @@ export default function AdminPage() {
   const [categories, setCategories] = useState<Category[]>([]);
 
   async function loadData() {
-    const res = await fetch("/api/admin/categories");
-    const data = await res.json();
-    setCategories(data.categories ?? []);
+    try {
+      const res = await fetch("/api/admin/categories");
+      const data = await res.json();
+      setCategories(data.categories ?? []);
+    } catch (e) {
+      console.error("Kategori yüklenemedi", e);
+    }
   }
 
   useEffect(() => { loadData(); }, [tab]);
@@ -58,8 +64,8 @@ export default function AdminPage() {
         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm min-h-[500px]">
           {tab === "products" && <ProductsPanel categories={categories} />}
           {tab === "categories" && <CategoriesPanel />}
-          {tab === "slider" && <p className="text-gray-500">SliderPaneli henüz bağlanmadı.</p>}
-          {tab === "settings" && <p className="text-gray-500">AyarlarPaneli henüz bağlanmadı.</p>}
+          {tab === "slider" && <SliderPanel />}
+          {tab === "settings" && <SettingsPanel />}
         </div>
       </main>
     </div>

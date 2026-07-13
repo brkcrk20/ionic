@@ -30,7 +30,7 @@ export default async function UrunlerPage() {
                 <img 
                   src={product.images?.[0] || "/resim1.jpg"} 
                   alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               
@@ -42,23 +42,15 @@ export default async function UrunlerPage() {
                 <p className="text-gray-500 text-sm mt-1 line-clamp-2">
                   {product.description}
                 </p>
-                
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="font-semibold text-lg text-[#1A1A1A]">
-                    {product.price} TL
-                  </span>
-                  
-                  {/* Stok Durumu */}
-                  {product.stock > 0 ? (
-                    <span className="text-xs font-medium text-green-700 bg-green-50 px-2.5 py-1 rounded-full">
-                      Stokta
-                    </span>
-                  ) : (
-                    <span className="text-xs font-medium text-red-700 bg-red-50 px-2.5 py-1 rounded-full">
-                      Tükendi
-                    </span>
-                  )}
-                </div>
+
+                {product.specs.length > 0 && (
+                  <p className="mt-3 text-xs text-gray-400 truncate">
+                    {product.specs
+                      .slice(0, 2)
+                      .map((s) => `${s.label}: ${s.value}${s.unit ? ` ${s.unit}` : ""}`)
+                      .join(" · ")}
+                  </p>
+                )}
               </div>
               
             </a>

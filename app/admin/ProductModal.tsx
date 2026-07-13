@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import type { Category, Product } from "@/lib/db";
-import { X, Upload, Loader2, ImageOff } from "lucide-react";
+import type { Category, Product, ProductSpec } from "@/lib/db";
+import { X, Upload, Loader2, ImageOff, Plus, GripVertical } from "lucide-react";
 
 export default function ProductModal({
   categories,
@@ -17,14 +17,36 @@ export default function ProductModal({
 }) {
   const [name, setName] = useState(product?.name ?? "");
   const [description, setDescription] = useState(product?.description ?? "");
-  const [price, setPrice] = useState(product ? String(product.price) : "");
-  const [stock, setStock] = useState(product ? String(product.stock) : "");
   const [categoryId, setCategoryId] = useState(product?.categoryId ?? "");
   const [active, setActive] = useState(product?.active ?? true);
   const [images, setImages] = useState<string[]>(product?.images ?? []);
+  const [specs, setSpecs] = useState<ProductSpec[]>(product?.specs ?? []);
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+
+  function addSpec() {
+    setSpecs((prev) => [...prev, { label: "", unit: "", value: "" }]);
+  }
+
+  function updateSpec(index: number, field: "label" | "unit" | "value", val: string) {
+    setSpecs((prev) => prev.map((s, i) => (i === index ? { ...s, [field]: val } : s)));
+  }
+
+  function removeSpec(index: number) {
+    setSpecs((prev) => prev.filter((_, i) => i !== index));
+  }
+
+  function moveSpec(from: number, to: number) {
+    if (to < 0 || to >= specs.length || from === to) return;
+    setSpecs((prev) => {
+      const next = [...prev];
+      const [moved] = next.splice(from, 1);
+      next.splice(to, 0, moved);
+      return next;
+    });
+  }
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const files = e.target.files;
@@ -62,10 +84,9 @@ export default function ProductModal({
       const payload = {
         name: name.trim(),
         description,
-        price: Number(price) || 0,
-        stock: Number(stock) || 0,
         categoryId: categoryId || null,
         images,
+        specs: specs.filter((s) => s.label.trim() || s.value.trim()),
         active,
       };
       const res = product
@@ -124,30 +145,73 @@ export default function ProductModal({
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs text-gray-500 mb-1">Fiyat (₺)</label>
-              <input
-                type="number"
-                step="0.01"
-                min="0"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
-                placeholder="0.00"
-              />
+          <div>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-xs text-gray-500">Teknik Özellikler</label>
+              <button
+                type="button"
+                onClick={addSpec}
+                className="flex items-center gap-1 text-xs text-gray-600 hover:text-[#1A1A1A] transition-colors"
+              >
+                <Plus size={12} /> Özellik Ekle
+              </button>
             </div>
-            <div>
-              <label className="block text-xs text-gray-500 mb-1">Stok Adedi</label>
-              <input
-                type="number"
-                min="0"
-                value={stock}
-                onChange={(e) => setStock(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
-                placeholder="0"
-              />
-            </div>
+            {specs.length === 0 ? (
+              <p className="text-xs text-gray-400 border border-dashed border-gray-300 rounded-md px-3 py-3 text-center">
+                Örn: Güç, Ölçüler, Malzeme, Kapasite gibi teknik detayları ekleyin.
+              </p>
+            ) : (
+              <div className="space-y-2">
+                {specs.map((spec, i) => (
+                  <div
+                    key={i}
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={() => {
+                      if (dragIndex !== null) moveSpec(dragIndex, i);
+                      setDragIndex(null);
+                    }}
+                    className={`flex items-center gap-2 rounded-md transition-colors ${
+                      dragIndex === i ? "opacity-40" : ""
+                    }`}
+                  >
+                    <span
+                      draggable
+                      onDragStart={() => setDragIndex(i)}
+                      onDragEnd={() => setDragIndex(null)}
+                      className="cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-500 shrink-0 touch-none"
+                      aria-label="Taşımak için sürükleyin"
+                    >
+                      <GripVertical size={14} />
+                    </span>
+                    <input
+                      value={spec.label}
+                      onChange={(e) => updateSpec(i, "label", e.target.value)}
+                      placeholder="Özellik (örn: Güç)"
+                      className="w-[34%] border border-gray-300 rounded-md px-2.5 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
+                    />
+                    <input
+                      value={spec.unit}
+                      onChange={(e) => updateSpec(i, "unit", e.target.value)}
+                      placeholder="Birim (örn: kW)"
+                      className="w-[22%] border border-gray-300 rounded-md px-2.5 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
+                    />
+                    <input
+                      value={spec.value}
+                      onChange={(e) => updateSpec(i, "value", e.target.value)}
+                      placeholder="Değer (örn: 5.5)"
+                      className="flex-1 border border-gray-300 rounded-md px-2.5 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removeSpec(i)}
+                      className="p-1 text-gray-400 hover:text-red-600 transition-colors shrink-0"
+                    >
+                      <X size={13} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div>
@@ -175,7 +239,7 @@ export default function ProductModal({
                   <img
                     src={url}
                     alt=""
-                    className="w-full h-full object-cover rounded-md border border-gray-200"
+                    className="w-full h-full object-contain bg-gray-50 rounded-md border border-gray-200 p-0.5"
                   />
                   <button
                     type="button"

@@ -1,12 +1,12 @@
 import HeroSlider from "@/components/HeroSlider";
-import { getCategories } from "@/lib/db";
+import { getCategories, getSlider } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
 const FALLBACK_IMAGES = ["/resim1.jpg", "/resim2.jpg", "/resim3.jpg"];
 
 export default async function Home() {
-  const categories = await getCategories();
+  const [categories, slider] = await Promise.all([getCategories(), getSlider()]);
   const topLevel = categories.filter((c) => !c.parentId);
   const withImages = topLevel.filter((c) => c.image);
 
@@ -23,7 +23,7 @@ export default async function Home() {
   return (
     <main className="w-full">
       <div className="mt-0">
-        <HeroSlider />
+        <HeroSlider slides={slider} />
       </div>
 
       <section className="py-14 md:py-20 px-4 sm:px-6 lg:px-12">

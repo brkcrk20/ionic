@@ -14,10 +14,9 @@ export async function POST(request: NextRequest) {
   const product = await createProduct({
     name: body.name,
     description: body.description ?? "",
-    price: Number(body.price) || 0,
-    stock: Number(body.stock) || 0,
     categoryId: body.categoryId ?? null,
     images: Array.isArray(body.images) ? body.images : [],
+    specs: Array.isArray(body.specs) ? body.specs : [],
     active: body.active !== false,
   });
   return NextResponse.json({ product }, { status: 201 });

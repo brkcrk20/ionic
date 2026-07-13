@@ -2,10 +2,17 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import type { SliderItem } from "@/lib/db";
 
-const images = ["/resim1.jpg", "/resim2.jpg", "/resim3.jpg"];
+const FALLBACK_SLIDES: SliderItem[] = [
+  { id: "fallback-1", image: "/resim1.jpg", title: "", subtitle: "", buttonText: "", buttonLink: "" },
+  { id: "fallback-2", image: "/resim2.jpg", title: "", subtitle: "", buttonText: "", buttonLink: "" },
+  { id: "fallback-3", image: "/resim3.jpg", title: "", subtitle: "", buttonText: "", buttonLink: "" },
+];
 
-export default function HeroSlider() {
+export default function HeroSlider({ slides }: { slides?: SliderItem[] }) {
+  const items = slides && slides.length > 0 ? slides : FALLBACK_SLIDES;
+  const images = items.map((s) => s.image);
   const [index, setIndex] = useState(0);
 
   const next = () => setIndex((prev) => (prev + 1) % images.length);
@@ -28,14 +35,35 @@ export default function HeroSlider() {
           else if (info.offset.x < -50) next();
         }}
       >
-        {images.map((img, i) => (
-          <img 
-            key={i} 
-            src={img} 
-            className="w-full h-full object-cover flex-shrink-0" 
-            alt={`Slide ${i}`} 
-            draggable="false" 
-          />
+        {items.map((item, i) => (
+          <div key={item.id} className="relative w-full h-full flex-shrink-0">
+            <img
+              src={item.image}
+              className="w-full h-full object-cover"
+              alt={item.title || `Slide ${i}`}
+              draggable="false"
+            />
+            {(item.title || item.subtitle) && (
+              <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center text-center px-4 gap-4">
+                {item.title && (
+                  <h2 className="text-white font-serif italic text-3xl md:text-5xl max-w-2xl">
+                    {item.title}
+                  </h2>
+                )}
+                {item.subtitle && (
+                  <p className="text-white/90 text-sm md:text-base max-w-lg">{item.subtitle}</p>
+                )}
+                {item.buttonText && item.buttonLink && (
+                  <a
+                    href={item.buttonLink}
+                    className="mt-2 inline-block bg-white text-black px-6 py-2.5 text-sm font-medium tracking-wide hover:bg-gray-100 transition-colors"
+                  >
+                    {item.buttonText}
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
         ))}
       </motion.div>
 

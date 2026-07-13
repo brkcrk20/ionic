@@ -14,10 +14,9 @@ export async function PUT(
   const update: Record<string, unknown> = {};
   if (body.name !== undefined) update.name = body.name;
   if (body.description !== undefined) update.description = body.description;
-  if (body.price !== undefined) update.price = Number(body.price) || 0;
-  if (body.stock !== undefined) update.stock = Number(body.stock) || 0;
   if (body.categoryId !== undefined) update.categoryId = body.categoryId;
   if (body.images !== undefined) update.images = body.images;
+  if (body.specs !== undefined) update.specs = body.specs;
   if (body.active !== undefined) update.active = Boolean(body.active);
 
   const product = await updateProduct(id, update);

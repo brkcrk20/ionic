@@ -26,11 +26,11 @@ export default async function KategoriPage(props: { params: Promise<{ slug: stri
           {categoryProducts.map((product) => (
             <a key={product.id} href={`/urunler/${product.slug}`} className="group border border-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow bg-white block">
               <div className="relative h-64 bg-gray-50 overflow-hidden">
-                <img src={product.images?.[0] || "/resim1.jpg"} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src={product.images?.[0] || "/resim1.jpg"} alt={product.name} className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="p-5">
                 <h3 className="font-medium text-lg text-gray-900 truncate">{product.name}</h3>
-                <span className="font-semibold text-lg text-[#1A1A1A]">{product.price} TL</span>
+                <p className="text-gray-500 text-sm mt-1 line-clamp-2">{product.description}</p>
               </div>
             </a>
           ))}

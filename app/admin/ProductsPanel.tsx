@@ -108,8 +108,7 @@ export default function ProductsPanel({ categories }: { categories: Category[] }
               <tr className="text-left text-xs text-gray-400 border-b border-gray-100">
                 <th className="px-5 py-2.5 font-medium">Ürün</th>
                 <th className="px-5 py-2.5 font-medium">Kategori</th>
-                <th className="px-5 py-2.5 font-medium">Fiyat</th>
-                <th className="px-5 py-2.5 font-medium">Stok</th>
+                <th className="px-5 py-2.5 font-medium">Görsel Sayısı</th>
                 <th className="px-5 py-2.5 font-medium">Durum</th>
                 <th className="px-5 py-2.5 font-medium text-right">İşlemler</th>
               </tr>
@@ -123,7 +122,7 @@ export default function ProductsPanel({ categories }: { categories: Category[] }
                         <img
                           src={product.images[0]}
                           alt=""
-                          className="w-10 h-10 rounded-md object-cover border border-gray-200"
+                          className="w-10 h-10 rounded-md object-contain bg-gray-50 border border-gray-200 p-0.5"
                         />
                       ) : (
                         <div className="w-10 h-10 rounded-md border border-gray-200 flex items-center justify-center text-gray-300">
@@ -134,13 +133,7 @@ export default function ProductsPanel({ categories }: { categories: Category[] }
                     </div>
                   </td>
                   <td className="px-5 py-3 text-gray-500">{categoryName(product.categoryId)}</td>
-                  <td className="px-5 py-3 text-gray-600">
-                    {product.price.toLocaleString("tr-TR", {
-                      style: "currency",
-                      currency: "TRY",
-                    })}
-                  </td>
-                  <td className="px-5 py-3 text-gray-600">{product.stock}</td>
+                  <td className="px-5 py-3 text-gray-600">{product.images.length}</td>
                   <td className="px-5 py-3">
                     <button
                       onClick={() => toggleActive(product)}
