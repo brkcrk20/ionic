@@ -1,28 +1,25 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { LogOut, ExternalLink, Package, Grid, Image as ImageIcon, Settings } from "lucide-react";
 import type { Category } from "@/lib/db";
-import { LogOut, ExternalLink } from "lucide-react";
 import ProductsPanel from "./ProductsPanel";
 import CategoriesPanel from "./CategoriesPanel";
 
-type Tab = "products" | "categories";
+type Tab = "products" | "categories" | "slider" | "settings";
 
 export default function AdminPage() {
   const router = useRouter();
   const [tab, setTab] = useState<Tab>("products");
   const [categories, setCategories] = useState<Category[]>([]);
 
-  async function loadCategories() {
+  async function loadData() {
     const res = await fetch("/api/admin/categories");
     const data = await res.json();
     setCategories(data.categories ?? []);
   }
 
-  useEffect(() => {
-    loadCategories();
-  }, [tab]);
+  useEffect(() => { loadData(); }, [tab]);
 
   async function handleLogout() {
     await fetch("/api/admin/logout", { method: "POST" });
@@ -30,61 +27,40 @@ export default function AdminPage() {
     router.refresh();
   }
 
+  const menu = [
+    { id: "products", name: "Ürünler", icon: Package },
+    { id: "categories", name: "Kategoriler", icon: Grid },
+    { id: "slider", name: "Slider", icon: ImageIcon },
+    { id: "settings", name: "Ayarlar", icon: Settings },
+  ] as const;
+
   return (
-    <div>
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
-        <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="font-serif italic text-xl text-[#1A1A1A]">Yönetim Paneli</h1>
-            <p className="text-xs text-gray-400">Ürünleri ve kategorileri yönetin</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <a
-              href="/"
-              target="_blank"
-              className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-[#1A1A1A] transition-colors"
-            >
-              Siteyi Görüntüle <ExternalLink size={13} />
-            </a>
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-1.5 text-xs font-medium border border-gray-300 rounded-md px-3 py-1.5 text-gray-600 hover:bg-gray-50 transition-colors"
-            >
-              <LogOut size={13} /> Çıkış Yap
+    <div className="min-h-screen bg-gray-50 flex">
+      <aside className="w-64 bg-white border-r border-gray-200 p-6 flex flex-col">
+        <h1 className="font-serif italic text-xl mb-8">Yönetim</h1>
+        <nav className="flex flex-col gap-2 flex-1">
+          {menu.map((item) => (
+            <button key={item.id} onClick={() => setTab(item.id as Tab)}
+              className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${tab === item.id ? "bg-gray-100 text-black" : "text-gray-600 hover:bg-gray-50"}`}>
+              <item.icon size={18} /> {item.name}
             </button>
-          </div>
-        </div>
+          ))}
+        </nav>
+        <button onClick={handleLogout} className="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg"><LogOut size={18} /> Çıkış Yap</button>
+      </aside>
 
-        <div className="max-w-6xl mx-auto px-5 flex gap-1">
-          <button
-            onClick={() => setTab("products")}
-            className={`text-sm font-medium px-4 py-2.5 border-b-2 transition-colors ${
-              tab === "products"
-                ? "border-[#1A1A1A] text-[#1A1A1A]"
-                : "border-transparent text-gray-400 hover:text-gray-600"
-            }`}
-          >
-            Ürünler
-          </button>
-          <button
-            onClick={() => setTab("categories")}
-            className={`text-sm font-medium px-4 py-2.5 border-b-2 transition-colors ${
-              tab === "categories"
-                ? "border-[#1A1A1A] text-[#1A1A1A]"
-                : "border-transparent text-gray-400 hover:text-gray-600"
-            }`}
-          >
-            Kategoriler
-          </button>
+      <main className="flex-1 p-8">
+        <header className="flex justify-between items-center mb-8">
+          <h2 className="text-2xl font-bold capitalize">{tab} Yönetimi</h2>
+          <a href="/" target="_blank" className="text-xs text-gray-500 hover:text-black flex items-center gap-1">Siteyi Gör <ExternalLink size={13} /></a>
+        </header>
+        
+        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm min-h-[500px]">
+          {tab === "products" && <ProductsPanel categories={categories} />}
+          {tab === "categories" && <CategoriesPanel />}
+          {tab === "slider" && <p className="text-gray-500">SliderPaneli henüz bağlanmadı.</p>}
+          {tab === "settings" && <p className="text-gray-500">AyarlarPaneli henüz bağlanmadı.</p>}
         </div>
-      </header>
-
-      <main className="max-w-6xl mx-auto px-5 py-6">
-        {tab === "products" ? (
-          <ProductsPanel categories={categories} />
-        ) : (
-          <CategoriesPanel />
-        )}
       </main>
     </div>
   );

@@ -18,12 +18,11 @@ export default function HeroSlider() {
 
   return (
     <div className="relative w-full h-[55vh] overflow-hidden bg-neutral-300 group">
-      {/* Motion yapısını sadeleştirdik, drag yerine onPan kullandık */}
+      {/* SADECE BURAYA touch-pan-y EKLENDİ */}
       <motion.div
-        className="flex w-full h-full cursor-grab active:cursor-grabbing"
+        className="flex w-full h-full cursor-grab active:cursor-grabbing touch-pan-y"
         animate={{ x: `-${index * 100}%` }}
         transition={{ type: "tween", ease: "easeInOut", duration: 0.6 }}
-        // drag yerine onPanEnd kullanıyoruz: Çakışmaları engeller
         onPanEnd={(_, info) => {
           if (info.offset.x > 50) prev();
           else if (info.offset.x < -50) next();

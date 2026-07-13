@@ -13,6 +13,27 @@
       "slug": "mermer-makineleri",
       "parentId": "cat-mritoau9-9y6zn9",
       "image": null
+    },
+    {
+      "id": "cat-mriw972s-o2mknm",
+      "name": "Makineler",
+      "slug": "makineler",
+      "parentId": null,
+      "image": null
+    },
+    {
+      "id": "cat-mriw9hwr-cnw2nf",
+      "name": "Fırınlar",
+      "slug": "firinlar",
+      "parentId": "cat-mriw972s-o2mknm",
+      "image": null
+    },
+    {
+      "id": "cat-mriwqswh-f7933q",
+      "name": "aa",
+      "slug": "aa",
+      "parentId": "cat-mriw972s-o2mknm",
+      "image": null
     }
   ],
   "products": [
@@ -29,6 +50,18 @@
       ],
       "active": true,
       "createdAt": "2026-07-13T00:00:00.000Z"
+    },
+    {
+      "id": "prod-mriwa6c1-011b3p",
+      "name": "Deneme",
+      "slug": "deneme",
+      "description": "Makine Deneme 2",
+      "price": 0,
+      "stock": 0,
+      "categoryId": "cat-mriw9hwr-cnw2nf",
+      "images": [],
+      "active": true,
+      "createdAt": "2026-07-13T07:22:26.833Z"
     }
   ]
 }
