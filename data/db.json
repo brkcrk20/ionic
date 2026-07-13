@@ -1,0 +1,20 @@
+{
+  "categories": [
+    { "id": "cat-1", "name": "Kategori A", "slug": "kategori-a", "parentId": null },
+    { "id": "cat-2", "name": "Kategori B", "slug": "kategori-b", "parentId": null }
+  ],
+  "products": [
+    {
+      "id": "prod-1",
+      "name": "Örnek Ürün",
+      "slug": "ornek-urun",
+      "description": "Ürün açıklaması buraya gelecek.",
+      "price": 0,
+      "stock": 0,
+      "categoryId": "cat-1",
+      "images": [],
+      "active": true,
+      "createdAt": "2026-07-13T00:00:00.000Z"
+    }
+  ]
+}
