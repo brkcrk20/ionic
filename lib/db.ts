@@ -6,6 +6,7 @@ export type Category = {
   name: string;
   slug: string;
   parentId: string | null;
+  image: string | null;
 };
 
 export type Product = {
@@ -66,6 +67,7 @@ export async function getCategories(): Promise<Category[]> {
 export async function createCategory(input: {
   name: string;
   parentId: string | null;
+  image?: string | null;
 }): Promise<Category> {
   const db = await readDB();
   const category: Category = {
@@ -73,6 +75,7 @@ export async function createCategory(input: {
     name: input.name,
     slug: slugify(input.name),
     parentId: input.parentId ?? null,
+    image: input.image ?? null,
   };
   db.categories.push(category);
   await writeDB(db);
@@ -81,7 +84,7 @@ export async function createCategory(input: {
 
 export async function updateCategory(
   id: string,
-  input: { name?: string; parentId?: string | null }
+  input: { name?: string; parentId?: string | null; image?: string | null }
 ): Promise<Category | null> {
   const db = await readDB();
   const category = db.categories.find((c) => c.id === id);
@@ -91,6 +94,7 @@ export async function updateCategory(
     category.slug = slugify(input.name);
   }
   if (input.parentId !== undefined) category.parentId = input.parentId;
+  if (input.image !== undefined) category.image = input.image;
   await writeDB(db);
   return category;
 }

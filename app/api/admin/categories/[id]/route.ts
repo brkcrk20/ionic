@@ -13,6 +13,7 @@ export async function PUT(
   const category = await updateCategory(id, {
     name: body.name,
     parentId: body.parentId,
+    image: body.image,
   });
   if (!category) {
     return NextResponse.json({ error: "Kategori bulunamadı" }, { status: 404 });

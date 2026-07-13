@@ -2,46 +2,29 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Mail, Phone, Search, Menu, X, ChevronDown } from "lucide-react";
-
-// Ürünler mega menüsü — sütunlar ve başlıkları
-const PRODUCT_COLUMNS = [
-  {
-    title: "KATEGORI A",
-    items: ["Kategori 1"],
-  },
-  {
-    title: "KATEGORI B",
-    items: [
-      "Kategori 1",
-      "Kategori 2",
-    ],
-  },
-  {
-    title: "KATEGORI C",
-    items: ["Kategori 1", "Kategori 2", "Kategori 3"],
-  },
-  {
-    title: "KATEGORI D",
-    items: ["Kategori 1", "Kategori 2", "Kategori 3", "Kategori 4"],
-  },
-  {
-    title: "KATEGORI E",
-    items: ["Kategori 1", "Kategori 2", "Kategori 3", "Kategori 4", "Kategori 5"],
-  },
-  {
-    title: "KATEGORI F",
-    items: ["Kategori 1", "Kategori 2", "Kategori 3", "Kategori 4", "Kategori 5", "Kategori 6"],
-  },
-];
+import type { Category } from "@/lib/db";
 
 const CORPORATE_ITEMS = ["Hakkımızda", "Kalite Politikamız", "Sertifikalar"];
 
 const MENU_ITEMS = ["PROJELER", "FUARLAR", "KATALOG", "İLETİŞİM"];
 
-export default function Navbar() {
+type ProductColumn = { title: string; items: string[] };
+
+// Kategorileri (üst kategori + alt kategoriler) mega menü sütunlarına dönüştürür
+function buildProductColumns(categories: Category[]): ProductColumn[] {
+  const topLevel = categories.filter((c) => !c.parentId);
+  return topLevel.map((cat) => ({
+    title: cat.name.toLocaleUpperCase("tr-TR"),
+    items: categories.filter((c) => c.parentId === cat.id).map((c) => c.name),
+  }));
+}
+
+export default function Navbar({ categories = [] }: { categories?: Category[] }) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
+
+  const productColumns = buildProductColumns(categories);
 
   return (
     <nav className="w-full bg-white relative z-50 border-b border-gray-100">
@@ -88,24 +71,28 @@ export default function Navbar() {
             {/* MEGA MENÜ */}
             {openMenu === "urunler" && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-[min(92vw,1100px)] bg-white border border-gray-100 shadow-2xl z-50">
-                <div className="grid grid-cols-6 gap-8 px-10 py-9">
-                  {PRODUCT_COLUMNS.map((col) => (
-                    <div key={col.title} className="flex flex-col gap-3">
-                      <p className="font-bold text-black text-[13px] normal-case tracking-normal">{col.title}</p>
-                      <div className="flex flex-col gap-2.5">
-                        {col.items.map((item) => (
-                          <a
-                            key={item}
-                            href="#"
-                            className="text-[12.5px] font-normal normal-case tracking-normal text-gray-600 hover:text-black transition-colors leading-snug"
-                          >
-                            {item}
-                          </a>
-                        ))}
+                {productColumns.length === 0 ? (
+                  <p className="px-10 py-9 text-sm text-gray-400">Henüz kategori eklenmedi.</p>
+                ) : (
+                  <div className="grid grid-cols-6 gap-8 px-10 py-9">
+                    {productColumns.map((col) => (
+                      <div key={col.title} className="flex flex-col gap-3">
+                        <p className="font-bold text-black text-[13px] normal-case tracking-normal">{col.title}</p>
+                        <div className="flex flex-col gap-2.5">
+                          {col.items.map((item) => (
+                            <a
+                              key={item}
+                              href="#"
+                              className="text-[12.5px] font-normal normal-case tracking-normal text-gray-600 hover:text-black transition-colors leading-snug"
+                            >
+                              {item}
+                            </a>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -177,16 +164,22 @@ export default function Navbar() {
               </button>
               {mobileSubOpen === "urunler" && (
                 <div className="bg-gray-50 border-b border-gray-100 px-5 py-4 flex flex-col gap-5">
-                  {PRODUCT_COLUMNS.map((col) => (
-                    <div key={col.title} className="flex flex-col gap-2">
-                      <p className="font-bold text-black text-[12px] normal-case">{col.title}</p>
-                      {col.items.map((item) => (
-                        <a key={item} href="#" className="text-[12.5px] font-normal normal-case text-gray-600 pl-1">
-                          {item}
-                        </a>
-                      ))}
-                    </div>
-                  ))}
+                  {productColumns.length === 0 ? (
+                    <p className="text-[12.5px] font-normal normal-case text-gray-400">
+                      Henüz kategori eklenmedi.
+                    </p>
+                  ) : (
+                    productColumns.map((col) => (
+                      <div key={col.title} className="flex flex-col gap-2">
+                        <p className="font-bold text-black text-[12px] normal-case">{col.title}</p>
+                        {col.items.map((item) => (
+                          <a key={item} href="#" className="text-[12.5px] font-normal normal-case text-gray-600 pl-1">
+                            {item}
+                          </a>
+                        ))}
+                      </div>
+                    ))
+                  )}
                 </div>
               )}
 

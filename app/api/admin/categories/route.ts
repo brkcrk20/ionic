@@ -14,6 +14,7 @@ export async function POST(request: NextRequest) {
   const category = await createCategory({
     name: body.name,
     parentId: body.parentId ?? null,
+    image: body.image ?? null,
   });
   return NextResponse.json({ category }, { status: 201 });
 }

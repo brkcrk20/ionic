@@ -1,18 +1,32 @@
 {
   "categories": [
-    { "id": "cat-1", "name": "Kategori A", "slug": "kategori-a", "parentId": null },
-    { "id": "cat-2", "name": "Kategori B", "slug": "kategori-b", "parentId": null }
+    {
+      "id": "cat-mritoau9-9y6zn9",
+      "name": "Deneme",
+      "slug": "deneme",
+      "parentId": null,
+      "image": null
+    },
+    {
+      "id": "cat-mritogx7-o03hiu",
+      "name": "Mermer Makineleri",
+      "slug": "mermer-makineleri",
+      "parentId": "cat-mritoau9-9y6zn9",
+      "image": null
+    }
   ],
   "products": [
     {
       "id": "prod-1",
-      "name": "Örnek Ürün",
-      "slug": "ornek-urun",
+      "name": "Makinem1",
+      "slug": "makinem1",
       "description": "Ürün açıklaması buraya gelecek.",
-      "price": 0,
-      "stock": 0,
-      "categoryId": "cat-1",
-      "images": [],
+      "price": 1000,
+      "stock": 1,
+      "categoryId": "cat-mritogx7-o03hiu",
+      "images": [
+        "/uploads/products/1783923016897-8tlxwt.png"
+      ],
       "active": true,
       "createdAt": "2026-07-13T00:00:00.000Z"
     }

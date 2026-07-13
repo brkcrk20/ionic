@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 import type { Category } from "@/lib/db";
-import { Pencil, Trash2, Plus, X, FolderTree } from "lucide-react";
+import { Pencil, Trash2, Plus, X, FolderTree, Upload, Loader2, ImageOff } from "lucide-react";
 
 export default function CategoriesPanel() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
   const [parentId, setParentId] = useState<string>("");
+  const [image, setImage] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
   const [editing, setEditing] = useState<Category | null>(null);
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
@@ -29,13 +31,36 @@ export default function CategoriesPanel() {
     setEditing(cat);
     setName(cat.name);
     setParentId(cat.parentId ?? "");
+    setImage(cat.image ?? null);
   }
 
   function resetForm() {
     setEditing(null);
     setName("");
     setParentId("");
+    setImage(null);
     setError("");
+  }
+
+  async function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setError("");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await fetch("/api/admin/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Görsel yüklenemedi");
+        return;
+      }
+      setImage(data.url);
+    } finally {
+      setUploading(false);
+      e.target.value = "";
+    }
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -44,7 +69,7 @@ export default function CategoriesPanel() {
     setSaving(true);
     setError("");
     try {
-      const payload = { name: name.trim(), parentId: parentId || null };
+      const payload = { name: name.trim(), parentId: parentId || null, image };
       const res = editing
         ? await fetch(`/api/admin/categories/${editing.id}`, {
             method: "PUT",
@@ -101,7 +126,20 @@ export default function CategoriesPanel() {
             {topLevel.map((cat) => (
               <li key={cat.id}>
                 <div className="flex items-center justify-between px-5 py-3">
-                  <span className="text-sm text-[#1A1A1A] font-medium">{cat.name}</span>
+                  <div className="flex items-center gap-3">
+                    {cat.image ? (
+                      <img
+                        src={cat.image}
+                        alt=""
+                        className="w-9 h-9 rounded-md object-cover border border-gray-200"
+                      />
+                    ) : (
+                      <div className="w-9 h-9 rounded-md border border-gray-200 flex items-center justify-center text-gray-300 shrink-0">
+                        <ImageOff size={14} />
+                      </div>
+                    )}
+                    <span className="text-sm text-[#1A1A1A] font-medium">{cat.name}</span>
+                  </div>
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => startEdit(cat)}
@@ -192,11 +230,50 @@ export default function CategoriesPanel() {
             </select>
           </div>
 
+          <div>
+            <label className="block text-xs text-gray-500 mb-1">
+              Görsel (opsiyonel — ana sayfada gösterilir)
+            </label>
+            <div className="flex items-center gap-3">
+              {image ? (
+                <div className="relative w-14 h-14 group shrink-0">
+                  <img
+                    src={image}
+                    alt=""
+                    className="w-full h-full object-cover rounded-md border border-gray-200"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setImage(null)}
+                    className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <X size={11} />
+                  </button>
+                </div>
+              ) : (
+                <div className="w-14 h-14 rounded-md border border-dashed border-gray-300 flex items-center justify-center text-gray-300 shrink-0">
+                  <ImageOff size={16} />
+                </div>
+              )}
+              <label className="inline-flex items-center gap-1.5 text-xs text-gray-600 border border-gray-300 rounded-md px-3 py-1.5 cursor-pointer hover:bg-gray-50 transition-colors">
+                {uploading ? <Loader2 size={13} className="animate-spin" /> : <Upload size={13} />}
+                {uploading ? "Yükleniyor..." : "Görsel Seç"}
+                <input
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp,image/gif"
+                  className="hidden"
+                  onChange={handleImageChange}
+                  disabled={uploading}
+                />
+              </label>
+            </div>
+          </div>
+
           {error && <p className="text-xs text-red-600">{error}</p>}
 
           <button
             type="submit"
-            disabled={saving || !name.trim()}
+            disabled={saving || uploading || !name.trim()}
             className="w-full flex items-center justify-center gap-1.5 bg-[#1A1A1A] text-white text-sm font-medium rounded-md py-2 hover:bg-black transition-colors disabled:opacity-50"
           >
             {!editing && <Plus size={14} />}
