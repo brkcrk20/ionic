@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const ionStyle = localFont({
+  src: "../public/fonts/IonStyle.woff2",
+  variable: "--font-ion",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const montserrat = localFont({
+  src: "../public/fonts/Montserrat-VariableFont_wght.woff2",
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
-  title: "Premium Tasarım",
+  title: "ion",
   description: "Modern ve Minimalist Bir Deneyim",
 };
 
@@ -23,8 +23,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <body className="bg-[#FDFCFB] text-[#1A1A1A]">{children}</body>
+    // 'style' kısmını sildik, böylece font yönetimi tamamen Tailwind'e geçti
+    <html lang="tr" className={`${ionStyle.variable} ${montserrat.variable}`}>
+      {/* 
+          font-sans: Tailwind config'deki 'sans' (Montserrat) değerini kullanır.
+          antialiased: Yazıların daha keskin görünmesini sağlar.
+      */}
+      <body className="bg-foreground text-customText font-sans antialiased">
+        {children}
+      </body>
     </html>
   );
 }

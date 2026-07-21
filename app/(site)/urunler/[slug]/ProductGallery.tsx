@@ -52,7 +52,7 @@ export default function ProductGallery({ images, name }: { images: string[]; nam
               key={src + i}
               onClick={() => setActive(i)}
               className={`aspect-square rounded-md overflow-hidden border-2 bg-gray-50 transition-colors ${
-                i === active ? "border-[#1A1A1A]" : "border-transparent hover:border-gray-300"
+                i === active ? "border-[#B87333]" : "border-transparent hover:border-gray-300"
               }`}
               aria-label={`Görsel ${i + 1}`}
             >

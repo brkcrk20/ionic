@@ -1,19 +1,26 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
-  "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-  "./components/**/*.{js,ts,jsx,tsx,mdx}",
-],
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       colors: {
-        background: "#FDFCFB", // Ionic Stone tarzı kırık beyaz/taş tonu
-        foreground: "#1A1A1A", // Çok koyu gri/siyah
-        accent: "#C5A059",    // Altın/bronz dokunuş
+        background: "#3A3A3A",
+        foreground: "#F3F1EC",
+        accent: "#B87333",
+        customText: "#3A3A3A",
+      },
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
+        ion: ['IonStyle', 'sans-serif'],
       },
     },
   },
   plugins: [],
-} satisfies Config;
+};
+
+export default config;

@@ -62,14 +62,14 @@ export default async function UrunDetayPage(props: { params: Promise<{ slug: str
           {category && (
             <a
               href={`/kategori/${category.slug}`}
-              className="text-xs font-medium tracking-widest uppercase text-gray-400 hover:text-black transition-colors mb-3"
+              className="text-xs font-medium tracking-widest text-gray-400 hover:text-black transition-colors mb-3"
             >
-              {category.name}
+              {category.name.toLocaleUpperCase("tr-TR")}
             </a>
           )}
 
-          <h1 className="text-3xl md:text-4xl font-serif italic text-[#1A1A1A] mb-6">
-            {product.name}
+          <h1 className="text-3xl md:text-4xl font-ion tracking-wide text-[#3A3A3A] mb-6">
+            {product.name.toLocaleUpperCase("tr-TR")}
           </h1>
 
           {product.description && (
@@ -80,8 +80,8 @@ export default async function UrunDetayPage(props: { params: Promise<{ slug: str
 
           {product.specs.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-sm font-semibold tracking-wide uppercase text-gray-500 mb-3">
-                Teknik Özellikler
+              <h2 className="text-sm font-semibold tracking-wide text-gray-500 mb-3">
+                TEKNİK ÖZELLİKLER
               </h2>
               <dl className="border-t border-gray-100">
                 {product.specs.map((spec, i) => (
@@ -90,7 +90,7 @@ export default async function UrunDetayPage(props: { params: Promise<{ slug: str
                     className="grid grid-cols-2 gap-4 py-3 border-b border-gray-100 text-sm"
                   >
                     <dt className="text-gray-500">{spec.label}</dt>
-                    <dd className="text-[#1A1A1A] font-medium">
+                    <dd className="text-[#3A3A3A] font-medium">
                       {spec.value}
                       {spec.unit ? ` ${spec.unit}` : ""}
                     </dd>
@@ -110,7 +110,7 @@ export default async function UrunDetayPage(props: { params: Promise<{ slug: str
                 ? `tel:${settings.phone}`
                 : "/urunler"
             }
-            className="inline-block text-center bg-[#1A1A1A] text-white px-8 py-4 rounded-md font-medium tracking-wide hover:bg-black transition-colors w-max"
+            className="inline-block text-center bg-[#B87333] text-white px-8 py-4 rounded-md font-medium tracking-wide hover:bg-[#a3652c] transition-colors w-max"
           >
             BİLGİ VE TEKLİF ALIN
           </a>

@@ -60,6 +60,67 @@
       "specs": [],
       "active": true,
       "createdAt": "2026-07-13T07:22:26.833Z"
+    },
+    {
+      "id": "prod-mrj17ebf",
+      "name": "GRAVITON 10+20 kombi dıştan asansörlü fırın",
+      "slug": "graviton-10-20-kombi-d-tan-asans-rl-f-r-n",
+      "description": "Plakaların hem kurutulması ve hem de polimerizasyonu için kullanılan çok katlı bir fırın kulesidir. Fırın, optimum levha kuruması ve/veya iyi bir reçine polimerizasyonu elde etmek amacıyla sıcaklığı sabit tutan elektrikli veya doğal gazla çalışan devridaim fanları aracılığıyla ısıtılır. Fırın içerisinde birincisi 10 katlı kurutma ve ikincisi 20 katlı kürleme olmak üzere iki ayrı oda vardır ve fırın kulesi toplamda 30 tepsi kapasiteye sahiptir. Mermer levhalar, harici asansörün yanlarına monte edilen iki pnömatik mekanizma ile açılıp kapatılan yatay ince alüminyum veya çelik kapakçıklar vasıtası ile fırına yerleştirilir veya fırından çıkartılır. Plakalar, asansörün merkezine yerleştirilen monoray boyunca hareket eden motorlu bir araba ile fırının içine itilir/dışarı çekilir. Araba, odanın yan duvarlarına sabitlenmiş iki omuz askısı boyunca döşeme tepsilerini odanın içine veya dışına alır. Fırının içindeki sıcaklık elektronik sensörler vasıtasıyla sürekli olarak kontrol edilir. Headstart adı verilen özellik, fırının vardiyadan önce çalışmasını sağlar, böylece vardiya başladığında fırın yeterince ısıtılmış olur ve herhangi bir zaman kaybı olmadan çalışmaya başlanabilir. Fırın içindeki nem, higrometreler yardımıyla iki farklı yerden ölçülür ve fazla nem, fırın kulesinin tepesine yerleştirilen bir baca aracılığıyla dışarı atılır. PC’ler, invertörler ve sensörler ile kontrol edilir.\n\nAna özellikler\n\nPlaka tepsilerini yukarı aşağı hareket ettiren asansör. Tepsileri odanın içine ve dışına iten motorlu bir araba, bir monoray boyunca asansörün ortasına yerleştirilmiştir. Ayrıca asansör kepenklerini açıp kapatan iki adet pnömatik piston bulunmaktadır.Asansörün yukarı aşağı hareket ettiği kaynaklı çelik yük taşıyıcı yapı. Asansörü sürükleyen çelik yapının her iki yanındaki iki zincir, tepsi makaralı konveyörünü kaldırmak için iki senkronize redüktörlü motor tarafından kontrol edilir.\nElektrikli hava ısıtma sistemi. Isı, her yerde kullanılan ve enerji verimliliği kanıtlanmış serpantin rezistans ısıtıcı bobinleri vasıtasıyla üretilir. Her iki oda da ayrı ayrı ısıtılır ve regüle edilir. \nEnerji tasarrufu sağlamak için tamamen yalıtılmış bağımsız sıcak hava sirkülasyon sistemi. Sıcak hava, fırın içerisindeki difüzörler aracılığı ile levha tepsilerine fırının yan taraflarında bulunan difüzorler vasıtasıyla enjekte edilmektedir. Enjekte edilen bu hava, sac perdeler vasıtasıyla plaka tepsi bölgesinde tutulur. Hava sirkülasyonu santrifüj fan ile sağlanmaktadır.\nYüksek yoğunluklu paneller ve diğer izolasyon malzemeleri vasıtasıyla fırın dış yüzeyi tamamen izolasyonludur.\nAvrupa menşeili hidrolik üniteler. \nFırın kumanda ve kontrolü için elektrik/elektronik ekipmanlar.\nFırın içindeki hava sıcaklığının otomatik kontrolü için sensörler.",
+      "categoryId": "cat-mriw9hwr-cnw2nf",
+      "images": [
+        "/uploads/products/1783935609020-ezjhxv.jpg",
+        "/uploads/products/1783935611014-qm7ky0.jpg",
+        "/uploads/products/1783935613280-zg5xn2.jpg"
+      ],
+      "specs": [
+        {
+          "label": "Işlenebilir plaka genişliği",
+          "unit": "mm",
+          "value": "3300 / 3700"
+        },
+        {
+          "label": "Işlenebilir plaka uzunluğu",
+          "unit": "mm",
+          "value": "2100 / 2200"
+        },
+        {
+          "label": "Işlenebilir plaka kalınlığı",
+          "unit": "mm",
+          "value": "36"
+        },
+        {
+          "label": "Kurutma katı sayısı",
+          "unit": "Nr.",
+          "value": "10+20"
+        },
+        {
+          "label": "Kurulu ısıtma gücü",
+          "unit": "kW",
+          "value": "96"
+        },
+        {
+          "label": "Kurulu elektrik gücü",
+          "unit": "kW",
+          "value": "125"
+        },
+        {
+          "label": "Makine uzunluğu",
+          "unit": "mm",
+          "value": "9450"
+        },
+        {
+          "label": "Makine genişliği",
+          "unit": "mm",
+          "value": "4240"
+        },
+        {
+          "label": "Makine yüksekliği",
+          "unit": "mm",
+          "value": "5033"
+        }
+      ],
+      "active": true,
+      "createdAt": "2026-07-13T09:40:15.291Z"
     }
   ],
   "slider": [

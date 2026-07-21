@@ -8,8 +8,8 @@ export default async function UrunlerPage() {
 
   return (
     <main className="py-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-serif italic text-center text-[#1A1A1A] mb-12">
-        Tüm Ürünlerimiz
+      <h1 className="text-4xl font-ion tracking-wide text-center text-[#3A3A3A] mb-12">
+        TÜM ÜRÜNLERİMİZ
       </h1>
       
       {activeProducts.length === 0 ? (
