@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import type { Category } from "@/lib/db";
 
+// Veri ve Hazırlık Mantığı(En Üst Kısım)
 const MENU_ITEMS = ["PROJELER", "FUARLAR", "KATALOG", "İLETİŞİM"];
 
 type ProductColumn = { title: string; items: { name: string; slug: string }[] };
@@ -30,6 +31,7 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
   // Sayfa kaydırma durumunu dinleyen state
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Sayfa Kaydırma ve Şeffaflık Ayarı
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 40) {
@@ -45,7 +47,7 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
 
   const productColumns = buildProductColumns(categories);
 
-  // ARKA PLAN VE SABİTLİK DÜZENLEMESİ:
+  // ARKA PLAN VE SABİTLİK DÜZENLEMESİ
   const navBg = isHome
     ? isScrolled
       ? "bg-[#3A3A3A]/95 backdrop-blur-md shadow-lg"
@@ -55,17 +57,19 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
   return (
     <nav className={`fixed top-0 inset-x-0 w-full z-50 transition-all duration-300 ${navBg}`}>
       {/* MASAÜSTÜ NAVBAR */}
-      <div className="hidden md:flex justify-between items-center px-4 lg:px-8 h-16">
-        {/* LOGO */}
-        <a href="/" className="flex items-center shrink-0 hover:opacity-80 transition-all -translate-x-2 lg:-translate-x-4">
-          <Image src="/logo.svg" alt="Logo" width={72} height={72} className="object-contain h-10 w-auto" />
-        </a>
+      <div className="hidden md:flex items-center px-4 lg:px-8 h-22">
+        {/* 1. SOL: LOGO */}
+        <div className="flex-1 flex justify-start">
+          <a href="/" className="flex items-center shrink-0 hover:opacity-80 transition-all">
+            <Image src="/logo.svg" alt="Logo" width={72} height={72} className="object-contain h-17 w-auto" />
+          </a>
+        </div>
 
-        {/* MENÜ ELEMANLARI */}
-        <div className="flex items-center gap-6 lg:gap-12 text-[13px] font-montserrat text-[#F3F1EC] uppercase tracking-wide h-full">
+        {/* 2. ORTA: TAM ORTALANMIŞ VE BOLD YAPILMIŞ MENÜ ELEMANLARI */}
+        <div className="flex-1 flex items-center pt-1 justify-center gap-6 lg:gap-16 text-[14px] font-montserrat font-bold text-[#F3F1EC] uppercase tracking-wide h-full">
           {/* ÜRÜNLER DROPDOWN */}
           <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("urunler")} onMouseLeave={() => setOpenMenu(null)}>
-            <a href="/urunler" className="hover:text-[#B87333] transition-colors flex items-center gap-1">
+            <a href="/urunler" className="hover:text-[#B87332] transition-colors flex items-center gap-1">
               ÜRÜNLER <ChevronDown size={14} className={`transition-transform ${openMenu === "urunler" ? "rotate-180" : ""}`} />
             </a>
             {openMenu === "urunler" && (
@@ -79,7 +83,7 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
                         <p className="font-bold text-black text-[13px] normal-case tracking-normal">{col.title}</p>
                         <div className="flex flex-col gap-2.5">
                           {col.items.map((item) => (
-                            <a key={item.slug} href={`/kategori/${item.slug}`} className="text-[12.5px] font-normal normal-case text-gray-600 hover:text-[#B87333] transition-colors leading-snug">
+                            <a key={item.slug} href={`/kategori/${item.slug}`} className="text-[12.5px] font-normal normal-case text-gray-600 hover:text-[#B87332] transition-colors leading-snug">
                               {item.name}
                             </a>
                           ))}
@@ -94,20 +98,22 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
 
           {/* KURUMSAL DROPDOWN */}
           <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("kurumsal")} onMouseLeave={() => setOpenMenu(null)}>
-            <a href="#" className="hover:text-[#B87333] transition-colors flex items-center gap-1">KURUMSAL <ChevronDown size={14} /></a>
+            <a href="#" className="hover:text-[#B87332] transition-colors flex items-center gap-1">KURUMSAL <ChevronDown size={14} /></a>
           </div>
 
           {/* DİĞER LİNKLER */}
           {MENU_ITEMS.slice(0, -1).map((item) => (
-            <a key={item} href="#" className="hover:text-[#B87333] transition-colors">
+            <a key={item} href="#" className="hover:text-[#B87332] transition-colors">
               {item}
             </a>
           ))}
+        </div>
 
-          {/* İLETİŞİM BUTONU */}
+        {/* 3. SAĞ: İLETİŞİM BUTONU */}
+        <div className="flex-1 flex justify-end">
           <a
             href="#"
-            className="bg-[#B87333] text-white px-5 py-2.5 rounded-sm text-[12px] font-bold tracking-wider hover:bg-[#a3652c] transition-colors normal-case"
+            className="bg-[#B87332] text-white px-5 py-2.5 rounded-sm text-[12px] font-bold tracking-wider hover:bg-[#a3652c] transition-colors normal-case"
           >
             {MENU_ITEMS[MENU_ITEMS.length - 1]}
           </a>

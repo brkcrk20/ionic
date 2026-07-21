@@ -1,16 +1,15 @@
 import HeroVideo from "@/components/HeroVideo";
-import { getCategories, getSlider } from "@/lib/db";
+import { getCategories } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
 const FALLBACK_IMAGES = ["/resim1.jpg", "/resim2.jpg", "/resim3.jpg"];
 
 export default async function Home() {
-  const [categories, slider] = await Promise.all([getCategories(), getSlider()]);
+  const categories = await getCategories();
   const topLevel = categories.filter((c) => !c.parentId);
   const withImages = topLevel.filter((c) => c.image);
 
-  // Admin panelinden görsel eklenmiş kategori yoksa, tanıtım amaçlı örnek görseller gösterilir
   const collections =
     withImages.length > 0
       ? withImages
@@ -21,12 +20,14 @@ export default async function Home() {
         }));
 
   return (
-    <main className="w-full">
-      <div className="mt-0">
+    <div className="w-full">
+      {/* 1. BÖLÜM: HERO VIDEO */}
+      <section id="hero-section" className="w-full h-screen snap-start shrink-0 relative">
         <HeroVideo />
-      </div>
+      </section>
 
-      <section className="py-14 md:py-20 px-4 sm:px-6 lg:px-12">
+      {/* 2. BÖLÜM: KOLEKSİYONLAR */}
+      <section className="w-full min-h-screen snap-start shrink-0 py-20 px-4 sm:px-6 lg:px-12 flex flex-col justify-center bg-[#F3F1EC]">
         <h2 className="text-center font-ion tracking-wide text-3xl md:text-4xl text-[#3A3A3A] mb-10 md:mb-14">
           KOLEKSİYONLAR
         </h2>
@@ -36,9 +37,9 @@ export default async function Home() {
             Kategoriler admin panelinden eklendiğinde burada listelenecek.
           </p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto w-full">
             {collections.map((item) => (
-              <div key={item.id} className="relative h-64 md:h-72 overflow-hidden group cursor-pointer">
+              <div key={item.id} className="relative h-64 md:h-80 overflow-hidden group cursor-pointer shadow-md rounded-sm">
                 <img
                   src={item.image ?? "/resim1.jpg"}
                   alt={item.name}
@@ -52,6 +53,6 @@ export default async function Home() {
           </div>
         )}
       </section>
-    </main>
+    </div>
   );
 }

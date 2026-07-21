@@ -110,7 +110,7 @@ export default async function UrunDetayPage(props: { params: Promise<{ slug: str
                 ? `tel:${settings.phone}`
                 : "/urunler"
             }
-            className="inline-block text-center bg-[#B87333] text-white px-8 py-4 rounded-md font-medium tracking-wide hover:bg-[#a3652c] transition-colors w-max"
+            className="inline-block text-center bg-[#B87332] text-white px-8 py-4 rounded-md font-medium tracking-wide hover:bg-[#a3652c] transition-colors w-max"
           >
             BİLGİ VE TEKLİF ALIN
           </a>

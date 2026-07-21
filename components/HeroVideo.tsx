@@ -1,4 +1,16 @@
+"use client";
+
+import { ChevronDown } from "lucide-react";
+
 export default function HeroVideo() {
+  const scrollToNextSection = () => {
+    // Hero alanından sonraki ilk bölümü bulup yumuşakça oraya kaydırır
+    const heroSection = document.getElementById("hero-section");
+    if (heroSection && heroSection.nextElementSibling) {
+      heroSection.nextElementSibling.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="relative w-full h-screen overflow-hidden flex items-center justify-center">
       {/* 1. Arka Plan Videosu */}
@@ -13,21 +25,30 @@ export default function HeroVideo() {
         Tarayıcınız video etiketini desteklemiyor.
       </video>
 
-      {/* 2. Koyu Karartma Katmanı (Overlay) */}
-      {/* Yazıların video üzerinde rahat okunabilmesi için şarttır */}
+      {/* 2. Koyu Karartma Katmanı */}
       <div className="absolute inset-0 bg-black/50 z-10" />
 
-      {/* 3. Video Üzerindeki Yazı ve İçerik */}
+      {/* 3. Video Üzerindeki Yazılar */}
       <div className="relative z-20 text-center text-white px-4 max-w-4xl">
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-4 uppercase drop-shadow-md">
-          Stone Tech Creators
+          DENEME SİSTEM
         </h1>
         <p className="text-sm sm:text-base md:text-lg font-light text-gray-200 max-w-2xl mx-auto drop-shadow">
-          Experience and innovation at your service.
+          Bu bir deneme yazısıdır.
           <br />
-          Customer satisfaction is our main goal.
+          ion makine.
         </p>
       </div>
+
+      {/* 4. Alt Kısımda Süzülen ve Tıklanabilir Ok */}
+      <button
+        onClick={scrollToNextSection}
+        type="button"
+        aria-label="Aşağı Kaydır"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 text-white/80 hover:text-white transition-all cursor-pointer animate-bounce p-2 focus:outline-none"
+      >
+        <ChevronDown size={38} className="stroke-[1.5]" />
+      </button>
     </div>
   );
 }
