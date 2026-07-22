@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local';
 import "./globals.css";
+import { LanguageProvider } from "@/lib/i18n";
 
 const ionStyle = localFont({
   src: "../public/fonts/IonStyle.woff2",
@@ -30,7 +31,7 @@ export default function RootLayout({
           antialiased: Yazıların daha keskin görünmesini sağlar.
       */}
       <body className="bg-foreground text-customText font-sans antialiased">
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

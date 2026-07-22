@@ -1,8 +1,11 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 export default function HeroVideo() {
+  const { t } = useLanguage();
+
   const scrollToNextSection = () => {
     // Hero alanından sonraki ilk bölümü bulup yumuşakça oraya kaydırır
     const heroSection = document.getElementById("hero-section");
@@ -14,15 +17,8 @@ export default function HeroVideo() {
   return (
     <div className="relative w-full h-screen overflow-hidden flex items-center justify-center">
       {/* 1. Arka Plan Videosu */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-      >
+      <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
         <source src="/hero-video.mp4" type="video/mp4" />
-        Tarayıcınız video etiketini desteklemiyor.
       </video>
 
       {/* 2. Koyu Karartma Katmanı */}
@@ -31,12 +27,12 @@ export default function HeroVideo() {
       {/* 3. Video Üzerindeki Yazılar */}
       <div className="relative z-20 text-center text-white px-4 max-w-4xl">
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-4 uppercase drop-shadow-md">
-          DENEME SİSTEM
+          {t.home.hero.title}
         </h1>
         <p className="text-sm sm:text-base md:text-lg font-light text-gray-200 max-w-2xl mx-auto drop-shadow">
-          Bu bir deneme yazısıdır.
+          {t.home.hero.subtitleLine1}
           <br />
-          ion makine.
+          {t.home.hero.subtitleLine2}
         </p>
       </div>
 

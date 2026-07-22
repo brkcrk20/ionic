@@ -1,25 +1,49 @@
-import { getProducts, getCategories } from "@/lib/db";
+"use client";
+
+import { useState } from "react";
 import { Search, ArrowRight } from "lucide-react";
 
-export const dynamic = "force-dynamic";
+type Specs = { label: string; value: string; unit?: string };
 
-interface PageProps {
-  searchParams: Promise<{
-    category?: string;
-    search?: string;
-    sort?: string;
-  }>;
-}
+type Product = {
+  id: string;
+  name: string;
+  slug: string;
+  description?: string;
+  images?: string[];
+  active: boolean;
+  categoryId?: string;
+  specs?: Specs[];
+};
 
-export default async function UrunlerPage({ searchParams }: PageProps) {
-  const params = await searchParams;
-  const selectedCategory = params?.category || "";
-  const searchQuery = params?.search?.toLowerCase() || "";
-  const sortOrder = params?.sort || "newest";
+type Category = {
+  id: string;
+  name: string;
+  slug: string;
+  parentId?: string | null;
+};
 
-  const [products, categories] = await Promise.all([getProducts(), getCategories()]);
+export default function ProductFilterClient({
+  initialProducts,
+  categories,
+}: {
+  initialProducts: Product[];
+  categories: Category[];
+}) {
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState("newest");
 
-  // Alt Kategori Bulma Fonksiyonu (Seçilen kategori üst kategoriyse alt kategorilerinin ID'lerini toplar)
+  const [appliedCategory, setAppliedCategory] = useState("");
+  const [appliedSearch, setAppliedSearch] = useState("");
+
+  const handleFilter = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    setAppliedCategory(selectedCategory);
+    setAppliedSearch(searchQuery);
+  };
+
+  // Kategori Ağacı Mantığı: Seçilen kategori ana kategori ise, alt kategorilerinin de ID'lerini bulur.
   const getSubCategoryIds = (catId: string): string[] => {
     const ids = [catId];
     const children = categories.filter((c) => c.parentId === catId);
@@ -29,30 +53,34 @@ export default async function UrunlerPage({ searchParams }: PageProps) {
     return ids;
   };
 
-  // Aktif Ürünler
-  let activeProducts = products.filter((p) => p.active);
+  const filteredProducts = initialProducts
+    .filter((product) => product.active)
+    .filter((product) => {
+      // 1. Kategori Filtresi (Alt kategorileri de kapsar)
+      if (appliedCategory) {
+        const validCategoryIds = getSubCategoryIds(appliedCategory);
+        if (!product.categoryId || !validCategoryIds.includes(product.categoryId)) {
+          return false;
+        }
+      }
 
-  // 1. KATEGORİ FİLTRESİ (Üst kategori seçildiyse alt kategorilerindeki ürünleri de getirir)
-  if (selectedCategory) {
-    const validCategoryIds = getSubCategoryIds(selectedCategory);
-    activeProducts = activeProducts.filter(
-      (p) => p.categoryId && validCategoryIds.includes(p.categoryId)
-    );
-  }
+        // 2. Arama Filtresi
+        if (appliedSearch) {
+          // toLowerCase yerine toLocaleLowerCase kullanıyoruz
+          const query = appliedSearch.toLocaleLowerCase("tr-TR");
+          const matchName = product.name.toLocaleLowerCase("tr-TR").includes(query);
+          const matchDesc = product.description?.toLocaleLowerCase("tr-TR").includes(query);
+          if (!matchName && !matchDesc) return false;
+        }
 
-  // 2. ARAMA FİLTRESİ
-  if (searchQuery) {
-    activeProducts = activeProducts.filter(
-      (p) =>
-        p.name.toLowerCase().includes(searchQuery) ||
-        p.description?.toLowerCase().includes(searchQuery)
-    );
-  }
-
-  // 3. SIRALAMA
-  if (sortOrder === "name") {
-    activeProducts.sort((a, b) => a.name.localeCompare(b.name, "tr"));
-  }
+      return true;
+    })
+    .sort((a, b) => {
+      if (sortOrder === "name") {
+        return a.name.localeCompare(b.name, "tr-TR");
+      }
+      return 0;
+    });
 
   return (
     <div className="w-full pt-22 bg-[#F3F1EC] min-h-screen">
@@ -62,7 +90,10 @@ export default async function UrunlerPage({ searchParams }: PageProps) {
 
         <div className="relative z-10 max-w-4xl mx-auto">
           <div className="text-xs text-gray-400 mb-4 uppercase tracking-widest">
-            <a href="/" className="hover:text-[#B87333] transition-colors">Anasayfa</a> &gt; <span className="text-white font-semibold">Ürünler</span>
+            <a href="/" className="hover:text-[#B87333] transition-colors">
+              Anasayfa
+            </a>{" "}
+            &gt; <span className="text-white font-semibold">Ürünler</span>
           </div>
 
           <h1 className="text-4xl md:text-6xl font-ion uppercase tracking-tight text-[#F3F1EC] mb-4">
@@ -74,23 +105,27 @@ export default async function UrunlerPage({ searchParams }: PageProps) {
         </div>
       </section>
 
-      {/* 2. FİLTRELEME VE ARAMA BARI */}
+      {/* 2. FİLTRELEME BARI */}
       <section className="bg-[#3A3A3A] text-white py-6 px-6 md:px-12 shadow-md">
-        <form action="/urunler" method="GET" className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
+        <form
+          onSubmit={handleFilter}
+          className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6"
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full lg:w-3/4">
-            
-            {/* Kategori Seçimi (Üst ve Alt Kategoriler Görsel Olarak Ayrıldı) */}
+            {/* Kategori Seçimi */}
             <div>
-              <label className="block text-xs font-semibold mb-1 text-gray-300 uppercase tracking-wider">Kategori</label>
+              <label className="block text-xs font-semibold mb-1 text-gray-300 uppercase tracking-wider">
+                Kategori
+              </label>
               <select
-                name="category"
-                defaultValue={selectedCategory}
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
                 className="w-full bg-[#2A2A2A] border border-gray-600 rounded-sm px-3 py-2 text-sm text-white focus:outline-none focus:border-[#B87333] transition-colors cursor-pointer"
               >
                 <option value="">- Tüm Kategoriler -</option>
                 {categories.map((cat) => (
                   <option key={cat.id} value={cat.id}>
-                    {cat.parentId ? `└─ ${cat.name}` : cat.name.toUpperCase()}
+                    {cat.parentId ? `-- ${cat.name}` : cat.name}
                   </option>
                 ))}
               </select>
@@ -98,13 +133,15 @@ export default async function UrunlerPage({ searchParams }: PageProps) {
 
             {/* Arama Kutusu */}
             <div>
-              <label className="block text-xs font-semibold mb-1 text-gray-300 uppercase tracking-wider">Arama</label>
+              <label className="block text-xs font-semibold mb-1 text-gray-300 uppercase tracking-wider">
+                Arama
+              </label>
               <div className="relative">
                 <input
                   type="text"
-                  name="search"
-                  defaultValue={searchQuery}
-                  placeholder="Ürün adı yazın..."
+                  placeholder="Ürün adı veya kod yazın..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full bg-[#2A2A2A] border border-gray-600 rounded-sm pl-3 pr-9 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-[#B87333] transition-colors"
                 />
                 <Search size={16} className="absolute right-3 top-2.5 text-gray-400" />
@@ -113,59 +150,59 @@ export default async function UrunlerPage({ searchParams }: PageProps) {
 
             {/* Sıralama */}
             <div>
-              <label className="block text-xs font-semibold mb-1 text-gray-300 uppercase tracking-wider">Sıralama</label>
+              <label className="block text-xs font-semibold mb-1 text-gray-300 uppercase tracking-wider">
+                Sıralama
+              </label>
               <select
-                name="sort"
-                defaultValue={sortOrder}
+                value={sortOrder}
+                onChange={(e) => setSortOrder(e.target.value)}
                 className="w-full bg-[#2A2A2A] border border-gray-600 rounded-sm px-3 py-2 text-sm text-white focus:outline-none focus:border-[#B87333] transition-colors cursor-pointer"
               >
                 <option value="newest">En Yeniler</option>
                 <option value="name">A'dan Z'ye</option>
               </select>
             </div>
-
           </div>
 
           {/* Filtrele Butonu */}
           <div className="w-full lg:w-auto flex justify-end">
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="w-full lg:w-auto bg-[#B87333] hover:bg-[#a3652c] text-white px-8 py-2.5 rounded-sm font-bold text-sm flex items-center justify-center gap-2 transition-colors uppercase tracking-wider cursor-pointer"
             >
               Filtrele <ArrowRight size={16} />
             </button>
           </div>
-
         </form>
       </section>
 
       {/* 3. ÜRÜN LİSTESİ */}
       <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-12">
         <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-8">
-          Toplam <span className="text-[#3A3A3A] text-sm">{activeProducts.length}</span> ürün listeleniyor
+          Toplam <span className="text-[#3A3A3A] text-sm">{filteredProducts.length}</span> ürün listeleniyor
         </div>
 
-        {activeProducts.length === 0 ? (
+        {filteredProducts.length === 0 ? (
           <div className="bg-white border border-gray-200 rounded-sm p-12 text-center text-gray-500">
-            Aradığınız kriterlere uygun ürün bulunamadı.
+            Arama kriterlerinize uygun ürün bulunamadı.
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {activeProducts.map((product) => (
-              <a 
-                key={product.id} 
-                href={`/urunler/${product.slug}`} 
+            {filteredProducts.map((product) => (
+              <a
+                key={product.id}
+                href={`/urunler/${product.slug}`}
                 className="group bg-white border border-gray-200 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300 block flex flex-col justify-between"
               >
                 <div>
                   <div className="relative h-64 bg-[#F8F8F8] overflow-hidden p-6 flex items-center justify-center border-b border-gray-100">
-                    <img 
-                      src={product.images?.[0] || "/resim1.jpg"} 
+                    <img
+                      src={product.images?.[0] || "/resim1.jpg"}
                       alt={product.name}
                       className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  
+
                   <div className="p-5">
                     <h3 className="font-bold text-base text-[#3A3A3A] truncate group-hover:text-[#B87333] transition-colors uppercase">
                       {product.name}
@@ -191,7 +228,6 @@ export default async function UrunlerPage({ searchParams }: PageProps) {
                 <div className="px-5 pb-5 pt-2 flex items-center gap-1 text-xs font-bold text-[#B87333] group-hover:translate-x-1 transition-transform uppercase tracking-wider">
                   Detayları İncele <ArrowRight size={14} />
                 </div>
-
               </a>
             ))}
           </div>
