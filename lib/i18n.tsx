@@ -130,6 +130,11 @@ export interface Translations {
       tagline: string;
     };
   };
+  pages: {
+    comingSoon: string;
+    backToHome: string;
+    imagePlaceholder: string;
+  };
 }
 
 const translations: Record<Lang, Translations> = {
@@ -143,7 +148,7 @@ const translations: Record<Lang, Translations> = {
       contact: "İletişim",
       requestQuote: "Teklif Alın",
       close: "Kapat",
-      groupTitle: "Ion Meccanica Grubu",
+      groupTitle: "Ion Meccanica",
       whyUs: "Neden Ion Meccanica?",
       sectors: "Uygulama Sektörleri",
       news: "Haberler & Projeler",
@@ -203,7 +208,7 @@ const translations: Record<Lang, Translations> = {
       brand: {
         title: "Mühendislik. Güvenilirlik. Bağlılık.",
         description:
-          "ION MECCANICA, tek makinelerden komple üretim hatlarına kadar doğal taş sektörü için uygulamaya dönük mühendisliği, sağlam üretimi ve esnek proje yürütme kabiliyetini bir araya getirir.",
+          "Tekli makinelerden komple işleme hatlarına kadar ION MECCANICA, doğal taş endüstrisi için pratik mühendisliği, sağlam üretimi ve esnek proje yürütmeyi bir araya getirir.",
       },
       capabilities: {
         title: "Konseptten Devreye Almaya",
@@ -286,6 +291,11 @@ const translations: Record<Lang, Translations> = {
         tagline: "Doğal Taş Endüstrisi İçin Tasarlandı.",
       },
     },
+    pages: {
+      comingSoon: "Bu sayfa yakında yayında olacak.",
+      backToHome: "Anasayfaya Dön",
+      imagePlaceholder: "Görsel Yakında",
+    },
   },
   EN: {
     nav: {
@@ -297,7 +307,7 @@ const translations: Record<Lang, Translations> = {
       contact: "Contact",
       requestQuote: "Request a Quote",
       close: "Close",
-      groupTitle: "Ion Meccanica Group",
+      groupTitle: "Ion Meccanica",
       whyUs: "Why Ion Meccanica?",
       sectors: "Application Sectors",
       news: "News & Projects",
@@ -439,6 +449,11 @@ const translations: Record<Lang, Translations> = {
         copyright: (year: number) => `Copyright © ${year} ION MECCANICA. All rights reserved.`,
         tagline: "Engineered for the Natural Stone Industry.",
       },
+    },
+    pages: {
+      comingSoon: "This page will be live soon.",
+      backToHome: "Back to Home",
+      imagePlaceholder: "Image Coming Soon",
     },
   },
 };

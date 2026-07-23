@@ -1,19 +1,22 @@
 // components/MachinesSection.tsx
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
 
-// Görsel ve slug bilgisi dilden bağımsızdır; isim/kategori metinleri i18n'den gelir.
+// Slug bilgisi dilden bağımsızdır; isim/kategori metinleri i18n'den gelir.
+// NOT: Görseller (resin-line.jpg vb.) public/ klasörüne eklenene kadar
+// ImagePlaceholder kullanılıyor. Görseller eklendiğinde burada bir "image"
+// alanı tanımlayıp aşağıdaki ImagePlaceholder'ı <Image> ile değiştirmeniz yeterli.
 const PRODUCT_META = [
-  { id: "resin", key: "resin", image: "/resin-line.jpg" },
-  { id: "cnc", key: "cnc", image: "/cnc-bridge-saw.jpg" },
-  { id: "waterjet", key: "waterjet", image: "/waterjet.jpg" },
-  { id: "tile", key: "tile", image: "/tile-line.jpg" },
-  { id: "handling", key: "handling", image: "/automation.jpg" },
-  { id: "custom", key: "custom", image: "/custom-machine.jpg" },
+  { id: "resin", key: "resin" },
+  { id: "cnc", key: "cnc" },
+  { id: "waterjet", key: "waterjet" },
+  { id: "tile", key: "tile" },
+  { id: "handling", key: "handling" },
+  { id: "custom", key: "custom" },
 ] as const;
 
 export default function MachinesSection() {
@@ -71,13 +74,7 @@ export default function MachinesSection() {
 
         {/* SAĞ: Aktif Kategori Görseli */}
         <div className="lg:col-span-8 h-[50vh] lg:h-[75vh] w-full relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
-          <Image
-            src={activeMeta.image}
-            alt={activeText.name}
-            fill
-            className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-            sizes="(max-width: 1024px) 100vw, 66vw"
-          />
+          <ImagePlaceholder label={activeText.name} className="transition-transform duration-700 group-hover:scale-105" />
           {/* Görsel Altı Bilgi Kartı */}
           <div className="absolute bottom-6 left-6 right-6 lg:bottom-10 lg:left-10 bg-[#3A3A3A]/90 backdrop-blur-md p-6 rounded-xl border border-white/10 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-4 group-hover:translate-y-0">
             <div>

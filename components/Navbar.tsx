@@ -62,7 +62,7 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
                 {t.machines}
               </Link>
               {openMenu === "machines" && (
-                <div className="absolute top-full left-1/1 -translate-x-1/5 mt-0.5 w-[min(92vw,980px)] bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-top-2">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-[min(92vw,980px)] bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-top-2">
                   <div className="grid grid-cols-3 gap-8 px-10 py-8 bg-gradient-to-b from-gray-50/70 to-white">
                     <div className="flex flex-col gap-3.5 group/col">
                       <Link href="/kategori/komple-hatlar" className="font-extrabold text-[#0B1941] text-[13.5px] uppercase tracking-wider border-b border-gray-200/80 pb-2.5 hover:text-[#B87332] transition-colors flex items-center justify-between group-hover/col:border-[#B87332]/50">
@@ -264,15 +264,7 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
             </Link>
           </div>
 
-          {/* 3. SAĞ: REQUEST A QUOTE, DİL SEÇİMİ VE HAMBURGER */}
           <div className="flex items-center gap-5 xl:gap-6 shrink-0">
-            <Link
-              href="/teklif-al"
-              className="bg-[#B87332] hover:bg-[#a06228] text-white font-montserrat font-extrabold text-[13px] xl:text-[14px] tracking-wider uppercase px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 transform hover:-translate-y-0.5"
-            >
-              <FileText size={16} />
-              <span>{t.requestQuote}</span>
-            </Link>
 
             <div className="flex items-center gap-1 font-montserrat font-bold text-[14px] text-[#F3F1EC]">
               <button
@@ -302,8 +294,8 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
 
         {/* MOBİL NAVBAR BARI */}
         <div className="flex md:hidden items-center justify-between px-4 sm:px-6 h-16">
-          <Link href="/." className="flex items-center shrink-0 hover:opacity-80 transition-opacity">
-            <Image src="/logo.svg" alt="Logo" width={48} height={48} className="object-contain h-10 w-auto" />
+          <Link href="/" className="flex items-center shrink-0 hover:opacity-80 transition-opacity">
+            <Image src="/logo-2.svg" alt="Logo" width={48} height={48} className="object-contain h-10 w-auto" />
           </Link>
           
           <div className="flex items-center gap-3">
@@ -328,11 +320,11 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
             onClick={() => setMegaMenuOpen(false)}
           />
 
-          <div className="relative w-full min-h-[50vh] max-h-[85vh] md:max-h-[55vh] bg-white text-[#0B1941] shadow-2xl overflow-y-auto flex flex-col justify-between z-10 animate-in slide-in-from-top duration-300">
+          <div className="relative w-full min-h-[50vh] max-h-[85vh] md:max-h-[55vh] bg-[#F3F1EC] text-[#0B1941] shadow-2xl overflow-y-auto flex flex-col justify-between z-10 animate-in slide-in-from-top duration-300">
             
             <div className="flex items-center justify-between max-w-[1850px] w-full mx-auto px-6 lg:px-12 h-20 shrink-0 border-b border-gray-100">
-              <Link href="/" onClick={() => setMegaMenuOpen(false)} className="flex items-center">
-                <Image src="/logo.svg" alt="Logo" width={110} height={36} className="object-contain h-9 w-auto" />
+              <Link href="/" onClick={() => setMegaMenuOpen(false)} className="flex items-center pt-6">
+                <Image src="/logo-2.svg" alt="Logo" width={110} height={36} className="object-contain h-14 w-auto" />
               </Link>
 
               <button
@@ -378,7 +370,7 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
                   <div className="flex flex-col gap-0.5 text-gray-700">
                     <p className="font-semibold text-[#0B1941]">{t.addressTitle}</p>
                     <p>{t.addressSub}</p>
-                    <p className="pt-1">+90 (0212) 686 25 48</p>
+                    <p className="pt-1">+90 (258) 814 57 47</p>
                     <a href="mailto:info@ionmeccanica.com" className="text-[#0B1941] hover:underline font-semibold">
                       info@ionmeccanica.com
                     </a>
