@@ -81,7 +81,7 @@ export default function Home() {
         {/* 1. ARKAPLAN RESMİ VE TÜL (OVERLAY) KATMANI */}
         <div className="absolute inset-0 w-full h-full z-0">
           <Image
-            src="/brand-hero.jpg" // Kendi görsel yolun
+            src="/brand-hero-2.png" // Kendi görsel yolun
             alt="Ion Meccanica Production"
             fill
             className="object-cover object-center"

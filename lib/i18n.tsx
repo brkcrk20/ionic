@@ -142,7 +142,7 @@ const translations: Record<Lang, Translations> = {
     nav: {
       machines: "Makineler & Hatlar",
       engineering: "Mühendislik & Teknolojiler",
-      service: "Servis & Hizmetler",
+      service: "Yerleşik Fabrika",
       company: "Kurumsal",
       projectsNews: "Projeler & Haberler",
       contact: "İletişim",
@@ -301,7 +301,7 @@ const translations: Record<Lang, Translations> = {
     nav: {
       machines: "Machines & Lines",
       engineering: "Engineering & Technology",
-      service: "Service",
+      service: "Integrated Factory",
       company: "Company",
       projectsNews: "Projects & News",
       contact: "Contact",

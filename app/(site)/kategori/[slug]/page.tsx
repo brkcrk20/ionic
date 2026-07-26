@@ -24,7 +24,7 @@ export default async function KategoriPage(props: { params: Promise<{ slug: stri
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {categoryProducts.map((product) => (
-            <a key={product.id} href={`/urunler/${product.slug}`} className="group border border-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow bg-white block">
+            <a key={product.id} href={`/products/${product.slug}`} className="group border border-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow bg-white block">
               <div className="relative h-64 bg-gray-50 overflow-hidden">
                 <img src={product.images?.[0] || "/resim1.jpg"} alt={product.name} className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105" />
               </div>

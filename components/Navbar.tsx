@@ -56,9 +56,16 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
           {/* 2. ORTA: ANA MENÜ ELEMANLARI */}
           <div className="flex items-center justify-center gap-5 xl:gap-8 text-[14px] xl:text-[15px] font-montserrat font-bold text-[#F3F1EC] tracking-wide h-full">
             
+            {/* Integrated Factory DROPDOWN */}
+            <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("service")} onMouseLeave={() => setOpenMenu(null)}>
+              <Link href="/servis" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
+                {t.service}
+              </Link>
+            </div>
+
             {/* MACHINES & LINES DROPDOWN */}
             <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("machines")} onMouseLeave={() => setOpenMenu(null)}>
-              <Link href="/urunler" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
+              <Link href="/products" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
                 {t.machines}
               </Link>
               {openMenu === "machines" && (
@@ -130,43 +137,6 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
                     </Link>
                     <Link href="/muhendislik/ar-ge" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
                       <span>{t.engItem5}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* SERVICE DROPDOWN */}
-            <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("service")} onMouseLeave={() => setOpenMenu(null)}>
-              <Link href="/servis" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
-                {t.service}
-              </Link>
-              {openMenu === "service" && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-84 bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden p-2.5 animate-in fade-in slide-in-from-top-2">
-                  <div className="flex flex-col gap-1">
-                    <Link href="/servis/kurulum-devreye-alma" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem1}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/servis/teknik-destek" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem2}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/servis/yedek-parca" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem3}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/servis/bakim-onarim" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem4}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/servis/uzaktan-destek" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem5}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/servis/egitim" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem6}</span>
                       <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
                     </Link>
                   </div>
@@ -295,7 +265,7 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
         {/* MOBİL NAVBAR BARI */}
         <div className="flex md:hidden items-center justify-between px-4 sm:px-6 h-16">
           <Link href="/" className="flex items-center shrink-0 hover:opacity-80 transition-opacity">
-            <Image src="/logo-2.svg" alt="Logo" width={48} height={48} className="object-contain h-10 w-auto" />
+            <Image src="/logo.svg" alt="Logo" width={48} height={48} className="object-contain h-10 w-auto" />
           </Link>
           
           <div className="flex items-center gap-3">
@@ -394,6 +364,6 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
           </div>
         </div>
       )}
-    </>
+  </>
   );
 }

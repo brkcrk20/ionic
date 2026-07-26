@@ -30,7 +30,7 @@ export default function SliderPanel() {
       title: "", 
       subtitle: "", 
       buttonText: "İncele", 
-      buttonLink: "/urunler" 
+      buttonLink: "/products" 
     };
     // State'i güncellemeye zorluyoruz
     setSlider(prev => [...prev, newItem]);
@@ -138,7 +138,7 @@ export default function SliderPanel() {
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-600 mb-1">Buton Linki</label>
-                  <input type="text" value={item.buttonLink} onChange={e => handleChange(item.id, "buttonLink", e.target.value)} className="w-full border border-gray-300 rounded-md px-3 py-1.5 text-sm bg-white focus:outline-none" placeholder="/urunler"/>
+                  <input type="text" value={item.buttonLink} onChange={e => handleChange(item.id, "buttonLink", e.target.value)} className="w-full border border-gray-300 rounded-md px-3 py-1.5 text-sm bg-white focus:outline-none" placeholder="/products"/>
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-600 mb-1">Ana Başlık</label>

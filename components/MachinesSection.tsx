@@ -64,7 +64,7 @@ export default function MachinesSection() {
 
           <div className="mt-12">
             <Link
-              href="/urunler"
+              href="/products"
               className="inline-block bg-transparent border-2 border-[#B87332] text-[#B87332] hover:bg-[#B87332] hover:text-[#F3F1EC] font-bold tracking-wider uppercase text-xs px-6 py-3 rounded-full transition-colors duration-300"
             >
               {t.home.machines.cta}
