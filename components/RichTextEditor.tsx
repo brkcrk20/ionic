@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { ChangeEvent, MouseEvent } from "react";
 import { Bold, ChevronDown, Code2, Italic, Link2, List, ListOrdered, Minus, Paintbrush, Pilcrow, Redo2, Slash, Type, Underline, Undo2, Image as ImageIcon, AlignLeft, AlignCenter, AlignRight, AlignJustify } from "lucide-react";
 
@@ -115,7 +115,6 @@ export default function RichTextEditor({ value, onChange, placeholder, minHeight
 
   function applyFontSize(next: string) {
     setFontSize(next);
-    // execCommand fontSize uses legacy values 1-7, but it still gives a simple size change.
     const map: Record<string, string> = {
       "12px": "2",
       "14px": "3",
@@ -127,7 +126,6 @@ export default function RichTextEditor({ value, onChange, placeholder, minHeight
       "32px": "7",
     };
     exec("fontSize", map[next] ?? "3");
-    // Convert legacy <font size> tags into span styles so output stays predictable.
     requestAnimationFrame(() => {
       if (!editorRef.current) return;
       editorRef.current.querySelectorAll("font[size]").forEach((node) => {
@@ -143,7 +141,7 @@ export default function RichTextEditor({ value, onChange, placeholder, minHeight
     });
   }
 
-  type ButtonSpec = { icon: JSX.Element; title: string; action: () => void };
+  type ButtonSpec = { icon: ReactNode; title: string; action: () => void };
   const buttons: ButtonSpec[] = [
     { icon: <Undo2 size={16} />, title: "Geri al", action: () => { exec("undo"); sync(); } },
     { icon: <Redo2 size={16} />, title: "İleri al", action: () => { exec("redo"); sync(); } },
