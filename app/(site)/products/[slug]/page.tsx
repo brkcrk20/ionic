@@ -164,7 +164,10 @@ export default function ProductDetailPage() {
     <div className="w-full min-h-screen bg-white relative font-montserrat text-[#3A3A3A] overflow-x-hidden">
  
       {/* 1. BÖLÜM: HERO & GENEL BAKIŞ */}
-      <section className="w-full min-h-screen relative flex flex-col justify-between px-6 lg:pl-16 lg:pr-16 pt-28 lg:pt-32 pb-0 bg-[#3A3A3A]">
+      <section 
+        className="w-full min-h-screen relative flex flex-col justify-start px-6 lg:pl-16 lg:pr-16 pt-28 lg:pt-32 pb-20 bg-[#3A3A3A] bg-no-repeat bg-bottom bg-[length:100%_auto] lg:bg-[length:85%_auto]"
+        style={{ backgroundImage: "url('/Positron_2.png')" }}
+      >
  
         {/* Üst Kısım: Anasayfa / Ürünler / Positron */}
         <div className="w-full lg:ml-[-30px] mx-auto relative z-10 -mt-6">
@@ -177,8 +180,8 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        {/* Orta Metin Alanı */}
-        <div className="w-full max-w-5xl mx-auto relative z-10 mt-4 pl-0 lg:pl-12">
+        {/* Alt Kısım */}
+        <div className="w-full max-w-5xl mx-auto relative z-10 mt-8 pl-0 lg:pl-12">
           <div className="max-w-3xl flex flex-col items-start gap-6">
             <div>
               <h1 className="text-4xl md:text-[48px] font-extrabold tracking-tight text-white mb-2">POSITRON</h1>
@@ -199,19 +202,6 @@ export default function ProductDetailPage() {
               <Download size={18} className="text-[#B87332]" />
               <span>{isTr ? "Katalog İndir" : "Download the catalogue"}</span>
             </a>
-          </div>
-        </div>
-
-        {/* En Alt Kısım: Görsel (Basılmadan, Orijinal Oranıyla Oturur) */}
-        <div className="w-full max-w-5xl mx-auto relative z-10 mt-12 flex justify-center">
-          <div className="relative w-full max-w-[1100px] aspect-[16/7]">
-            <Image
-              src="/Positron_2.png"
-              alt="Positron Cyclic Oven"
-              fill
-              className="object-contain object-bottom"
-              priority
-            />
           </div>
         </div>
       </section>
