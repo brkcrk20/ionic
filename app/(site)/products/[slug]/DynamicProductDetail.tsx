@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
 import { ChevronRight, Plus, Minus } from "lucide-react";
-import type { Product, TextStyle } from "@/lib/db";
+import type { Product, TextStyle, MultiLangString } from "@/lib/db";
 import RichTextContent from "@/components/RichTextContent";
 
 const styles = {
@@ -28,6 +28,13 @@ function css(style?: TextStyle): CSSProperties | undefined {
     lineHeight: style.lineHeight,
     letterSpacing: style.letterSpacing,
   };
+}
+
+// Çoklu dil verisini (tr/en) seçilen dile göre çeviren yardımcı fonksiyon
+function getLangText(val: MultiLangString | undefined, isTr: boolean): string {
+  if (!val) return "";
+  if (typeof val === "string") return val; // Eski kayıtlar için yedek
+  return isTr ? (val.tr || val.en || "") : (val.en || val.tr || "");
 }
 
 export default function DynamicProductDetail({ product, categoryName }: { product: Product; categoryName: string | null }) {
@@ -52,6 +59,12 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
   const heroImage = product.heroImage || product.images[0] || "";
   const galleryImages = product.heroImage ? product.images.filter((img) => img !== product.heroImage) : product.images.slice(1);
 
+  const productName = getLangText(product.name, isTr);
+  const productSubtitle = getLangText(product.subtitle, isTr);
+  const productHeroDesc = getLangText(product.heroDescription, isTr);
+  const descSectionTitle = getLangText(product.descriptionSectionTitle, isTr);
+  const configsSectionTitle = getLangText(product.configsSectionTitle, isTr);
+
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white font-montserrat text-[#3A3A3A]">
       <section
@@ -66,7 +79,7 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
             <ChevronRight size={14} />
             <Link href="/products" className="transition-colors hover:text-[#B87332]">{isTr ? "Ürünler" : "Products"}</Link>
             <ChevronRight size={14} />
-            <span className="font-bold text-[#B87332]">{product.name}</span>
+            <span className="font-bold text-[#B87332]">{productName}</span>
           </div>
         </div>
 
@@ -74,9 +87,9 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
           <div className="flex max-w-3xl flex-col items-start gap-6">
             <div>
               {categoryName && <span className="mb-4 inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-white/70">{categoryName}</span>}
-              <h1 className="mb-2 text-4xl font-extrabold tracking-tight text-white md:text-[48px]" style={css(product.nameStyle)}>{product.name}</h1>
-              {product.subtitle && <RichTextContent value={product.subtitle} className="mb-4 text-xl font-bold text-[#B87332] md:text-2xl" style={css(product.subtitleStyle)} /> }
-              {product.heroDescription && <RichTextContent value={product.heroDescription} className="text-base font-medium leading-relaxed text-white/90" style={css(product.heroDescriptionStyle)} /> }
+              <h1 className="mb-2 text-4xl font-extrabold tracking-tight text-white md:text-[48px]" style={css(product.nameStyle)}>{productName}</h1>
+              {productSubtitle && <RichTextContent value={productSubtitle} className="mb-4 text-xl font-bold text-[#B87332] md:text-2xl" style={css(product.subtitleStyle)} /> }
+              {productHeroDesc && <RichTextContent value={productHeroDesc} className="text-base font-medium leading-relaxed text-white/90" style={css(product.heroDescriptionStyle)} /> }
             </div>
           </div>
         </div>
@@ -93,7 +106,7 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                   <button onClick={() => toggleSection(indexOf("description"))} className="flex w-full cursor-pointer items-center justify-between px-6 py-5 text-left transition-colors hover:bg-gray-200/50">
                     <div className="flex items-center gap-3">
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#B87332] text-white transition-transform duration-300">{openSections[indexOf("description")] ? <Minus size={18} /> : <Plus size={18} />}</span>
-                      <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{product.descriptionSectionTitle || (isTr ? "Açıklama & Sistem Mimarisi" : "Description & System Architecture")}</h3>
+                      <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{descSectionTitle || (isTr ? "Açıklama & Sistem Mimarisi" : "Description & System Architecture")}</h3>
                     </div>
                   </button>
                   {openSections[indexOf("description")] && (
@@ -102,11 +115,11 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                         {product.descriptionBlocks?.length
                           ? product.descriptionBlocks.map((p, i) => (
                               <div key={i} className="space-y-1">
-                                {p.title && <RichTextContent value={p.title} className="font-extrabold text-[#B87332]" style={css(p.titleStyle)} />}
-                                <RichTextContent value={p.text} className="whitespace-pre-wrap" style={css(p.textStyle)} />
+                                {getLangText(p.title, isTr) && <RichTextContent value={getLangText(p.title, isTr)} className="font-extrabold text-[#B87332]" style={css(p.titleStyle)} />}
+                                <RichTextContent value={getLangText(p.text, isTr)} className="whitespace-pre-wrap" style={css(p.textStyle)} />
                               </div>
                             ))
-                          : product.descriptionParagraphs.map((p, i) => <p key={i}>{p}</p>)}
+                          : product.descriptionParagraphs.map((p, i) => <p key={i}>{getLangText(p, isTr)}</p>)}
                       </div>
                     </div>
                   )}
@@ -118,7 +131,7 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                   <button onClick={() => toggleSection(indexOf("configs"))} className="flex w-full cursor-pointer items-center justify-between px-6 py-5 text-left transition-colors hover:bg-gray-200/50">
                     <div className="flex items-center gap-3">
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#B87332] text-white transition-transform duration-300">{openSections[indexOf("configs")] ? <Minus size={18} /> : <Plus size={18} />}</span>
-                      <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{product.configsSectionTitle || (isTr ? "Mevcut Konfigürasyonlar" : "Available Configurations")}</h3>
+                      <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{configsSectionTitle || (isTr ? "Mevcut Konfigürasyonlar" : "Available Configurations")}</h3>
                     </div>
                   </button>
                   {openSections[indexOf("configs")] && (
@@ -127,19 +140,19 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                         {product.configBlocks?.length
                           ? product.configBlocks.map((cfg, i) => (
                               <div key={i} className="space-y-1">
-                                <RichTextContent value={cfg.title || `${isTr ? "Konfigürasyon" : "Configuration"} ${i + 1}`} className="font-extrabold text-[#B87332]" style={css(cfg.titleStyle)} />
-                                <RichTextContent value={cfg.text} className="whitespace-pre-wrap" style={css(cfg.textStyle)} />
+                                <RichTextContent value={getLangText(cfg.title, isTr) || `${isTr ? "Konfigürasyon" : "Configuration"} ${i + 1}`} className="font-extrabold text-[#B87332]" style={css(cfg.titleStyle)} />
+                                <RichTextContent value={getLangText(cfg.text, isTr)} className="whitespace-pre-wrap" style={css(cfg.textStyle)} />
                               </div>
                             ))
                           : product.configs.map((cfg, i) => (
                               <p key={i}>
-                                <strong className="font-extrabold text-[#B87332]">{cfg.name}: </strong>
-                                {cfg.text}
+                                <strong className="font-extrabold text-[#B87332]">{getLangText(cfg.name, isTr)}: </strong>
+                                {getLangText(cfg.text, isTr)}
                               </p>
                             ))}
                       </div>
-                      {product.configNote && <p className={styles.body} style={css(product.configNoteStyle)}>{product.configNote}</p>}
-                      {product.configNote2 && <p className={styles.body} style={css(product.configNote2Style)}>{product.configNote2}</p>}
+                      {product.configNote && <p className={styles.body} style={css(product.configNoteStyle)}>{getLangText(product.configNote, isTr)}</p>}
+                      {product.configNote2 && <p className={styles.body} style={css(product.configNote2Style)}>{getLangText(product.configNote2, isTr)}</p>}
                     </div>
                   )}
                 </div>
@@ -159,14 +172,14 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                         {product.versionBlocks?.length
                           ? product.versionBlocks.map((v, i) => (
                               <div key={i} className="space-y-1">
-                                <RichTextContent value={v.title || `${isTr ? "Versiyon" : "Version"} ${i + 1}`} className="font-extrabold text-[#B87332]" style={css(v.titleStyle)} />
-                                <RichTextContent value={v.text} className="whitespace-pre-wrap" style={css(v.textStyle)} />
+                                <RichTextContent value={getLangText(v.title, isTr) || `${isTr ? "Versiyon" : "Version"} ${i + 1}`} className="font-extrabold text-[#B87332]" style={css(v.titleStyle)} />
+                                <RichTextContent value={getLangText(v.text, isTr)} className="whitespace-pre-wrap" style={css(v.textStyle)} />
                               </div>
                             ))
                           : product.versions.map((v, i) => (
                               <p key={i}>
-                                <strong className="font-extrabold text-[#B87332]">{v.label}: </strong>
-                                {v.text}
+                                <strong className="font-extrabold text-[#B87332]">{getLangText(v.label, isTr)}: </strong>
+                                {getLangText(v.text, isTr)}
                               </p>
                             ))}
                       </div>
@@ -189,14 +202,14 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                         {product.featureBlocks?.length
                           ? product.featureBlocks.map((f, i) => (
                               <div key={i} className="space-y-1">
-                                {f.title && <RichTextContent value={f.title} className="font-extrabold text-[#B87332]" style={css(f.titleStyle)} />}
-                                <RichTextContent value={f.text} className="whitespace-pre-wrap" style={css(f.textStyle)} />
+                                {getLangText(f.title, isTr) && <RichTextContent value={getLangText(f.title, isTr)} className="font-extrabold text-[#B87332]" style={css(f.titleStyle)} />}
+                                <RichTextContent value={getLangText(f.text, isTr)} className="whitespace-pre-wrap" style={css(f.textStyle)} />
                               </div>
                             ))
                           : product.features.map((f, i) => (
                               <p key={i}>
                                 <strong className="font-extrabold text-[#B87332]">• </strong>
-                                {f}
+                                {getLangText(f, isTr)}
                               </p>
                             ))}
                       </div>
@@ -216,7 +229,7 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               {galleryImages.map((src, index) => (
                 <div key={`${src}-${index}`} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-sm">
-                  <Image src={src} alt={`${product.name} ${index + 1}`} fill className="object-cover" />
+                  <Image src={src} alt={`${productName} ${index + 1}`} fill className="object-cover" />
                 </div>
               ))}
             </div>

@@ -3,48 +3,111 @@
   "products": [
     {
       "id": "prod-positron-static",
-      "name": "POSITRON 60",
+      "name": {
+        "tr": "POSITRON 60",
+        "en": ""
+      },
       "slug": "positron",
-      "subtitle": "Plaka Kurutma ve Reçine Kürleme için Döngüsel Fırın",
-      "heroDescription": "POSITRON, reçine uygulamasından önce doğal taş plakaları kurutmak ve reçine işleminden sonra kürlemek için tasarlanmış tam yalıtımlı döngüsel bir kule fırınıdır.",
+      "subtitle": {
+        "tr": "Plaka Kurutma ve Reçine Kürleme için Döngüsel Fırın",
+        "en": ""
+      },
+      "heroDescription": {
+        "tr": "POSITRON, reçine uygulamasından önce doğal taş plakaları kurutmak ve reçine işleminden sonra kürlemek için tasarlanmış tam yalıtımlı döngüsel bir kule fırınıdır.",
+        "en": ""
+      },
       "heroImage": "/Positron_2.png",
       "descriptionParagraphs": [
-        "POSITRON is a fully insulated cyclic tower oven designed for drying natural-stone slabs before resin application and curing them after resin treatment."
+        {
+          "tr": "POSITRON is a fully insulated cyclic tower oven designed for drying natural-stone slabs before resin application and curing them after resin treatment.",
+          "en": ""
+        }
       ],
       "configs": [
         {
-          "name": "POSITRON 40",
-          "text": "Two groups of 20 slab trays, providing a total capacity of 40 slabs."
+          "name": {
+            "tr": "POSITRON 40",
+            "en": ""
+          },
+          "text": {
+            "tr": "Two groups of 20 slab trays, providing a total capacity of 40 slabs.",
+            "en": ""
+          }
         },
         {
-          "name": "POSITRON 60",
-          "text": "Two groups of 30 slab trays, providing a total capacity of 60 slabs."
+          "name": {
+            "tr": "POSITRON 60",
+            "en": ""
+          },
+          "text": {
+            "tr": "Two groups of 30 slab trays, providing a total capacity of 60 slabs.",
+            "en": ""
+          }
         },
         {
-          "name": "POSITRON 80",
-          "text": "Two groups of 40 slab trays, providing a total capacity of 80 slabs."
+          "name": {
+            "tr": "POSITRON 80",
+            "en": ""
+          },
+          "text": {
+            "tr": "Two groups of 40 slab trays, providing a total capacity of 80 slabs.",
+            "en": ""
+          }
         }
       ],
-      "configNote": "POSITRON is available in marble and granite configurations.",
-      "configNote2": "Machine dimensions, installed power, fan arrangement and airflow capacity vary according to the selected configuration.",
+      "configNote": {
+        "tr": "POSITRON is available in marble and granite configurations.",
+        "en": ""
+      },
+      "configNote2": {
+        "tr": "Machine dimensions, installed power, fan arrangement and airflow capacity vary according to the selected configuration.",
+        "en": ""
+      },
       "versions": [
         {
-          "label": "POSITRON Speedy",
-          "text": "The Speedy version is developed for production lines requiring shorter slab-handling times and higher throughput."
+          "label": {
+            "tr": "POSITRON Speedy",
+            "en": ""
+          },
+          "text": {
+            "tr": "The Speedy version is developed for production lines requiring shorter slab-handling times and higher throughput.",
+            "en": ""
+          }
         },
         {
-          "label": "Options: Enhanced Air Homogeneity Fan",
-          "text": "POSITRON can be equipped with an additional recirculation fan to improve air distribution throughout the oven chamber."
+          "label": {
+            "tr": "Options: Enhanced Air Homogeneity Fan",
+            "en": ""
+          },
+          "text": {
+            "tr": "POSITRON can be equipped with an additional recirculation fan to improve air distribution throughout the oven chamber.",
+            "en": ""
+          }
         },
         {
-          "label": "Options: IntelliHot",
-          "text": "The optional IntelliHot system measures the temperature of slabs leaving the oven and automatically adjusts the internal heating regime."
+          "label": {
+            "tr": "Options: IntelliHot",
+            "en": ""
+          },
+          "text": {
+            "tr": "The optional IntelliHot system measures the temperature of slabs leaving the oven and automatically adjusts the internal heating regime.",
+            "en": ""
+          }
         }
       ],
       "features": [
-        "Fully insulated cyclic tower construction",
-        "20+20, 30+30 and 40+40 capacity configurations",
-        "Suitable for slab drying and resin curing"
+        {
+          "tr": "Fully insulated cyclic tower construction",
+          "en": ""
+        },
+        {
+          "tr": "20+20, 30+30 and 40+40 capacity configurations",
+          "en": ""
+        },
+        {
+          "tr": "Suitable for slab drying and resin curing",
+          "en": ""
+        }
       ],
       "categoryId": null,
       "images": [
@@ -55,45 +118,102 @@
       "createdAt": "2026-07-27T00:00:00.000Z",
       "descriptionBlocks": [
         {
-          "title": "",
-          "text": "POSITRON is a fully insulated cyclic tower oven designed for drying natural-stone slabs before resin application and curing them after resin treatment."
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "POSITRON is a fully insulated cyclic tower oven designed for drying natural-stone slabs before resin application and curing them after resin treatment.",
+            "en": ""
+          }
         }
       ],
       "featureBlocks": [
         {
-          "title": "",
-          "text": "Fully insulated cyclic tower construction"
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "Fully insulated cyclic tower construction",
+            "en": ""
+          }
         },
         {
-          "title": "",
-          "text": "20+20, 30+30 and 40+40 capacity configurations"
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "20+20, 30+30 and 40+40 capacity configurations",
+            "en": ""
+          }
         },
         {
-          "title": "",
-          "text": "Suitable for slab drying and resin curing"
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "Suitable for slab drying and resin curing",
+            "en": ""
+          }
         }
       ],
-      "descriptionSectionTitle": "",
-      "configsSectionTitle": "",
-      "versionsSectionTitle": "",
-      "featuresSectionTitle": ""
+      "descriptionSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "configsSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "versionsSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "featuresSectionTitle": {
+        "tr": "",
+        "en": ""
+      }
     },
     {
       "id": "prod-ms32speg-ahsu3",
-      "name": "Deneme Ürün",
+      "name": {
+        "tr": "Deneme Ürün",
+        "en": ""
+      },
       "slug": "deneme-urun",
-      "subtitle": "Bu bir deneme ürünüdür",
-      "heroDescription": "Ürün hakkındaki kısa açıklama burada bulunur",
+      "subtitle": {
+        "tr": "Bu bir deneme ürünüdür",
+        "en": ""
+      },
+      "heroDescription": {
+        "tr": "Ürün hakkındaki kısa açıklama burada bulunur",
+        "en": ""
+      },
       "heroImage": "/uploads/products/1785147610358-zo3z3y.jpg",
       "descriptionParagraphs": [
-        "Bu bir açıklama metnidir"
+        {
+          "tr": "Bu bir açıklama metnidir",
+          "en": ""
+        }
       ],
       "configs": [],
-      "configNote": "Konfigürasyon eklenebilie",
-      "configNote2": "Bu opsiyondur",
+      "configNote": {
+        "tr": "Konfigürasyon eklenebilie",
+        "en": ""
+      },
+      "configNote2": {
+        "tr": "Bu opsiyondur",
+        "en": ""
+      },
       "versions": [],
       "features": [
-        "Örnek teknik özellik ve versiyon yazısı"
+        {
+          "tr": "Örnek teknik özellik ve versiyon yazısı",
+          "en": ""
+        }
       ],
       "categoryId": null,
       "images": [
@@ -137,43 +257,73 @@
       },
       "descriptionBlocks": [
         {
-          "title": "",
-          "text": "Bu bir açıklama metnidir"
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "Bu bir açıklama metnidir",
+            "en": ""
+          }
         }
       ],
       "configBlocks": [],
       "versionBlocks": [],
       "featureBlocks": [
         {
-          "title": "",
-          "text": "Örnek teknik özellik ve versiyon yazısı"
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "Örnek teknik özellik ve versiyon yazısı",
+            "en": ""
+          }
         }
       ],
-      "descriptionSectionTitle": "",
-      "configsSectionTitle": "",
-      "versionsSectionTitle": "",
-      "featuresSectionTitle": ""
+      "descriptionSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "configsSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "versionsSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "featuresSectionTitle": {
+        "tr": "",
+        "en": ""
+      }
     },
     {
       "id": "prod-ms33bc5o-g0wcb",
-      "name": "Deneme 2 ürün",
+      "name": {
+        "tr": "Deneme 2 ürün",
+        "en": "deneme product eng"
+      },
       "slug": "deneme-2-urun",
-      "subtitle": "Bir deneme ürünü 2",
-      "heroDescription": "Bu bir deneme ürününün 2. halidir",
+      "subtitle": {
+        "tr": "Bir deneme ürünü 2",
+        "en": "eng version"
+      },
+      "heroDescription": {
+        "tr": "Bu bir deneme ürününün 2. halidir",
+        "en": "descrp eng"
+      },
       "heroImage": "/uploads/products/1785148837527-svqejd.png",
-      "descriptionParagraphs": [
-        "<span style=\"text-align: justify;\">Bu bir deneme&nbsp;</span><br><ul><li><span style=\"text-align: justify;\">Metnidir</span></li><li><span style=\"text-align: justify;\">Liste halinde</span></li></ul>",
-        "123<div>321</div><div>456</div><div>654</div>",
-        "bu Blok deneme&nbsp;<div>bloğudur.</div><div>123</div><div>deneme</div>"
-      ],
-      "configs": [
-        {
-          "name": "",
-          "text": "<ol><li>fffdfsfds</li><li>fdsfdsfds</li></ol>"
-        }
-      ],
-      "configNote": "",
-      "configNote2": "",
+      "descriptionParagraphs": [],
+      "configs": [],
+      "configNote": {
+        "tr": "",
+        "en": ""
+      },
+      "configNote2": {
+        "tr": "",
+        "en": ""
+      },
       "versions": [],
       "features": [],
       "categoryId": null,
@@ -217,30 +367,46 @@
       },
       "descriptionBlocks": [
         {
-          "title": "dsadasdas",
-          "text": "<span style=\"text-align: justify;\">Bu bir deneme&nbsp;</span><br><ul><li><span style=\"text-align: justify;\">Metnidir</span></li><li><span style=\"text-align: justify;\">Liste halinde</span></li></ul>"
-        },
-        {
-          "title": "23312321",
-          "text": "123<div>321</div><div>456</div><div>654</div>"
-        },
-        {
-          "title": "",
-          "text": "bu Blok deneme&nbsp;<div>bloğudur.</div><div>123</div><div>deneme</div>"
+          "title": {
+            "tr": "Detay 1 tr",
+            "en": "Detail 1 eng"
+          },
+          "text": {
+            "tr": "",
+            "en": "dasdsa<div>dsadaa</div><div>123</div>"
+          }
         }
       ],
-      "configBlocks": [
-        {
-          "title": "",
-          "text": "<ol><li>fffdfsfds</li><li>fdsfdsfds</li></ol>"
-        }
-      ],
+      "configBlocks": [],
       "versionBlocks": [],
-      "featureBlocks": [],
-      "descriptionSectionTitle": "Deneme",
-      "configsSectionTitle": "dsadsadsa",
-      "versionsSectionTitle": "",
-      "featuresSectionTitle": ""
+      "featureBlocks": [
+        {
+          "title": {
+            "tr": "dasdsa",
+            "en": ""
+          },
+          "text": {
+            "tr": "dsadas",
+            "en": ""
+          }
+        }
+      ],
+      "descriptionSectionTitle": {
+        "tr": "deneme tr",
+        "en": "deneme eng"
+      },
+      "configsSectionTitle": {
+        "tr": "dsadsadsa",
+        "en": ""
+      },
+      "versionsSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "featuresSectionTitle": {
+        "tr": "",
+        "en": ""
+      }
     }
   ],
   "slider": [],

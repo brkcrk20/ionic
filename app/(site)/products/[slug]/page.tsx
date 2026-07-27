@@ -6,7 +6,6 @@ import DynamicProductDetail from "./DynamicProductDetail";
 export default async function ProductDetailPage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
 
-  // "positron" örnek/sabit ürün sayfasıdır — tasarımı ve içeriği değiştirilmez.
   if (slug === "positron") {
     return <PositronDetail />;
   }
@@ -20,5 +19,15 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
 
   const category = categories.find((c) => c.id === product.categoryId) ?? null;
 
-  return <DynamicProductDetail product={product} categoryName={category?.name ?? null} />;
+  // Kategori adını string'e normalize ediyoruz
+  let categoryNameString: string | null = null;
+  if (category?.name) {
+    if (typeof category.name === "string") {
+      categoryNameString = category.name;
+    } else {
+      categoryNameString = category.name.tr || category.name.en || "";
+    }
+  }
+
+  return <DynamicProductDetail product={product} categoryName={categoryNameString} />;
 }

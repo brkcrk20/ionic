@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { deleteProduct, updateProduct } from "@/lib/db";
 
-export async function PUT(request: NextRequest, ctx: RouteContext<"/api/admin/products/[id]">) {
+export async function PUT(request: NextRequest, ctx: any) {
   const { id } = await ctx.params;
   const body = await request.json().catch(() => null);
   if (!body) {
@@ -16,7 +16,7 @@ export async function PUT(request: NextRequest, ctx: RouteContext<"/api/admin/pr
   return NextResponse.json({ product });
 }
 
-export async function DELETE(_request: NextRequest, ctx: RouteContext<"/api/admin/products/[id]">) {
+export async function DELETE(_request: NextRequest, ctx: any) {
   const { id } = await ctx.params;
   const ok = await deleteProduct(id);
   if (!ok) {
