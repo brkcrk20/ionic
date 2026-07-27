@@ -165,7 +165,7 @@ export default function ProductDetailPage() {
  
       {/* 1. BÖLÜM: HERO & GENEL BAKIŞ */}
       <section 
-        className="w-full min-h-screen relative flex flex-col justify-start px-6 lg:pl-16 lg:pr-16 pt-28 lg:pt-32 pb-20 bg-[#3A3A3A] bg-no-repeat bg-bottom bg-[length:100%_auto] lg:bg-[length:85%_auto]"
+        className="w-full min-h-screen relative flex flex-col justify-start px-6 lg:pl-16 lg:pr-16 pt-28 lg:pt-32 pb-20 bg-[#3A3A3A] bg-no-repeat bg-bottom bg-[length:100%_auto] lg:bg-[length:100%_auto]"
         style={{ backgroundImage: "url('/Positron_2.png')" }}
       >
  
