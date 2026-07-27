@@ -1,146 +1,249 @@
 {
-  "categories": [
-    {
-      "id": "cat-mritoau9-9y6zn9",
-      "name": "Deneme",
-      "slug": "deneme",
-      "parentId": null,
-      "image": null
-    },
-    {
-      "id": "cat-mritogx7-o03hiu",
-      "name": "Mermer Makineleri",
-      "slug": "mermer-makineleri",
-      "parentId": "cat-mritoau9-9y6zn9",
-      "image": null
-    },
-    {
-      "id": "cat-mriw972s-o2mknm",
-      "name": "Makineler",
-      "slug": "makineler",
-      "parentId": null,
-      "image": null
-    },
-    {
-      "id": "cat-mriw9hwr-cnw2nf",
-      "name": "Fırınlar",
-      "slug": "firinlar",
-      "parentId": "cat-mriw972s-o2mknm",
-      "image": null
-    },
-    {
-      "id": "cat-mriwqswh-f7933q",
-      "name": "aa",
-      "slug": "aa",
-      "parentId": "cat-mriw972s-o2mknm",
-      "image": null
-    }
-  ],
+  "categories": [],
   "products": [
     {
-      "id": "prod-1",
-      "name": "Makinem1",
-      "slug": "makinem1",
-      "description": "Ürün açıklaması buraya gelecek.",
-      "categoryId": "cat-mritogx7-o03hiu",
-      "images": [
-        "/uploads/products/1783923016897-8tlxwt.png"
+      "id": "prod-positron-static",
+      "name": "POSITRON 60",
+      "slug": "positron",
+      "subtitle": "Plaka Kurutma ve Reçine Kürleme için Döngüsel Fırın",
+      "heroDescription": "POSITRON, reçine uygulamasından önce doğal taş plakaları kurutmak ve reçine işleminden sonra kürlemek için tasarlanmış tam yalıtımlı döngüsel bir kule fırınıdır.",
+      "heroImage": "/Positron_2.png",
+      "descriptionParagraphs": [
+        "POSITRON is a fully insulated cyclic tower oven designed for drying natural-stone slabs before resin application and curing them after resin treatment."
       ],
-      "specs": [],
-      "active": true,
-      "createdAt": "2026-07-13T00:00:00.000Z"
-    },
-    {
-      "id": "prod-mriwa6c1-011b3p",
-      "name": "Deneme",
-      "slug": "deneme",
-      "description": "Makine Deneme 2",
-      "categoryId": "cat-mriw9hwr-cnw2nf",
-      "images": [],
-      "specs": [],
-      "active": true,
-      "createdAt": "2026-07-13T07:22:26.833Z"
-    },
-    {
-      "id": "prod-mrj17ebf",
-      "name": "GRAVITON 10+20 kombi dıştan asansörlü fırın",
-      "slug": "graviton-10-20-kombi-d-tan-asans-rl-f-r-n",
-      "description": "Plakaların hem kurutulması ve hem de polimerizasyonu için kullanılan çok katlı bir fırın kulesidir. Fırın, optimum levha kuruması ve/veya iyi bir reçine polimerizasyonu elde etmek amacıyla sıcaklığı sabit tutan elektrikli veya doğal gazla çalışan devridaim fanları aracılığıyla ısıtılır. Fırın içerisinde birincisi 10 katlı kurutma ve ikincisi 20 katlı kürleme olmak üzere iki ayrı oda vardır ve fırın kulesi toplamda 30 tepsi kapasiteye sahiptir. Mermer levhalar, harici asansörün yanlarına monte edilen iki pnömatik mekanizma ile açılıp kapatılan yatay ince alüminyum veya çelik kapakçıklar vasıtası ile fırına yerleştirilir veya fırından çıkartılır. Plakalar, asansörün merkezine yerleştirilen monoray boyunca hareket eden motorlu bir araba ile fırının içine itilir/dışarı çekilir. Araba, odanın yan duvarlarına sabitlenmiş iki omuz askısı boyunca döşeme tepsilerini odanın içine veya dışına alır. Fırının içindeki sıcaklık elektronik sensörler vasıtasıyla sürekli olarak kontrol edilir. Headstart adı verilen özellik, fırının vardiyadan önce çalışmasını sağlar, böylece vardiya başladığında fırın yeterince ısıtılmış olur ve herhangi bir zaman kaybı olmadan çalışmaya başlanabilir. Fırın içindeki nem, higrometreler yardımıyla iki farklı yerden ölçülür ve fazla nem, fırın kulesinin tepesine yerleştirilen bir baca aracılığıyla dışarı atılır. PC’ler, invertörler ve sensörler ile kontrol edilir.\n\nAna özellikler\n\nPlaka tepsilerini yukarı aşağı hareket ettiren asansör. Tepsileri odanın içine ve dışına iten motorlu bir araba, bir monoray boyunca asansörün ortasına yerleştirilmiştir. Ayrıca asansör kepenklerini açıp kapatan iki adet pnömatik piston bulunmaktadır.Asansörün yukarı aşağı hareket ettiği kaynaklı çelik yük taşıyıcı yapı. Asansörü sürükleyen çelik yapının her iki yanındaki iki zincir, tepsi makaralı konveyörünü kaldırmak için iki senkronize redüktörlü motor tarafından kontrol edilir.\nElektrikli hava ısıtma sistemi. Isı, her yerde kullanılan ve enerji verimliliği kanıtlanmış serpantin rezistans ısıtıcı bobinleri vasıtasıyla üretilir. Her iki oda da ayrı ayrı ısıtılır ve regüle edilir. \nEnerji tasarrufu sağlamak için tamamen yalıtılmış bağımsız sıcak hava sirkülasyon sistemi. Sıcak hava, fırın içerisindeki difüzörler aracılığı ile levha tepsilerine fırının yan taraflarında bulunan difüzorler vasıtasıyla enjekte edilmektedir. Enjekte edilen bu hava, sac perdeler vasıtasıyla plaka tepsi bölgesinde tutulur. Hava sirkülasyonu santrifüj fan ile sağlanmaktadır.\nYüksek yoğunluklu paneller ve diğer izolasyon malzemeleri vasıtasıyla fırın dış yüzeyi tamamen izolasyonludur.\nAvrupa menşeili hidrolik üniteler. \nFırın kumanda ve kontrolü için elektrik/elektronik ekipmanlar.\nFırın içindeki hava sıcaklığının otomatik kontrolü için sensörler.",
-      "categoryId": "cat-mriw9hwr-cnw2nf",
-      "images": [
-        "/uploads/products/1783935609020-ezjhxv.jpg",
-        "/uploads/products/1783935611014-qm7ky0.jpg",
-        "/uploads/products/1783935613280-zg5xn2.jpg"
-      ],
-      "specs": [
+      "configs": [
         {
-          "label": "Işlenebilir plaka genişliği",
-          "unit": "mm",
-          "value": "3300 / 3700"
+          "name": "POSITRON 40",
+          "text": "Two groups of 20 slab trays, providing a total capacity of 40 slabs."
         },
         {
-          "label": "Işlenebilir plaka uzunluğu",
-          "unit": "mm",
-          "value": "2100 / 2200"
+          "name": "POSITRON 60",
+          "text": "Two groups of 30 slab trays, providing a total capacity of 60 slabs."
         },
         {
-          "label": "Işlenebilir plaka kalınlığı",
-          "unit": "mm",
-          "value": "36"
-        },
-        {
-          "label": "Kurutma katı sayısı",
-          "unit": "Nr.",
-          "value": "10+20"
-        },
-        {
-          "label": "Kurulu ısıtma gücü",
-          "unit": "kW",
-          "value": "96"
-        },
-        {
-          "label": "Kurulu elektrik gücü",
-          "unit": "kW",
-          "value": "125"
-        },
-        {
-          "label": "Makine uzunluğu",
-          "unit": "mm",
-          "value": "9450"
-        },
-        {
-          "label": "Makine genişliği",
-          "unit": "mm",
-          "value": "4240"
-        },
-        {
-          "label": "Makine yüksekliği",
-          "unit": "mm",
-          "value": "5033"
+          "name": "POSITRON 80",
+          "text": "Two groups of 40 slab trays, providing a total capacity of 80 slabs."
         }
       ],
+      "configNote": "POSITRON is available in marble and granite configurations.",
+      "configNote2": "Machine dimensions, installed power, fan arrangement and airflow capacity vary according to the selected configuration.",
+      "versions": [
+        {
+          "label": "POSITRON Speedy",
+          "text": "The Speedy version is developed for production lines requiring shorter slab-handling times and higher throughput."
+        },
+        {
+          "label": "Options: Enhanced Air Homogeneity Fan",
+          "text": "POSITRON can be equipped with an additional recirculation fan to improve air distribution throughout the oven chamber."
+        },
+        {
+          "label": "Options: IntelliHot",
+          "text": "The optional IntelliHot system measures the temperature of slabs leaving the oven and automatically adjusts the internal heating regime."
+        }
+      ],
+      "features": [
+        "Fully insulated cyclic tower construction",
+        "20+20, 30+30 and 40+40 capacity configurations",
+        "Suitable for slab drying and resin curing"
+      ],
+      "categoryId": null,
+      "images": [
+        "/Positron_2.png",
+        "/Positron_3.jpg"
+      ],
       "active": true,
-      "createdAt": "2026-07-13T09:40:15.291Z"
-    }
-  ],
-  "slider": [
-    {
-      "id": "s-1783930011375",
-      "image": "https://i.ytimg.com/vi/v7ZUYGEe_5w/maxresdefault.jpg",
-      "title": "deneme başlık",
-      "subtitle": "Alt başlık",
-      "buttonText": "İncele",
-      "buttonLink": "/urunler"
+      "createdAt": "2026-07-27T00:00:00.000Z",
+      "descriptionBlocks": [
+        {
+          "title": "",
+          "text": "POSITRON is a fully insulated cyclic tower oven designed for drying natural-stone slabs before resin application and curing them after resin treatment."
+        }
+      ],
+      "featureBlocks": [
+        {
+          "title": "",
+          "text": "Fully insulated cyclic tower construction"
+        },
+        {
+          "title": "",
+          "text": "20+20, 30+30 and 40+40 capacity configurations"
+        },
+        {
+          "title": "",
+          "text": "Suitable for slab drying and resin curing"
+        }
+      ],
+      "descriptionSectionTitle": "",
+      "configsSectionTitle": "",
+      "versionsSectionTitle": "",
+      "featuresSectionTitle": ""
     },
     {
-      "id": "s-1783930141739",
-      "image": "https://i.ytimg.com/vi/v7ZUYGEe_5w/maxresdefault.jpg",
-      "title": "",
-      "subtitle": "",
-      "buttonText": "İncele",
-      "buttonLink": "/products"
+      "id": "prod-ms32speg-ahsu3",
+      "name": "Deneme Ürün",
+      "slug": "deneme-urun",
+      "subtitle": "Bu bir deneme ürünüdür",
+      "heroDescription": "Ürün hakkındaki kısa açıklama burada bulunur",
+      "heroImage": "/uploads/products/1785147610358-zo3z3y.jpg",
+      "descriptionParagraphs": [
+        "Bu bir açıklama metnidir"
+      ],
+      "configs": [],
+      "configNote": "Konfigürasyon eklenebilie",
+      "configNote2": "Bu opsiyondur",
+      "versions": [],
+      "features": [
+        "Örnek teknik özellik ve versiyon yazısı"
+      ],
+      "categoryId": null,
+      "images": [
+        "/uploads/products/1785147610358-zo3z3y.jpg",
+        "/uploads/products/1785153926887-jlgopd.png"
+      ],
+      "active": true,
+      "createdAt": "2026-07-27T10:20:12.568Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [
+        {
+          "title": "",
+          "text": "Bu bir açıklama metnidir"
+        }
+      ],
+      "configBlocks": [],
+      "versionBlocks": [],
+      "featureBlocks": [
+        {
+          "title": "",
+          "text": "Örnek teknik özellik ve versiyon yazısı"
+        }
+      ],
+      "descriptionSectionTitle": "",
+      "configsSectionTitle": "",
+      "versionsSectionTitle": "",
+      "featuresSectionTitle": ""
+    },
+    {
+      "id": "prod-ms33bc5o-g0wcb",
+      "name": "Deneme 2 ürün",
+      "slug": "deneme-2-urun",
+      "subtitle": "Bir deneme ürünü 2",
+      "heroDescription": "Bu bir deneme ürününün 2. halidir",
+      "heroImage": "/uploads/products/1785148837527-svqejd.png",
+      "descriptionParagraphs": [
+        "<span style=\"text-align: justify;\">Bu bir deneme&nbsp;</span><br><ul><li><span style=\"text-align: justify;\">Metnidir</span></li><li><span style=\"text-align: justify;\">Liste halinde</span></li></ul>",
+        "123<div>321</div><div>456</div><div>654</div>",
+        "bu Blok deneme&nbsp;<div>bloğudur.</div><div>123</div><div>deneme</div>"
+      ],
+      "configs": [
+        {
+          "name": "",
+          "text": "<ol><li>fffdfsfds</li><li>fdsfdsfds</li></ol>"
+        }
+      ],
+      "configNote": "",
+      "configNote2": "",
+      "versions": [],
+      "features": [],
+      "categoryId": null,
+      "images": [
+        "/uploads/products/1785148837527-svqejd.png"
+      ],
+      "active": true,
+      "createdAt": "2026-07-27T10:34:41.868Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [
+        {
+          "title": "dsadasdas",
+          "text": "<span style=\"text-align: justify;\">Bu bir deneme&nbsp;</span><br><ul><li><span style=\"text-align: justify;\">Metnidir</span></li><li><span style=\"text-align: justify;\">Liste halinde</span></li></ul>"
+        },
+        {
+          "title": "23312321",
+          "text": "123<div>321</div><div>456</div><div>654</div>"
+        },
+        {
+          "title": "",
+          "text": "bu Blok deneme&nbsp;<div>bloğudur.</div><div>123</div><div>deneme</div>"
+        }
+      ],
+      "configBlocks": [
+        {
+          "title": "",
+          "text": "<ol><li>fffdfsfds</li><li>fdsfdsfds</li></ol>"
+        }
+      ],
+      "versionBlocks": [],
+      "featureBlocks": [],
+      "descriptionSectionTitle": "Deneme",
+      "configsSectionTitle": "dsadsadsa",
+      "versionsSectionTitle": "",
+      "featuresSectionTitle": ""
     }
   ],
+  "slider": [],
   "settings": {
     "phone": "",
     "email": "",

@@ -30,7 +30,7 @@ export default async function KategoriPage(props: { params: Promise<{ slug: stri
               </div>
               <div className="p-5">
                 <h3 className="font-medium text-lg text-gray-900 truncate">{product.name}</h3>
-                <p className="text-gray-500 text-sm mt-1 line-clamp-2">{product.description}</p>
+                <p className="text-gray-500 text-sm mt-1 line-clamp-2">{product.subtitle || product.heroDescription}</p>
               </div>
             </a>
           ))}

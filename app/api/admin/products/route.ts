@@ -11,13 +11,7 @@ export async function POST(request: NextRequest) {
   if (!body?.name || typeof body.name !== "string") {
     return NextResponse.json({ error: "Ürün adı gerekli" }, { status: 400 });
   }
-  const product = await createProduct({
-    name: body.name,
-    description: body.description ?? "",
-    categoryId: body.categoryId ?? null,
-    images: Array.isArray(body.images) ? body.images : [],
-    specs: Array.isArray(body.specs) ? body.specs : [],
-    active: body.active !== false,
-  });
+
+  const product = await createProduct(body);
   return NextResponse.json({ product }, { status: 201 });
 }

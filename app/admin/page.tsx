@@ -1,72 +1,70 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { LogOut, ExternalLink, Package, Grid, Image as ImageIcon, Settings } from "lucide-react";
-import type { Category } from "@/lib/db";
+
+import { useState } from "react";
 import ProductsPanel from "./ProductsPanel";
-import CategoriesPanel from "./CategoriesPanel";
-import SliderPanel from "./SliderPanel";
 import SettingsPanel from "./SettingsPanel";
+import { Package, Settings, LogOut } from "lucide-react";
+import Link from "next/link";
 
-type Tab = "products" | "categories" | "slider" | "settings";
+type Tab = "products" | "settings";
 
-export default function AdminPage() {
-  const router = useRouter();
-  const [tab, setTab] = useState<Tab>("products");
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  async function loadData() {
-    try {
-      const res = await fetch("/api/admin/categories");
-      const data = await res.json();
-      setCategories(data.categories ?? []);
-    } catch (e) {
-      console.error("Kategori yüklenemedi", e);
-    }
-  }
-
-  useEffect(() => { loadData(); }, [tab]);
-
-  async function handleLogout() {
-    await fetch("/api/admin/logout", { method: "POST" });
-    router.push("/admin/login");
-    router.refresh();
-  }
-
-  const menu = [
-    { id: "products", name: "Ürünler", icon: Package },
-    { id: "categories", name: "Kategoriler", icon: Grid },
-    { id: "slider", name: "Slider", icon: ImageIcon },
-    { id: "settings", name: "Ayarlar", icon: Settings },
-  ] as const;
+export default function AdminDashboard() {
+  const [activeTab, setActiveTab] = useState<Tab>("products");
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <aside className="w-64 bg-white border-r border-gray-200 p-6 flex flex-col">
-        <h1 className="font-serif italic text-xl mb-8">Yönetim</h1>
-        <nav className="flex flex-col gap-2 flex-1">
-          {menu.map((item) => (
-            <button key={item.id} onClick={() => setTab(item.id as Tab)}
-              className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${tab === item.id ? "bg-gray-100 text-black" : "text-gray-600 hover:bg-gray-50"}`}>
-              <item.icon size={18} /> {item.name}
-            </button>
-          ))}
-        </nav>
-        <button onClick={handleLogout} className="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg"><LogOut size={18} /> Çıkış Yap</button>
-      </aside>
-
-      <main className="flex-1 p-8">
-        <header className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold capitalize">{tab} Yönetimi</h2>
-          <a href="/" target="_blank" className="text-xs text-gray-500 hover:text-black flex items-center gap-1">Siteyi Gör <ExternalLink size={13} /></a>
-        </header>
-        
-        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm min-h-[500px]">
-          {tab === "products" && <ProductsPanel categories={categories} />}
-          {tab === "categories" && <CategoriesPanel />}
-          {tab === "slider" && <SliderPanel />}
-          {tab === "settings" && <SettingsPanel />}
+    <div className="min-h-screen bg-gray-50 flex flex-col font-montserrat">
+      {/* Üst Navbar */}
+      <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <h1 className="text-lg font-extrabold text-[#1A1A1A]">Ion Meccanica — Yönetim Paneli</h1>
         </div>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/products"
+            target="_blank"
+            className="text-xs font-medium text-gray-600 hover:text-[#1A1A1A] transition-colors"
+          >
+            Siteyi Görüntüle ↗
+          </Link>
+          <Link
+            href="/admin/login"
+            className="flex items-center gap-1.5 text-xs font-medium text-red-600 hover:text-red-700 transition-colors"
+          >
+            <LogOut size={14} /> Çıkış
+          </Link>
+        </div>
+      </header>
+
+      {/* Sekmeler */}
+      <div className="max-w-7xl w-full mx-auto px-6 pt-6">
+        <div className="flex gap-2 border-b border-gray-200 pb-3">
+          <button
+            onClick={() => setActiveTab("products")}
+            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer ${
+              activeTab === "products"
+                ? "bg-[#1A1A1A] text-white"
+                : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+            }`}
+          >
+            <Package size={16} /> Ürünler
+          </button>
+          <button
+            onClick={() => setActiveTab("settings")}
+            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer ${
+              activeTab === "settings"
+                ? "bg-[#1A1A1A] text-white"
+                : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+            }`}
+          >
+            <Settings size={16} /> Site Ayarları
+          </button>
+        </div>
+      </div>
+
+      {/* İçerik Alanı */}
+      <main className="max-w-7xl w-full mx-auto px-6 py-6 flex-1">
+        {activeTab === "products" && <ProductsPanel />}
+        {activeTab === "settings" && <SettingsPanel />}
       </main>
     </div>
   );
