@@ -50,7 +50,7 @@ export default function ProductsPageClient({ dbProducts }: { dbProducts: { id: s
       <div className="w-full bg-[#3A3A3A] text-[#F3F1EC] py-16 px-6 relative overflow-hidden">
         
         {/* Arka plan hafif doku/gölge */}
-        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-[#3A3A3A] pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10 flex flex-col items-center text-center">
           
