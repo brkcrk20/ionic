@@ -28,7 +28,7 @@ export default function MachinesSection() {
   const activeText = items[activeMeta.key];
 
   return (
-    <section className="w-full h-screen snap-start shrink-0 bg-[#3A3A3A] flex flex-col justify-center items-center py-20 px-6 relative overflow-hidden">
+    <section className="w-full min-h-screen md:h-screen snap-start shrink-0 bg-[#3A3A3A] flex flex-col justify-center items-center py-20 px-6 relative overflow-hidden">
       <div className="max-w-[1600px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 h-full items-center">
 
         {/* SOL: Başlık ve Kategoriler */}

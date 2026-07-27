@@ -164,13 +164,13 @@ export default function ProductDetailPage() {
     <div className="w-full min-h-screen bg-white relative font-montserrat text-[#3A3A3A] overflow-x-hidden">
  
       {/* 1. BÖLÜM: HERO & GENEL BAKIŞ */}
-      <section className="w-full min-h-screen relative flex flex-col justify-start px-6 lg:pl-16 lg:pr-16 pt-28 lg:pt-32 pb-20 overflow-hidden bg-[#3A3A3A]">
+      <section className="w-full min-h-[600px] sm:min-h-[680px] md:min-h-screen relative flex flex-col justify-start px-6 lg:pl-16 lg:pr-16 pt-28 lg:pt-32 pb-20 overflow-hidden bg-[#3A3A3A]">
         <div className="absolute inset-0 w-full h-full z-0">
           <Image
             src="/Positron_2.png"
             alt="Positron Cyclic Oven"
             fill
-            className="object-cover object-[87%_center] lg:object-right pt-0 opacity-100"
+            className="object-cover object-[75%_center] md:object-[87%_center] lg:object-right pt-0 opacity-100"
             priority
           />
         </div>
@@ -334,14 +334,14 @@ export default function ProductDetailPage() {
               
               {openSections[3] && (
                 <div className="px-6 pb-6 pt-2 border-t border-[#B87332]/20">
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                  <div className={styles.bodyStack}>
                     {c.features.map((f, i) => (
-                      <li key={i} className={`${styles.listItem} flex gap-2 bg-white p-3 rounded-xl border border-gray-200 shadow-xs items-center`}>
-                        <span className="text-[#B87332] font-bold shrink-0">•</span>
-                        <span>{f}</span>
-                      </li>
+                      <p key={i}>
+                        <strong className="text-[#B87332] font-extrabold">• </strong>
+                        {f}
+                      </p>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               )}
             </div>
@@ -375,7 +375,7 @@ export default function ProductDetailPage() {
       <footer className="w-full bg-[#F3F1EC] flex flex-col justify-between py-16 px-6 lg:px-20 text-[#3A3A3A]">
         <div className="max-w-[1500px] w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="flex flex-col gap-8 justify-center">
-            <Image src="/logo-2.svg" alt="ION MECCANICA" width={200} height={70} className="object-contain" />
+            <Image src="/logo-2.svg" alt="ION MECCANICA" width={200} height={70} className="object-contain w-36 h-auto sm:w-[200px]" />
           </div>
  
           <div className="flex flex-col gap-6 justify-center">

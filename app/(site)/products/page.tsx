@@ -215,7 +215,7 @@ export default function ProductsPage() {
               className="bg-[#F3F1EC]/50 border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col"
             >
               {/* Ürün Görsel Alanı */}
-              <div className="relative h-72 w-full bg-white flex items-center justify-center p-6 overflow-hidden border-b border-gray-100">
+              <div className="relative h-56 sm:h-64 md:h-72 w-full bg-white flex items-center justify-center p-6 overflow-hidden border-b border-gray-100">
                 <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500 w-full h-full">
                   <Image 
                     src={product.image} 

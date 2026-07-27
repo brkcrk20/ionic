@@ -44,7 +44,7 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
     <>
       <nav className={`fixed top-0 inset-x-0 w-full z-50 transition-all duration-300 ${navBg}`}>
         {/* MASAÜSTÜ NAVBAR */}
-        <div className="hidden md:flex items-center justify-between max-w-[1850px] mx-auto px-6 lg:px-8 h-22">
+        <div className="hidden lg:flex items-center justify-between max-w-[1850px] mx-auto px-6 lg:px-8 h-22">
           
           {/* 1. SOL: LOGO */}
           <div className="flex items-center shrink-0">
@@ -263,7 +263,7 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
         </div>
 
         {/* MOBİL NAVBAR BARI */}
-        <div className="flex md:hidden items-center justify-between px-4 sm:px-6 h-16">
+        <div className="flex lg:hidden items-center justify-between px-4 sm:px-6 h-16">
           <Link href="/" className="flex items-center shrink-0 hover:opacity-80 transition-opacity">
             <Image src="/logo.svg" alt="Logo" width={48} height={48} className="object-contain h-10 w-auto" />
           </Link>

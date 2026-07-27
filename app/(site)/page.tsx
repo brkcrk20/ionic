@@ -76,7 +76,7 @@ export default function Home() {
       </section>
 
       {/* 2. BÖLÜM: MARKA MESAJI */}
-      <section className="snap-section w-full h-screen snap-start shrink-0 relative flex flex-col justify-start pt-28 md:pt-36 overflow-hidden bg-white">
+      <section className="snap-section w-full min-h-screen md:h-screen snap-start shrink-0 relative flex flex-col justify-start pt-28 md:pt-36 overflow-hidden bg-white">
         
         {/* 1. ARKAPLAN RESMİ VE TÜL (OVERLAY) KATMANI */}
         <div className="absolute inset-0 w-full h-full z-0">
@@ -169,7 +169,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1400px] w-full">
           {/* News Card 1 */}
           <Link href="/projeler/detay-1" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
-            <div className="relative h-60 w-full overflow-hidden">
+            <div className="relative h-44 sm:h-60 w-full overflow-hidden">
               <ImagePlaceholder className="group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute top-4 left-4 bg-[#B87332] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
                 {home.news.card1.badge}
@@ -185,7 +185,7 @@ export default function Home() {
 
           {/* News Card 2 */}
           <Link href="/projeler/detay-2" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
-            <div className="relative h-60 w-full overflow-hidden">
+            <div className="relative h-44 sm:h-60 w-full overflow-hidden">
               <ImagePlaceholder className="group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute top-4 left-4 bg-[#B87332] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
                 {home.news.card2.badge}
@@ -201,7 +201,7 @@ export default function Home() {
 
           {/* News Card 3 */}
           <Link href="/projeler/detay-3" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
-            <div className="relative h-60 w-full overflow-hidden">
+            <div className="relative h-44 sm:h-60 w-full overflow-hidden">
               <ImagePlaceholder className="group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute top-4 left-4 bg-[#B87332] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
                 {home.news.card3.badge}
@@ -218,7 +218,7 @@ export default function Home() {
       </section>
 
       {/* 6. BÖLÜM: SHOWROOM / SANAL TUR */}
-      <section className="snap-section w-full h-screen snap-start shrink-0 relative bg-white flex flex-col pt-24">
+      <section className="snap-section w-full min-h-screen md:h-screen snap-start shrink-0 relative bg-white flex flex-col pt-24">
         <div className="max-w-[1400px] w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 z-10 text-center md:text-left">
           <div className="flex flex-col items-center md:items-start">
             <h2 className="text-3xl md:text-5xl font-extrabold text-[#3A3A3A] mb-6 font-montserrat">
@@ -245,7 +245,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative flex-1 w-full mt-12">
+        <div className="relative flex-1 w-full mt-12 min-h-[280px] sm:min-h-[340px]">
           <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-white to-transparent z-10" />
           <ImagePlaceholder />
         </div>
@@ -277,10 +277,10 @@ export default function Home() {
       </section>
 
       {/* 8. BÖLÜM: FOOTER */}
-      <footer className="snap-section w-full h-screen snap-start shrink-0 bg-[#F3F1EC] flex flex-col justify-between pt-24 pb-12 px-6 lg:px-16 text-[#3A3A3A] font-montserrat">
+      <footer className="snap-section w-full min-h-screen md:h-screen snap-start shrink-0 bg-[#F3F1EC] flex flex-col justify-between pt-24 pb-12 px-6 lg:px-16 text-[#3A3A3A] font-montserrat">
         <div className="max-w-[1600px] w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 my-auto">
           <div className="flex flex-col gap-8 justify-center">
-            <Image src="/logo-2.svg" alt="ION MECCANICA" width={200} height={70} className="object-contain" />
+            <Image src="/logo-2.svg" alt="ION MECCANICA" width={200} height={70} className="object-contain w-36 h-auto sm:w-[200px]" />
             <div className="flex gap-5 text-[#3A3A3A]">
               <a href="#" className="hover:text-[#B87332] transition-colors" aria-label="Youtube">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 7.1C2.3 8.3 2 10.1 2 12s.3 3.7.5 4.9c.3 1.6 1.4 2.8 3 3.1 2.2.3 6.5.3 6.5.3s4.3 0 6.5-.3c1.6-.3 2.7-1.5 3-3.1.2-1.2.5-3 .5-4.9s-.3-3.7-.5-4.9c-.3-1.6-1.4-2.8-3-3.1-2.2-.3-6.5-.3-6.5-.3s-4.3 0-6.5.3c-1.6.3-2.7 1.5-3 3.1z"/><path d="M9.75 15.02l5.75-3.02-5.75-3.02v6.04z"/></svg>
