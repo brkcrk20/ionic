@@ -170,7 +170,7 @@ export default function ProductDetailPage() {
             src="/Positron_2.png"
             alt="Positron Cyclic Oven"
             fill
-            className="object-cover object-[87%_center] lg:object-right pt-110 opacity-100"
+            className="object-cover object-[87%_center] lg:object-right pt-0 opacity-100"
             priority
           />
         </div>
@@ -187,7 +187,7 @@ export default function ProductDetailPage() {
         </div>
 
         {/* Alt Kısım */}
-        <div className="w-full max-w-6xl mx-auto relative z-10 mt-8 pl-0 lg:pl-12">
+        <div className="w-full max-w-5xl mx-auto relative z-10 mt-8 pl-0 lg:pl-12">
           <div className="max-w-3xl flex flex-col items-start gap-6">
             <div>
               <h1 className="text-4xl md:text-[48px] font-extrabold tracking-tight text-white mb-2">POSITRON</h1>
