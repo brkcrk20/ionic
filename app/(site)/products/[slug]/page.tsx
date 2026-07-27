@@ -170,13 +170,14 @@ export default function ProductDetailPage() {
             src="/Positron_2.png"
             alt="Positron Cyclic Oven"
             fill
+            sizes="100vw"
             className="object-cover object-[75%_center] md:object-[87%_center] lg:object-right pt-0 opacity-100"
             priority
           />
         </div>
  
         {/* Üst Kısım: Anasayfa / Ürünler / Positron */}
-        <div className="w-full lg:ml-[-30px] mx-auto relative z-10 -mt-6">
+        <div className="w-full mx-auto relative z-10">
           <div className="text-[8pt] uppercase tracking-widest text-white/70 mb-4 flex flex-wrap items-center gap-2">
             <Link href="/" className="hover:text-[#B87332] transition-colors">{isTr ? "Anasayfa" : "Homepage"}</Link>
             <ChevronRight size={14} />

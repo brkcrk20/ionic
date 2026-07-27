@@ -46,7 +46,7 @@ export default function Home() {
   };
 
   return (
-    <div id="home-container" className="w-full h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-white relative">
+    <div id="home-container" className="w-full h-dvh overflow-y-auto snap-y snap-mandatory scroll-smooth bg-white relative">
 
       {/* SAĞ TARAF GEZİNTİ ÇUBUĞU (DOT NAVIGATION) */}
       <div className="hidden md:flex flex-col fixed right-8 top-1/2 -translate-y-1/2 z-40 gap-3.5 items-center bg-black/15 backdrop-blur-md px-3 py-4 rounded-full border border-white/10 shadow-lg">
@@ -71,12 +71,12 @@ export default function Home() {
       </div>
 
       {/* 1. BÖLÜM: HERO VIDEO */}
-      <section className="snap-section w-full h-screen snap-start shrink-0 relative">
+      <section className="snap-section w-full h-dvh snap-start shrink-0 relative">
         <HeroVideo />
       </section>
 
       {/* 2. BÖLÜM: MARKA MESAJI */}
-      <section className="snap-section w-full min-h-screen md:h-screen snap-start shrink-0 relative flex flex-col justify-start pt-28 md:pt-36 overflow-hidden bg-white">
+      <section className="snap-section w-full min-h-dvh md:h-dvh snap-start shrink-0 relative flex flex-col justify-start pt-28 md:pt-36 overflow-hidden bg-white">
         
         {/* 1. ARKAPLAN RESMİ VE TÜL (OVERLAY) KATMANI */}
         <div className="absolute inset-0 w-full h-full z-0">
@@ -84,6 +84,7 @@ export default function Home() {
             src="/brand-hero-2.png" // Kendi görsel yolun
             alt="Ion Meccanica Production"
             fill
+            sizes="100vw"
             className="object-cover object-center"
             priority
           />
@@ -108,7 +109,7 @@ export default function Home() {
       </section>
 
       {/* 3. BÖLÜM: YETKİNLİKLER */}
-      <section className="snap-section w-full min-h-screen snap-start shrink-0 bg-[#3A3A3A] flex flex-col justify-center items-center py-24 px-6 relative">
+      <section className="snap-section w-full min-h-dvh snap-start shrink-0 bg-[#3A3A3A] flex flex-col justify-center items-center py-24 px-6 relative">
         <div className="text-center mb-16 max-w-4xl z-10">
           <h2 className="text-3xl md:text-5xl font-extrabold text-[#F3F1EC] mb-6 font-montserrat">
             {home.capabilities.title}
@@ -156,12 +157,12 @@ export default function Home() {
       </section>
 
       {/* 4. BÖLÜM: MAKİNELER VE KOMPLE HATLAR */}
-      <div className="snap-section w-full min-h-screen snap-start shrink-0">
+      <div className="snap-section w-full min-h-dvh snap-start shrink-0">
         <MachinesSection />
       </div>
 
       {/* 5. BÖLÜM: PROJELER VE HABERLER */}
-      <section className="snap-section w-full min-h-screen snap-start shrink-0 bg-[#F3F1EC] flex flex-col justify-center items-center py-24 px-6 relative">
+      <section className="snap-section w-full min-h-dvh snap-start shrink-0 bg-[#F3F1EC] flex flex-col justify-center items-center py-24 px-6 relative">
         <h2 className="text-3xl md:text-5xl font-extrabold text-[#3A3A3A] mb-16 text-center font-montserrat">
           {home.news.title}
         </h2>
@@ -218,7 +219,7 @@ export default function Home() {
       </section>
 
       {/* 6. BÖLÜM: SHOWROOM / SANAL TUR */}
-      <section className="snap-section w-full min-h-screen md:h-screen snap-start shrink-0 relative bg-white flex flex-col pt-24">
+      <section className="snap-section w-full min-h-dvh md:h-dvh snap-start shrink-0 relative bg-white flex flex-col pt-24">
         <div className="max-w-[1400px] w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 z-10 text-center md:text-left">
           <div className="flex flex-col items-center md:items-start">
             <h2 className="text-3xl md:text-5xl font-extrabold text-[#3A3A3A] mb-6 font-montserrat">
@@ -252,7 +253,7 @@ export default function Home() {
       </section>
 
       {/* 7. BÖLÜM: YAZILIM / SİSTEM VURGUSU */}
-      <section className="snap-section w-full min-h-screen snap-start shrink-0 bg-[#3A3A3A] flex flex-col justify-center items-center py-24 px-6 relative">
+      <section className="snap-section w-full min-h-dvh snap-start shrink-0 bg-[#3A3A3A] flex flex-col justify-center items-center py-24 px-6 relative">
         <h2 className="text-3xl md:text-5xl font-extrabold text-[#F3F1EC] mb-12 text-center font-montserrat">
           {home.mes.sectionTitle}
         </h2>
@@ -277,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* 8. BÖLÜM: FOOTER */}
-      <footer className="snap-section w-full min-h-screen md:h-screen snap-start shrink-0 bg-[#F3F1EC] flex flex-col justify-between pt-24 pb-12 px-6 lg:px-16 text-[#3A3A3A] font-montserrat">
+      <footer className="snap-section w-full min-h-dvh md:h-dvh snap-start shrink-0 bg-[#F3F1EC] flex flex-col justify-between pt-24 pb-12 px-6 lg:px-16 text-[#3A3A3A] font-montserrat">
         <div className="max-w-[1600px] w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 my-auto">
           <div className="flex flex-col gap-8 justify-center">
             <Image src="/logo-2.svg" alt="ION MECCANICA" width={200} height={70} className="object-contain w-36 h-auto sm:w-[200px]" />

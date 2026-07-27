@@ -31,7 +31,7 @@ export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <div className="w-full min-h-screen bg-white pt-22 font-montserrat">
+    <div className="w-full min-h-screen bg-white pt-16 xl:pt-22 font-montserrat">
       
       {/* 1. ÜST HERO & FİLTRELEME ALANI (Ion Meccanica Renkleri ile) */}
       <div className="w-full bg-[#3A3A3A] text-[#F3F1EC] py-16 px-6 relative overflow-hidden">
@@ -221,6 +221,7 @@ export default function ProductsPage() {
                     src={product.image} 
                     alt={product.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center"
                   />
                 </div>
