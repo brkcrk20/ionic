@@ -164,17 +164,10 @@ export default function ProductDetailPage() {
     <div className="w-full min-h-screen bg-white relative font-montserrat text-[#3A3A3A] overflow-x-hidden">
  
       {/* 1. BÖLÜM: HERO & GENEL BAKIŞ */}
-      <section className="w-full min-h-[650px] lg:h-[85vh] relative flex flex-col justify-start px-6 lg:pl-16 lg:pr-16 pt-28 lg:pt-32 pb-20 overflow-hidden bg-[#3A3A3A]">
-        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-          <Image
-            src="/Positron_2.png"
-            alt="Positron Cyclic Oven"
-            fill
-            sizes="100vw"
-            className="w-full h-full object-cover object-[75%_center] md:object-[87%_center] lg:object-right opacity-100"
-            priority
-          />
-        </div>
+      <section 
+        className="w-full min-h-[650px] lg:h-[85vh] relative flex flex-col justify-start px-6 lg:pl-16 lg:pr-16 pt-28 lg:pt-32 pb-20 overflow-hidden bg-[#3A3A3A] bg-no-repeat bg-center bg-cover"
+        style={{ backgroundImage: "url('/Positron_2.png')" }}
+      >
  
         {/* Üst Kısım: Anasayfa / Ürünler / Positron */}
         <div className="w-full mx-auto relative z-10">
