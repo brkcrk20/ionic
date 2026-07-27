@@ -48,9 +48,7 @@
       ],
       "specs": [],
       "active": true,
-      "createdAt": "2026-07-13T00:00:00.000Z",
-      "configurations": [],
-      "gallery": []
+      "createdAt": "2026-07-13T00:00:00.000Z"
     },
     {
       "id": "prod-mriwa6c1-011b3p",
@@ -61,9 +59,7 @@
       "images": [],
       "specs": [],
       "active": true,
-      "createdAt": "2026-07-13T07:22:26.833Z",
-      "configurations": [],
-      "gallery": []
+      "createdAt": "2026-07-13T07:22:26.833Z"
     },
     {
       "id": "prod-mrj17ebf",
@@ -124,9 +120,33 @@
         }
       ],
       "active": true,
-      "createdAt": "2026-07-13T09:40:15.291Z",
-      "configurations": [],
-      "gallery": []
+      "createdAt": "2026-07-13T09:40:15.291Z"
     }
-  ]
+  ],
+  "slider": [
+    {
+      "id": "s-1783930011375",
+      "image": "https://i.ytimg.com/vi/v7ZUYGEe_5w/maxresdefault.jpg",
+      "title": "deneme başlık",
+      "subtitle": "Alt başlık",
+      "buttonText": "İncele",
+      "buttonLink": "/urunler"
+    },
+    {
+      "id": "s-1783930141739",
+      "image": "https://i.ytimg.com/vi/v7ZUYGEe_5w/maxresdefault.jpg",
+      "title": "",
+      "subtitle": "",
+      "buttonText": "İncele",
+      "buttonLink": "/products"
+    }
+  ],
+  "settings": {
+    "phone": "",
+    "email": "",
+    "address": "",
+    "instagram": "",
+    "facebook": "",
+    "linkedin": ""
+  }
 }

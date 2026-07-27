@@ -17,8 +17,6 @@ export async function PUT(
   if (body.categoryId !== undefined) update.categoryId = body.categoryId;
   if (body.images !== undefined) update.images = body.images;
   if (body.specs !== undefined) update.specs = body.specs;
-  if (body.configurations !== undefined) update.configurations = body.configurations;
-  if (body.gallery !== undefined) update.gallery = body.gallery;
   if (body.active !== undefined) update.active = Boolean(body.active);
 
   const product = await updateProduct(id, update);
