@@ -1,13 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { Category } from "@/lib/db";
+import type { Category, MultiLangString } from "@/lib/db";
 import { Pencil, Trash2, Plus, X, FolderTree, Upload, Loader2, ImageOff } from "lucide-react";
+
+function getLangText(val: MultiLangString | undefined, lang: "tr" | "en" = "tr"): string {
+  if (!val) return "";
+  if (typeof val === "string") return val;
+  return lang === "tr" ? (val.tr || val.en || "") : (val.en || val.tr || "");
+}
 
 export default function CategoriesPanel() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
-  const [name, setName] = useState("");
+  const [nameTr, setNameTr] = useState("");
+  const [nameEn, setNameEn] = useState("");
   const [parentId, setParentId] = useState<string>("");
   const [image, setImage] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -29,14 +36,21 @@ export default function CategoriesPanel() {
 
   function startEdit(cat: Category) {
     setEditing(cat);
-    setName(cat.name);
+    if (typeof cat.name === "string") {
+      setNameTr(cat.name);
+      setNameEn("");
+    } else {
+      setNameTr(cat.name.tr || "");
+      setNameEn(cat.name.en || "");
+    }
     setParentId(cat.parentId ?? "");
     setImage(cat.image ?? null);
   }
 
   function resetForm() {
     setEditing(null);
-    setName("");
+    setNameTr("");
+    setNameEn("");
     setParentId("");
     setImage(null);
     setError("");
@@ -65,11 +79,15 @@ export default function CategoriesPanel() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!name.trim()) return;
+    if (!nameTr.trim()) return;
     setSaving(true);
     setError("");
     try {
-      const payload = { name: name.trim(), parentId: parentId || null, image };
+      const payload = {
+        name: { tr: nameTr.trim(), en: nameEn.trim() },
+        parentId: parentId || null,
+        image,
+      };
       const res = editing
         ? await fetch(`/api/admin/categories/${editing.id}`, {
             method: "PUT",
@@ -94,10 +112,11 @@ export default function CategoriesPanel() {
   }
 
   async function handleDelete(cat: Category) {
+    const catName = getLangText(cat.name);
     const hasChildren = categories.some((c) => c.parentId === cat.id);
     const message = hasChildren
-      ? `"${cat.name}" silinsin mi? Alt kategorileri de silinecek.`
-      : `"${cat.name}" silinsin mi?`;
+      ? `"${catName}" silinsin mi? Alt kategorileri de silinecek.`
+      : `"${catName}" silinsin mi?`;
     if (!confirm(message)) return;
     await fetch(`/api/admin/categories/${cat.id}`, { method: "DELETE" });
     if (editing?.id === cat.id) resetForm();
@@ -138,7 +157,7 @@ export default function CategoriesPanel() {
                         <ImageOff size={14} />
                       </div>
                     )}
-                    <span className="text-sm text-[#1A1A1A] font-medium">{cat.name}</span>
+                    <span className="text-sm text-[#1A1A1A] font-medium">{getLangText(cat.name)}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <button
@@ -164,7 +183,7 @@ export default function CategoriesPanel() {
                         key={child.id}
                         className="flex items-center justify-between pr-5 py-1.5"
                       >
-                        <span className="text-sm text-gray-600">— {child.name}</span>
+                        <span className="text-sm text-gray-600">— {getLangText(child.name)}</span>
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => startEdit(child)}
@@ -204,12 +223,21 @@ export default function CategoriesPanel() {
         </div>
         <form onSubmit={handleSubmit} className="space-y-3">
           <div>
-            <label className="block text-xs text-gray-500 mb-1">Kategori Adı</label>
+            <label className="block text-xs text-gray-500 mb-1">Kategori Adı (Türkçe)</label>
             <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={nameTr}
+              onChange={(e) => setNameTr(e.target.value)}
               className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
               placeholder="Örn: Mermer Serisi"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-500 mb-1">Kategori Adı (İngilizce)</label>
+            <input
+              value={nameEn}
+              onChange={(e) => setNameEn(e.target.value)}
+              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
+              placeholder="Örn: Marble Series"
             />
           </div>
           <div>
@@ -224,7 +252,7 @@ export default function CategoriesPanel() {
                 .filter((c) => c.id !== editing?.id)
                 .map((c) => (
                   <option key={c.id} value={c.id}>
-                    {c.name}
+                    {getLangText(c.name)}
                   </option>
                 ))}
             </select>
@@ -273,7 +301,7 @@ export default function CategoriesPanel() {
 
           <button
             type="submit"
-            disabled={saving || uploading || !name.trim()}
+            disabled={saving || uploading || !nameTr.trim()}
             className="w-full flex items-center justify-center gap-1.5 bg-[#1A1A1A] text-white text-sm font-medium rounded-md py-2 hover:bg-black transition-colors disabled:opacity-50"
           >
             {!editing && <Plus size={14} />}
