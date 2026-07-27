@@ -176,7 +176,7 @@ export default function ProductDetailPage() {
         </div>
  
         {/* Üst Kısım: Anasayfa / Ürünler / Positron */}
-        <div className="w-full lg:ml-[-30px] max-w-0xl mx-auto relative z-10 -mt-6">
+        <div className="w-full lg:ml-[-30px] mx-auto relative z-10 -mt-6">
           <div className="text-[8pt] uppercase tracking-widest text-white/70 mb-4 flex flex-wrap items-center gap-2">
             <Link href="/" className="hover:text-[#B87332] transition-colors">{isTr ? "Anasayfa" : "Homepage"}</Link>
             <ChevronRight size={14} />
