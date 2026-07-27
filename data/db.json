@@ -407,6 +407,220 @@
         "tr": "",
         "en": ""
       }
+    },
+    {
+      "id": "prod-ms3aslct-tfzo7",
+      "name": {
+        "tr": "",
+        "en": "AHTAPOT H"
+      },
+      "slug": "urun",
+      "subtitle": {
+        "tr": "",
+        "en": "Overhead Slab Loading and Unloading Robot"
+      },
+      "heroDescription": {
+        "tr": "",
+        "en": "AHTAPOT H is an overhead rail-mounted robot designed for the automatic loading, unloading and transfer of natural-stone slabs."
+      },
+      "heroImage": "/uploads/products/1785161038712-ozxuky.png",
+      "descriptionParagraphs": [
+        {
+          "tr": "",
+          "en": "<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\"><span style=\"font-size: 11pt;\">It can be configured for resin-treatment lines or polishing lines and is\navailable in marble and granite versions according to the required slab\ndimensions, weight and handling conditions.</span></span></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\"><br></span></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">The robot provides movement\nalong three principal axes: horizontal travel along the overhead rails,\nvertical lifting and lowering of the slab, and rotation of the vacuum lifting\nframe. Its rigid bridge structure enables the controlled handling of heavy slabs,\nincluding material up to 50 mm thick. The bridge travels along overhead rails\non driven wheels connected to an electric motor through a shaft-and-coupling\ntransmission. The vacuum pump and lifting equipment are installed directly on\nthe travelling bridge, while the vacuum lifting frame is raised and lowered by\nan electric geared motor.<o:p></o:p></span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">In the standard\nconfiguration, the robot is equipped with <b><span style=\"background:yellow;\nmso-highlight:yellow\">63 vacuum suction</span></b> cups manufactured from\ndurable Japanese-origin NBR rubber. The cups are mounted on shock-absorbing\nsupports to compensate for surface irregularities and reduce impact during slab\nengagement.<o:p></o:p></span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">&nbsp;</span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">The vacuum system is\ndivided into five independently controlled groups. Through the touchscreen\nstone-mapping interface, the operator can activate or deactivate the required\nvacuum groups according to the dimensions and position of the slab. This\nenables the robot to apply vacuum only within the effective stone area.<o:p></o:p></span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">&nbsp;</span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">A high-capacity\nItalian-origin vacuum pump provides a nominal airflow of 160 m³/h. The vacuum\nlifting frame is rotated through a combined worm and planetary gearbox\narrangement, designed to minimise mechanical play and provide controlled slab\npositioning.<o:p></o:p></span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">&nbsp;</span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">AHTAPOT H is controlled\nthrough a PLC-based automation system incorporating variable-frequency drives,\nencoders, sensors and a touchscreen operator interface. The standard rail\nlength is 9 metres and can be adapted according to the production-line layout.<o:p></o:p></span></p>"
+        }
+      ],
+      "configs": [
+        {
+          "name": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "",
+            "en": "<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><i><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">Resin-Line Configuration<o:p></o:p></span></i></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">Designed for loading,\nunloading and transferring slabs between resin-application stations, drying or\ncuring ovens, buffer stations and other equipment within an automated\nresin-treatment line.<o:p></o:p></span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">&nbsp;</span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><i><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">Polishing-Line\nConfiguration<o:p></o:p></span></i></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">Designed for loading and\nunloading slabs at the entry and exit of polishing lines. The structure, travel\narrangement and positioning sequence are adapted to the polishing-machine\nlayout and slab-flow direction.<o:p></o:p></span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">&nbsp;</span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><i><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">Marble Configuration<o:p></o:p></span></i></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">Configured for the\ndimensions, weights and surface characteristics commonly encountered in\nmarble-processing applications. The vacuum-frame dimensions and suction-cup\narrangement are selected accordingly.<o:p></o:p></span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">&nbsp;</span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><i><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">Granite Configuration<o:p></o:p></span></i></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">Configured for larger and\nheavier granite slabs. Depending on the selected model, the granite version may\nincorporate a larger vacuum frame and an increased number of suction cups.<o:p></o:p></span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">&nbsp;</span></p>\n\n<span lang=\"EN-GB\" style=\"font-size:11.0pt;line-height:107%;font-family:&quot;Calibri&quot;,sans-serif;\nmso-fareast-font-family:Aptos;mso-fareast-theme-font:minor-latin;mso-ansi-language:\nEN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA\">The robot can also be\nsupplied in right-hand or left-hand installation layouts according to the\ndirection of the production line.</span>"
+          }
+        }
+      ],
+      "configNote": {
+        "tr": "",
+        "en": ""
+      },
+      "configNote2": {
+        "tr": "",
+        "en": ""
+      },
+      "versions": [
+        {
+          "label": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "",
+            "en": "<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><i><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">AHTAPOT H Speedy<o:p></o:p></span></i></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">The Speedy version is\ndeveloped for production lines requiring shorter slab-transfer times and higher\nthroughput. Its movement and control systems are configured for faster\nhorizontal travel, lifting and positioning while maintaining controlled\nacceleration and accurate slab placement.<o:p></o:p></span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">&nbsp;</span></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><i><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">AHTAPOT H Smart<o:p></o:p></span></i></p>\n\n<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span lang=\"EN-GB\" style=\"font-family:&quot;Calibri&quot;,sans-serif\">The Smart version is\ndesigned to improve vacuum reliability when handling slabs containing holes,\ncracks, cavities or other surface discontinuities. Each suction cup is\nmonitored through an individual sensor-controlled vacuum module. When a cup\nexperiences continuous air leakage because it is positioned over an opening or\ndefective area, the system automatically closes the corresponding valve and isolates\nthat suction cup from the remaining vacuum circuit. This prevents a single\nleaking cup from continuously drawing air from the system and helps preserve\nthe vacuum level available to the cups that are properly engaged with the slab.\nThe function reduces the need for manual cup deactivation and operator\nintervention when slab surface conditions vary.<o:p></o:p></span></p>"
+          }
+        }
+      ],
+      "features": [
+        {
+          "tr": "",
+          "en": ""
+        }
+      ],
+      "categoryId": null,
+      "images": [
+        "/uploads/products/1785161038712-ozxuky.png"
+      ],
+      "active": true,
+      "createdAt": "2026-07-27T14:04:04.253Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [
+        {
+          "title": {
+            "tr": "Detay 1",
+            "en": "Description"
+          },
+          "text": {
+            "tr": "",
+            "en": "<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">It can be configured for resin-treatment lines or polishing lines and is available in marble and granite versions according to the required slab dimensions, weight and handling conditions.</span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><br></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">The robot provides movement along three principal axes: horizontal travel along the overhead rails, vertical lifting and lowering of the slab, and rotation of the vacuum lifting frame. Its rigid bridge structure enables the controlled handling of heavy slabs, including material up to 50 mm thick. The bridge travels along overhead rails on driven wheels connected to an electric motor through a shaft-and-coupling transmission. The vacuum pump and lifting equipment are installed directly on the travelling bridge, while the vacuum lifting frame is raised and lowered by an electric geared motor.</span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\"><br></span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">In the standard configuration, the robot is equipped with 63 vacuum suction cups manufactured from durable Japanese-origin NBR rubber. The cups are mounted on shock-absorbing supports to compensate for surface irregularities and reduce impact during slab engagement.</span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><br></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">The vacuum system is divided into five independently controlled groups. Through the touchscreen stone-mapping interface, the operator can activate or deactivate the required vacuum groups according to the dimensions and position of the slab. This enables the robot to apply vacuum only within the effective stone area.</span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><br></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">A high-capacity Italian-origin vacuum pump provides a nominal airflow of 160 m³/h. The vacuum lifting frame is rotated through a combined worm and planetary gearbox arrangement, designed to minimise mechanical play and provide controlled slab positioning.</span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><br></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">AHTAPOT H is controlled through a PLC-based automation system incorporating variable-frequency drives, encoders, sensors and a touchscreen operator interface. The standard rail length is 9 metres and can be adapted according to the production-line layout.</span></font></p>"
+          }
+        }
+      ],
+      "configBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": "Resin-Line Configuration"
+          },
+          "text": {
+            "tr": "",
+            "en": "<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\">Designed for loading, unloading and transferring slabs between resin-application stations, drying or curing ovens, buffer stations and other equipment within an automated resin-treatment line.</p>"
+          }
+        },
+        {
+          "title": {
+            "tr": "",
+            "en": "Polishing-Line Configuration"
+          },
+          "text": {
+            "tr": "",
+            "en": "<font color=\"#000000\">Designed for loading and unloading slabs at the entry and exit of polishing lines. The structure, travel arrangement and positioning sequence are adapted to the polishing-machine layout and slab-flow direction.</font>"
+          }
+        },
+        {
+          "title": {
+            "tr": "",
+            "en": "Marble Configuration"
+          },
+          "text": {
+            "tr": "",
+            "en": "Configured for the dimensions, weights and surface characteristics commonly encountered in marble-processing applications. The vacuum-frame dimensions and suction-cup arrangement are selected accordingly."
+          }
+        },
+        {
+          "title": {
+            "tr": "",
+            "en": "Granite Configuration"
+          },
+          "text": {
+            "tr": "",
+            "en": "<div>Configured for larger and heavier granite slabs. Depending on the selected model, the granite version may incorporate a larger vacuum frame and an increased number of suction cups.</div><div><br></div><div><br></div><div>The robot can also be supplied in right-hand or left-hand installation layouts according to the direction of the production line.</div>"
+          }
+        }
+      ],
+      "versionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": "AHTAPOT H Speedy"
+          },
+          "text": {
+            "tr": "",
+            "en": "<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span style=\"font-family: Calibri, sans-serif;\">The Speedy version is\ndeveloped for production lines requiring shorter slab-transfer times and higher\nthroughput. Its movement and control systems are configured for faster\nhorizontal travel, lifting and positioning while maintaining controlled\nacceleration and accurate slab placement.</span></p>"
+          }
+        },
+        {
+          "title": {
+            "tr": "",
+            "en": "AHTAPOT H Smart"
+          },
+          "text": {
+            "tr": "",
+            "en": "The Smart version is designed to improve vacuum reliability when handling slabs containing holes, cracks, cavities or other surface discontinuities. Each suction cup is monitored through an individual sensor-controlled vacuum module. When a cup experiences continuous air leakage because it is positioned over an opening or defective area, the system automatically closes the corresponding valve and isolates that suction cup from the remaining vacuum circuit. This prevents a single leaking cup from continuously drawing air from the system and helps preserve the vacuum level available to the cups that are properly engaged with the slab. The function reduces the need for manual cup deactivation and operator intervention when slab surface conditions vary."
+          }
+        }
+      ],
+      "featureBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": "Extended Rail System"
+          },
+          "text": {
+            "tr": "",
+            "en": "<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><span style=\"font-family: Calibri, sans-serif;\">The standard 9-metre rail\nsystem can be extended or adapted according to the distance between the\nloading, unloading and processing stations.</span></p>"
+          }
+        },
+        {
+          "title": {
+            "tr": "",
+            "en": "Custom Vacuum-Frame Configuration"
+          },
+          "text": {
+            "tr": "",
+            "en": "The number, position and grouping of the suction cups can be adapted according to slab dimensions, material type and the requirements of the selected production line."
+          }
+        }
+      ],
+      "descriptionSectionTitle": {
+        "tr": "Teknik Detay 1",
+        "en": "Description & System Architecture"
+      },
+      "configsSectionTitle": {
+        "tr": "Teknik Detay 2",
+        "en": "Available Configurations"
+      },
+      "versionsSectionTitle": {
+        "tr": "Teknik Detay 3",
+        "en": "Available Versions"
+      },
+      "featuresSectionTitle": {
+        "tr": "Teknik Detay 4",
+        "en": "Options"
+      }
     }
   ],
   "slider": [],
