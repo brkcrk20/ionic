@@ -17,6 +17,8 @@ export async function POST(request: NextRequest) {
     categoryId: body.categoryId ?? null,
     images: Array.isArray(body.images) ? body.images : [],
     specs: Array.isArray(body.specs) ? body.specs : [],
+    configurations: Array.isArray(body.configurations) ? body.configurations : [],
+    gallery: Array.isArray(body.gallery) ? body.gallery : [],
     active: body.active !== false,
   });
   return NextResponse.json({ product }, { status: 201 });

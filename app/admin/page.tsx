@@ -1,14 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { LogOut, ExternalLink, Package, Grid, Image as ImageIcon, Settings } from "lucide-react";
+import { LogOut, ExternalLink, Package, Grid } from "lucide-react";
 import type { Category } from "@/lib/db";
 import ProductsPanel from "./ProductsPanel";
 import CategoriesPanel from "./CategoriesPanel";
-import SliderPanel from "./SliderPanel";
-import SettingsPanel from "./SettingsPanel";
 
-type Tab = "products" | "categories" | "slider" | "settings";
+type Tab = "products" | "categories";
 
 export default function AdminPage() {
   const router = useRouter();
@@ -36,8 +34,6 @@ export default function AdminPage() {
   const menu = [
     { id: "products", name: "Ürünler", icon: Package },
     { id: "categories", name: "Kategoriler", icon: Grid },
-    { id: "slider", name: "Slider", icon: ImageIcon },
-    { id: "settings", name: "Ayarlar", icon: Settings },
   ] as const;
 
   return (
@@ -64,8 +60,6 @@ export default function AdminPage() {
         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm min-h-[500px]">
           {tab === "products" && <ProductsPanel categories={categories} />}
           {tab === "categories" && <CategoriesPanel />}
-          {tab === "slider" && <SliderPanel />}
-          {tab === "settings" && <SettingsPanel />}
         </div>
       </main>
     </div>

@@ -3,41 +3,45 @@ import path from "path";
 
 export type Category = { id: string; name: string; slug: string; parentId: string | null; image: string | null; };
 export type ProductSpec = { label: string; unit: string; value: string };
-export type Product = { id: string; name: string; slug: string; description: string; categoryId: string | null; images: string[]; specs: ProductSpec[]; active: boolean; createdAt: string; };
-export type SliderItem = { id: string; image: string; title: string; subtitle: string; buttonText: string; buttonLink: string; };
-export type SiteSettings = { phone: string; email: string; address: string; instagram: string; facebook: string; linkedin: string; };
+// Opsiyonel "Mevcut Konfigürasyonlar / Versiyonlar" bloğu (ör. POSITRON 40/60/80 gibi başlık + açıklama grupları)
+export type ProductConfig = { title: string; description: string };
+export type Product = {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  categoryId: string | null;
+  images: string[];
+  specs: ProductSpec[];
+  configurations: ProductConfig[]; // opsiyonel, boş olabilir
+  gallery: string[]; // ürün detay sayfasının altındaki opsiyonel fotoğraflar
+  active: boolean;
+  createdAt: string;
+};
 
 export type DB = {
   categories: Category[];
   products: Product[];
-  slider: SliderItem[];
-  settings: SiteSettings;
 };
 
 const DB_PATH = path.join(process.cwd(), "data", "db.json");
-
-const DEFAULT_SETTINGS: SiteSettings = {
-  phone: "",
-  email: "",
-  address: "",
-  instagram: "",
-  facebook: "",
-  linkedin: "",
-};
 
 export async function getDB(): Promise<DB> {
   try {
     const raw = await fs.readFile(DB_PATH, "utf-8");
     const parsed = JSON.parse(raw) as Partial<DB>;
-    // Eksik alanlar için güvenli varsayılanlar (ör. eski veri dosyalarında "settings" olmayabilir)
     return {
       categories: parsed.categories ?? [],
-      products: parsed.products ?? [],
-      slider: parsed.slider ?? [],
-      settings: { ...DEFAULT_SETTINGS, ...(parsed.settings ?? {}) },
+      // Eski ürün kayıtlarında "configurations"/"gallery" alanları olmayabilir; burada güvenli varsayılanlarla tamamlanıyor.
+      products: (parsed.products ?? []).map((p: any) => ({
+        ...p,
+        specs: p.specs ?? [],
+        configurations: p.configurations ?? [],
+        gallery: p.gallery ?? [],
+      })),
     };
   } catch {
-    return { categories: [], products: [], slider: [], settings: { ...DEFAULT_SETTINGS } };
+    return { categories: [], products: [] };
   }
 }
 
@@ -54,8 +58,10 @@ function makeId(prefix: string): string { return `${prefix}-${Date.now().toStrin
 // Dışa Aktarımlar
 export async function getCategories() { return (await getDB()).categories; }
 export async function getProducts() { return (await getDB()).products; }
-export async function getSlider() { return (await getDB()).slider; }
-export async function getSettings() { return (await getDB()).settings; }
+export async function getProductBySlug(slug: string) {
+  const products = await getProducts();
+  return products.find((p) => p.slug === slug) ?? null;
+}
 
 export async function createCategory(input: any) {
   const db = await getDB();
@@ -75,6 +81,8 @@ export async function createProduct(input: any) {
     categoryId: input.categoryId ?? null,
     images: input.images ?? [],
     specs: input.specs ?? [],
+    configurations: input.configurations ?? [],
+    gallery: input.gallery ?? [],
     active: input.active ?? true,
     createdAt: new Date().toISOString(),
   };
@@ -133,6 +141,8 @@ export async function updateProduct(id: string, input: Record<string, unknown>) 
   if (input.categoryId !== undefined) prod.categoryId = input.categoryId as string | null;
   if (Array.isArray(input.images)) prod.images = input.images as string[];
   if (Array.isArray(input.specs)) prod.specs = input.specs as ProductSpec[];
+  if (Array.isArray(input.configurations)) prod.configurations = input.configurations as ProductConfig[];
+  if (Array.isArray(input.gallery)) prod.gallery = input.gallery as string[];
   if (input.active !== undefined) prod.active = Boolean(input.active);
   await updateDB(db);
   return prod;

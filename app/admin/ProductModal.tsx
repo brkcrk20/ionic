@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Category, Product, ProductSpec } from "@/lib/db";
+import type { Category, Product, ProductSpec, ProductConfig } from "@/lib/db";
 import { X, Upload, Loader2, ImageOff, Plus, GripVertical } from "lucide-react";
 
 export default function ProductModal({
@@ -21,10 +21,25 @@ export default function ProductModal({
   const [active, setActive] = useState(product?.active ?? true);
   const [images, setImages] = useState<string[]>(product?.images ?? []);
   const [specs, setSpecs] = useState<ProductSpec[]>(product?.specs ?? []);
+  const [configurations, setConfigurations] = useState<ProductConfig[]>(product?.configurations ?? []);
+  const [gallery, setGallery] = useState<string[]>(product?.gallery ?? []);
   const [dragIndex, setDragIndex] = useState<number | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [galleryUploading, setGalleryUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+
+  function addConfig() {
+    setConfigurations((prev) => [...prev, { title: "", description: "" }]);
+  }
+
+  function updateConfig(index: number, field: "title" | "description", val: string) {
+    setConfigurations((prev) => prev.map((c, i) => (i === index ? { ...c, [field]: val } : c)));
+  }
+
+  function removeConfig(index: number) {
+    setConfigurations((prev) => prev.filter((_, i) => i !== index));
+  }
 
   function addSpec() {
     setSpecs((prev) => [...prev, { label: "", unit: "", value: "" }]);
@@ -75,6 +90,33 @@ export default function ProductModal({
     setImages((prev) => prev.filter((i) => i !== url));
   }
 
+  async function handleGalleryFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    setGalleryUploading(true);
+    setError("");
+    try {
+      for (const file of Array.from(files)) {
+        const formData = new FormData();
+        formData.append("file", file);
+        const res = await fetch("/api/admin/upload", { method: "POST", body: formData });
+        const data = await res.json();
+        if (!res.ok) {
+          setError(data.error || "Görsel yüklenemedi");
+          continue;
+        }
+        setGallery((prev) => [...prev, data.url]);
+      }
+    } finally {
+      setGalleryUploading(false);
+      e.target.value = "";
+    }
+  }
+
+  function removeGalleryImage(url: string) {
+    setGallery((prev) => prev.filter((i) => i !== url));
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!name.trim()) return;
@@ -87,6 +129,8 @@ export default function ProductModal({
         categoryId: categoryId || null,
         images,
         specs: specs.filter((s) => s.label.trim() || s.value.trim()),
+        configurations: configurations.filter((c) => c.title.trim() || c.description.trim()),
+        gallery,
         active,
       };
       const res = product
@@ -215,6 +259,53 @@ export default function ProductModal({
           </div>
 
           <div>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-xs text-gray-500">Mevcut Konfigürasyonlar (opsiyonel)</label>
+              <button
+                type="button"
+                onClick={addConfig}
+                className="flex items-center gap-1 text-xs text-gray-600 hover:text-[#1A1A1A] transition-colors"
+              >
+                <Plus size={12} /> Konfigürasyon Ekle
+              </button>
+            </div>
+            {configurations.length === 0 ? (
+              <p className="text-xs text-gray-400 border border-dashed border-gray-300 rounded-md px-3 py-3 text-center">
+                Örn: "POSITRON 40", "Speedy Versiyon" gibi ürün varyant/opsiyonlarını başlık ve açıklamayla ekleyin.
+              </p>
+            ) : (
+              <div className="space-y-2">
+                {configurations.map((cfg, i) => (
+                  <div key={i} className="border border-gray-200 rounded-md p-2.5 space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <input
+                        value={cfg.title}
+                        onChange={(e) => updateConfig(i, "title", e.target.value)}
+                        placeholder="Başlık (örn: POSITRON 60)"
+                        className="flex-1 border border-gray-300 rounded-md px-2.5 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeConfig(i)}
+                        className="p-1 text-gray-400 hover:text-red-600 transition-colors shrink-0"
+                      >
+                        <X size={13} />
+                      </button>
+                    </div>
+                    <textarea
+                      value={cfg.description}
+                      onChange={(e) => updateConfig(i, "description", e.target.value)}
+                      placeholder="Açıklama"
+                      rows={2}
+                      className="w-full border border-gray-300 rounded-md px-2.5 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div>
             <label className="block text-xs text-gray-500 mb-1">Kategori</label>
             <select
               value={categoryId}
@@ -270,6 +361,47 @@ export default function ProductModal({
             </label>
           </div>
 
+          <div>
+            <label className="block text-xs text-gray-500 mb-1">
+              Alt Taraftaki Fotoğraflar (opsiyonel)
+            </label>
+            <div className="flex flex-wrap gap-2 mb-2">
+              {gallery.map((url) => (
+                <div key={url} className="relative w-16 h-16 group">
+                  <img
+                    src={url}
+                    alt=""
+                    className="w-full h-full object-contain bg-gray-50 rounded-md border border-gray-200 p-0.5"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeGalleryImage(url)}
+                    className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <X size={11} />
+                  </button>
+                </div>
+              ))}
+              {gallery.length === 0 && (
+                <div className="w-16 h-16 rounded-md border border-dashed border-gray-300 flex items-center justify-center text-gray-300">
+                  <ImageOff size={18} />
+                </div>
+              )}
+            </div>
+            <label className="inline-flex items-center gap-1.5 text-xs text-gray-600 border border-gray-300 rounded-md px-3 py-1.5 cursor-pointer hover:bg-gray-50 transition-colors">
+              {galleryUploading ? <Loader2 size={13} className="animate-spin" /> : <Upload size={13} />}
+              {galleryUploading ? "Yükleniyor..." : "Fotoğraf Ekle"}
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/webp,image/gif"
+                multiple
+                className="hidden"
+                onChange={handleGalleryFileChange}
+                disabled={galleryUploading}
+              />
+            </label>
+          </div>
+
           <label className="flex items-center gap-2 text-sm text-gray-600">
             <input
               type="checkbox"
@@ -292,7 +424,7 @@ export default function ProductModal({
             </button>
             <button
               type="submit"
-              disabled={saving || uploading || !name.trim()}
+              disabled={saving || uploading || galleryUploading || !name.trim()}
               className="flex-1 bg-[#1A1A1A] text-white text-sm font-medium rounded-md py-2 hover:bg-black transition-colors disabled:opacity-50"
             >
               {saving ? "Kaydediliyor..." : "Kaydet"}
