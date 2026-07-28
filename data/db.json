@@ -423,7 +423,7 @@
         "tr": "",
         "en": "AHTAPOT H is an overhead rail-mounted robot designed for the automatic loading, unloading and transfer of natural-stone slabs."
       },
-      "heroImage": "/uploads/products/1785161038712-ozxuky.png",
+      "heroImage": "/uploads/products/1785215366640-wsdsgq.webp",
       "descriptionParagraphs": [
         {
           "tr": "",
@@ -470,7 +470,7 @@
       ],
       "categoryId": null,
       "images": [
-        "/uploads/products/1785161038712-ozxuky.png"
+        "/uploads/products/gbqyqf-the-world-s-first-fully-integrated-stone-slab-processing-plant-at-ensar-marble-00_03_05_39-still001.jpg"
       ],
       "active": true,
       "createdAt": "2026-07-27T14:04:04.253Z",
@@ -514,7 +514,7 @@
             "en": "Description"
           },
           "text": {
-            "tr": "",
+            "tr": "<br>",
             "en": "<p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">It can be configured for resin-treatment lines or polishing lines and is available in marble and granite versions according to the required slab dimensions, weight and handling conditions.</span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><br></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">The robot provides movement along three principal axes: horizontal travel along the overhead rails, vertical lifting and lowering of the slab, and rotation of the vacuum lifting frame. Its rigid bridge structure enables the controlled handling of heavy slabs, including material up to 50 mm thick. The bridge travels along overhead rails on driven wheels connected to an electric motor through a shaft-and-coupling transmission. The vacuum pump and lifting equipment are installed directly on the travelling bridge, while the vacuum lifting frame is raised and lowered by an electric geared motor.</span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\"><br></span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">In the standard configuration, the robot is equipped with 63 vacuum suction cups manufactured from durable Japanese-origin NBR rubber. The cups are mounted on shock-absorbing supports to compensate for surface irregularities and reduce impact during slab engagement.</span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><br></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">The vacuum system is divided into five independently controlled groups. Through the touchscreen stone-mapping interface, the operator can activate or deactivate the required vacuum groups according to the dimensions and position of the slab. This enables the robot to apply vacuum only within the effective stone area.</span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><br></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">A high-capacity Italian-origin vacuum pump provides a nominal airflow of 160 m³/h. The vacuum lifting frame is rotated through a combined worm and planetary gearbox arrangement, designed to minimise mechanical play and provide controlled slab positioning.</span></font></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><br></p><p class=\"MsoNormal\" style=\"margin-bottom:0cm;line-height:normal\"><font face=\"Calibri, sans-serif\"><span style=\"font-size: 14.6667px;\">AHTAPOT H is controlled through a PLC-based automation system incorporating variable-frequency drives, encoders, sensors and a touchscreen operator interface. The standard rail length is 9 metres and can be adapted according to the production-line layout.</span></font></p>"
           }
         }

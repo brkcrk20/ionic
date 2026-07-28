@@ -123,9 +123,9 @@ export default function ProductsPanel() {
                   </button>
                 </div>
 
-                <div className="relative flex h-44 w-full items-center justify-center overflow-hidden border-b border-gray-100 bg-gray-50">
+                <div className="relative flex h-44 w-full items-center justify-center overflow-hidden border-b border-gray-100 bg-gray-50 p-2">
                   {product.images[0] ? (
-                    <Image src={product.images[0]} alt={prodName} fill className="object-cover object-center" />
+                    <Image src={product.images[0]} alt={prodName} fill className="object-contain object-center p-2" />
                   ) : (
                     <ImageOff size={28} className="text-gray-300" />
                   )}

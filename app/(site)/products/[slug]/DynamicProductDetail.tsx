@@ -56,8 +56,10 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
   if (hasFeatures) sections.push({ key: "features" });
   const indexOf = (key: string) => sections.findIndex((s) => s.key === key);
 
-  const heroImage = product.heroImage || product.images[0] || "";
-  const galleryImages = product.heroImage ? product.images.filter((img) => img !== product.heroImage) : product.images.slice(1);
+  const heroImage = product.heroImage || product.images[1] || product.images[0] || "";
+  
+  // Kapak görseli (images[0]) galeriye kesinlikle girmesin diye her koşulda images[0]'ı hariç tutuyoruz
+  const galleryImages = (product.images || []).filter((img, index) => index > 0 && img !== product.heroImage);
 
   const productName = getLangText(product.name, isTr);
   const productSubtitle = getLangText(product.subtitle, isTr);
@@ -71,7 +73,6 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
         className="relative flex min-h-screen w-full flex-col justify-start bg-[#3A3A3A] bg-no-repeat bg-bottom bg-[length:100%_auto] px-6 pb-20 pt-28 lg:pl-16 lg:pr-16 lg:pt-32"
         style={heroImage ? { backgroundImage: `url('${heroImage}')` } : undefined}
       >
-        <div className="absolute inset-0 pointer-events-none bg-black/30" />
 
         <div className="relative z-10 mx-auto w-full lg:ml-[-30px]">
           <div className="mb-4 flex flex-wrap items-center gap-2 text-[8pt] uppercase tracking-widest text-white/70">

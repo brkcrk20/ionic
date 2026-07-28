@@ -119,16 +119,19 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
   const router = useRouter();
   const isEdit = Boolean(product);
 
-  const initialHero = product?.heroImage || product?.images?.[0] || "";
+  const initialListImage = product?.images?.[0] || "";
+  const initialHero = product?.heroImage || "";
+  
   const initialGallery = useMemo(() => {
-    if (!product) return [] as string[];
-    if (product.heroImage) return product.images.filter((img) => img !== product.heroImage);
+    if (!product || !product.images) return [] as string[];
+    // İlk görsel kapak/liste görselidir, onu galeriden hariç tutuyoruz
     return product.images.slice(1);
   }, [product]);
 
   const [step, setStep] = useState<WizardStep>(1);
   const [currentLang, setCurrentLang] = useState<Lang>("tr");
   const [loading, setLoading] = useState(false);
+  const [uploadingListImage, setUploadingListImage] = useState(false);
   const [uploadingHero, setUploadingHero] = useState(false);
   const [uploadingGallery, setUploadingGallery] = useState(false);
   const [error, setError] = useState("");
@@ -141,6 +144,7 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
   const subtitleStyle = POSITRON_SUBTITLE_STYLE;
   const heroDescriptionStyle = POSITRON_DESCRIPTION_STYLE;
   
+  const [listImage, setListImage] = useState(initialListImage);
   const [heroImage, setHeroImage] = useState(initialHero);
   const [categoryId, setCategoryId] = useState(product?.categoryId ?? "");
   const [active, setActive] = useState(product?.active ?? true);
@@ -204,6 +208,20 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
     setCustomSections((prev) => prev.filter((sec) => sec.id !== sectionId));
   }
 
+  async function handlePickListImage(file?: File | null) {
+    if (!file) return;
+    setUploadingListImage(true);
+    setError("");
+    try {
+      const url = await uploadImage(file);
+      setListImage(url);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Liste görseli yüklenemedi");
+    } finally {
+      setUploadingListImage(false);
+    }
+  }
+
   async function handlePickHero(file?: File | null) {
     if (!file) return;
     setUploadingHero(true);
@@ -256,7 +274,8 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
     const filteredVersions = mapBlocks(versSec);
     const filteredFeatures = mapBlocks(featSec);
 
-    const images = [heroImage, ...galleryImages].filter(Boolean);
+    // images dizisinin ilk elemanı liste/kapak görselidir, sonrakiler galeridir (kapak resmi galeride mükerrer yer almaz)
+    const images = [listImage, ...galleryImages.filter((img) => img !== listImage)].filter(Boolean);
 
     return {
       name,
@@ -291,8 +310,8 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
       setError("En az bir dilde ürün ismi gerekli");
       return;
     }
-    if (!heroImage.trim()) {
-      setError("İlk büyük resim gerekli");
+    if (!listImage.trim()) {
+      setError("Ürünler sayfasında görünecek liste/kapak görseli gerekli");
       return;
     }
 
@@ -331,7 +350,6 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
         </div>
         
         <div className="flex items-center gap-3">
-          {/* Dil Seçme Butonları */}
           <div className="flex items-center rounded-2xl border border-gray-200 bg-white p-1 shadow-sm">
             <button
               type="button"
@@ -364,7 +382,7 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
             className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition-colors ${step === s ? "bg-[#1A1A1A] text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
           >
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-xs">{s}</span>
-            {s === 1 ? "Temel Bilgiler" : s === 2 ? "İçerik & Akordiyon" : "Görseller"}
+            {s === 1 ? "Temel Bilgiler & Liste Görseli" : s === 2 ? "İçerik & Akordiyon" : "Hero & Galeri Görselleri"}
           </button>
         ))}
       </div>
@@ -439,63 +457,34 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
               <button type="button" onClick={() => setStep(2)} className="inline-flex items-center gap-2 rounded-full bg-[#1A1A1A] px-5 py-3 text-sm font-bold text-white hover:bg-black">
                 İleri <ChevronRight size={16} />
               </button>
-              <p className="text-xs text-gray-500">Bu adımda sadece temel bilgiler var.</p>
+              <p className="text-xs text-gray-500">Sonraki adımda içerik ve görselleri ayarlayabilirsiniz.</p>
             </div>
           </div>
 
           <div className="space-y-4 rounded-3xl border border-gray-200 bg-white p-4 shadow-sm lg:p-6">
             <div className="flex items-center gap-2 text-sm font-bold text-[#1A1A1A]">
-              <ImageIcon size={18} className="text-[#B87332]" /> İlk büyük resim
+              <ImageIcon size={18} className="text-[#B87332]" /> Ürünler Sayfası Görseli (Liste / Kapak Resmi)
             </div>
+            <p className="text-xs text-gray-500">Ürünler sayfasında ve kategori sayfalarında kart üzerinde görünecek şeffaf/webp görsel.</p>
 
-            <div className="rounded-[2rem] border border-[#1A1A1A]/10 bg-[#1A1A1A] p-3 shadow-2xl">
-              <div className="rounded-[1.4rem] bg-[#EDEDED] p-3">
-                <div className="mb-3 flex items-center justify-between px-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#6A6A6A]">
-                  <span>Önizleme ({currentLang.toUpperCase()})</span>
-                  <span>{heroImage ? "Görsel bağlı" : "Görsel bekleniyor"}</span>
-                </div>
-
-                <div className="overflow-hidden rounded-[1.3rem] border border-black/10 bg-[#3A3A3A]">
-                  <div
-                    className="relative mx-auto flex min-h-[610px] w-full flex-col justify-start bg-[#3A3A3A] bg-no-repeat bg-bottom bg-[length:100%_auto] px-5 pb-16 pt-24"
-                    style={heroPreviewStyle}
-                  >
-                    <div className="absolute inset-0 pointer-events-none bg-black/30" />
-
-                    <div className="relative z-10 mx-auto w-full">
-                      <div className="mb-4 flex flex-wrap items-center gap-2 text-[8pt] uppercase tracking-widest text-white/70">
-                        <span>Anasayfa</span>
-                        <ChevronRight size={14} />
-                        <span>Ürünler</span>
-                        <ChevronRight size={14} />
-                        <span className="font-bold text-[#B87332]">{currentName}</span>
-                      </div>
-                    </div>
-
-                    <div className="relative z-10 mx-auto mt-6 w-full max-w-5xl pl-0">
-                      <div className="flex max-w-3xl flex-col items-start gap-4">
-                        <div>
-                          <h2 className="mb-2 text-4xl font-extrabold tracking-tight text-white md:text-[48px]" style={styleToCss(nameStyle)}>{currentName}</h2>
-                          <p className="mb-4 text-xl font-bold text-[#B87332] md:text-2xl" style={styleToCss(subtitleStyle)}>{currentSubtitle}</p>
-                          <p className="text-base font-medium leading-relaxed text-white/90" style={styleToCss(heroDescriptionStyle)}>{currentHeroDesc}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="relative flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl border border-gray-200 bg-gray-50">
+              {listImage ? (
+                <Image src={listImage} alt="Liste Görseli" fill className="object-contain p-4" />
+              ) : (
+                <ImageIcon size={36} className="text-gray-300" />
+              )}
             </div>
 
             <label className="flex cursor-pointer items-center justify-center gap-2 rounded-2xl border border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#B87332] hover:text-[#B87332]">
-              {uploadingHero ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
-              Büyük görsel yükle
-              <input type="file" accept="image/*" className="hidden" onChange={(e) => handlePickHero(e.target.files?.[0])} />
+              {uploadingListImage ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
+              Liste görseli yükle (WebP / PNG)
+              <input type="file" accept="image/*" className="hidden" onChange={(e) => handlePickListImage(e.target.files?.[0])} />
             </label>
 
-            {heroImage && (
+            {listImage && (
               <div className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-gray-50 p-3 text-sm">
-                <code className="flex-1 break-all text-xs text-gray-500">{heroImage}</code>
-                <button type="button" onClick={() => setHeroImage("")} className="rounded-full bg-white p-2 text-gray-500 hover:text-red-600">
+                <code className="flex-1 break-all text-xs text-gray-500">{listImage}</code>
+                <button type="button" onClick={() => setListImage("")} className="rounded-full bg-white p-2 text-gray-500 hover:text-red-600">
                   <X size={16} />
                 </button>
               </div>
@@ -691,37 +680,72 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
       )}
 
       {step === 3 && (
-        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="space-y-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
-            <h2 className="text-xl font-extrabold text-[#1A1A1A]">Alt resimler</h2>
-            <p className="text-sm text-gray-500">Ürün sayfasının en altındaki örnek görseller burada tutulur.</p>
-            <label className="flex cursor-pointer items-center justify-center gap-2 rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#B87332] hover:text-[#B87332]">
-              {uploadingGallery ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
-              Görsel(ler) yükle
-              <input type="file" multiple accept="image/*" className="hidden" onChange={(e: ChangeEvent<HTMLInputElement>) => handlePickGallery(e.target.files)} />
-            </label>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {galleryImages.map((src, index) => (
-                <div key={`${src}-${index}`} className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-50">
-                  <div className="relative aspect-[4/3] bg-gray-100">
-                    <Image src={src} alt={`Galeri ${index + 1}`} fill className="object-cover" />
-                  </div>
-                  <div className="flex items-center justify-between gap-2 p-3">
-                    <span className="truncate text-xs text-gray-500">{src}</span>
-                    <button type="button" onClick={() => setGalleryImages((prev) => prev.filter((_, i) => i !== index))} className="rounded-full p-2 text-gray-500 hover:text-red-600">
-                      <X size={16} />
-                    </button>
+        <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
+          <div className="space-y-6">
+            <div className="space-y-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+              <h2 className="text-xl font-extrabold text-[#1A1A1A]">Ürün Detay Hero Resmi</h2>
+              <p className="text-sm text-gray-500">Ürün detay sayfasının üst kısmında arka planda görünen büyük görsel.</p>
+
+              <div className="overflow-hidden rounded-[1.3rem] border border-black/10 bg-[#3A3A3A]">
+                <div
+                  className="relative mx-auto flex min-h-[300px] w-full flex-col justify-end bg-[#3A3A3A] bg-no-repeat bg-bottom bg-[length:100%_auto] p-6"
+                  style={heroPreviewStyle}
+                >
+                  <div className="absolute inset-0 pointer-events-none bg-black/30" />
+                  <div className="relative z-10">
+                    <h3 className="text-2xl font-extrabold text-white">{currentName}</h3>
+                    <p className="text-sm text-[#B87332]">{currentSubtitle}</p>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              <label className="flex cursor-pointer items-center justify-center gap-2 rounded-2xl border border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#B87332] hover:text-[#B87332]">
+                {uploadingHero ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
+                Hero büyük görsel yükle
+                <input type="file" accept="image/*" className="hidden" onChange={(e) => handlePickHero(e.target.files?.[0])} />
+              </label>
+
+              {heroImage && (
+                <div className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-gray-50 p-3 text-sm">
+                  <code className="flex-1 break-all text-xs text-gray-500">{heroImage}</code>
+                  <button type="button" onClick={() => setHeroImage("")} className="rounded-full bg-white p-2 text-gray-500 hover:text-red-600">
+                    <X size={16} />
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+              <h2 className="text-xl font-extrabold text-[#1A1A1A]">Alt Galeri Resimleri</h2>
+              <p className="text-sm text-gray-500">Ürün sayfasının alt kısmındaki ek görseller.</p>
+              <label className="flex cursor-pointer items-center justify-center gap-2 rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#B87332] hover:text-[#B87332]">
+                {uploadingGallery ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
+                Görsel(ler) yükle
+                <input type="file" multiple accept="image/*" className="hidden" onChange={(e: ChangeEvent<HTMLInputElement>) => handlePickGallery(e.target.files)} />
+              </label>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {galleryImages.map((src, index) => (
+                  <div key={`${src}-${index}`} className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-50">
+                    <div className="relative aspect-[4/3] bg-gray-100">
+                      <Image src={src} alt={`Galeri ${index + 1}`} fill className="object-cover" />
+                    </div>
+                    <div className="flex items-center justify-between gap-2 p-3">
+                      <span className="truncate text-xs text-gray-500">{src}</span>
+                      <button type="button" onClick={() => setGalleryImages((prev) => prev.filter((_, i) => i !== index))} className="rounded-full p-2 text-gray-500 hover:text-red-600">
+                        <X size={16} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="space-y-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+          <div className="space-y-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm h-fit">
             <h2 className="text-xl font-extrabold text-[#1A1A1A]">Önizleme özeti</h2>
             <div className="space-y-4 rounded-3xl border border-gray-200 bg-gray-50 p-4">
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-gray-100">
-                {heroImage ? <Image src={heroImage} alt={currentName} fill className="object-cover" /> : <ImageIcon size={42} className="absolute inset-0 m-auto text-gray-300" />}
+                {listImage ? <Image src={listImage} alt={currentName} fill className="object-contain p-2" /> : <ImageIcon size={42} className="absolute inset-0 m-auto text-gray-300" />}
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-[#B87332]">
@@ -741,8 +765,8 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
 
             <div className="rounded-3xl border border-gray-200 bg-gray-50 p-4 text-sm text-gray-500">
               <p className="font-semibold text-[#1A1A1A]">Kaydedilecek içerik</p>
-              <p className="mt-2">Toplam aktif teknik detay bölümü: {customSections.filter(s => s.enabled).length}</p>
-              <p>Hero görsel + galeri toplamı: {1 + galleryImages.length}</p>
+              <p className="mt-2">Aktif teknik detay bölümü: {customSections.filter(s => s.enabled).length}</p>
+              <p>Toplam galeri görseli: {galleryImages.length}</p>
             </div>
 
             <div className="flex items-center justify-between gap-3 pt-2">

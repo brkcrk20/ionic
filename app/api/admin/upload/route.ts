@@ -7,6 +7,26 @@ const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 const MAX_SIZE = 5 * 1024 * 1024; // 5MB
 const MAX_DIMENSION = 1600; // px — bundan büyük görseller otomatik küçültülür
 
+// Türkçe karakterleri ve URL uyumsuz karakterleri temizleyen yardımcı fonksiyon
+function sanitizeFilename(filename: string): string {
+  const ext = path.extname(filename);
+  const nameWithoutExt = path.basename(filename, ext);
+
+  const trMap: { [key: string]: string } = {
+    ç: "c", Ç: "c", ğ: "g", Ğ: "g", ı: "i", İ: "i",
+    ö: "o", Ö: "o", ş: "s", Ş: "s", ü: "u", Ü: "u",
+  };
+
+  const sanitized = nameWithoutExt
+    .replace(/[çÇğĞıİöÖşŞüÜ]/g, (match) => trMap[match] || match)
+    .toLowerCase()
+    .replace(/[^a-z0-9-_]/g, "-") // Alfanümerik dışı karakterleri tire yap
+    .replace(/-+/g, "-") // Üst üste gelen tireleri teke indir
+    .replace(/^-|-$/g, ""); // Başta ve sonda kalan tireleri sil
+
+  return `${sanitized || "image"}${ext.toLowerCase()}`;
+}
+
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
   const file = formData.get("file");
@@ -27,10 +47,8 @@ export async function POST(request: NextRequest) {
   }
 
   let bytes = Buffer.from(await file.arrayBuffer());
-  const ext = path.extname(file.name) || ".jpg";
 
   // GIF'ler hariç (animasyon bozulmasın diye), görsel gereksiz büyükse otomatik küçült
-  // ve dosya boyutunu makul seviyeye indir. Kırpma yapılmaz, en-boy oranı korunur.
   if (file.type !== "image/gif") {
     try {
       const image = sharp(bytes, { failOn: "none" }).rotate(); // EXIF yönünü uygula
@@ -57,7 +75,11 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  const filename = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}${ext}`;
+  // Orijinal dosya adını SEO uyumlu hale getir ve aynı isimde dosya çakışmasını önlemek için önüne kısa bir rastgele ID ekle
+  const cleanName = sanitizeFilename(file.name);
+  const uniquePrefix = Math.random().toString(36).slice(2, 8);
+  const filename = `${uniquePrefix}-${cleanName}`;
+
   const uploadDir = path.join(process.cwd(), "public", "uploads", "products");
 
   await fs.mkdir(uploadDir, { recursive: true });
