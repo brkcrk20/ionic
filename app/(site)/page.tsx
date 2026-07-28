@@ -148,7 +148,7 @@ export default function Home() {
 
         <div className="mt-16 z-10">
           <Link
-            href="/muhendislik"
+            href="/engineering"
             className="bg-[#B87332] hover:bg-[#a06228] text-white font-bold tracking-wider uppercase text-sm px-8 py-4 rounded-full shadow-lg transition-all flex items-center gap-2"
           >
             {home.capabilities.cta} <ArrowRight size={18} />
@@ -169,7 +169,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1400px] w-full">
           {/* News Card 1 */}
-          <Link href="/projeler/detay-1" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
+          <Link href="/projects/detail-1" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
             <div className="relative h-44 sm:h-60 w-full overflow-hidden">
               <ImagePlaceholder className="group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute top-4 left-4 bg-[#B87332] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
@@ -185,7 +185,7 @@ export default function Home() {
           </Link>
 
           {/* News Card 2 */}
-          <Link href="/projeler/detay-2" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
+          <Link href="/projects/detail-2" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
             <div className="relative h-44 sm:h-60 w-full overflow-hidden">
               <ImagePlaceholder className="group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute top-4 left-4 bg-[#B87332] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
@@ -201,7 +201,7 @@ export default function Home() {
           </Link>
 
           {/* News Card 3 */}
-          <Link href="/projeler/detay-3" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
+          <Link href="/projects/detail-3" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
             <div className="relative h-44 sm:h-60 w-full overflow-hidden">
               <ImagePlaceholder className="group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute top-4 left-4 bg-[#B87332] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
@@ -263,7 +263,7 @@ export default function Home() {
             <h3 className="text-3xl md:text-4xl font-extrabold text-[#3A3A3A] mb-6 font-montserrat tracking-wide">{home.mes.productName}</h3>
             <h4 className="text-lg md:text-xl font-bold text-[#3A3A3A] mb-4">{home.mes.subtitle}</h4>
             <p className="text-gray-600 mb-10 leading-relaxed text-sm md:text-base">{home.mes.description}</p>
-            <Link href="/otomasyon-kontrol" className="inline-flex items-center gap-3 text-[#3A3A3A] hover:text-[#B87332] font-bold transition-colors mt-auto">
+            <Link href="/automation-control" className="inline-flex items-center gap-3 text-[#3A3A3A] hover:text-[#B87332] font-bold transition-colors mt-auto">
               <div className="w-10 h-10 rounded-full bg-[#3A3A3A] text-[#F3F1EC] flex items-center justify-center hover:bg-[#B87332] transition-colors shadow-md">
                 <ArrowRight size={18} />
               </div>
@@ -320,13 +320,13 @@ export default function Home() {
 
           <div className="flex flex-col gap-2.5 justify-center">
             <h4 className="font-extrabold text-base mb-2">{home.footer.linksTitle}</h4>
-            <Link href="/projeler" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkNews}</Link>
-            <Link href="/iletisim" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkContacts}</Link>
-            <Link href="/kariyer" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkCareers}</Link>
+            <Link href="/projects" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkNews}</Link>
+            <Link href="/contact" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkContacts}</Link>
+            <Link href="/careers" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkCareers}</Link>
             <Link href="/portal" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkPortal}</Link>
             <div className="mt-4 flex flex-col gap-2">
-              <Link href="/gizlilik" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.privacy}</Link>
-              <Link href="/cerez" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.cookies}</Link>
+              <Link href="/privacy" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.privacy}</Link>
+              <Link href="/cookies" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.cookies}</Link>
             </div>
           </div>
 

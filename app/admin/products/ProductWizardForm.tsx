@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import type { ChangeEvent, Dispatch, SetStateAction, CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -11,6 +11,32 @@ import RichTextEditor from "@/components/RichTextEditor";
 
 type WizardStep = 1 | 2 | 3;
 type Lang = "tr" | "en";
+
+function catLabel(name: Category["name"], lang: Lang): string {
+  if (typeof name === "string") return name;
+  return (name as any)?.[lang] || (name as any)?.tr || "Kategori";
+}
+
+// Sadece alt kategorisi olmayan (en alt seviye) kategorileri döndürür.
+// Ürünler yalnızca en alt kategoriye atanır; üst kategoriler ebeveyn zinciri üzerinden otomatik belirlenir.
+function getLeafCategories(categories: Category[]): Category[] {
+  const parentIds = new Set(categories.map((c) => c.parentId).filter(Boolean) as string[]);
+  return categories.filter((c) => !parentIds.has(c.id));
+}
+
+// Bir kategorinin kök kategoriden kendisine kadar olan yolunu "Üst > Orta > Alt" şeklinde döndürür.
+function categoryPathLabel(categories: Category[], categoryId: string, lang: Lang): string {
+  const byId = new Map(categories.map((c) => [c.id, c]));
+  const chain: string[] = [];
+  let current = byId.get(categoryId);
+  const seen = new Set<string>();
+  while (current && !seen.has(current.id)) {
+    seen.add(current.id);
+    chain.unshift(catLabel(current.name, lang));
+    current = current.parentId ? byId.get(current.parentId) : undefined;
+  }
+  return chain.join(" > ");
+}
 
 interface CustomSection {
   id: string;
@@ -55,10 +81,6 @@ const POSITRON_DESCRIPTION_STYLE: TextStyle = {
   lineHeight: "1.7",
   letterSpacing: "0px",
 };
-
-function clone<T>(value: T): T {
-  return JSON.parse(JSON.stringify(value));
-}
 
 function parseMulti(val: unknown): { tr: string; en: string } {
   if (typeof val === "string") return { tr: val, en: "" };
@@ -115,16 +137,30 @@ async function uploadImage(file: File): Promise<string> {
   return data.url as string;
 }
 
-export default function ProductWizardForm({ product, categories }: { product: Product | null; categories: Category[] }) {
+export default function ProductWizardForm({ product, categories: initialCategories }: { product: Product | null; categories: Category[] }) {
   const router = useRouter();
   const isEdit = Boolean(product);
+
+  const [categories, setCategories] = useState<Category[]>(initialCategories || []);
+
+  useEffect(() => {
+  if (!initialCategories || initialCategories.length === 0) {
+    fetch("/api/admin/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data.categories)) {
+          setCategories(data.categories);
+        }
+      })
+      .catch(console.error);
+  }
+}, [initialCategories]);
 
   const initialListImage = product?.images?.[0] || "";
   const initialHero = product?.heroImage || "";
   
   const initialGallery = useMemo(() => {
     if (!product || !product.images) return [] as string[];
-    // İlk görsel kapak/liste görselidir, onu galeriden hariç tutuyoruz
     return product.images.slice(1);
   }, [product]);
 
@@ -140,14 +176,16 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
   const [subtitle, setSubtitle] = useState<{ tr: string; en: string }>(parseMulti(product?.subtitle));
   const [heroDescription, setHeroDescription] = useState<{ tr: string; en: string }>(parseMulti(product?.heroDescription));
   
-  const nameStyle = POSITRON_NAME_STYLE;
-  const subtitleStyle = POSITRON_SUBTITLE_STYLE;
-  const heroDescriptionStyle = POSITRON_DESCRIPTION_STYLE;
-  
   const [listImage, setListImage] = useState(initialListImage);
   const [heroImage, setHeroImage] = useState(initialHero);
   const [categoryId, setCategoryId] = useState(product?.categoryId ?? "");
   const [active, setActive] = useState(product?.active ?? true);
+
+  // Ekleme/düzenleme formunda sadece en alt seviye (yaprak) kategoriler seçilebilir.
+  // Üst kategoriler otomatik olarak kategori ağacındaki parentId zinciri üzerinden belirlenir.
+  const selectableCategories = useMemo(() => {
+    return getLeafCategories(categories || []);
+  }, [categories]);
 
   const [customSections, setCustomSections] = useState<CustomSection[]>([
     {
@@ -274,7 +312,6 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
     const filteredVersions = mapBlocks(versSec);
     const filteredFeatures = mapBlocks(featSec);
 
-    // images dizisinin ilk elemanı liste/kapak görselidir, sonrakiler galeridir (kapak resmi galeride mükerrer yer almaz)
     const images = [listImage, ...galleryImages.filter((img) => img !== listImage)].filter(Boolean);
 
     return {
@@ -341,7 +378,7 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
   const currentHeroDesc = heroDescription[currentLang] || heroDescription.tr || "Ürün tanımı";
 
   return (
-    <div className="mx-auto w-full max-w-6xl pb-16">
+    <div className="mx-auto w-full max-w-6xl pb-16 font-montserrat">
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#B87332]">Ürün Sayfası</p>
@@ -429,18 +466,20 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-bold text-[#1A1A1A]">Kategori</label>
+              <label className="mb-2 block text-sm font-bold text-[#1A1A1A]">Kategori Seçimi</label>
               <select value={categoryId} onChange={(e) => setCategoryId(e.target.value)} className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-[#B87332]">
                 <option value="">Kategorisiz / Uncategorized</option>
-                {categories.map((category) => {
-                  const catName = typeof category.name === "object" ? (category.name as any)[currentLang] || category.name.tr : category.name;
-                  return (
-                    <option key={category.id} value={category.id}>
-                      {catName}
-                    </option>
-                  );
-                })}
+                {selectableCategories && selectableCategories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {categoryPathLabel(categories, category.id, currentLang)}
+                  </option>
+                ))}
               </select>
+              {selectableCategories.length === 0 && (
+                <p className="mt-2 text-xs text-gray-400">
+                  Henüz seçilebilecek bir kategori yok. Önce Kategoriler panelinden en az bir (alt) kategori ekleyin.
+                </p>
+              )}
             </div>
 
             <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3">
@@ -749,17 +788,13 @@ export default function ProductWizardForm({ product, categories }: { product: Pr
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-[#B87332]">
-                  {categoryId ? (() => {
-                    const foundCat = categories.find((c) => c.id === categoryId);
-                    if (!foundCat) return "Kategorisiz";
-                    const cName = foundCat.name;
-                    if (typeof cName === "string") return cName;
-                    return cName[currentLang] || cName.tr || "Kategorisiz";
-                  })() : "Kategorisiz"}
+                  {categoryId
+                    ? categoryPathLabel(categories, categoryId, currentLang) || "Kategorisiz"
+                    : "Kategorisiz"}
                 </p>
-                <h3 className="mt-1 text-2xl font-extrabold text-[#1A1A1A]" style={styleToCss(nameStyle)}>{currentName}</h3>
-                <p className="mt-2 text-sm text-gray-600" style={styleToCss(subtitleStyle)}>{currentSubtitle}</p>
-                <p className="mt-3 text-sm text-gray-500" style={styleToCss(heroDescriptionStyle)}>{currentHeroDesc}</p>
+                <h3 className="mt-1 text-2xl font-extrabold text-[#1A1A1A]" style={styleToCss(POSITRON_NAME_STYLE)}>{currentName}</h3>
+                <p className="mt-2 text-sm text-gray-600" style={styleToCss(POSITRON_SUBTITLE_STYLE)}>{currentSubtitle}</p>
+                <p className="mt-3 text-sm text-gray-500" style={styleToCss(POSITRON_DESCRIPTION_STYLE)}>{currentHeroDesc}</p>
               </div>
             </div>
 

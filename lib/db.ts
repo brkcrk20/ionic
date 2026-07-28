@@ -311,7 +311,7 @@ export async function createCategory(input: any) {
   const cat: Category = {
     id: makeId("cat"),
     name: normalizeMultiLang(input.name),
-    slug: slugify(rawNameStr || "kategori"),
+    slug: slugify(rawNameStr || "category"),
     parentId: input.parentId,
     image: input.image,
   };
@@ -348,7 +348,7 @@ export async function updateCategory(id: string, input: Partial<Pick<Category, "
   if (input.name !== undefined) {
     cat.name = normalizeMultiLang(input.name);
     const rawNameStr = typeof cat.name === "object" ? cat.name.tr : cat.name;
-    cat.slug = slugify(rawNameStr || "kategori");
+    cat.slug = slugify(rawNameStr || "category");
   }
   if (input.parentId !== undefined) cat.parentId = input.parentId;
   if (input.image !== undefined) cat.image = input.image;

@@ -11,12 +11,12 @@ import ImagePlaceholder from "@/components/ImagePlaceholder";
 // ImagePlaceholder kullanılıyor. Görseller eklendiğinde burada bir "image"
 // alanı tanımlayıp aşağıdaki ImagePlaceholder'ı <Image> ile değiştirmeniz yeterli.
 const PRODUCT_META = [
-  { id: "resin", key: "resin" },
-  { id: "cnc", key: "cnc" },
-  { id: "waterjet", key: "waterjet" },
-  { id: "tile", key: "tile" },
-  { id: "handling", key: "handling" },
-  { id: "custom", key: "custom" },
+  { id: "resin", key: "resin", categorySlug: "recine-hatlari" },
+  { id: "cnc", key: "cnc", categorySlug: "cnc-kopru-kesim" },
+  { id: "waterjet", key: "waterjet", categorySlug: "su-jeti-kesim" },
+  { id: "tile", key: "tile", categorySlug: "fayans-hatlari" },
+  { id: "handling", key: "handling", categorySlug: "tasima-otomasyon" },
+  { id: "custom", key: "custom", categorySlug: "ozel-tasarim-makineler" },
 ] as const;
 
 export default function MachinesSection() {
@@ -82,7 +82,7 @@ export default function MachinesSection() {
               <h3 className="text-[#F3F1EC] text-xl font-bold mt-1">{activeText.name}</h3>
             </div>
             <Link
-              href={`/kategori/${activeMeta.id}`}
+              href={`/category/${activeMeta.categorySlug}`}
               className="w-12 h-12 rounded-full bg-[#B87332] flex items-center justify-center text-[#F3F1EC] hover:bg-[#F3F1EC] hover:text-[#3A3A3A] transition-colors shadow-lg"
             >
               <ChevronRight />

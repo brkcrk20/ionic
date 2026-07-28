@@ -1,5 +1,146 @@
 {
-  "categories": [],
+  "categories": [
+    {
+      "id": "cat-test",
+      "name": {
+        "tr": "Robotlar",
+        "en": "Robots"
+      },
+      "slug": "robotlar",
+      "parentId": null,
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982a4-csx6n",
+      "name": {
+        "tr": "Makineler & Hatlar",
+        "en": "Machines & Lines"
+      },
+      "slug": "makineler-hatlar",
+      "parentId": null,
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982a5-3c7e1",
+      "name": {
+        "tr": "Komple Hatlar",
+        "en": "Complete Lines"
+      },
+      "slug": "komple-hatlar",
+      "parentId": "cat-19fa85982a4-csx6n",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982a6-8t1i2",
+      "name": {
+        "tr": "Makineler",
+        "en": "Machines"
+      },
+      "slug": "makineler",
+      "parentId": "cat-19fa85982a4-csx6n",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982a7-1bwbk",
+      "name": {
+        "tr": "Otomasyon",
+        "en": "Automation"
+      },
+      "slug": "otomasyon",
+      "parentId": "cat-19fa85982a4-csx6n",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982a8-c1xc6",
+      "name": {
+        "tr": "Reçine İşleme Hatları",
+        "en": "Resin Treatment Lines"
+      },
+      "slug": "recine-hatlari",
+      "parentId": "cat-19fa85982a5-3c7e1",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982a9-0kd9e",
+      "name": {
+        "tr": "Fayans / Ebatlı Taş Hatları",
+        "en": "Tile Processing Lines"
+      },
+      "slug": "fayans-hatlari",
+      "parentId": "cat-19fa85982a5-3c7e1",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982aa-05jdp",
+      "name": {
+        "tr": "Entegre Üretim Hatları",
+        "en": "Integrated Production Lines"
+      },
+      "slug": "entegre-hatlar",
+      "parentId": "cat-19fa85982a5-3c7e1",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982ab-7kkwd",
+      "name": {
+        "tr": "CNC Köprü Kesim",
+        "en": "CNC Bridge Saws"
+      },
+      "slug": "cnc-kopru-kesim",
+      "parentId": "cat-19fa85982a6-8t1i2",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982ad-hj7dj",
+      "name": {
+        "tr": "Su Jeti Kesim Sistemleri",
+        "en": "Waterjet Cutting Systems"
+      },
+      "slug": "su-jeti-kesim",
+      "parentId": "cat-19fa85982a6-8t1i2",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982ae-2dgv6",
+      "name": {
+        "tr": "Taş Kesme & İşleme Makineleri",
+        "en": "Stone Cutting & Processing Machines"
+      },
+      "slug": "tas-kesme-isleme",
+      "parentId": "cat-19fa85982a6-8t1i2",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982af-nx0aa",
+      "name": {
+        "tr": "Taşıma & Otomasyon Sistemleri",
+        "en": "Handling & Automation Systems"
+      },
+      "slug": "tasima-otomasyon",
+      "parentId": "cat-19fa85982a7-1bwbk",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982b0-55enz",
+      "name": {
+        "tr": "Yükleme & Boşaltma Sistemleri",
+        "en": "Loading & Unloading Systems"
+      },
+      "slug": "yukleme-bosaltma",
+      "parentId": "cat-19fa85982a7-1bwbk",
+      "image": null
+    },
+    {
+      "id": "cat-19fa85982b1-vklxf",
+      "name": {
+        "tr": "Özel Tasarım Makineler",
+        "en": "Custom Machinery"
+      },
+      "slug": "ozel-tasarim-makineler",
+      "parentId": "cat-19fa85982a7-1bwbk",
+      "image": null
+    }
+  ],
   "products": [
     {
       "id": "prod-positron-static",
@@ -7,7 +148,7 @@
         "tr": "POSITRON 60",
         "en": ""
       },
-      "slug": "positron",
+      "slug": "positron-60",
       "subtitle": {
         "tr": "Plaka Kurutma ve Reçine Kürleme için Döngüsel Fırın",
         "en": ""
@@ -56,11 +197,11 @@
         }
       ],
       "configNote": {
-        "tr": "POSITRON is available in marble and granite configurations.",
+        "tr": "",
         "en": ""
       },
       "configNote2": {
-        "tr": "Machine dimensions, installed power, fan arrangement and airflow capacity vary according to the selected configuration.",
+        "tr": "",
         "en": ""
       },
       "versions": [
@@ -109,7 +250,7 @@
           "en": ""
         }
       ],
-      "categoryId": null,
+      "categoryId": "cat-19fa85982a8-c1xc6",
       "images": [
         "/Positron_2.png",
         "/Positron_3.jpg"
@@ -128,6 +269,8 @@
           }
         }
       ],
+      "configBlocks": [],
+      "versionBlocks": [],
       "featureBlocks": [
         {
           "title": {
@@ -201,11 +344,11 @@
       ],
       "configs": [],
       "configNote": {
-        "tr": "Konfigürasyon eklenebilie",
+        "tr": "",
         "en": ""
       },
       "configNote2": {
-        "tr": "Bu opsiyondur",
+        "tr": "",
         "en": ""
       },
       "versions": [],
@@ -215,7 +358,7 @@
           "en": ""
         }
       ],
-      "categoryId": null,
+      "categoryId": "cat-19fa85982ab-7kkwd",
       "images": [
         "/uploads/products/1785147610358-zo3z3y.jpg",
         "/uploads/products/1785153926887-jlgopd.png"
@@ -326,7 +469,7 @@
       },
       "versions": [],
       "features": [],
-      "categoryId": null,
+      "categoryId": "cat-19fa85982a9-0kd9e",
       "images": [
         "/uploads/products/1785148837527-svqejd.png"
       ],
