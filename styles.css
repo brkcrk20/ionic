@@ -1,0 +1,154 @@
+/* --- 1. Font Tanımlamaları --- */
+@font-face {
+  font-family: 'IonStyle';
+  src: url('/fonts/IonStyle.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-VariableFont_wght.woff2') format('woff2');
+  font-display: swap;
+}
+
+/* --- 2. Genel Ayarlar --- */
+:root {
+  /* Ana font olarak Montserrat tanımlandı */
+  font-family: 'Montserrat', sans-serif;
+  color: #F3F1EC;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #3A3A3A;
+  color: #F3F1EC;
+  /* Tüm site için ana font Montserrat olarak zorlandı */
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* --- 3. Üst Bar ve Navigasyon --- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.5rem;
+  background: #3a3a3a;
+  border-bottom: 1px solid #555;
+  font-size: 0.95rem;
+}
+
+.topbar span {
+  margin-right: 1.5rem;
+}
+
+.lang-btn {
+  border: 1px solid #F3F1EC;
+  background: transparent;
+  color: #F3F1EC;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.35rem 1.5rem;
+}
+
+.brand .logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #F3F1EC;
+  font-weight: 600;
+}
+
+/* --- 4. Hero Bölümü --- */
+.hero {
+  position: relative;
+  min-height: 72vh;
+  background-image: linear-gradient(rgba(13, 18, 24, 0.5), rgba(13, 18, 24, 0.5)), url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 720px;
+  z-index: 1;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: #F3F1EC;
+  color: #3A3A3A;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+/* --- 5. Koleksiyon Kartları --- */
+.collection-card {
+  background: #4a4a4a;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.collection-info h3 {
+  color: #F3F1EC;
+}
+
+.collection-info p {
+  color: #ccc;
+}
+
+/* --- 6. Yardımcı Sınıflar --- */
+/* IonStyle fontunu kullanmak istersen bu sınıfı kullanabilirsin */
+.font-ion {
+  font-family: 'IonStyle', sans-serif !important;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* --- 7. Mobil Uyumluluk --- */
+@media (max-width: 768px) {
+  .topbar, .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
