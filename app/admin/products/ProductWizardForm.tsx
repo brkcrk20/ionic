@@ -1,13 +1,12 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import type { ChangeEvent, Dispatch, SetStateAction, CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Check, Image as ImageIcon, Loader2, Minus, Plus, Upload, X, Globe } from "lucide-react";
+import { ChevronLeft, ChevronRight, Check, Image as ImageIcon, Loader2, Minus, Plus, Upload, X, Globe, Sparkles } from "lucide-react";
 import type { Category, Product, StyledPair, TextStyle, MultiLangString } from "@/lib/db";
-import RichTextEditor from "@/components/RichTextEditor";
 
 type WizardStep = 1 | 2 | 3;
 type Lang = "tr" | "en";
@@ -17,14 +16,11 @@ function catLabel(name: Category["name"], lang: Lang): string {
   return (name as any)?.[lang] || (name as any)?.tr || "Kategori";
 }
 
-// Sadece alt kategorisi olmayan (en alt seviye) kategorileri döndürür.
-// Ürünler yalnızca en alt kategoriye atanır; üst kategoriler ebeveyn zinciri üzerinden otomatik belirlenir.
 function getLeafCategories(categories: Category[]): Category[] {
   const parentIds = new Set(categories.map((c) => c.parentId).filter(Boolean) as string[]);
   return categories.filter((c) => !parentIds.has(c.id));
 }
 
-// Bir kategorinin kök kategoriden kendisine kadar olan yolunu "Üst > Orta > Alt" şeklinde döndürür.
 function categoryPathLabel(categories: Category[], categoryId: string, lang: Lang): string {
   const byId = new Map(categories.map((c) => [c.id, c]));
   const chain: string[] = [];
@@ -83,12 +79,20 @@ const POSITRON_DESCRIPTION_STYLE: TextStyle = {
 };
 
 function parseMulti(val: unknown): { tr: string; en: string } {
-  if (typeof val === "string") return { tr: val, en: "" };
+  if (typeof val === "string") {
+    // Eski sistemden kalma varsayılan otomatik başlıkları temizle
+    if (val.startsWith("Teknik Detay") || val.startsWith("Konfigürasyon") || val.startsWith("Detay")) {
+      return { tr: "", en: "" };
+    }
+    return { tr: val, en: "" };
+  }
   if (val && typeof val === "object") {
     const obj = val as Record<string, unknown>;
+    const trVal = typeof obj.tr === "string" ? obj.tr : "";
+    const enVal = typeof obj.en === "string" ? obj.en : "";
     return {
-      tr: typeof obj.tr === "string" ? obj.tr : "",
-      en: typeof obj.en === "string" ? obj.en : "",
+      tr: trVal.startsWith("Teknik Detay") || trVal.startsWith("Konfigürasyon") ? "" : trVal,
+      en: enVal.startsWith("Technical Detail") || enVal.startsWith("Configuration") ? "" : enVal,
     };
   }
   return { tr: "", en: "" };
@@ -144,17 +148,17 @@ export default function ProductWizardForm({ product, categories: initialCategori
   const [categories, setCategories] = useState<Category[]>(initialCategories || []);
 
   useEffect(() => {
-  if (!initialCategories || initialCategories.length === 0) {
-    fetch("/api/admin/categories")
-      .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data.categories)) {
-          setCategories(data.categories);
-        }
-      })
-      .catch(console.error);
-  }
-}, [initialCategories]);
+    if (!initialCategories || initialCategories.length === 0) {
+      fetch("/api/admin/categories")
+        .then((res) => res.json())
+        .then((data) => {
+          if (Array.isArray(data.categories)) {
+            setCategories(data.categories);
+          }
+        })
+        .catch(console.error);
+    }
+  }, [initialCategories]);
 
   const initialListImage = product?.images?.[0] || "";
   const initialHero = product?.heroImage || "";
@@ -176,13 +180,14 @@ export default function ProductWizardForm({ product, categories: initialCategori
   const [subtitle, setSubtitle] = useState<{ tr: string; en: string }>(parseMulti(product?.subtitle));
   const [heroDescription, setHeroDescription] = useState<{ tr: string; en: string }>(parseMulti(product?.heroDescription));
   
+  const subtitleInputRef = useRef<HTMLInputElement>(null);
+  const descTextareaRef = useRef<HTMLTextAreaElement>(null);
+
   const [listImage, setListImage] = useState(initialListImage);
   const [heroImage, setHeroImage] = useState(initialHero);
   const [categoryId, setCategoryId] = useState(product?.categoryId ?? "");
   const [active, setActive] = useState(product?.active ?? true);
 
-  // Ekleme/düzenleme formunda sadece en alt seviye (yaprak) kategoriler seçilebilir.
-  // Üst kategoriler otomatik olarak kategori ağacındaki parentId zinciri üzerinden belirlenir.
   const selectableCategories = useMemo(() => {
     return getLeafCategories(categories || []);
   }, [categories]);
@@ -190,17 +195,17 @@ export default function ProductWizardForm({ product, categories: initialCategori
   const [customSections, setCustomSections] = useState<CustomSection[]>([
     {
       id: "desc",
-      title: parseMulti(product?.descriptionSectionTitle || "Teknik Detay 1"),
-      enabled: true,
+      title: parseMulti(product?.descriptionSectionTitle),
+      enabled: Boolean(product?.descriptionSectionTitle),
       open: true,
       blocks: product?.descriptionBlocks?.length
         ? product.descriptionBlocks.map((b) => ({ title: parseMulti(b.title), text: parseMulti(b.text) }))
-        : [makeMultiPair("Detay 1", "Detail 1", "", "")],
+        : [makeMultiPair("", "", "", "")],
     },
     {
       id: "configs",
-      title: parseMulti(product?.configsSectionTitle || "Teknik Detay 2"),
-      enabled: true,
+      title: parseMulti(product?.configsSectionTitle),
+      enabled: Boolean(product?.configsSectionTitle),
       open: true,
       blocks: product?.configBlocks?.length
         ? product.configBlocks.map((b) => ({ title: parseMulti(b.title), text: parseMulti(b.text) }))
@@ -208,8 +213,8 @@ export default function ProductWizardForm({ product, categories: initialCategori
     },
     {
       id: "versions",
-      title: parseMulti(product?.versionsSectionTitle || "Teknik Detay 3"),
-      enabled: true,
+      title: parseMulti(product?.versionsSectionTitle),
+      enabled: Boolean(product?.versionsSectionTitle),
       open: true,
       blocks: product?.versionBlocks?.length
         ? product.versionBlocks.map((b) => ({ title: parseMulti(b.title), text: parseMulti(b.text) }))
@@ -217,8 +222,8 @@ export default function ProductWizardForm({ product, categories: initialCategori
     },
     {
       id: "features",
-      title: parseMulti(product?.featuresSectionTitle || "Teknik Detay 4"),
-      enabled: true,
+      title: parseMulti(product?.featuresSectionTitle),
+      enabled: Boolean(product?.featuresSectionTitle),
       open: true,
       blocks: product?.featureBlocks?.length
         ? product.featureBlocks.map((b) => ({ title: parseMulti(b.title), text: parseMulti(b.text) }))
@@ -234,7 +239,7 @@ export default function ProductWizardForm({ product, categories: initialCategori
       ...prev,
       {
         id: newId,
-        title: { tr: `Teknik Detay ${prev.length + 1}`, en: `Technical Detail ${prev.length + 1}` },
+        title: { tr: "", en: "" },
         enabled: true,
         open: true,
         blocks: [makeMultiPair("", "", "", "")],
@@ -289,6 +294,73 @@ export default function ProductWizardForm({ product, categories: initialCategori
     } finally {
       setUploadingGallery(false);
     }
+  }
+
+  function handleHighlightElement(
+    refObject: React.RefObject<HTMLInputElement | HTMLTextAreaElement | null>,
+    stateSetter: Dispatch<SetStateAction<{ tr: string; en: string }>>
+  ) {
+    const el = refObject.current;
+    if (!el) {
+      stateSetter((prev) => ({
+        ...prev,
+        [currentLang]: (prev[currentLang] || "") + '<span style="color: #B87332;">vurgu</span>',
+      }));
+      return;
+    }
+
+    const start = el.selectionStart ?? el.value.length;
+    const end = el.selectionEnd ?? el.value.length;
+    const val = el.value;
+
+    let newVal = "";
+    if (start !== end) {
+      const selectedText = val.substring(start, end);
+      newVal = val.substring(0, start) + `<span style="color: #B87332;">${selectedText}</span>` + val.substring(end);
+    } else {
+      newVal = val.substring(0, start) + '<span style="color: #B87332;"></span>' + val.substring(end);
+    }
+
+    stateSetter((prev) => ({
+      ...prev,
+      [currentLang]: newVal,
+    }));
+  }
+
+  function handleHighlightBlock(secId: string, bIndex: number, field: "title" | "text", inputEl: HTMLInputElement | HTMLTextAreaElement | null) {
+    setCustomSections((prev) =>
+      prev.map((sec) => {
+        if (sec.id !== secId) return sec;
+        return {
+          ...sec,
+          blocks: sec.blocks.map((b, i) => {
+            if (i !== bIndex) return b;
+            const currentFieldVal = b[field][currentLang] || "";
+            let newVal = "";
+            if (inputEl) {
+              const start = inputEl.selectionStart ?? currentFieldVal.length;
+              const end = inputEl.selectionEnd ?? currentFieldVal.length;
+              if (start !== end) {
+                const selected = currentFieldVal.substring(start, end);
+                newVal = currentFieldVal.substring(0, start) + `<span style="color: #B87332;">${selected}</span>` + currentFieldVal.substring(end);
+              } else {
+                newVal = currentFieldVal.substring(0, start) + '<span style="color: #B87332;"></span>' + currentFieldVal.substring(end);
+              }
+            } else {
+              newVal = currentFieldVal + '<span style="color: #B87332;">vurgu</span>';
+            }
+
+            return {
+              ...b,
+              [field]: {
+                ...b[field],
+                [currentLang]: newVal,
+              },
+            };
+          }),
+        };
+      })
+    );
   }
 
   function buildPayload() {
@@ -373,9 +445,9 @@ export default function ProductWizardForm({ product, categories: initialCategori
   }
 
   const heroPreviewStyle = heroImage ? { backgroundImage: `url('${heroImage}')` } : undefined;
-  const currentName = name[currentLang] || name.tr || "Ürün adı";
-  const currentSubtitle = subtitle[currentLang] || subtitle.tr || "Kısa açıklama";
-  const currentHeroDesc = heroDescription[currentLang] || heroDescription.tr || "Ürün tanımı";
+  const currentName = name[currentLang] || "";
+  const currentSubtitle = subtitle[currentLang] || "";
+  const currentHeroDesc = heroDescription[currentLang] || "";
 
   return (
     <div className="mx-auto w-full max-w-6xl pb-16 font-montserrat">
@@ -383,24 +455,24 @@ export default function ProductWizardForm({ product, categories: initialCategori
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#B87332]">Ürün Sayfası</p>
           <h1 className="mt-2 text-3xl font-extrabold text-[#1A1A1A]">{isEdit ? "Ürünü Düzenle" : "Yeni Ürün Ekle"}</h1>
-          <p className="mt-2 text-sm text-gray-500">Adım adım ürün oluşturma ve çoklu dil (TR/EN) yönetim ekranı.</p>
+          <p className="mt-2 text-sm text-gray-500">Kompakt ürün yönetim ve çoklu dil (TR/EN) ekranı.</p>
         </div>
         
         <div className="flex items-center gap-3">
-          <div className="flex items-center rounded-2xl border border-gray-200 bg-white p-1 shadow-sm">
+          <div className="flex items-center rounded-xl border border-gray-200 bg-white p-1 shadow-sm">
             <button
               type="button"
               onClick={() => setCurrentLang("tr")}
-              className={`flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition-colors ${currentLang === "tr" ? "bg-[#1A1A1A] text-white" : "text-gray-600 hover:bg-gray-100"}`}
+              className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${currentLang === "tr" ? "bg-[#B87332] text-white" : "text-gray-600 hover:bg-gray-100"}`}
             >
-              <Globe size={14} /> Türkçe (TR)
+              <Globe size={12} /> TR
             </button>
             <button
               type="button"
               onClick={() => setCurrentLang("en")}
-              className={`flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition-colors ${currentLang === "en" ? "bg-[#1A1A1A] text-white" : "text-gray-600 hover:bg-gray-100"}`}
+              className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${currentLang === "en" ? "bg-[#B87332] text-white" : "text-gray-600 hover:bg-gray-100"}`}
             >
-              <Globe size={14} /> English (EN)
+              <Globe size={12} /> EN
             </button>
           </div>
 
@@ -429,57 +501,70 @@ export default function ProductWizardForm({ product, categories: initialCategori
       {step === 1 && (
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
-            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#B87332]">Aktif Dil: {currentLang.toUpperCase()}</span>
-              <span className="text-xs text-gray-400">Girdiğiniz alanlar seçili dil için kaydedilir.</span>
+            
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-100 pb-4 gap-4">
+              <div className="w-full sm:w-auto flex-1">
+                <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-gray-600">Kategori</label>
+                <select value={categoryId} onChange={(e) => setCategoryId(e.target.value)} className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-[#B87332]">
+                  <option value="">Kategorisiz</option>
+                  {selectableCategories && selectableCategories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {categoryPathLabel(categories, category.id, currentLang)}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-bold text-[#1A1A1A]">Ürün ismi ({currentLang.toUpperCase()})</label>
+              <label className="mb-1 block text-sm font-bold text-[#1A1A1A]">Ürün İsmi ({currentLang.toUpperCase()})</label>
               <input
                 value={name[currentLang]}
                 onChange={(e) => setName({ ...name, [currentLang]: e.target.value })}
-                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-[#B87332]"
-                placeholder={currentLang === "tr" ? "Örn: POSITRON 60" : "e.g., POSITRON 60"}
+                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 font-extrabold text-lg outline-none focus:border-[#B87332]"
+                placeholder={currentLang === "tr" ? "Örn: POSITRON" : "Ex: POSITRON"}
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-bold text-[#1A1A1A]">Kısa açıklama ({currentLang.toUpperCase()})</label>
+              <div className="flex justify-between items-center mb-1">
+                <label className="text-sm font-bold text-[#B87332]">Kısa Açıklama ({currentLang.toUpperCase()} - Turuncu Alan)</label>
+                <button
+                  type="button"
+                  onClick={() => handleHighlightElement(subtitleInputRef, setSubtitle)}
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#B87332] hover:bg-[#9c6127] text-white px-3 py-1.5 text-xs font-bold shadow-sm transition"
+                >
+                  <Sparkles size={13} /> Turuncu Vurgu Ekle
+                </button>
+              </div>
               <input
+                ref={subtitleInputRef}
                 value={subtitle[currentLang]}
                 onChange={(e) => setSubtitle({ ...subtitle, [currentLang]: e.target.value })}
-                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-[#B87332]"
-                placeholder={currentLang === "tr" ? "Ürünün kısa açıklaması" : "Short description"}
+                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm outline-none focus:border-[#B87332]"
+                placeholder={currentLang === "tr" ? "Plaka Kurutma ve Reçine Sertleştirme" : "Cyclic Oven for Slab Drying"}
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-bold text-[#1A1A1A]">Ürün tanımı ({currentLang.toUpperCase()})</label>
+              <div className="flex justify-between items-center mb-1">
+                <label className="text-sm font-bold text-[#1A1A1A]">Ürün Tanımı ({currentLang.toUpperCase()} - Düz Metin)</label>
+                <button
+                  type="button"
+                  onClick={() => handleHighlightElement(descTextareaRef, setHeroDescription)}
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#B87332] hover:bg-[#9c6127] text-white px-3 py-1.5 text-xs font-bold shadow-sm transition"
+                >
+                  <Sparkles size={13} /> Turuncu Vurgu Ekle
+                </button>
+              </div>
               <textarea
+                ref={descTextareaRef}
                 value={heroDescription[currentLang]}
                 onChange={(e) => setHeroDescription({ ...heroDescription, [currentLang]: e.target.value })}
-                rows={7}
-                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-[#B87332]"
-                placeholder={currentLang === "tr" ? "Ürünün giriş metnini buraya yazın..." : "Enter introductory text..."}
+                rows={6}
+                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm outline-none focus:border-[#B87332]"
+                placeholder={currentLang === "tr" ? "Ürün detay açıklamalarını buraya yazın..." : "Enter product description..."}
               />
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-bold text-[#1A1A1A]">Kategori Seçimi</label>
-              <select value={categoryId} onChange={(e) => setCategoryId(e.target.value)} className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-[#B87332]">
-                <option value="">Kategorisiz / Uncategorized</option>
-                {selectableCategories && selectableCategories.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {categoryPathLabel(categories, category.id, currentLang)}
-                  </option>
-                ))}
-              </select>
-              {selectableCategories.length === 0 && (
-                <p className="mt-2 text-xs text-gray-400">
-                  Henüz seçilebilecek bir kategori yok. Önce Kategoriler panelinden en az bir (alt) kategori ekleyin.
-                </p>
-              )}
             </div>
 
             <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3">
@@ -496,7 +581,7 @@ export default function ProductWizardForm({ product, categories: initialCategori
               <button type="button" onClick={() => setStep(2)} className="inline-flex items-center gap-2 rounded-full bg-[#1A1A1A] px-5 py-3 text-sm font-bold text-white hover:bg-black">
                 İleri <ChevronRight size={16} />
               </button>
-              <p className="text-xs text-gray-500">Sonraki adımda içerik ve görselleri ayarlayabilirsiniz.</p>
+              <span className="text-xs text-gray-400">Boş bırakılan alanlar diğer dilden kopyalanmaz, boş kalır.</span>
             </div>
           </div>
 
@@ -504,7 +589,7 @@ export default function ProductWizardForm({ product, categories: initialCategori
             <div className="flex items-center gap-2 text-sm font-bold text-[#1A1A1A]">
               <ImageIcon size={18} className="text-[#B87332]" /> Ürünler Sayfası Görseli (Liste / Kapak Resmi)
             </div>
-            <p className="text-xs text-gray-500">Ürünler sayfasında ve kategori sayfalarında kart üzerinde görünecek şeffaf/webp görsel.</p>
+            <p className="text-xs text-gray-500">Ürünler sayfasında ve kategori sayfalarında kart üzerinde görünecek görsel.</p>
 
             <div className="relative flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl border border-gray-200 bg-gray-50">
               {listImage ? (
@@ -537,7 +622,7 @@ export default function ProductWizardForm({ product, categories: initialCategori
           <div className="flex flex-wrap items-center justify-between pb-2 border-b border-gray-100 mb-4 gap-2">
             <div>
               <h2 className="text-lg font-extrabold text-[#1A1A1A]">Teknik Detaylar ({currentLang.toUpperCase()})</h2>
-              <p className="text-xs text-gray-500">Şu an <strong>{currentLang.toUpperCase()}</strong> dilinde düzenleme yapıyorsunuz.</p>
+              <p className="text-xs text-gray-500">Açılır kapanır bölümler ekleyip çıkarabilirsiniz.</p>
             </div>
             <button
               type="button"
@@ -549,28 +634,20 @@ export default function ProductWizardForm({ product, categories: initialCategori
           </div>
 
           {customSections.map((section, sIndex) => (
-            <div key={section.id} className="overflow-hidden rounded-3xl border border-gray-200 bg-[#F9F8F6] relative">
-              <div className="flex w-full items-center justify-between gap-4 px-5 py-4">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setCustomSections((prev) =>
-                      prev.map((sec) => (sec.id === section.id ? { ...sec, open: !sec.open } : sec))
-                    );
-                  }}
-                  className="flex flex-1 items-center gap-3 text-left"
-                >
+            <details key={section.id} open className="overflow-hidden rounded-3xl border border-gray-200 bg-[#F9F8F6]">
+              <summary className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 select-none bg-gray-100/80 hover:bg-gray-100">
+                <div className="flex items-center gap-3">
                   <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white ${section.enabled ? "bg-[#B87332]" : "bg-gray-400"}`}>
-                    {section.open ? <Minus size={18} /> : <Plus size={18} />}
+                    <Plus size={16} />
                   </span>
                   <div>
-                    <p className="text-sm font-bold text-[#1A1A1A]">{section.title[currentLang] || `Teknik Detay ${sIndex + 1}`}</p>
+                    <p className="text-sm font-bold text-[#1A1A1A]">{section.title[currentLang] || <span className="text-gray-400 italic font-normal">Başlıksız Bölüm</span>}</p>
                     <p className="text-xs text-gray-500">{section.enabled ? "Aktif" : "Kapalı"}</p>
                   </div>
-                </button>
+                </div>
 
-                <div className="flex items-center gap-3">
-                  <label className="flex items-center gap-2 text-xs font-semibold text-gray-600">
+                <div className="flex items-center gap-3" onClick={(e) => e.stopPropagation()}>
+                  <label className="flex items-center gap-2 text-xs font-semibold text-gray-600 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={section.enabled}
@@ -594,71 +671,84 @@ export default function ProductWizardForm({ product, categories: initialCategori
                     </button>
                   )}
                 </div>
-              </div>
+              </summary>
 
-              {section.enabled && section.open && (
-                <div className="border-t border-gray-200 bg-white px-5 py-5">
-                  <div className="space-y-4">
-                    <div>
-                      <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-gray-500">Teknik detay başlığı ({currentLang.toUpperCase()})</label>
-                      <input
-                        value={section.title[currentLang]}
-                        onChange={(e) => {
-                          const val = e.target.value;
-                          setCustomSections((prev) =>
-                            prev.map((sec) =>
-                              sec.id === section.id ? { ...sec, title: { ...sec.title, [currentLang]: val } } : sec
-                            )
-                          );
-                        }}
-                        placeholder="Örn: Teknik Detay 1"
-                        className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold text-[#1A1A1A] outline-none focus:border-[#B87332]"
-                      />
-                    </div>
+              {section.enabled && (
+                <div className="border-t border-gray-200 bg-white px-5 py-5 space-y-4">
+                  <div>
+                    <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-gray-500">Teknik Detay Başlığı ({currentLang.toUpperCase()})</label>
+                    <input
+                      value={section.title[currentLang]}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setCustomSections((prev) =>
+                          prev.map((sec) =>
+                            sec.id === section.id ? { ...sec, title: { ...sec.title, [currentLang]: val } } : sec
+                          )
+                        );
+                      }}
+                      placeholder="Boş bırakılabilir..."
+                      className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold text-[#1A1A1A] outline-none focus:border-[#B87332]"
+                    />
+                  </div>
 
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-base font-extrabold text-[#1A1A1A]">İçerik Blokları</h3>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setCustomSections((prev) =>
-                            prev.map((sec) =>
-                              sec.id === section.id
-                                ? { ...sec, blocks: [...sec.blocks, makeMultiPair("", "", "", "")] }
-                                : sec
-                            )
-                          );
-                        }}
-                        className="rounded-full bg-[#1A1A1A] px-4 py-2 text-xs font-bold text-white hover:bg-black"
-                      >
-                        Blok Ekle
-                      </button>
-                    </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="text-sm font-extrabold text-[#1A1A1A]">İçerik Blokları</h3>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCustomSections((prev) =>
+                          prev.map((sec) =>
+                            sec.id === section.id
+                              ? { ...sec, blocks: [...sec.blocks, makeMultiPair("", "", "", "")] }
+                              : sec
+                          )
+                        );
+                      }}
+                      className="rounded-full bg-[#1A1A1A] px-4 py-2 text-xs font-bold text-white hover:bg-black"
+                    >
+                      Blok Ekle
+                    </button>
+                  </div>
 
-                    {section.blocks.map((block, bIndex) => (
-                      <div key={bIndex} className="space-y-3 rounded-2xl border border-gray-200 bg-gray-50 p-4">
-                        <div className="flex items-center justify-between">
-                          <p className="text-sm font-bold text-[#1A1A1A]">Satır {bIndex + 1}</p>
-                          {section.blocks.length > 1 && (
+                  {section.blocks.map((block, bIndex) => (
+                    <div key={bIndex} className="space-y-3 rounded-2xl border border-gray-200 bg-gray-50 p-4">
+                      <div className="flex items-center justify-between">
+                        <p className="text-xs font-bold text-[#1A1A1A]">Satır {bIndex + 1}</p>
+                        {section.blocks.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setCustomSections((prev) =>
+                                prev.map((sec) =>
+                                  sec.id === section.id
+                                    ? { ...sec, blocks: sec.blocks.filter((_, i) => i !== bIndex) }
+                                    : sec
+                                )
+                              );
+                            }}
+                            className="rounded-full p-1 text-gray-500 hover:text-red-600"
+                          >
+                            <X size={14} />
+                          </button>
+                        )}
+                      </div>
+
+                      <div className="space-y-3">
+                        <div>
+                          <div className="flex justify-between items-center mb-1">
+                            <label className="text-xs font-semibold text-gray-600">Başlık</label>
                             <button
                               type="button"
-                              onClick={() => {
-                                setCustomSections((prev) =>
-                                  prev.map((sec) =>
-                                    sec.id === section.id
-                                      ? { ...sec, blocks: sec.blocks.filter((_, i) => i !== bIndex) }
-                                      : sec
-                                  )
-                                );
+                              onClick={(e) => {
+                                const inputEl = (e.currentTarget.parentElement?.nextElementSibling as HTMLInputElement) || null;
+                                handleHighlightBlock(section.id, bIndex, "title", inputEl);
                               }}
-                              className="rounded-full p-2 text-gray-500 hover:text-red-600"
+                              className="inline-flex items-center gap-1 rounded-lg bg-[#B87332] hover:bg-[#9c6127] text-white px-2.5 py-1 text-[11px] font-bold shadow-sm transition"
                             >
-                              <X size={16} />
+                              <Sparkles size={11} /> Turuncu Vurgu
                             </button>
-                          )}
-                        </div>
-
-                        <div className="space-y-3">
+                          </div>
                           <input
                             value={block.title[currentLang]}
                             onChange={(e) => {
@@ -677,11 +767,29 @@ export default function ProductWizardForm({ product, categories: initialCategori
                               );
                             }}
                             placeholder="Başlık..."
-                            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-[#1A1A1A] outline-none focus:border-[#B87332]"
+                            className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-[#1A1A1A] outline-none focus:border-[#B87332]"
                           />
-                          <RichTextEditor
+                        </div>
+
+                        <div>
+                          <div className="flex justify-between items-center mb-1">
+                            <label className="text-xs font-semibold text-gray-600">Açıklama / Değer (Düz Metin)</label>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                const textareaEl = (e.currentTarget.parentElement?.nextElementSibling as HTMLTextAreaElement) || null;
+                                handleHighlightBlock(section.id, bIndex, "text", textareaEl);
+                              }}
+                              className="inline-flex items-center gap-1 rounded-lg bg-[#B87332] hover:bg-[#9c6127] text-white px-2.5 py-1 text-[11px] font-bold shadow-sm transition"
+                            >
+                              <Sparkles size={11} /> Turuncu Vurgu
+                            </button>
+                          </div>
+                          <textarea
+                            rows={4}
                             value={block.text[currentLang]}
-                            onChange={(textVal) => {
+                            onChange={(e) => {
+                              const textVal = e.target.value;
                               setCustomSections((prev) =>
                                 prev.map((sec) =>
                                   sec.id === section.id
@@ -695,16 +803,16 @@ export default function ProductWizardForm({ product, categories: initialCategori
                                 )
                               );
                             }}
-                            minHeight={170}
                             placeholder="Açıklama metni..."
+                            className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs text-gray-800 outline-none focus:border-[#B87332]"
                           />
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               )}
-            </div>
+            </details>
           ))}
 
           <div className="flex items-center justify-between gap-3 pt-2">

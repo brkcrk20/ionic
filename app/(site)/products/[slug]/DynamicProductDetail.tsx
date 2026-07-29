@@ -30,10 +30,9 @@ function css(style?: TextStyle): CSSProperties | undefined {
   };
 }
 
-// Çoklu dil verisini (tr/en) seçilen dile göre çeviren yardımcı fonksiyon
 function getLangText(val: MultiLangString | undefined, isTr: boolean): string {
   if (!val) return "";
-  if (typeof val === "string") return val; // Eski kayıtlar için yedek
+  if (typeof val === "string") return val;
   return isTr ? (val.tr || val.en || "") : (val.en || val.tr || "");
 }
 
@@ -57,15 +56,16 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
   const indexOf = (key: string) => sections.findIndex((s) => s.key === key);
 
   const heroImage = product.heroImage || product.images[1] || product.images[0] || "";
-  
-  // Kapak görseli (images[0]) galeriye kesinlikle girmesin diye her koşulda images[0]'ı hariç tutuyoruz
   const galleryImages = (product.images || []).filter((img, index) => index > 0 && img !== product.heroImage);
 
   const productName = getLangText(product.name, isTr);
   const productSubtitle = getLangText(product.subtitle, isTr);
   const productHeroDesc = getLangText(product.heroDescription, isTr);
+  
   const descSectionTitle = getLangText(product.descriptionSectionTitle, isTr);
   const configsSectionTitle = getLangText(product.configsSectionTitle, isTr);
+  const versionsSectionTitle = getLangText(product.versionsSectionTitle, isTr);
+  const featuresSectionTitle = getLangText(product.featuresSectionTitle, isTr);
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white font-montserrat text-[#3A3A3A]">
@@ -73,7 +73,6 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
         className="relative flex min-h-screen w-full flex-col justify-start bg-[#3A3A3A] bg-no-repeat bg-bottom bg-[length:100%_auto] px-6 pb-20 pt-28 lg:pl-16 lg:pr-16 lg:pt-32"
         style={heroImage ? { backgroundImage: `url('${heroImage}')` } : undefined}
       >
-
         <div className="relative z-10 mx-auto w-full lg:ml-[-30px]">
           <div className="mb-4 flex flex-wrap items-center gap-2 text-[8pt] uppercase tracking-widest text-white/70">
             <Link href="/" className="transition-colors hover:text-[#B87332]">{isTr ? "Anasayfa" : "Homepage"}</Link>
@@ -107,7 +106,7 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                   <button onClick={() => toggleSection(indexOf("description"))} className="flex w-full cursor-pointer items-center justify-between px-6 py-5 text-left transition-colors hover:bg-gray-200/50">
                     <div className="flex items-center gap-3">
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#B87332] text-white transition-transform duration-300">{openSections[indexOf("description")] ? <Minus size={18} /> : <Plus size={18} />}</span>
-                      <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{descSectionTitle || (isTr ? "Açıklama & Sistem Mimarisi" : "Description & System Architecture")}</h3>
+                      {descSectionTitle && <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{descSectionTitle}</h3>}
                     </div>
                   </button>
                   {openSections[indexOf("description")] && (
@@ -132,7 +131,7 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                   <button onClick={() => toggleSection(indexOf("configs"))} className="flex w-full cursor-pointer items-center justify-between px-6 py-5 text-left transition-colors hover:bg-gray-200/50">
                     <div className="flex items-center gap-3">
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#B87332] text-white transition-transform duration-300">{openSections[indexOf("configs")] ? <Minus size={18} /> : <Plus size={18} />}</span>
-                      <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{configsSectionTitle || (isTr ? "Mevcut Konfigürasyonlar" : "Available Configurations")}</h3>
+                      {configsSectionTitle && <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{configsSectionTitle}</h3>}
                     </div>
                   </button>
                   {openSections[indexOf("configs")] && (
@@ -141,7 +140,7 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                         {product.configBlocks?.length
                           ? product.configBlocks.map((cfg, i) => (
                               <div key={i} className="space-y-1">
-                                <RichTextContent value={getLangText(cfg.title, isTr) || `${isTr ? "Konfigürasyon" : "Configuration"} ${i + 1}`} className="font-extrabold text-[#B87332]" style={css(cfg.titleStyle)} />
+                                <RichTextContent value={getLangText(cfg.title, isTr)} className="font-extrabold text-[#B87332]" style={css(cfg.titleStyle)} />
                                 <RichTextContent value={getLangText(cfg.text, isTr)} className="whitespace-pre-wrap" style={css(cfg.textStyle)} />
                               </div>
                             ))
@@ -164,7 +163,7 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                   <button onClick={() => toggleSection(indexOf("versions"))} className="flex w-full cursor-pointer items-center justify-between px-6 py-5 text-left transition-colors hover:bg-gray-200/50">
                     <div className="flex items-center gap-3">
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#B87332] text-white transition-transform duration-300">{openSections[indexOf("versions")] ? <Minus size={18} /> : <Plus size={18} />}</span>
-                      <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{isTr ? "Mevcut Versiyonlar & Opsiyonlar" : "Available Versions & Options"}</h3>
+                      {versionsSectionTitle && <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{versionsSectionTitle}</h3>}
                     </div>
                   </button>
                   {openSections[indexOf("versions")] && (
@@ -173,7 +172,7 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                         {product.versionBlocks?.length
                           ? product.versionBlocks.map((v, i) => (
                               <div key={i} className="space-y-1">
-                                <RichTextContent value={getLangText(v.title, isTr) || `${isTr ? "Versiyon" : "Version"} ${i + 1}`} className="font-extrabold text-[#B87332]" style={css(v.titleStyle)} />
+                                <RichTextContent value={getLangText(v.title, isTr)} className="font-extrabold text-[#B87332]" style={css(v.titleStyle)} />
                                 <RichTextContent value={getLangText(v.text, isTr)} className="whitespace-pre-wrap" style={css(v.textStyle)} />
                               </div>
                             ))
@@ -194,7 +193,7 @@ export default function DynamicProductDetail({ product, categoryName }: { produc
                   <button onClick={() => toggleSection(indexOf("features"))} className="flex w-full cursor-pointer items-center justify-between px-6 py-5 text-left transition-colors hover:bg-gray-200/50">
                     <div className="flex items-center gap-3">
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#B87332] text-white transition-transform duration-300">{openSections[indexOf("features")] ? <Minus size={18} /> : <Plus size={18} />}</span>
-                      <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{isTr ? "Temel Özellikler" : "Main Features"}</h3>
+                      {featuresSectionTitle && <h3 className="text-lg font-extrabold text-[#3A3A3A] md:text-xl">{featuresSectionTitle}</h3>}
                     </div>
                   </button>
                   {openSections[indexOf("features")] && (

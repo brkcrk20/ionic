@@ -7,20 +7,6 @@ import { useLanguage } from "@/lib/i18n";
 import { Search, Filter, ChevronDown, ArrowRight } from "lucide-react";
 import type { Category } from "@/lib/db";
 
-const STATIC_PRODUCTS_DATA = [
-  {
-    id: "static-positron",
-    name: "POSITRON 60",
-    code: "POSITRON",
-    category: "Fırın Kule",
-    categoryId: "firin-kule",
-    categorySlug: "firin-kule",
-    parentCategoryId: null,
-    image: "/Positron_3.jpg",
-    slug: "positron",
-  },
-];
-
 function getLangText(val: any, lang: "tr" | "en" = "tr"): string {
   if (!val) return "";
   if (typeof val === "string") return val;
@@ -73,9 +59,8 @@ export default function ProductsPageClient({
   const [selectedCategorySlug, setSelectedCategorySlug] = useState(initialCategory);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const merged = [...STATIC_PRODUCTS_DATA, ...dbProducts];
   const seen = new Set<string>();
-  const PRODUCTS_DATA = merged.filter((product) => {
+  const PRODUCTS_DATA = dbProducts.filter((product) => {
     if (seen.has(product.slug)) return false;
     seen.add(product.slug);
     return true;
@@ -222,7 +207,7 @@ export default function ProductsPageClient({
                 href={`/products/${product.slug}`}
                 className="bg-[#F3F1EC]/50 border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col"
               >
-                <div className="relative h-56 sm:h-64 md:h-72 w-full bg-white flex items-center justify-center p-6 overflow-hidden border-b border-gray-100">
+                <div className="relative h-40 sm:h-48 md:h-52 w-full bg-white flex items-center justify-center p-6 overflow-hidden border-b border-gray-100">
                   <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500 w-full h-full">
                     <Image 
                       src={product.image} 
