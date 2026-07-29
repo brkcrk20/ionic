@@ -206,7 +206,7 @@ const translations: Record<Lang, Translations> = {
         subtitleLine2: "ION MECCANICA.",
       },
       brand: {
-        title: "Deneme. Güvenilirlik. Bağlılık.",
+        title: "Mühendislik. Güvenilirlik. Bağlılık.",
         description:
           "Tekli makinelerden komple işleme hatlarına kadar ION MECCANICA, doğal taş endüstrisi için pratik mühendisliği, sağlam üretimi ve esnek proje yürütmeyi bir araya getirir.",
       },
