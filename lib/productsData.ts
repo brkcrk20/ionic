@@ -18,9 +18,9 @@ export async function getProductsPageData() {
       const catName = getLangText(cat?.name, "tr");
       return {
         id: p.id,
-        name: getLangText(p.name, "tr"),
+        name: p.name, 
         code: p.slug.toUpperCase().replace(/-/g, " "),
-        category: catName,
+        category: cat?.name || "",
         categoryId: p.categoryId,
         categorySlug: cat?.slug || "",
         parentCategoryId: cat?.parentId || null,

@@ -142,7 +142,7 @@ const translations: Record<Lang, Translations> = {
     nav: {
       machines: "Makineler & Hatlar",
       engineering: "Mühendislik & Teknolojiler",
-      service: "Ion Oneflow",
+      service: "ION Oneflow",
       company: "Kurumsal",
       projectsNews: "Projeler & Haberler",
       contact: "İletişim",
@@ -301,7 +301,7 @@ const translations: Record<Lang, Translations> = {
     nav: {
       machines: "Machines & Lines",
       engineering: "Engineering & Technology",
-      service: "Ion Oneflow",
+      service: "ION Oneflow",
       company: "Company",
       projectsNews: "Projects & News",
       contact: "Contact",
@@ -314,7 +314,7 @@ const translations: Record<Lang, Translations> = {
       contactSales: "Contacts & Sales Network",
       careers: "Careers",
       portal: "Customer Portal Login",
-      addressTitle: "Organize Sanayi Bölgesi, 14. Cadde",
+      addressTitle: "Kocabaş mah. mermerciler sokak",
       addressSub: "Denizli / Turkiye",
       catLines: "Complete Lines",
       resinLines: "Resin Treatment Lines",

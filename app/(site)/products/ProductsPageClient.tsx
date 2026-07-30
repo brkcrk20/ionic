@@ -1,19 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
 import { Search, Filter, ChevronDown, ArrowRight } from "lucide-react";
 import type { Category } from "@/lib/db";
 
-function getLangText(val: any, lang: "tr" | "en" = "tr"): string {
+function getLangText(val: any, lang: string = "tr"): string {
   if (!val) return "";
   if (typeof val === "string") return val;
-  return lang === "tr" ? (val.tr || val.en || "") : (val.en || val.tr || "");
+  const targetLang = String(lang).toLowerCase();
+  if (targetLang === "en") {
+    return val.en || val.tr || "";
+  }
+  return val.tr || val.en || "";
 }
 
-// Bir kategorinin kendisi dahil tüm alt/torun kategori id'lerini (sınırsız derinlik) döndürür
 function getDescendantAndSelfIds(categories: Category[], rootId: string): Set<string> {
   const result = new Set<string>([rootId]);
   let changed = true;
@@ -29,7 +32,6 @@ function getDescendantAndSelfIds(categories: Category[], rootId: string): Set<st
   return result;
 }
 
-// Kategori seçim listesi için ağacı derinlik bilgisiyle düz bir listeye çevirir (öbek/nested optgroup desteklenmediği için)
 function flattenCategoryOptions(
   categories: Category[],
   parentId: string | null = null,
@@ -53,7 +55,14 @@ export default function ProductsPageClient({
   initialCategory?: string; 
 }) {
   const { lang } = useLanguage();
-  const isTr = lang === "TR";
+  const [currentLang, setCurrentLang] = useState(lang);
+
+  // Dil değiştiğinde tetiklenmesi için
+  useEffect(() => {
+    setCurrentLang(lang);
+  }, [lang]);
+
+  const isTr = String(currentLang).toUpperCase() === "TR";
 
   const [activeTab, setActiveTab] = useState<"filter" | "search">("filter");
   const [selectedCategorySlug, setSelectedCategorySlug] = useState(initialCategory);
@@ -66,17 +75,14 @@ export default function ProductsPageClient({
     return true;
   });
 
-  // Kategori Filtreleme Mantığı (Hiyerarşik: herhangi bir seviyedeki kategori seçilirse, altındaki tüm alt/torun kategorilerin ürünleri de gelir)
   const filteredProducts = PRODUCTS_DATA.filter((product) => {
     if (!selectedCategorySlug || selectedCategorySlug === "all") {
       return true;
     }
 
-    // Seçilen slug'a ait kategoriyi bul
     const targetCategory = categories.find((c) => c.slug === selectedCategorySlug);
     if (!targetCategory) return product.categorySlug === selectedCategorySlug;
 
-    // Seçilen kategorinin kendisi ve altındaki tüm seviyelerin id'lerini al
     const allowedIds = getDescendantAndSelfIds(categories, targetCategory.id);
 
     return (
@@ -86,7 +92,9 @@ export default function ProductsPageClient({
   }).filter((product) => {
     if (!searchQuery) return true;
     const query = searchQuery.toLowerCase();
-    return product.name.toLowerCase().includes(query) || product.code.toLowerCase().includes(query);
+    const productName = getLangText(product.name, currentLang).toLowerCase();
+    const productCode = (product.code || "").toLowerCase();
+    return productName.includes(query) || productCode.includes(query);
   });
 
   return (
@@ -112,7 +120,7 @@ export default function ProductsPageClient({
           <p className="text-lg md:text-xl text-[#F3F1EC]/80 font-medium mb-8">
             {isTr 
               ? "Doğal taş ve alternatif malzemelerin işlenmesi için ileri düzey sistemler." 
-              : "Natural stone and alternative materials processing."}
+              : "Advanced systems for processing natural stone and alternative materials."}
           </p>
 
           <div className="flex items-center gap-8 border-b border-white/10 pb-4 mb-8 text-sm md:text-base font-bold tracking-wider uppercase">
@@ -166,7 +174,7 @@ export default function ProductsPageClient({
                   {flattenCategoryOptions(categories).map(({ cat, depth }) => (
                     <option key={cat.id} value={cat.slug}>
                       {"— ".repeat(depth)}
-                      {getLangText(cat.name, isTr ? "tr" : "en")}
+                      {getLangText(cat.name, currentLang)}
                     </option>
                   ))}
                 </select>
@@ -201,45 +209,49 @@ export default function ProductsPageClient({
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
-              <Link 
-                key={product.id}
-                href={`/products/${product.slug}`}
-                className="bg-[#F3F1EC]/50 border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col"
-              >
-                <div className="relative h-40 sm:h-48 md:h-52 w-full bg-white flex items-center justify-center p-6 overflow-hidden border-b border-gray-100">
-                  <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500 w-full h-full">
-                    <Image 
-                      src={product.image} 
-                      alt={product.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover object-center"
-                    />
-                  </div>
-                  <div className="absolute top-4 left-4 bg-[#3A3A3A] text-white text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-10">
-                    {product.category}
-                  </div>
-                </div>
+            {filteredProducts.map((product) => {
+              const currentCat = categories.find((c) => c.id === product.categoryId);
 
-                <div className="p-8 flex flex-col flex-1 justify-between bg-white">
-                  <div>
-                    <span className="text-xs font-bold text-[#B87332] tracking-wider uppercase block mb-1">
-                      {product.code}
-                    </span>
-                    <h3 className="text-[#3A3A3A] text-xl font-extrabold group-hover:text-[#B87332] transition-colors mb-3">
-                      {product.name}
-                    </h3>
+              return (
+                <Link 
+                  key={product.id}
+                  href={`/products/${product.slug}`}
+                  className="bg-[#F3F1EC]/50 border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col"
+                >
+                  <div className="relative h-40 sm:h-48 md:h-52 w-full bg-white flex items-center justify-center p-6 overflow-hidden border-b border-gray-100">
+                    <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500 w-full h-full">
+                      <Image 
+                        src={product.image} 
+                        alt={getLangText(product.name, currentLang)}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover object-center"
+                      />
+                    </div>
+                    <div className="absolute top-4 left-4 bg-[#3A3A3A] text-white text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-10">
+                      {currentCat ? getLangText(currentCat.name, currentLang) : (product.category || "")}
+                    </div>
                   </div>
 
-                  <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
-                    <span className="text-sm font-bold text-[#3A3A3A] group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                      {isTr ? "Ürünü İncele" : "View Product"} <ArrowRight size={16} className="text-[#B87332]" />
-                    </span>
+                  <div className="p-8 flex flex-col flex-1 justify-between bg-white">
+                    <div>
+                      <span className="text-xs font-bold text-[#B87332] tracking-wider uppercase block mb-1">
+                        {product.code}
+                      </span>
+                      <h3 className="text-[#3A3A3A] text-xl font-extrabold group-hover:text-[#B87332] transition-colors mb-3">
+                        {getLangText(product.name, currentLang)}
+                      </h3>
+                    </div>
+
+                    <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+                      <span className="text-sm font-bold text-[#3A3A3A] group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                        {isTr ? "Ürünü İncele" : "View Product"} <ArrowRight size={16} className="text-[#B87332]" />
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>

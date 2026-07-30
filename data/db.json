@@ -1,16 +1,6 @@
 {
   "categories": [
     {
-      "id": "cat-test",
-      "name": {
-        "tr": "Robotlar",
-        "en": "Robots"
-      },
-      "slug": "robotlar",
-      "parentId": null,
-      "image": null
-    },
-    {
       "id": "cat-19fa85982a4-csx6n",
       "name": {
         "tr": "Makineler & Hatlar",
@@ -148,7 +138,7 @@
         "tr": "POSITRON",
         "en": "POSITRON"
       },
-      "slug": "positron-2",
+      "slug": "positron",
       "subtitle": {
         "tr": "Plaka Kurutma ve Reçine Kürleme için Döngüsel Fırın",
         "en": "Cyclic Oven for Slab Drying and Resin Curing"
@@ -361,7 +351,7 @@
         "tr": "ARANEA, doğal taş levhaların otomatik olarak yüklenmesi, boşaltılması ve taşınması için tasarlanmış üstten raylı bir robottur.\n\n",
         "en": "ARANEA is an overhead rail-mounted robot designed for the automatic loading, unloading and transfer of natural-stone slabs."
       },
-      "heroImage": "/uploads/products/kuoc2i-ion_aranea_background.webp",
+      "heroImage": "/uploads/products/wsvir4-ion_aranea_background.webp",
       "descriptionParagraphs": [
         {
           "tr": "<span style=\"color: #B87332;\">ARANEA</span>, doğal taş levhaların otomatik olarak yüklenmesi, boşaltılması ve taşınması için tasarlanmış üstten raylı bir robottur. Reçine işleme hatları veya cilalama hatları için yapılandırılabilir ve gerekli levha boyutlarına, ağırlığına ve taşıma koşullarına göre mermer ve granit versiyonlarında mevcuttur.\n\nRobot üç ana eksen boyunca hareket sağlar: üstten raylar boyunca yatay hareket, levhanın dikey olarak kaldırılması ve indirilmesi ve vakumlu kaldırma çerçevesinin döndürülmesi. Sert köprü yapısı, 50 mm kalınlığa kadar olan malzemeler dahil olmak üzere ağır levhaların kontrollü bir şekilde taşınmasını sağlar. Köprü, bir elektrik motoruna şaft ve kaplin aktarımıyla bağlanan tahrikli tekerlekler üzerinde üstten raylar boyunca hareket eder. Vakum pompası ve kaldırma ekipmanı doğrudan hareket eden köprü üzerine monte edilirken, vakumlu kaldırma çerçevesi elektrikli dişli motor tarafından kaldırılıp indirilir.\n\nStandart konfigürasyonda, robot dayanıklı Japon menşeli NBR kauçuktan üretilmiş 63 vakumlu emme başlığı ile donatılmıştır. Başlıklar, yüzey düzensizliklerini telafi etmek ve levha teması sırasında darbeyi azaltmak için şok emici destekler üzerine monte edilmiştir.\n\nVakum sistemi, beş bağımsız kontrollü gruba ayrılmıştır. Operatör, dokunmatik ekranlı taş haritalama arayüzü aracılığıyla levha boyutlarına ve konumuna göre gerekli vakum gruplarını etkinleştirebilir veya devre dışı bırakabilir. Bu, robotun vakumu yalnızca etkili taş alanı içinde uygulamasını sağlar.\n\nYüksek kapasiteli İtalyan menşeli bir vakum pompası, 160 m³/h nominal hava akışı sağlar. Vakumlu kaldırma çerçevesi, mekanik boşluğu en aza indirmek ve kontrollü levha konumlandırması sağlamak için tasarlanmış birleşik bir sonsuz vida ve planet dişli kutusu düzenlemesi ile döndürülür.\n\n<span style=\"color: #B87332;\">ARANEA</span>, değişken frekanslı sürücüler, enkoderler, sensörler ve bir dokunmatik ekran operatör arayüzü içeren PLC tabanlı bir otomasyon sistemi aracılığıyla kontrol edilir. Standart ray uzunluğu 9 metredir ve üretim hattı düzenine göre uyarlanabilir.\n\n",
@@ -450,7 +440,7 @@
           "en": ""
         }
       ],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-19fa85982b0-55enz",
       "images": [
         "/uploads/products/2mllh1-ion_aranea_cover.webp"
       ],
@@ -619,7 +609,7 @@
         "tr": "MANTA-L, doğal taş plakaların A-tipi depolama desteklerinden yatay bir işlem hattına aktarmak için tasarlanmış otomatik bir eğme sistemidir.\n\n",
         "en": "MANTA-L is an automatic tilting system designed to transfer marble, granite and other natural-stone slabs from A-frame storage supports onto a horizontal processing line.\n\n"
       },
-      "heroImage": "/uploads/products/r8py1g-ion_manta-l_background.webp",
+      "heroImage": "/uploads/products/oje4fm-ion_manta-l_background.webp",
       "descriptionParagraphs": [
         {
           "tr": "<span style=\"color: #B87332;\">MANTA-L</span>, mermer, granit ve diğer doğal taş levhaları A-şasesi depolama desteklerinden yatay bir işlem hattına aktarmak için tasarlanmış otomatik bir eğme sistemidir. Robot, levha istifine yaklaşır ve yükleme tablasını seçilen levhaya doğru eğer. Vakum çerçevesi daha sonra emme başlıkları levha yüzeyine temas edene kadar uzar. Gerekli vakum seviyesi sağlandıktan sonra, levha kalan istiften kademeli olarak ayrılır, yatay konuma geri döndürülür ve entegre silindirli konveyöre aktarılır.\n\nEmme başlıkları, levha yüzeyi üzerinde dengeli destek sağlamak için vakum çerçevesi boyunca dağıtılmıştır. Çerçeve, silindirler arasında ileri ve geri hareket ederek kontrollü levha teması ve ayrılması sağlarken, darbe veya yüzey hasarı riskini azaltır.\n\nVakum sistemi, ray hareketi, eğme hareketi ve levha aktarım sırası, sensörler ve entegre operatör arayüzü içeren PLC tabanlı bir kontrol sistemi aracılığıyla otomatik olarak yönetilir.\n\n<span style=\"color: #B87332;\">MANTA-L</span>, dikey depolamadan yatay işleme geçiş sırasında kontrollü taşıma gerektiren mermer, granit ve diğer hassas malzemeler için uygundur.\n\n",
@@ -669,9 +659,9 @@
         }
       ],
       "features": [],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-19fa85982b0-55enz",
       "images": [
-        "/uploads/products/4wiswe-ion_manta-l_cover.webp"
+        "/uploads/products/3k0lyl-ion_manta-l_cover.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T13:55:10.442Z",
@@ -787,7 +777,7 @@
         "tr": "MANTA-U, doğal taş plakaları yatay bir işlem hattından A-tipi depolama arabalarına veya desteklerine aktarmak için tasarlanmış otomatik bir eğme sistemidir.\n\n",
         "en": "MANTA-U is an automatic tilting system designed to transfer natural-stone slabs from a horizontal processing line onto A-frame storage trolleys or supports.\n\n"
       },
-      "heroImage": "/uploads/products/yzo35v-ion_manta-u_background.webp",
+      "heroImage": "/uploads/products/8i7osq-ion_manta-u_background.webp",
       "descriptionParagraphs": [
         {
           "tr": "<span style=\"color: #B87332;\">MANTA-U</span>, doğal taş levhaları yatay bir işlem hattından A-şasesi depolama arabalarına veya desteklerine aktarmak için tasarlanmış otomatik bir eğme sistemidir.\n\nMakine, levhayı üretim hattı konveyöründen alır ve boşaltma tablasına yerleştirir. Boşaltma döngüsü sırasında, tabla A-şasesine doğru kademeli olarak eğilirken levha, hidrolik olarak çalıştırılan tutma mekanizmaları tarafından tutulur ve kontrol edilir. Levha A-şasesine karşı doğru şekilde konumlandırıldığında, tutma mekanizmaları onu serbest bırakır ve makine bir sonraki boşaltma döngüsü için ilk yatay konumuna döner.\n\nRay hareketi, eğme tablası ve tüm boşaltma sırası, sensörler ve entegre operatör arayüzü içeren PLC tabanlı bir kontrol sistemi aracılığıyla otomatik olarak yönetilir.\n\n<span style=\"color: #B87332;\">MANTA-U</span>, kontrollü ve tekrarlanabilir levha yerleştirmesi sağlar, manuel taşımayı azaltır ve depolama çerçevesine aktarım sırasındaki darbeyi sınırlar.\n\n",
@@ -837,9 +827,9 @@
         }
       ],
       "features": [],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-19fa85982b0-55enz",
       "images": [
-        "/uploads/products/0kwz3z-ion_manta-u_cover.webp"
+        "/uploads/products/ninqoz-ion_manta-u_cover.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T13:57:55.108Z",
@@ -943,10 +933,10 @@
     {
       "id": "prod-ms4q5du3-16ech",
       "name": {
-        "tr": "PLAKA BEKLETME (PBU01)",
-        "en": "SLAB STORAGE (PBU01)"
+        "tr": "PLAKA BEKLETME ÜNİTESİ",
+        "en": "SLAB STORAGE UNIT"
       },
-      "slug": "plaka-bekletme-pbu01",
+      "slug": "plaka-bekletme-unitesi",
       "subtitle": {
         "tr": "Epoksi Yerleşimi için Çok Katlı Bekletme İstasyonu",
         "en": "Multi-Level Buffer Station for Epoxy Settling"
@@ -955,7 +945,7 @@
         "tr": "PBU01, epoksi uygulamasından sonra ve sonraki kürleme aşamasından önce mermer veya granit plakaları tutmak için tasarlanmış açık çok seviyeli bir bekletme istasyonudur.\n\n",
         "en": "Slab Storage (PBU01) is an open multi-level buffer station designed to hold marble or granite slabs after epoxy application and before the following curing stage.\n\n"
       },
-      "heroImage": "/uploads/products/owvnmw-ion_pbu01_background.webp",
+      "heroImage": "/uploads/products/c3k1t4-ion_buffer_background.webp",
       "descriptionParagraphs": [
         {
           "tr": "PBU01, epoksi uygulamasından sonra ve sonraki kürleme aşamasından önce mermer veya granit plakaları tutmak için tasarlanmış açık çok seviyeli bir bekletme istasyonudur. Geçici bekleme süresi, uygulanan epoksinin plaka yüzeyinde eşit şekilde yerleşmesine ve ilk jelleşmesine başlamasına olanak tanır. Bu, plaka kürleme fırınına veya bir sonraki işlem istasyonuna aktarılmadan önce reçinenin stabilize olmasına yardımcı olur.\n\nStandart ünite, dikey olarak düzenlenmiş yedi tepsi seviyesinden oluşur. Çalışma sırasında bir seviye boş kalır; bu, plaka tepsilerinin sistem içinde dolaşmasına ve geri dönmesine olanak tanır. Dahili bir dikey kaldırma mekanizması yukarı ve aşağı hareket eder, seçilen seviyeyle hizalanır ve tepsilerin depolama konumlarına otomatik olarak girmesini veya çıkmasını sağlar.\n\nPBU01, otomatik bir reçine işleme hattı içinde kontrollü ara depolama sağlayarak reçine uygulama istasyonu, taşıma ekipmanı ve kürleme fırınının çalışma döngülerinin koordinasyonuna yardımcı olur.\n\n",
@@ -1007,7 +997,7 @@
       "features": [],
       "categoryId": "cat-19fa85982ae-2dgv6",
       "images": [
-        "/uploads/products/rjovoq-ion_pbu01_cover.webp"
+        "/uploads/products/dtjihh-ion_buffer_cover.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:01:41.451Z",
@@ -1123,7 +1113,7 @@
         "tr": "PCK01, doğal taş plakaları reçine işleme hattı içinde 180 derece döndürmek için tasarlanmış otomatik bir konveyördür.\n\n",
         "en": "PCK01 is an automatic conveyor designed to rotate natural-stone slabs by 180 degrees within a resin-treatment line.\n\n"
       },
-      "heroImage": "",
+      "heroImage": "/uploads/products/xkjt0l-ion_pck01_bg-2.png",
       "descriptionParagraphs": [
         {
           "tr": "PCK01, doğal taş plakaları reçine işleme hattı içinde 180 derece döndürmek için tasarlanmış otomatik bir konveyördür. Manuel taşıma olmadan reçine uygulaması, takviye veya ileri işlem için plakanın arka yüzünün açığa çıkmasını sağlar. Döndürme sırasında, plaka özel olarak tasarlanmış lastik kaplı silindirler arasında güvenli bir şekilde tutulur. Bunlar, plaka yüzeyi boyunca kontrollü destek sağlayarak dönme hareketi boyunca kaymayı, darbeyi ve kenar hasarını önlemeye yardımcı olur.\n\nMakine doğrudan konveyör hattına entegre edilmiştir ve plaka girişini, döndürmeyi ve ileri aktarımı çevredeki ekipmanla otomatik olarak koordine eder.\n\n",
@@ -1175,7 +1165,7 @@
       "features": [],
       "categoryId": "cat-19fa85982ae-2dgv6",
       "images": [
-        "/uploads/products/cshttc-resim.webp"
+        "/uploads/products/yczde9-ion_pck01_cover.png"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:03:38.286Z",
@@ -1291,7 +1281,7 @@
         "tr": "ULTRAVION, plaka dolum hatlarında kullanılan uyumlu fotoaktif dolgu maddelerinin hızlı sertleşmesi için tasarlanmış bir hat içi UV kürleme fırınıdır.\n\n",
         "en": "ULTRAVION is an inline UV curing oven designed for the rapid hardening of compatible photoactivated fillers used in slab filling lines.\n\n"
       },
-      "heroImage": "",
+      "heroImage": "/uploads/products/2yabqg-ion_ultravion-uv-oven_background.png",
       "descriptionParagraphs": [
         {
           "tr": "ULTRAVION, plaka dolum hatlarında kullanılan uyumlu fotoaktif dolgu maddelerinin hızlı sertleşmesi için tasarlanmış bir hat içi UV kürleme fırınıdır. Yeni nesil UV teknolojisi, plaka yüzeyi boyunca kontrollü ve homojen kürleme enerjisi sağlayarak dolgu maddesinin fırından çıkarken gerekli kürü elde etmesini sağlar.\n\nSistem, kürleme enerjisini etkili işlem alanı içinde yoğunlaştırmak için tasarlanmıştır; bu, tutarlı sonuçları desteklerken gereksiz enerji tüketimini ve ısı oluşumunu azaltır.\n\nGeleneksel UV kürleme sistemleriyle karşılaştırıldığında, ULTRAVION gelişmiş enerji verimliliği, daha düşük termal etki ve basitleştirilmiş uzun vadeli bakım sunar. Dayanıklı ve erişilebilir kürleme modülleri, rutin servis gereksinimlerini azaltır ve sürekli üretim ortamlarında güvenilir çalışmayı destekler.\n\nULTRAVION, otomatik plaka dolum ve cilalama hatlarına doğrudan entegre edilebilir ve üretim akışını kesintisiz hale getirerek hızlı kürleme sağlar.\n\n",
@@ -1322,7 +1312,7 @@
       "features": [],
       "categoryId": "cat-19fa85982ae-2dgv6",
       "images": [
-        "/uploads/products/pz9ao9-resim.webp"
+        "/uploads/products/8mcrbn-ion_ultravion-uv-oven_positron.png"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:05:04.340Z",
@@ -1417,7 +1407,7 @@
         "tr": "IR FIRIN, cilalamadan sonra ve dolgu veya reçine uygulamasından önce plakaları kurutmak için tasarlanmış bir hat içi radyant ısıtma sistemidir.\n\n",
         "en": "IR OVEN is an inline radiant heating system designed to dry slabs after polishing and before the application of filler or resin.\n\n"
       },
-      "heroImage": "",
+      "heroImage": "/uploads/products/kipxhj-ion_ir-oven_background.webp",
       "descriptionParagraphs": [
         {
           "tr": "IR FIRIN, cilalamadan sonra ve dolgu veya reçine uygulamasından önce plakaları kurutmak için tasarlanmış bir hat içi radyant ısıtma sistemidir. Yüzeydeki kalıntı nemi hızla giderir ve plakayı daha güvenilir bir dolum işlemi için hazırlar.\n\nFırın, ısıyı doğrudan plaka yüzeyine aktarmak için seramik plakalı elektrikli kızılötesi ısıtma elemanları kullanır. Bu odaklanmış ısıtma yöntemi, hızlı tepki sağlar ve büyük bir oda hacmini ısıtma ihtiyacını ortadan kaldırır.\n\nIsıtma alanı, bağımsız olarak kontrol edilen bölümlere ayrılmıştır. Bireysel bölümler, plaka uzunluğuna ve konveyör hızına göre otomatik olarak etkinleştirilebilir veya devre dışı bırakılabilir; bu, daha kısa plakaları işlerken veya farklı üretim hızlarında çalışırken gereksiz enerji tüketimini azaltmaya yardımcı olur.\n\nKapalı, ark kaynaklı çelik yapı, doğrudan değişken hızlı silindirli konveyörün üzerine monte edilmiştir. Üst yalıtım, ısı kaybını sınırlar ve radyant enerjinin etkili işlem alanı içinde yoğunlaşmasına yardımcı olur.\n\nFırın, bir elektrik kabini ve entegre operatör kontrol paneli ile birlikte verilir.\n\n",
@@ -1448,7 +1438,7 @@
       "features": [],
       "categoryId": "cat-19fa85982ae-2dgv6",
       "images": [
-        "/uploads/products/083ok9-resim.webp"
+        "/uploads/products/yk4p2u-ion_ir-oven_cover.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:06:30.367Z",
@@ -1588,7 +1578,7 @@
           "en": ""
         }
       ],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-19fa85982b0-55enz",
       "images": [
         "/uploads/products/99u244-resim.webp"
       ],
