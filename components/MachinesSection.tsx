@@ -15,8 +15,6 @@ const PRODUCT_META = [
   { id: "cnc", key: "cnc", categorySlug: "cnc-kopru-kesim" },
   { id: "waterjet", key: "waterjet", categorySlug: "su-jeti-kesim" },
   { id: "tile", key: "tile", categorySlug: "fayans-hatlari" },
-  { id: "handling", key: "handling", categorySlug: "tasima-otomasyon" },
-  { id: "custom", key: "custom", categorySlug: "ozel-tasarim-makineler" },
 ] as const;
 
 export default function MachinesSection() {

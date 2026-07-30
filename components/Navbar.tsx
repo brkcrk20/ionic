@@ -55,52 +55,23 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
 
           {/* 2. ORTA: ANA MENÜ ELEMANLARI */}
           <div className="flex items-center justify-center gap-5 xl:gap-8 text-[14px] xl:text-[15px] font-montserrat font-bold text-[#F3F1EC] tracking-wide h-full">
-            
-            {/* Integrated Factory DROPDOWN */}
-            <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("service")} onMouseLeave={() => setOpenMenu(null)}>
-              <Link href="/service" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
-                {t.service}
-              </Link>
-              {openMenu === "service" && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-80 bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden p-2.5 animate-in fade-in slide-in-from-top-2">
-                  <div className="flex flex-col gap-1">
-                    <Link href="/service/installation-commissioning" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem1}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/service/technical-support" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem2}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/service/spare-parts" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem3}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/service/maintenance-repair" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem4}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/service/remote-support" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem5}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/service/training" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.srvItem6}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
 
+           {/* ION ONEFLOW */}
+            <div className="relative h-full flex items-center">
+              <Link href="/ion-oneflow" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
+                {t.engineering}
+              </Link>
+            </div>
+          
             {/* MACHINES & LINES DROPDOWN */}
             <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("machines")} onMouseLeave={() => setOpenMenu(null)}>
               <Link href="/products" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
                 {t.machines}
               </Link>
+              
               {openMenu === "machines" && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-[min(92vw,980px)] bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-top-2">
-                  <div className="grid grid-cols-3 gap-8 px-10 py-8 bg-gradient-to-b from-gray-50/70 to-white">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-[min(92vw,720px)] bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
+                  <div className="grid grid-cols-2 gap-8 px-10 py-8 bg-gradient-to-b from-gray-50/70 to-white">
                     <div className="flex flex-col gap-3.5 group/col">
                       <Link href="/category/komple-hatlar" className="font-extrabold text-[#0B1941] text-[13.5px] uppercase tracking-wider border-b border-gray-200/80 pb-2.5 hover:text-[#B87332] transition-colors flex items-center justify-between group-hover/col:border-[#B87332]/50">
                         <span>{t.catLines}</span>
@@ -122,56 +93,19 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
                         <Link href="/category/cnc-kopru-kesim" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.cncSaws}</Link>
                         <Link href="/category/su-jeti-kesim" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.waterjet}</Link>
                         <Link href="/category/tas-kesme-isleme" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.stoneCutting}</Link>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-3.5 group/col">
-                      <Link href="/category/otomasyon" className="font-extrabold text-[#0B1941] text-[13.5px] uppercase tracking-wider border-b border-gray-200/80 pb-2.5 hover:text-[#B87332] transition-colors flex items-center justify-between group-hover/col:border-[#B87332]/50">
-                        <span>{t.catAutomation}</span>
-                        <ChevronRight className="w-4 h-4 text-gray-400 group-hover/col:translate-x-1 group-hover/col:text-[#B87332] transition-all" />
-                      </Link>
-                      <div className="flex flex-col gap-1.5">
-                        <Link href="/category/tasima-otomasyon" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.handling}</Link>
                         <Link href="/category/yukleme-bosaltma" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.loading}</Link>
-                        <Link href="/category/ozel-tasarim-makineler" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.customMachinery}</Link>
                       </div>
-                    </div>
+                    </div>                    
                   </div>
                 </div>
               )}
             </div>
 
-            {/* ENGINEERING DROPDOWN */}
-            <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("engineering")} onMouseLeave={() => setOpenMenu(null)}>
-              <Link href="/engineering" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
-                {t.engineering}
+            {/* Integrated Factory DROPDOWN */}
+            <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("service")} onMouseLeave={() => setOpenMenu(null)}>
+              <Link href="/service" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
+                {t.service}
               </Link>
-              {openMenu === "engineering" && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-80 bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden p-2.5 animate-in fade-in slide-in-from-top-2">
-                  <div className="flex flex-col gap-1">
-                    <Link href="/engineering/overview" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.engItem1}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/engineering/automation-control" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.engItem2}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/engineering/production-capabilities" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.engItem3}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/engineering/custom-solutions" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.engItem4}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/engineering/rd" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.engItem5}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* COMPANY DROPDOWN */}
@@ -207,55 +141,11 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
               )}
             </div>
 
-            {/* PROJECTS & NEWS DROPDOWN */}
-            <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("projects")} onMouseLeave={() => setOpenMenu(null)}>
-              <Link href="/projects" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
+            {/* HABERLER / NEWS */}
+            <div className="relative h-full flex items-center">
+              <Link href="/news" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
                 {t.projectsNews}
               </Link>
-              {openMenu === "projects" && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-[min(92vw,720px)] bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
-                  <div className="grid grid-cols-2 gap-8 px-8 py-7 bg-gradient-to-b from-gray-50/70 to-white">
-                    <div className="flex flex-col gap-3 group/col">
-                      <div className="font-extrabold text-[#0B1941] text-[13px] uppercase tracking-wider border-b border-gray-200/80 pb-2">
-                        <span>{t.prjTitleCategories}</span>
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <Link href="/projects/completed-projects" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2 rounded-md">{t.prjItem1}</Link>
-                        <Link href="/projects/finished-machines" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2 rounded-md">{t.prjItem2}</Link>
-                        <Link href="/projects/resin-line-projects" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2 rounded-md">{t.prjItem3}</Link>
-                        <Link href="/projects/shipments" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2 rounded-md">{t.prjItem4}</Link>
-                        <Link href="/projects/installations" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2 rounded-md">{t.prjItem5}</Link>
-                        <Link href="/projects/new-product-development" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2 rounded-md">{t.prjItem6}</Link>
-                        <Link href="/news/trade-fairs-company-news" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2 rounded-md">{t.prjItem7}</Link>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-3 group/col">
-                      <div className="font-extrabold text-[#0B1941] text-[13px] uppercase tracking-wider border-b border-gray-200/80 pb-2">
-                        <span>{t.prjTitleHighlights}</span>
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <Link href="/projects/featured-projects" className="group flex items-center justify-between text-[13px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-white transition-all p-2.5 rounded-lg">
-                          <span>{t.prjSubItem1}</span>
-                          <ChevronRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                        </Link>
-                        <Link href="/news/current-news" className="group flex items-center justify-between text-[13px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-white transition-all p-2.5 rounded-lg">
-                          <span>{t.prjSubItem2}</span>
-                          <ChevronRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                        </Link>
-                        <Link href="/news/fairs-events" className="group flex items-center justify-between text-[13px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-white transition-all p-2.5 rounded-lg">
-                          <span>{t.prjSubItem3}</span>
-                          <ChevronRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                        </Link>
-                        <Link href="/news/technical-articles" className="group flex items-center justify-between text-[13px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-white transition-all p-2.5 rounded-lg">
-                          <span>{t.prjSubItem4}</span>
-                          <ChevronRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* CONTACT */}
@@ -352,7 +242,7 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
                 </div>
 
                 <div className="md:col-span-4 flex flex-col gap-3 text-xs md:text-sm font-bold tracking-wider uppercase text-[#0B1941]">
-                  <Link href="/projects" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors">
+                  <Link href="/news" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors">
                     {t.news}
                   </Link>
                   <Link href="/contact" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors">

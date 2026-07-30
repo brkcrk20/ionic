@@ -148,7 +148,7 @@ export default function Home() {
 
         <div className="mt-16 z-10">
           <Link
-            href="/engineering"
+            href="/ion-oneflow"
             className="bg-[#B87332] hover:bg-[#a06228] text-white font-bold tracking-wider uppercase text-sm px-8 py-4 rounded-full shadow-lg transition-all flex items-center gap-2"
           >
             {home.capabilities.cta} <ArrowRight size={18} />
@@ -320,7 +320,7 @@ export default function Home() {
 
           <div className="flex flex-col gap-2.5 justify-center">
             <h4 className="font-extrabold text-base mb-2">{home.footer.linksTitle}</h4>
-            <Link href="/projects" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkNews}</Link>
+            <Link href="/news" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkNews}</Link>
             <Link href="/contact" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkContacts}</Link>
             <Link href="/careers" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkCareers}</Link>
             <Link href="/portal" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkPortal}</Link>

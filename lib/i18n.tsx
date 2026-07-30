@@ -57,19 +57,6 @@ export interface Translations {
     cmpItem3: string;
     cmpItem4: string;
     cmpItem5: string;
-    prjTitleCategories: string;
-    prjTitleHighlights: string;
-    prjItem1: string;
-    prjItem2: string;
-    prjItem3: string;
-    prjItem4: string;
-    prjItem5: string;
-    prjItem6: string;
-    prjItem7: string;
-    prjSubItem1: string;
-    prjSubItem2: string;
-    prjSubItem3: string;
-    prjSubItem4: string;
   };
   home: {
     hero: { title: string; subtitleLine1: string; subtitleLine2: string };
@@ -141,17 +128,17 @@ const translations: Record<Lang, Translations> = {
   TR: {
     nav: {
       machines: "Makineler & Hatlar",
-      engineering: "Mühendislik & Teknolojiler",
-      service: "ION Oneflow",
+      engineering: "ION ONEFLOW",
+      service: "Hizmetler",
       company: "Kurumsal",
-      projectsNews: "Projeler & Haberler",
+      projectsNews: "Haberler",
       contact: "İletişim",
       requestQuote: "Teklif Alın",
       close: "Kapat",
       groupTitle: "Ion Meccanica",
       whyUs: "Neden Ion Meccanica?",
       sectors: "Uygulama Sektörleri",
-      news: "Haberler & Projeler",
+      news: "Haberler",
       contactSales: "İletişim & Satış Ağı",
       careers: "Kariyer",
       portal: "Müşteri Portalı Girişi",
@@ -185,19 +172,6 @@ const translations: Record<Lang, Translations> = {
       cmpItem3: "Kalite Politikamız",
       cmpItem4: "Kabiliyetlerimiz",
       cmpItem5: "Kariyer",
-      prjTitleCategories: "Proje & Güncelleme Türleri",
-      prjTitleHighlights: "Öne Çıkanlar & Haberler",
-      prjItem1: "Tamamlanan Projeler",
-      prjItem2: "Üretimi Biten Makineler",
-      prjItem3: "Reçine Hattı Projeleri",
-      prjItem4: "Sevkiyatlar",
-      prjItem5: "Kurulumlar",
-      prjItem6: "Yeni Ürün Geliştirmeleri",
-      prjItem7: "Fuar ve Şirket Haberleri",
-      prjSubItem1: "Seçili Projeler",
-      prjSubItem2: "Güncel Haberler",
-      prjSubItem3: "Fuarlar & Etkinlikler",
-      prjSubItem4: "Teknik Makaleler",
     },
     home: {
       hero: {
@@ -279,7 +253,7 @@ const translations: Record<Lang, Translations> = {
         cta: "Daha Fazla Bilgi Edinin",
       },
       footer: {
-        serviceTitle: "Servis",
+        serviceTitle: "Hizmetler",
         linksTitle: "Bağlantılar",
         linkNews: "Haberler, etkinlikler & basın",
         linkContacts: "İletişim ve satış ağı",
@@ -300,17 +274,17 @@ const translations: Record<Lang, Translations> = {
   EN: {
     nav: {
       machines: "Machines & Lines",
-      engineering: "Engineering & Technology",
-      service: "ION Oneflow",
+      engineering: "ION ONEFLOW",
+      service: "Service",
       company: "Company",
-      projectsNews: "Projects & News",
+      projectsNews: "News",
       contact: "Contact",
       requestQuote: "Request a Quote",
       close: "Close",
       groupTitle: "Ion Meccanica",
       whyUs: "Why Ion Meccanica?",
       sectors: "Application Sectors",
-      news: "News & Projects",
+      news: "News",
       contactSales: "Contacts & Sales Network",
       careers: "Careers",
       portal: "Customer Portal Login",
@@ -344,19 +318,6 @@ const translations: Record<Lang, Translations> = {
       cmpItem3: "Quality",
       cmpItem4: "Our Capabilities",
       cmpItem5: "Careers",
-      prjTitleCategories: "Project & News Types",
-      prjTitleHighlights: "Highlights & Media",
-      prjItem1: "Completed Projects",
-      prjItem2: "Finished Machine Deliveries",
-      prjItem3: "Resin Line Projects",
-      prjItem4: "Shipments",
-      prjItem5: "Installations",
-      prjItem6: "New Product Developments",
-      prjItem7: "Exhibitions & Company News",
-      prjSubItem1: "Selected Projects",
-      prjSubItem2: "Latest News",
-      prjSubItem3: "Exhibitions & Events",
-      prjSubItem4: "Technical Articles",
     },
     home: {
       hero: {
