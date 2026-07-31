@@ -200,13 +200,13 @@ const translations: Record<Lang, Translations> = {
         cta: "Yetkinliklerimizi Keşfedin",
       },
       machines: {
-        titleLine1: "Makineler &",
+        titleLine1: "Makineler",
         titleLine2: "Komple Hatlar",
         description:
           "Tekli makinelerden tam entegre üretim hatlarına kadar ION MECCANICA, doğal taş işlemede kesim, reçine işleme, malzeme taşıma ve otomasyon için mühendislik çözümleri sunar.",
         cta: "Tüm Ürünleri Keşfet",
         items: {
-          resin: { name: "Reçine İşleme Hatları", category: "Komple Hatlar" },
+          resin: { name: "Epoksi Fırın Hatları", category: "Komple Hatlar" },
           cnc: { name: "CNC Köprü Kesim Makineleri", category: "Makineler" },
           waterjet: { name: "Su Jeti Kesim Sistemleri", category: "Makineler" },
           tile: { name: "Fayans İşleme Hatları", category: "Komple Hatlar" },

@@ -19,9 +19,8 @@ const DEFAULT_NAV_MENU: NavMenuItem[] = [
         label: { tr: "Komple Hatlar", en: "Complete Lines" },
         href: "/category/komple-hatlar",
         children: [
-          { id: "nav-machines-1", label: { tr: "Reçine İşleme Hatları", en: "Resin Treatment Lines" }, href: "/category/recine-hatlari" },
-          { id: "nav-machines-2", label: { tr: "Fayans / Ebatlı Taş Hatları", en: "Tile Processing Lines" }, href: "/category/fayans-hatlari" },
-          { id: "nav-machines-3", label: { tr: "Entegre Üretim Hatları", en: "Integrated Production Lines" }, href: "/category/entegre-hatlar" },
+          { id: "nav-machines-1", label: { tr: "Epoksi Fırın Hatları", en: "Epoxy Oven Lines" }, href: "/category/epoksi-firin-hatlari" },
+          { id: "nav-machines-2", label: { tr: "Plaka Silim Hatları", en: "Slab Polishing Lines" }, href: "/category/plaka-silim-hatlari" },
         ],
       },
       {
@@ -29,10 +28,9 @@ const DEFAULT_NAV_MENU: NavMenuItem[] = [
         label: { tr: "Makineler", en: "Machines" },
         href: "/category/makineler",
         children: [
-          { id: "nav-machines-4", label: { tr: "CNC Köprü Kesim", en: "CNC Bridge Saws" }, href: "/category/cnc-kopru-kesim" },
-          { id: "nav-machines-5", label: { tr: "Su Jeti Kesim Sistemleri", en: "Waterjet Cutting Systems" }, href: "/category/su-jeti-kesim" },
-          { id: "nav-machines-6", label: { tr: "Taş Kesme & İşleme Makineleri", en: "Stone Cutting & Processing Machines" }, href: "/category/tas-kesme-isleme" },
-          { id: "nav-machines-7", label: { tr: "Yükleme & Boşaltma Sistemleri", en: "Loading & Unloading Systems" }, href: "/category/yukleme-bosaltma" },
+          { id: "nav-machines-4", label: { tr: "Epoksi Uygulama", en: "Epoxy Application" }, href: "/category/epoksi-uygulama" },
+          { id: "nav-machines-5", label: { tr: "Atölye", en: "Workshop" }, href: "/category/atolye" },
+          { id: "nav-machines-6", label: { tr: "Yükleme & Boşaltma", en: "Loading & Unloading" }, href: "/category/yukleme-bosaltma" },
         ],
       },
     ],

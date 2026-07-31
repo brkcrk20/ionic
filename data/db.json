@@ -1,7 +1,7 @@
 {
   "categories": [
     {
-      "id": "cat-19fa85982a4-csx6n",
+      "id": "cat-makineler-hatlar",
       "name": {
         "tr": "Makineler & Hatlar",
         "en": "Machines & Lines"
@@ -11,93 +11,63 @@
       "image": null
     },
     {
-      "id": "cat-19fa85982a5-3c7e1",
+      "id": "cat-epoksi-uygulama",
       "name": {
-        "tr": "Komple Hatlar",
-        "en": "Complete Lines"
+        "tr": "Epoksi Uygulama",
+        "en": "Resin Application"
       },
-      "slug": "komple-hatlar",
-      "parentId": "cat-19fa85982a4-csx6n",
+      "slug": "epoksi-uygulama",
+      "parentId": "cat-makineler-hatlar",
       "image": null
     },
     {
-      "id": "cat-19fa85982a6-8t1i2",
+      "id": "cat-atolye",
       "name": {
-        "tr": "Makineler",
-        "en": "Machines"
+        "tr": "Atölye",
+        "en": "Fabshop"
       },
-      "slug": "makineler",
-      "parentId": "cat-19fa85982a4-csx6n",
+      "slug": "atolye",
+      "parentId": "cat-makineler-hatlar",
       "image": null
     },
     {
-      "id": "cat-19fa85982a8-c1xc6",
+      "id": "cat-yukleme-bosaltma",
       "name": {
-        "tr": "Reçine İşleme Hatları",
-        "en": "Resin Treatment Lines"
-      },
-      "slug": "recine-hatlari",
-      "parentId": "cat-19fa85982a5-3c7e1",
-      "image": null
-    },
-    {
-      "id": "cat-19fa85982a9-0kd9e",
-      "name": {
-        "tr": "Fayans / Ebatlı Taş Hatları",
-        "en": "Tile Processing Lines"
-      },
-      "slug": "fayans-hatlari",
-      "parentId": "cat-19fa85982a5-3c7e1",
-      "image": null
-    },
-    {
-      "id": "cat-19fa85982aa-05jdp",
-      "name": {
-        "tr": "Entegre Üretim Hatları",
-        "en": "Integrated Production Lines"
-      },
-      "slug": "entegre-hatlar",
-      "parentId": "cat-19fa85982a5-3c7e1",
-      "image": null
-    },
-    {
-      "id": "cat-19fa85982ab-7kkwd",
-      "name": {
-        "tr": "CNC Köprü Kesim",
-        "en": "CNC Bridge Saws"
-      },
-      "slug": "cnc-kopru-kesim",
-      "parentId": "cat-19fa85982a6-8t1i2",
-      "image": null
-    },
-    {
-      "id": "cat-19fa85982ad-hj7dj",
-      "name": {
-        "tr": "Su Jeti Kesim Sistemleri",
-        "en": "Waterjet Cutting Systems"
-      },
-      "slug": "su-jeti-kesim",
-      "parentId": "cat-19fa85982a6-8t1i2",
-      "image": null
-    },
-    {
-      "id": "cat-19fa85982ae-2dgv6",
-      "name": {
-        "tr": "Taş Kesme & İşleme Makineleri",
-        "en": "Stone Cutting & Processing Machines"
-      },
-      "slug": "tas-kesme-isleme",
-      "parentId": "cat-19fa85982a6-8t1i2",
-      "image": null
-    },
-    {
-      "id": "cat-19fa85982b0-55enz",
-      "name": {
-        "tr": "Yükleme & Boşaltma Sistemleri",
+        "tr": "Yükleme & Boşaltma",
         "en": "Loading & Unloading Systems"
       },
       "slug": "yukleme-bosaltma",
-      "parentId": "cat-19fa85982a6-8t1i2",
+      "parentId": "cat-makineler-hatlar",
+      "image": null
+    },
+    {
+      "id": "cat-hatlar",
+      "name": {
+        "tr": "Hatlar",
+        "en": "Plants"
+      },
+      "slug": "plants",
+      "parentId": "cat-makineler-hatlar",
+      "image": null
+    },
+    {
+      "id": "cat-epoksi-firin-hatlari",
+      "name": {
+        "tr": "Epoksi Fırın Hatları",
+        "en": "Resin Treatment Lines"
+      },
+      "slug": "resin-lines",
+      "parentId": "cat-hatlar",
+      "image": null
+    },
+    {
+      "id": "cat-plaka-silim-hatlari",
+      "name": {
+        "tr": "Plaka Silim Hatları",
+        "en": "Slab Polishing Lines"
+      },
+      "slug": "polishing-lines",
+      "parentId": "cat-hatlar",
       "image": null
     }
   ],
@@ -108,7 +78,7 @@
         "tr": "POSITRON",
         "en": "POSITRON"
       },
-      "slug": "positron",
+      "slug": "positron-2",
       "subtitle": {
         "tr": "Plaka Kurutma ve Reçine Kürleme için Döngüsel Fırın",
         "en": "Cyclic Oven for Slab Drying and Resin Curing"
@@ -182,7 +152,7 @@
           "en": ""
         }
       ],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-epoksi-uygulama",
       "images": [
         "/uploads/products/cf5hvn-ion_positron_cover.webp"
       ],
@@ -410,7 +380,7 @@
           "en": ""
         }
       ],
-      "categoryId": "cat-19fa85982b0-55enz",
+      "categoryId": "cat-yukleme-bosaltma",
       "images": [
         "/uploads/products/khxutx-ion_aranea_cover.webp"
       ],
@@ -629,7 +599,7 @@
         }
       ],
       "features": [],
-      "categoryId": "cat-19fa85982b0-55enz",
+      "categoryId": "cat-yukleme-bosaltma",
       "images": [
         "/uploads/products/3k0lyl-ion_manta-l_cover.webp"
       ],
@@ -797,7 +767,7 @@
         }
       ],
       "features": [],
-      "categoryId": "cat-19fa85982b0-55enz",
+      "categoryId": "cat-yukleme-bosaltma",
       "images": [
         "/uploads/products/ninqoz-ion_manta-u_cover.webp"
       ],
@@ -915,7 +885,7 @@
         "tr": "PBU01, epoksi uygulamasından sonra ve sonraki kürleme aşamasından önce mermer veya granit plakaları tutmak için tasarlanmış açık çok seviyeli bir bekletme istasyonudur.\n\n",
         "en": "Slab Storage (PBU01) is an open multi-level buffer station designed to hold marble or granite slabs after epoxy application and before the following curing stage.\n\n"
       },
-      "heroImage": "/uploads/products/c3k1t4-ion_buffer_background.webp",
+      "heroImage": "/uploads/products/zcinhe-ion_buffer_background_2.webp",
       "descriptionParagraphs": [
         {
           "tr": "PBU01, epoksi uygulamasından sonra ve sonraki kürleme aşamasından önce mermer veya granit plakaları tutmak için tasarlanmış açık çok seviyeli bir bekletme istasyonudur. Geçici bekleme süresi, uygulanan epoksinin plaka yüzeyinde eşit şekilde yerleşmesine ve ilk jelleşmesine başlamasına olanak tanır. Bu, plaka kürleme fırınına veya bir sonraki işlem istasyonuna aktarılmadan önce reçinenin stabilize olmasına yardımcı olur.\n\nStandart ünite, dikey olarak düzenlenmiş yedi tepsi seviyesinden oluşur. Çalışma sırasında bir seviye boş kalır; bu, plaka tepsilerinin sistem içinde dolaşmasına ve geri dönmesine olanak tanır. Dahili bir dikey kaldırma mekanizması yukarı ve aşağı hareket eder, seçilen seviyeyle hizalanır ve tepsilerin depolama konumlarına otomatik olarak girmesini veya çıkmasını sağlar.\n\nPBU01, otomatik bir reçine işleme hattı içinde kontrollü ara depolama sağlayarak reçine uygulama istasyonu, taşıma ekipmanı ve kürleme fırınının çalışma döngülerinin koordinasyonuna yardımcı olur.\n\n",
@@ -965,9 +935,9 @@
         }
       ],
       "features": [],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-epoksi-uygulama",
       "images": [
-        "/uploads/products/dtjihh-ion_buffer_cover.webp"
+        "/uploads/products/s9qi34-ion_buffer_cover_2.png"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:01:41.451Z",
@@ -1133,7 +1103,7 @@
         }
       ],
       "features": [],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-epoksi-uygulama",
       "images": [
         "/uploads/products/5uqdkd-ion_pck01_cover.webp"
       ],
@@ -1251,7 +1221,7 @@
         "tr": "ULTRAVION, plaka dolum hatlarında kullanılan uyumlu fotoaktif dolgu maddelerinin hızlı sertleşmesi için tasarlanmış bir hat içi UV kürleme fırınıdır.\n\n",
         "en": "ULTRAVION is an inline UV curing oven designed for the rapid hardening of compatible photoactivated fillers used in slab filling lines.\n\n"
       },
-      "heroImage": "/uploads/products/rqv9a7-ion_ultravion-uv-oven_background.webp",
+      "heroImage": "/uploads/products/wtstdr-ion_ultravion-uv-oven_background_3.webp",
       "descriptionParagraphs": [
         {
           "tr": "ULTRAVION, plaka dolum hatlarında kullanılan uyumlu fotoaktif dolgu maddelerinin hızlı sertleşmesi için tasarlanmış bir hat içi UV kürleme fırınıdır. Yeni nesil UV teknolojisi, plaka yüzeyi boyunca kontrollü ve homojen kürleme enerjisi sağlayarak dolgu maddesinin fırından çıkarken gerekli kürü elde etmesini sağlar.\n\nSistem, kürleme enerjisini etkili işlem alanı içinde yoğunlaştırmak için tasarlanmıştır; bu, tutarlı sonuçları desteklerken gereksiz enerji tüketimini ve ısı oluşumunu azaltır.\n\nGeleneksel UV kürleme sistemleriyle karşılaştırıldığında, ULTRAVION gelişmiş enerji verimliliği, daha düşük termal etki ve basitleştirilmiş uzun vadeli bakım sunar. Dayanıklı ve erişilebilir kürleme modülleri, rutin servis gereksinimlerini azaltır ve sürekli üretim ortamlarında güvenilir çalışmayı destekler.\n\nULTRAVION, otomatik plaka dolum ve cilalama hatlarına doğrudan entegre edilebilir ve üretim akışını kesintisiz hale getirerek hızlı kürleme sağlar.\n\n",
@@ -1280,9 +1250,9 @@
       },
       "versions": [],
       "features": [],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-atolye",
       "images": [
-        "/uploads/products/5avxvy-ion_ultravion-uv-oven_cover.webp"
+        "/uploads/products/3ejfai-ion_ultravion-uv-oven_cover_3.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:05:04.340Z",
@@ -1406,7 +1376,7 @@
       },
       "versions": [],
       "features": [],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-atolye",
       "images": [
         "/uploads/products/yk4p2u-ion_ir-oven_cover.webp"
       ],
@@ -1548,7 +1518,7 @@
           "en": ""
         }
       ],
-      "categoryId": "cat-19fa85982b0-55enz",
+      "categoryId": "cat-yukleme-bosaltma",
       "images": [
         "/uploads/products/tgbbkd-ion_volta_cover.webp"
       ],
@@ -1722,7 +1692,7 @@
           "en": ""
         }
       ],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-epoksi-uygulama",
       "images": [
         "/uploads/products/68gc75-ion_resinbot_cover_2.webp"
       ],
@@ -1880,7 +1850,7 @@
       },
       "versions": [],
       "features": [],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-epoksi-uygulama",
       "images": [
         "/uploads/products/jsu43l-ion_otomatik-file_cover.webp"
       ],
@@ -2006,7 +1976,7 @@
       },
       "versions": [],
       "features": [],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-atolye",
       "images": [
         "/uploads/products/t4tidy-ion_vacuum_cover.webp"
       ],
@@ -2132,7 +2102,7 @@
       },
       "versions": [],
       "features": [],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-atolye",
       "images": [
         "/uploads/products/otd16f-ion_wax_cover.webp"
       ],
@@ -2433,7 +2403,7 @@
         }
       ],
       "features": [],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-epoksi-uygulama",
       "images": [
         "/uploads/products/q2ihls-ion_graviton-combi_cover.webp"
       ],
@@ -2696,7 +2666,7 @@
           "en": ""
         }
       ],
-      "categoryId": "cat-19fa85982ae-2dgv6",
+      "categoryId": "cat-epoksi-uygulama",
       "images": [
         "/uploads/products/qv1vyr-ion_graviton_cover.webp"
       ],
@@ -2957,7 +2927,7 @@
       "images": [
         "/uploads/products/dz1d99-resim.webp"
       ],
-      "active": true,
+      "active": false,
       "createdAt": "2026-07-28T14:39:42.363Z",
       "nameStyle": {
         "color": "#FFFFFF",
@@ -3156,86 +3126,60 @@
     {
       "id": "nav-machines",
       "label": {
-        "tr": "Makineler & Hatlar",
-        "en": "Machines & Lines"
+        "tr": "Makineler",
+        "en": "Machines"
       },
       "href": "/products",
       "children": [
         {
           "id": "nav-machines-g1",
           "label": {
-            "tr": "Komple Hatlar",
-            "en": "Complete Lines"
+            "tr": "Epoksi Uygulama",
+            "en": "Resin Application"
           },
-          "href": "/category/komple-hatlar",
-          "children": [
-            {
-              "id": "nav-machines-1",
-              "label": {
-                "tr": "Reçine İşleme Hatları",
-                "en": "Resin Treatment Lines"
-              },
-              "href": "/category/recine-hatlari"
-            },
-            {
-              "id": "nav-machines-2",
-              "label": {
-                "tr": "Fayans / Ebatlı Taş Hatları",
-                "en": "Tile Processing Lines"
-              },
-              "href": "/category/fayans-hatlari"
-            },
-            {
-              "id": "nav-machines-3",
-              "label": {
-                "tr": "Entegre Üretim Hatları",
-                "en": "Integrated Production Lines"
-              },
-              "href": "/category/entegre-hatlar"
-            }
-          ]
+          "href": "/category/epoksi-uygulama"
         },
         {
-          "id": "nav-machines-g2",
+          "id": "navsub-ms8zxwjq-obanx",
           "label": {
-            "tr": "Makineler",
-            "en": "Machines"
+            "tr": "Atölye",
+            "en": "Fabshop"
           },
-          "href": "/category/makineler",
-          "children": [
-            {
-              "id": "nav-machines-4",
-              "label": {
-                "tr": "CNC Köprü Kesim",
-                "en": "CNC Bridge Saws"
-              },
-              "href": "/category/cnc-kopru-kesim"
-            },
-            {
-              "id": "nav-machines-5",
-              "label": {
-                "tr": "Su Jeti Kesim Sistemleri",
-                "en": "Waterjet Cutting Systems"
-              },
-              "href": "/category/su-jeti-kesim"
-            },
-            {
-              "id": "nav-machines-6",
-              "label": {
-                "tr": "Taş Kesme & İşleme Makineleri",
-                "en": "Stone Cutting & Processing Machines"
-              },
-              "href": "/category/tas-kesme-isleme"
-            },
-            {
-              "id": "nav-machines-7",
-              "label": {
-                "tr": "Yükleme & Boşaltma Sistemleri",
-                "en": "Loading & Unloading Systems"
-              },
-              "href": "/category/yukleme-bosaltma"
-            }
-          ]
+          "href": "/category/atolye"
+        },
+        {
+          "id": "navsub-ms8zrp37-p18g0",
+          "label": {
+            "tr": "Yükleme & Boşaltma",
+            "en": "Loading & Unloading Systems"
+          },
+          "href": "/category/yukleme-bosaltma"
+        }
+      ]
+    },
+    {
+      "id": "nav-ms8zhi0l-xy9gm",
+      "label": {
+        "tr": "Hatlar",
+        "en": "Plants"
+      },
+      "href": "/Plants",
+      "children": [
+        {
+          "id": "navsub-ms8zik0s-1b7p0",
+          "label": {
+            "tr": "Epoksi Fırın Hatları",
+            "en": "Resin Treatment Lines"
+          },
+          "href": "/category/resin-lines"
+        },
+        {
+          "id": "navsub-ms8zkzdt-02lrs",
+          "label": {
+            "tr": "Plaka Silim Hatları",
+            "en": "Slab Polishing Lines"
+          },
+          "href": "/category/polishing-lines"
         }
       ]
     },

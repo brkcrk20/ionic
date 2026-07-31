@@ -16,11 +16,6 @@ function catLabel(name: Category["name"], lang: Lang): string {
   return (name as any)?.[lang] || (name as any)?.tr || "Kategori";
 }
 
-function getLeafCategories(categories: Category[]): Category[] {
-  const parentIds = new Set(categories.map((c) => c.parentId).filter(Boolean) as string[]);
-  return categories.filter((c) => !parentIds.has(c.id));
-}
-
 function categoryPathLabel(categories: Category[], categoryId: string, lang: Lang): string {
   const byId = new Map(categories.map((c) => [c.id, c]));
   const chain: string[] = [];
@@ -80,7 +75,6 @@ const POSITRON_DESCRIPTION_STYLE: TextStyle = {
 
 function parseMulti(val: unknown): { tr: string; en: string } {
   if (typeof val === "string") {
-    // Eski sistemden kalma varsayılan otomatik başlıkları temizle
     if (val.startsWith("Teknik Detay") || val.startsWith("Konfigürasyon") || val.startsWith("Detay")) {
       return { tr: "", en: "" };
     }
@@ -191,7 +185,33 @@ export default function ProductWizardForm({ product, categories: initialCategori
   const [seoDescription, setSeoDescription] = useState(product?.seoDescription ?? "");
 
   const selectableCategories = useMemo(() => {
-    return getLeafCategories(categories || []);
+    // Admin panelinden veya prop olarak gelen güncel kategorileri/menüyü alıyoruz
+    const menuSource = categories && categories.length > 0 ? categories : [];
+    const leafNodes: { id: string; name: { tr: string; en: string }; path: string }[] = [];
+
+    function traverse(items: any[], parentPath = "") {
+      for (const item of items) {
+        const currentLabel = item.label || item.name || { tr: "Kategori", en: "Category" };
+        const currentPathName = typeof currentLabel === "string" ? currentLabel : (currentLabel.tr || "Kategori");
+        const fullPath = parentPath ? `${parentPath} > ${currentPathName}` : currentPathName;
+
+        const children = item.children || item.subs || [];
+        
+        // Sadece en alttaki uç (leaf) kategorileri / alt başlıkları seçilebilir yapıyoruz
+        if (children.length === 0) {
+          leafNodes.push({
+            id: item.id || item.href || fullPath,
+            name: typeof currentLabel === "string" ? { tr: currentLabel, en: currentLabel } : currentLabel,
+            path: fullPath,
+          });
+        } else {
+          traverse(children, fullPath);
+        }
+      }
+    }
+
+    traverse(menuSource);
+    return leafNodes;
   }, [categories]);
 
   const [customSections, setCustomSections] = useState<CustomSection[]>([
@@ -509,11 +529,15 @@ export default function ProductWizardForm({ product, categories: initialCategori
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-100 pb-4 gap-4">
               <div className="w-full sm:w-auto flex-1">
                 <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-gray-600">Kategori</label>
-                <select value={categoryId} onChange={(e) => setCategoryId(e.target.value)} className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-[#B87332]">
+                <select 
+                  value={categoryId} 
+                  onChange={(e) => setCategoryId(e.target.value)} 
+                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-[#B87332]"
+                >
                   <option value="">Kategorisiz</option>
-                  {selectableCategories && selectableCategories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {categoryPathLabel(categories, category.id, currentLang)}
+                  {selectableCategories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.path}
                     </option>
                   ))}
                 </select>
