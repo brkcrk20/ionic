@@ -25,6 +25,8 @@ export async function POST(request: NextRequest) {
     name: body.name,
     parentId: body.parentId ?? null,
     image: body.image ?? null,
+    seoTitle: body.seoTitle,
+    seoDescription: body.seoDescription,
   });
   return NextResponse.json({ category }, { status: 201 });
 }

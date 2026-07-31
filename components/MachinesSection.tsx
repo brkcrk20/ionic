@@ -26,7 +26,7 @@ export default function MachinesSection() {
   const activeText = items[activeMeta.key];
 
   return (
-    <section className="w-full min-h-screen md:h-screen snap-start shrink-0 bg-[#3A3A3A] flex flex-col justify-center items-center py-20 px-6 relative overflow-hidden">
+    <section className="w-full min-h-screen md:h-screen md:snap-start shrink-0 bg-[#3A3A3A] flex flex-col justify-center items-center py-20 px-6 relative overflow-hidden">
       <div className="max-w-[1600px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 h-full items-center">
 
         {/* SOL: Başlık ve Kategoriler */}
@@ -74,7 +74,7 @@ export default function MachinesSection() {
         <div className="lg:col-span-8 h-[50vh] lg:h-[75vh] w-full relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
           <ImagePlaceholder label={activeText.name} className="transition-transform duration-700 group-hover:scale-105" />
           {/* Görsel Altı Bilgi Kartı */}
-          <div className="absolute bottom-6 left-6 right-6 lg:bottom-10 lg:left-10 bg-[#3A3A3A]/90 backdrop-blur-md p-6 rounded-xl border border-white/10 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-4 group-hover:translate-y-0">
+          <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-10 lg:left-10 lg:right-auto bg-[#3A3A3A]/90 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex items-center justify-between gap-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
             <div>
               <span className="text-[#B87332] text-xs font-bold uppercase tracking-widest">{activeText.category}</span>
               <h3 className="text-[#F3F1EC] text-xl font-bold mt-1">{activeText.name}</h3>

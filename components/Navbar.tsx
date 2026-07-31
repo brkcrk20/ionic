@@ -4,19 +4,95 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronRight, FileText } from "lucide-react";
-import type { Category } from "@/lib/db";
+import type { Category, MultiLangString, NavMenuItem, NavSubItem } from "@/lib/db";
 import { useLanguage } from "@/lib/i18n";
 
-export default function Navbar({ categories = [] }: { categories?: Category[] }) {
+const DEFAULT_NAV_MENU: NavMenuItem[] = [
+  { id: "nav-engineering", label: { tr: "ION ONEFLOW", en: "ION ONEFLOW" }, href: "/ion-oneflow" },
+  {
+    id: "nav-machines",
+    label: { tr: "Makineler & Hatlar", en: "Machines & Lines" },
+    href: "/products",
+    children: [
+      {
+        id: "nav-machines-g1",
+        label: { tr: "Komple Hatlar", en: "Complete Lines" },
+        href: "/category/komple-hatlar",
+        children: [
+          { id: "nav-machines-1", label: { tr: "Reçine İşleme Hatları", en: "Resin Treatment Lines" }, href: "/category/recine-hatlari" },
+          { id: "nav-machines-2", label: { tr: "Fayans / Ebatlı Taş Hatları", en: "Tile Processing Lines" }, href: "/category/fayans-hatlari" },
+          { id: "nav-machines-3", label: { tr: "Entegre Üretim Hatları", en: "Integrated Production Lines" }, href: "/category/entegre-hatlar" },
+        ],
+      },
+      {
+        id: "nav-machines-g2",
+        label: { tr: "Makineler", en: "Machines" },
+        href: "/category/makineler",
+        children: [
+          { id: "nav-machines-4", label: { tr: "CNC Köprü Kesim", en: "CNC Bridge Saws" }, href: "/category/cnc-kopru-kesim" },
+          { id: "nav-machines-5", label: { tr: "Su Jeti Kesim Sistemleri", en: "Waterjet Cutting Systems" }, href: "/category/su-jeti-kesim" },
+          { id: "nav-machines-6", label: { tr: "Taş Kesme & İşleme Makineleri", en: "Stone Cutting & Processing Machines" }, href: "/category/tas-kesme-isleme" },
+          { id: "nav-machines-7", label: { tr: "Yükleme & Boşaltma Sistemleri", en: "Loading & Unloading Systems" }, href: "/category/yukleme-bosaltma" },
+        ],
+      },
+    ],
+  },
+  { id: "nav-service", label: { tr: "Hizmetler", en: "Service" }, href: "/service" },
+  {
+    id: "nav-company",
+    label: { tr: "Kurumsal", en: "Company" },
+    href: "/company",
+    children: [
+      { id: "nav-company-1", label: { tr: "Hakkımızda", en: "About Us" }, href: "/company/about-us" },
+      { id: "nav-company-2", label: { tr: "Mühendislik & Üretim", en: "Engineering & Production" }, href: "/company/engineering-production" },
+      { id: "nav-company-3", label: { tr: "Kalite", en: "Quality" }, href: "/company/quality" },
+      { id: "nav-company-4", label: { tr: "Yetkinlikler", en: "Capabilities" }, href: "/company/capabilities" },
+      { id: "nav-company-5", label: { tr: "Kariyer", en: "Careers" }, href: "/careers" },
+    ],
+  },
+  { id: "nav-news", label: { tr: "Haberler", en: "News" }, href: "/news" },
+  { id: "nav-contact", label: { tr: "İletişim", en: "Contact" }, href: "/contact" },
+];
+
+export default function Navbar({
+  categories = [],
+  navMenu,
+  announcement,
+}: {
+  categories?: Category[];
+  navMenu?: NavMenuItem[];
+  announcement?: { text: MultiLangString; link?: string } | null;
+}) {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [mobileOpenId, setMobileOpenId] = useState<string | null>(null);
+  const [mobileOpenSubId, setMobileOpenSubId] = useState<string | null>(null);
+  const [announcementDismissed, setAnnouncementDismissed] = useState(false);
   const { lang, setLang, t: tAll } = useLanguage();
   const t = tAll.nav;
+  const announcementText = announcement
+    ? lang === "EN"
+      ? (typeof announcement.text === "string" ? announcement.text : announcement.text.en || announcement.text.tr)
+      : (typeof announcement.text === "string" ? announcement.text : announcement.text.tr || announcement.text.en)
+    : "";
+  const showAnnouncement = Boolean(announcement && announcementText && !announcementDismissed);
+  const menuItems = navMenu && navMenu.length > 0 ? navMenu : DEFAULT_NAV_MENU;
+  const menuLabel = (item: NavMenuItem | NavSubItem) => {
+    if (typeof item.label === "string") return item.label;
+    return (lang === "EN" ? item.label.en : item.label.tr) || item.label.tr || item.label.en;
+  };
 
   const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!megaMenuOpen) {
+      setMobileOpenId(null);
+      setMobileOpenSubId(null);
+    }
+  }, [megaMenuOpen]);
 
   // Gelişmiş Kaydırma Dinleyicisi (Özel kaydırma konteynerlerini de yakalar)
   useEffect(() => {
@@ -43,6 +119,24 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
   return (
     <>
       <nav className={`fixed top-0 inset-x-0 w-full z-50 transition-all duration-300 ${navBg}`}>
+        {showAnnouncement && (
+          <div className="h-9 bg-[#B87332] text-white flex items-center justify-center px-4 relative">
+            {announcement?.link ? (
+              <Link href={announcement.link} className="text-xs font-semibold tracking-wide hover:underline text-center">
+                {announcementText}
+              </Link>
+            ) : (
+              <span className="text-xs font-semibold tracking-wide text-center">{announcementText}</span>
+            )}
+            <button
+              onClick={() => setAnnouncementDismissed(true)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/80 hover:text-white"
+              aria-label="Duyuruyu kapat"
+            >
+              <X size={14} />
+            </button>
+          </div>
+        )}
         {/* MASAÜSTÜ NAVBAR */}
         <div className="hidden xl:flex items-center justify-between max-w-[1850px] mx-auto px-6 lg:px-8 h-22">
           
@@ -56,102 +150,63 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
           {/* 2. ORTA: ANA MENÜ ELEMANLARI */}
           <div className="flex items-center justify-center gap-5 xl:gap-8 text-[14px] xl:text-[15px] font-montserrat font-bold text-[#F3F1EC] tracking-wide h-full">
 
-           {/* ION ONEFLOW */}
-            <div className="relative h-full flex items-center">
-              <Link href="/ion-oneflow" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
-                {t.engineering}
-              </Link>
-            </div>
-          
-            {/* MACHINES & LINES DROPDOWN */}
-            <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("machines")} onMouseLeave={() => setOpenMenu(null)}>
-              <Link href="/products" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
-                {t.machines}
-              </Link>
-              
-              {openMenu === "machines" && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-[min(92vw,720px)] bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
-                  <div className="grid grid-cols-2 gap-8 px-10 py-8 bg-gradient-to-b from-gray-50/70 to-white">
-                    <div className="flex flex-col gap-3.5 group/col">
-                      <Link href="/category/komple-hatlar" className="font-extrabold text-[#0B1941] text-[13.5px] uppercase tracking-wider border-b border-gray-200/80 pb-2.5 hover:text-[#B87332] transition-colors flex items-center justify-between group-hover/col:border-[#B87332]/50">
-                        <span>{t.catLines}</span>
-                        <ChevronRight className="w-4 h-4 text-gray-400 group-hover/col:translate-x-1 group-hover/col:text-[#B87332] transition-all" />
-                      </Link>
-                      <div className="flex flex-col gap-1.5">
-                        <Link href="/category/recine-hatlari" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.resinLines}</Link>
-                        <Link href="/category/fayans-hatlari" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.tileLines}</Link>
-                        <Link href="/category/entegre-hatlar" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.integratedLines}</Link>
+           {menuItems.map((item) => {
+              const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+
+              if (hasChildren) {
+                const isGrouped = item.children!.some((sub) => Array.isArray(sub.children) && sub.children.length > 0);
+                return (
+                  <div key={item.id} className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu(item.id)} onMouseLeave={() => setOpenMenu(null)}>
+                    <Link href={item.href} className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
+                      {menuLabel(item)}
+                    </Link>
+                    {openMenu === item.id && isGrouped && (
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-[min(92vw,720px)] bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
+                        <div className="grid grid-cols-2 gap-8 px-10 py-8 bg-gradient-to-b from-gray-50/70 to-white">
+                          {item.children!.map((group) => (
+                            <div key={group.id} className="flex flex-col gap-3.5 group/col">
+                              <Link href={group.href} className="font-extrabold text-[#0B1941] text-[13.5px] uppercase tracking-wider border-b border-gray-200/80 pb-2.5 hover:text-[#B87332] transition-colors flex items-center justify-between group-hover/col:border-[#B87332]/50">
+                                <span>{menuLabel(group)}</span>
+                                <ChevronRight className="w-4 h-4 text-gray-400 group-hover/col:translate-x-1 group-hover/col:text-[#B87332] transition-all" />
+                              </Link>
+                              {Array.isArray(group.children) && group.children.length > 0 && (
+                                <div className="flex flex-col gap-1.5">
+                                  {group.children.map((leaf) => (
+                                    <Link key={leaf.id} href={leaf.href} className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">
+                                      {menuLabel(leaf)}
+                                    </Link>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-
-                    <div className="flex flex-col gap-3.5 group/col">
-                      <Link href="/category/makineler" className="font-extrabold text-[#0B1941] text-[13.5px] uppercase tracking-wider border-b border-gray-200/80 pb-2.5 hover:text-[#B87332] transition-colors flex items-center justify-between group-hover/col:border-[#B87332]/50">
-                        <span>{t.catMachines}</span>
-                        <ChevronRight className="w-4 h-4 text-gray-400 group-hover/col:translate-x-1 group-hover/col:text-[#B87332] transition-all" />
-                      </Link>
-                      <div className="flex flex-col gap-1.5">
-                        <Link href="/category/cnc-kopru-kesim" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.cncSaws}</Link>
-                        <Link href="/category/su-jeti-kesim" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.waterjet}</Link>
-                        <Link href="/category/tas-kesme-isleme" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.stoneCutting}</Link>
-                        <Link href="/category/yukleme-bosaltma" className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">{t.loading}</Link>
+                    )}
+                    {openMenu === item.id && !isGrouped && (
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-84 bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden p-2.5 animate-in fade-in slide-in-from-top-2">
+                        <div className="flex flex-col gap-1">
+                          {item.children!.map((sub) => (
+                            <Link key={sub.id} href={sub.href} className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
+                              <span>{menuLabel(sub)}</span>
+                              <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>                    
+                    )}
                   </div>
+                );
+              }
+
+              return (
+                <div key={item.id} className="relative h-full flex items-center">
+                  <Link href={item.href} className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
+                    {menuLabel(item)}
+                  </Link>
                 </div>
-              )}
-            </div>
-
-            {/* Integrated Factory DROPDOWN */}
-            <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("service")} onMouseLeave={() => setOpenMenu(null)}>
-              <Link href="/service" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
-                {t.service}
-              </Link>
-            </div>
-
-            {/* COMPANY DROPDOWN */}
-            <div className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu("company")} onMouseLeave={() => setOpenMenu(null)}>
-              <Link href="/company" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
-                {t.company}
-              </Link>
-              {openMenu === "company" && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-84 bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden p-2.5 animate-in fade-in slide-in-from-top-2">
-                  <div className="flex flex-col gap-1">
-                    <Link href="/company/about-us" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.cmpItem1}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/company/engineering-production" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.cmpItem2}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/company/quality" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.cmpItem3}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/company/capabilities" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.cmpItem4}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                    <Link href="/careers" className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
-                      <span>{t.cmpItem5}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* HABERLER / NEWS */}
-            <div className="relative h-full flex items-center">
-              <Link href="/news" className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
-                {t.projectsNews}
-              </Link>
-            </div>
-
-            {/* CONTACT */}
-            <Link href="/contact" className="hover:text-[#B87332] transition-colors">
-              {t.contact}
-            </Link>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-5 xl:gap-6 shrink-0">
@@ -189,12 +244,6 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
           </Link>
           
           <div className="flex items-center gap-3">
-            <Link
-              href="/request-quote"
-              className="bg-[#B87332] text-white text-[11px] font-bold uppercase px-3 py-1.5 rounded-md"
-            >
-              {t.requestQuote}
-            </Link>
             <button className="p-1 text-[#F3F1EC]" onClick={() => setMegaMenuOpen(true)}>
               <Menu size={26} />
             </button>
@@ -227,7 +276,133 @@ export default function Navbar({ categories = [] }: { categories?: Category[] })
             </div>
 
             <div className="max-w-[1500px] w-full mx-auto px-6 lg:px-12 py-6 md:py-8 my-auto">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+
+              {/* MOBİL/TABLET: ANA MENÜ (masaüstünde navbar'da hover ile açılan menülerin karşılığı) */}
+              <div className="xl:hidden mb-8 border-b border-gray-200 pb-2">
+                <div className="flex flex-col divide-y divide-gray-100">
+                  {menuItems.map((item) => {
+                    const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+
+                    if (!hasChildren) {
+                      return (
+                        <Link
+                          key={item.id}
+                          href={item.href}
+                          onClick={() => setMegaMenuOpen(false)}
+                          className="py-3.5 text-base font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors"
+                        >
+                          {menuLabel(item)}
+                        </Link>
+                      );
+                    }
+
+                    const isOpen = mobileOpenId === item.id;
+                    return (
+                      <div key={item.id}>
+                        <div className="flex items-center justify-between py-3.5">
+                          <Link
+                            href={item.href}
+                            onClick={() => setMegaMenuOpen(false)}
+                            className="text-base font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors"
+                          >
+                            {menuLabel(item)}
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={() => setMobileOpenId(isOpen ? null : item.id)}
+                            aria-label={isOpen ? "Alt başlıkları kapat" : "Alt başlıkları aç"}
+                            className="p-2 -mr-2 cursor-pointer"
+                          >
+                            <ChevronRight className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isOpen ? "rotate-90" : ""}`} />
+                          </button>
+                        </div>
+                        {isOpen && (
+                          <div className="pb-3 pl-3 flex flex-col gap-0.5">
+                            {item.children!.map((sub) => {
+                              const subHasChildren = Array.isArray(sub.children) && sub.children.length > 0;
+
+                              if (!subHasChildren) {
+                                return (
+                                  <Link
+                                    key={sub.id}
+                                    href={sub.href}
+                                    onClick={() => setMegaMenuOpen(false)}
+                                    className="py-2 text-sm font-semibold text-gray-600 hover:text-[#B87332] transition-colors"
+                                  >
+                                    {menuLabel(sub)}
+                                  </Link>
+                                );
+                              }
+
+                              const isSubOpen = mobileOpenSubId === sub.id;
+                              return (
+                                <div key={sub.id}>
+                                  <div className="flex items-center justify-between py-2">
+                                    <Link
+                                      href={sub.href}
+                                      onClick={() => setMegaMenuOpen(false)}
+                                      className="text-sm font-bold text-gray-700 hover:text-[#B87332] transition-colors"
+                                    >
+                                      {menuLabel(sub)}
+                                    </Link>
+                                    <button
+                                      type="button"
+                                      onClick={() => setMobileOpenSubId(isSubOpen ? null : sub.id)}
+                                      aria-label={isSubOpen ? "Alt başlıkları kapat" : "Alt başlıkları aç"}
+                                      className="p-2 -mr-2 cursor-pointer"
+                                    >
+                                      <ChevronRight className={`w-3.5 h-3.5 text-gray-400 transition-transform duration-300 ${isSubOpen ? "rotate-90" : ""}`} />
+                                    </button>
+                                  </div>
+                                  {isSubOpen && (
+                                    <div className="pb-2 pl-3 flex flex-col gap-0.5">
+                                      {sub.children!.map((leaf) => (
+                                        <Link
+                                          key={leaf.id}
+                                          href={leaf.href}
+                                          onClick={() => setMegaMenuOpen(false)}
+                                          className="py-1.5 text-xs font-medium text-gray-500 hover:text-[#B87332] transition-colors"
+                                        >
+                                          {menuLabel(leaf)}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* MOBİL/TABLET: İLETİŞİM BİLGİLERİ + DİL SEÇENEĞİ */}
+              <div className="xl:hidden mb-8 flex flex-col gap-4 text-sm text-gray-600 font-medium leading-relaxed">
+                <div className="flex flex-col gap-0.5 text-gray-700">
+                  <p className="font-semibold text-[#0B1941]">{t.addressTitle}</p>
+                  <p>{t.addressSub}</p>
+                  <p className="pt-1">+90 (258) 814 57 47</p>
+                  <a href="mailto:info@ionmeccanica.com" className="text-[#0B1941] hover:underline font-semibold">
+                    info@ionmeccanica.com
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-2 text-xs font-bold text-gray-400 tracking-widest pt-1">
+                  <button onClick={() => setLang("EN")} className={`cursor-pointer hover:text-[#B87332] ${lang === "EN" ? "text-[#0B1941] font-extrabold" : ""}`}>
+                    EN
+                  </button>
+                  /
+                  <button onClick={() => setLang("TR")} className={`cursor-pointer hover:text-[#B87332] ${lang === "TR" ? "text-[#0B1941] font-extrabold" : ""}`}>
+                    TR
+                  </button>
+                </div>
+              </div>
+
+              {/* MASAÜSTÜ: EK BAĞLANTILAR (Kurumsal / Neden Biz / Sektörler / vb.) */}
+              <div className="hidden xl:grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
                 
                 <div className="md:col-span-5 flex flex-col gap-3 md:gap-5 font-montserrat">
                   <Link href="/company" onClick={() => setMegaMenuOpen(false)} className="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors">

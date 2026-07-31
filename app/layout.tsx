@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from 'next/font/local';
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
+import { getSiteUrl } from "@/lib/seo";
 
 const ionStyle = localFont({
   src: "../public/fonts/IonStyle.woff2",
@@ -14,8 +15,14 @@ const montserrat = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: "ion",
   description: "Modern ve Minimalist Bir Deneyim",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

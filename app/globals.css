@@ -35,4 +35,17 @@
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
+
+  /* Yönetim panelinden (CMS) girilen zengin metin içerikleri (haber/sayfa
+     içerikleri) içindeki geniş görsel/tablo/uzun kelimeler küçük ekranlarda
+     yatay taşmaya sebep olmasın diye güvenlik önlemi. Normal boyuttaki
+     içerikleri hiçbir şekilde etkilemez. */
+  img, video, table, iframe {
+    max-width: 100%;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
 }

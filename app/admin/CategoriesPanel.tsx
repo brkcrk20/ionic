@@ -133,6 +133,8 @@ export default function CategoriesPanel() {
   const [nameEn, setNameEn] = useState("");
   const [parentId, setParentId] = useState<string>("");
   const [image, setImage] = useState<string | null>(null);
+  const [seoTitle, setSeoTitle] = useState("");
+  const [seoDescription, setSeoDescription] = useState("");
   const [uploading, setUploading] = useState(false);
   const [editing, setEditing] = useState<Category | null>(null);
   const [error, setError] = useState("");
@@ -161,6 +163,8 @@ export default function CategoriesPanel() {
     }
     setParentId(cat.parentId ?? "");
     setImage(cat.image ?? null);
+    setSeoTitle(cat.seoTitle ?? "");
+    setSeoDescription(cat.seoDescription ?? "");
   }
 
   function resetForm() {
@@ -169,6 +173,8 @@ export default function CategoriesPanel() {
     setNameEn("");
     setParentId("");
     setImage(null);
+    setSeoTitle("");
+    setSeoDescription("");
     setError("");
   }
 
@@ -203,6 +209,8 @@ export default function CategoriesPanel() {
         name: { tr: nameTr.trim(), en: nameEn.trim() },
         parentId: parentId || null,
         image,
+        seoTitle: seoTitle.trim(),
+        seoDescription: seoDescription.trim(),
       };
       const res = editing
         ? await fetch(`/api/admin/categories/${editing.id}`, {
@@ -361,6 +369,38 @@ export default function CategoriesPanel() {
           </div>
 
           {error && <p className="text-xs text-red-600">{error}</p>}
+
+          <div className="border-t border-gray-100 pt-3 space-y-3">
+            <p className="text-xs font-bold uppercase tracking-wider text-gray-400">SEO (opsiyonel)</p>
+            <div>
+              <label className="block text-xs text-gray-500 mb-1">
+                Meta Başlık <span className="text-gray-400">({seoTitle.length}/70)</span>
+              </label>
+              <input
+                value={seoTitle}
+                onChange={(e) => setSeoTitle(e.target.value)}
+                maxLength={70}
+                placeholder={`${nameTr || "Kategori Adı"} | Ion Meccanica`}
+                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
+              />
+            </div>
+            <div>
+              <label className="block text-xs text-gray-500 mb-1">
+                Meta Açıklama <span className="text-gray-400">({seoDescription.length}/160)</span>
+              </label>
+              <textarea
+                value={seoDescription}
+                onChange={(e) => setSeoDescription(e.target.value)}
+                maxLength={160}
+                rows={2}
+                placeholder="Bu kategori hakkında kısa bir açıklama..."
+                className="w-full resize-none border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A1A1A]/20 focus:border-[#1A1A1A]"
+              />
+            </div>
+            <p className="text-[11px] text-gray-400">
+              Boş bırakılırsa kategori adından otomatik oluşturulur.
+            </p>
+          </div>
 
           <button
             type="submit"

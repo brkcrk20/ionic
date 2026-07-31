@@ -14,6 +14,8 @@ export async function PUT(
     name: body.name,
     parentId: body.parentId,
     image: body.image,
+    seoTitle: body.seoTitle,
+    seoDescription: body.seoDescription,
   });
   if (!category) {
     return NextResponse.json({ error: "Kategori bulunamadı" }, { status: 404 });

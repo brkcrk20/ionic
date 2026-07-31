@@ -2,14 +2,19 @@
 
 import { useState } from "react";
 import ProductsPanel from "./ProductsPanel";
+import NewsPanel from "./NewsPanel";
+import PagesPanel from "./PagesPanel";
 import SettingsPanel from "./SettingsPanel";
-import { Package, Settings, LogOut } from "lucide-react";
+import NavPanel from "./NavPanel";
+import DashboardPanel from "./DashboardPanel";
+import MediaPanel from "./MediaPanel";
+import { Package, Settings, LogOut, Menu as MenuIcon, LayoutDashboard, Image as ImageIcon, Newspaper, FileText } from "lucide-react";
 import Link from "next/link";
 
-type Tab = "products" | "settings";
+type Tab = "dashboard" | "products" | "news" | "pages" | "media" | "settings" | "nav";
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<Tab>("products");
+  const [activeTab, setActiveTab] = useState<Tab>("dashboard");
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col font-montserrat">
@@ -39,6 +44,16 @@ export default function AdminDashboard() {
       <div className="max-w-7xl w-full mx-auto px-6 pt-6">
         <div className="flex gap-2 border-b border-gray-200 pb-3">
           <button
+            onClick={() => setActiveTab("dashboard")}
+            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer ${
+              activeTab === "dashboard"
+                ? "bg-[#1A1A1A] text-white"
+                : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+            }`}
+          >
+            <LayoutDashboard size={16} /> Panel
+          </button>
+          <button
             onClick={() => setActiveTab("products")}
             className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer ${
               activeTab === "products"
@@ -47,6 +62,36 @@ export default function AdminDashboard() {
             }`}
           >
             <Package size={16} /> Ürünler
+          </button>
+          <button
+            onClick={() => setActiveTab("news")}
+            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer ${
+              activeTab === "news"
+                ? "bg-[#1A1A1A] text-white"
+                : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+            }`}
+          >
+            <Newspaper size={16} /> Haberler
+          </button>
+          <button
+            onClick={() => setActiveTab("pages")}
+            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer ${
+              activeTab === "pages"
+                ? "bg-[#1A1A1A] text-white"
+                : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+            }`}
+          >
+            <FileText size={16} /> Sayfalar
+          </button>
+          <button
+            onClick={() => setActiveTab("media")}
+            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer ${
+              activeTab === "media"
+                ? "bg-[#1A1A1A] text-white"
+                : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+            }`}
+          >
+            <ImageIcon size={16} /> Medya Kütüphanesi
           </button>
           <button
             onClick={() => setActiveTab("settings")}
@@ -58,13 +103,28 @@ export default function AdminDashboard() {
           >
             <Settings size={16} /> Site Ayarları
           </button>
+          <button
+            onClick={() => setActiveTab("nav")}
+            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer ${
+              activeTab === "nav"
+                ? "bg-[#1A1A1A] text-white"
+                : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+            }`}
+          >
+            <MenuIcon size={16} /> Navbar Menü
+          </button>
         </div>
       </div>
 
       {/* İçerik Alanı */}
       <main className="max-w-7xl w-full mx-auto px-6 py-6 flex-1">
+        {activeTab === "dashboard" && <DashboardPanel onNavigate={setActiveTab} />}
         {activeTab === "products" && <ProductsPanel />}
+        {activeTab === "news" && <NewsPanel />}
+        {activeTab === "pages" && <PagesPanel />}
+        {activeTab === "media" && <MediaPanel />}
         {activeTab === "settings" && <SettingsPanel />}
+        {activeTab === "nav" && <NavPanel />}
       </main>
     </div>
   );

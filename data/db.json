@@ -1503,7 +1503,7 @@
         "tr": "VOLTA, doğal taş plakaları depolama desteklerinden yatay işlem hatlarına vakumlu kaldırma sistemi ile aktarmak için tasarlanmış tam otomatik bir plaka yükleme robotudur.\n\n",
         "en": "VOLTA is a fully automated slab-loading robot designed for transferring natural-stone slabs from storage supports to horizontal processing lines by means of a vacuum lifting system.\n\n"
       },
-      "heroImage": "/uploads/products/x55zy8-ion_volta_background.webp",
+      "heroImage": "/uploads/products/b7zedl-ion_volta_background.webp",
       "descriptionParagraphs": [
         {
           "tr": "VOLTA, doğal taş plakaları depolama desteklerinden yatay işlem hatlarına vakumlu kaldırma sistemi ile aktarmak için tasarlanmış tam otomatik bir plaka yükleme robotudur. Özellikle cilalama hatları ve tarak tipi veya çatal tipi konveyör kullanan diğer tesisler için uygundur.\n\nGeleneksel zemin üstü yükleme robotlarından farklı olarak VOLTA, konveyör destekleri arasına girebilen ve bunların arasından geçebilen ileri uzanan tarak tipi bir vakum taşıyıcı içerir. Bu, plakanın ek ara aktarım hareketlerine ihtiyaç duymadan alıcı konveyöre daha yakın konumlandırılmasını sağlar. Ortaya çıkan düzen, taşıma mesafelerini azaltır, çevrim sürelerini kısaltır ve cilalama hattı yükleme istasyonlarıyla entegrasyonu basitleştirir.\n\nRobot, bağımsız motorlu tekerlek takımları üzerinde zemine monte raylar boyunca hareket eder. Üç kontrollü eksen boyunca hareket sağlar: dikey kaldırma, vakum taşıyıcının ileri ve geri hareketi ve emme başlığı çerçevesinin döndürülmesi.\n\nVakum pompası ve kaldırma sistemi hareketli köprü üzerine monte edilmiştir. Emme başlığı çerçevesi elektrikli dişli motor tarafından kaldırılıp indirilirken, tüm taşıma döngüsü PLC programlama, enkoderler ve değişken frekanslı sürücüler aracılığıyla kontrol edilir.\n\nVOLTA, dayanıklı Japon menşeli NBR kauçuktan üretilmiş 64 emme başlığı ile donatılmıştır. Başlıklar, şok emici destekler üzerine monte edilmiş ve beş bağımsız kontrollü vakum bölgesi halinde düzenlenmiştir. Operatör, dokunmatik ekran plaka haritalama arayüzü aracılığıyla plaka boyutlarına ve konumuna göre uygun bölgeleri etkinleştirebilir.\n\nYüksek kapasiteli İtalyan menşeli bir vakum pompası, 160 m³/h nominal hava akışı sağlar.\n\nElektrik kontrol paneli, kurulum ve bakım sırasında esneklik sağlayan mobil bağımsız bir ünite olarak tedarik edilir.\n\n",
@@ -1550,7 +1550,7 @@
       ],
       "categoryId": "cat-19fa85982b0-55enz",
       "images": [
-        "/uploads/products/57d5yq-ion_volta_cover.png"
+        "/uploads/products/tgbbkd-ion_volta_cover.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:09:37.763Z",
@@ -1667,7 +1667,7 @@
         "tr": "RESINBOT II, doğal taş plakalara reçine ve diğer uyumlu işlem ürünlerinin otomatik olarak uygulanması ve yayılması için tasarlanmış çok eksenli bir robotik sistemdir.\n\n",
         "en": "RESINBOT II is a multi-axis robotic system designed for the automatic application and spreading of resin and other compatible treatment products on natural-stone slabs.\n\n"
       },
-      "heroImage": "/uploads/products/q7gzuu-ion_resinbot_background.webp",
+      "heroImage": "/uploads/products/yapdow-ion_resinbot_background_2.webp",
       "descriptionParagraphs": [
         {
           "tr": "RESINBOT II, doğal taş plakalara reçine ve diğer uyumlu işlem ürünlerinin otomatik olarak uygulanması ve yayılması için tasarlanmış çok eksenli bir robotik sistemdir. Servo kontrollü lineer hareketleri, plaka yüzeyi boyunca hızlı, hassas ve tekrarlanabilir uygulama sağlar. Programlanabilir çalışma yapısı, uygulama yolunun, çalışma alanının ve silindir hareketinin farklı plaka formatlarına, malzeme kalınlıklarına ve proses gereksinimlerine uyarlanmasına olanak tanır.\n\nRESINBOT, harici bir reçine dozajlama ve pompalama sistemi ile entegre edilebilir. Gerekli otomasyon seviyesine göre bir plaka haritalama sistemi de eklenebilir. Bu modüler düzenleme, uygulama robotu, dozaj ekipmanı ve plaka algılama teknolojisinin üretim hattına göre yapılandırılmasına olanak tanır.\n\n",
@@ -1724,7 +1724,7 @@
       ],
       "categoryId": "cat-19fa85982ae-2dgv6",
       "images": [
-        "/uploads/products/hcycfk-ion_resinbot_cover.webp"
+        "/uploads/products/mp4dur-ion_resinbot_cover_2.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:22:11.879Z",
@@ -1977,7 +1977,7 @@
         "tr": "VAC01, reçine işleme süreci sırasında doğal taş plakalardaki çatlaklara, gözeneklere ve boşluklara reçine penetrasyonunu iyileştirmek için tasarlanmış bir hat içi vakum odasıdır.\n\n",
         "en": "VAC01 is an inline vacuum chamber designed to improve resin penetration into cracks, pores and cavities in natural-stone slabs during the resin-treatment process.\n\n"
       },
-      "heroImage": "/uploads/products/d9nnxv-ion_vacuum_background.webp",
+      "heroImage": "/uploads/products/95hxti-ion_vacuum_background.webp",
       "descriptionParagraphs": [
         {
           "tr": "VAC01, reçine işleme süreci sırasında doğal taş plakalardaki çatlaklara, gözeneklere ve boşluklara reçine penetrasyonunu iyileştirmek için tasarlanmış bir hat içi vakum odasıdır. Sızdırmaz oda içindeki basıncı düşürerek, taş içindeki açık kusurlardan sıkışmış hava çekilir. Bu, özellikle belirgin çatlaklar, boşluklar veya gözenekli alanlara sahip plakalarda daha derin ve daha tutarlı reçine penetrasyonunu destekler.\n\nOda, sert, vakum geçirmez ark kaynaklı çelik yapıdan inşa edilmiştir. Pnömatik olarak çalıştırılan kilitleme sistemleri, işlem döngüsü sırasında odayı otomatik olarak kilitler ve gerekli vakum işlemi tamamlandığında serbest bırakır.\n\nÜst ve alt konveyör sistemi, plakayı destek tepsisi ile birlikte oda içinden aktarır. Motor tahrikli konveyör silindirleri, plaka tepsisi ile teması sınırlandırırken kontrollü malzeme hareketini sağlayan azaltılmış temaslı polimer diskler içerir.\n\nEntegre vakum üretim sistemi, sürekli endüstriyel çalışma için seçilmiş pompalar ve filtrasyon ekipmanı içerir. Vakum Odası, otomatik bir mermer veya granit işleme hattının reçine uygulama ve kürleme aşamaları arasına doğrudan kurulabilir.\n\n",
@@ -2008,7 +2008,7 @@
       "features": [],
       "categoryId": "cat-19fa85982ae-2dgv6",
       "images": [
-        "/uploads/products/j72rqg-ion_vacuum_cover.webp"
+        "/uploads/products/t4tidy-ion_vacuum_cover.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:25:07.081Z",
@@ -2103,7 +2103,7 @@
         "tr": "WAX, mermer ve granit plakalara cila uygulaması ve parlatma için tasarlanmış otomatik bir makinedir.\n\n",
         "en": "WAX is an automatic machine designed for the application and polishing of wax on marble and granite slabs.\n\n"
       },
-      "heroImage": "/uploads/products/1ikhec-ion_wax_background.webp",
+      "heroImage": "/uploads/products/h391p1-ion_wax_background.webp",
       "descriptionParagraphs": [
         {
           "tr": "WAX, mermer ve granit plakalara cila uygulaması ve parlatma için tasarlanmış otomatik bir makinedir. Kontrollü cila dağıtımını aşamalı parlatma ile tek bir hat içi ünitede birleştirerek plaka yüzeyini gerekli son finiş için hazırlar.\n\nMakine, ark kaynaklı çelikten üretilmiş sert bir monoblok yapı etrafında inşa edilmiştir. Hareketli bir kiriş, ana yapıya entegre edilmiş hassas işlenmiş kılavuzlar boyunca hareket eder ve dört bağımsız kontrollü fırça mili taşır. İlk mil, cilayı plaka yüzeyine uygular ve dağıtırken, kalan üç mil uygulanan malzemeyi aşamalı olarak parlatır. Her mil, bireysel basınç izleme ve fırça tutma plakasının kontrollü kaldırma ve indirme özelliği ile donatılmıştır.\n\nBir geçmeli fotoelektrik sistem, plaka profilini okur ve kiriş hareketini ve mil hareketlerini gerçek plaka boyutlarına göre otomatik olarak ayarlar. Bu, makinenin yalnızca etkili işlem alanı içinde çalışmasına olanak tanır ve farklı plaka formatları arasında tutarlı işlemeyi destekler.\n\nCila, doğrudan dağıtım miline bağlanan otomatik bir dağıtım sistemi aracılığıyla sağlanır. Makine ayarları ve çalışma parametreleri, ergonomik askılı bir kola monte edilmiş 7 inç renkli dokunmatik ekran aracılığıyla yönetilir.\n\nSürgülü ön paneller, operatör koruması sağlar ve çalışma gürültüsünü azaltmaya yardımcı olurken, muayene, fırça değiştirme ve bakım için uygun erişimi korur.\n\n",
@@ -2134,7 +2134,7 @@
       "features": [],
       "categoryId": "cat-19fa85982ae-2dgv6",
       "images": [
-        "/uploads/products/463vz5-ion_wax_cover.webp"
+        "/uploads/products/otd16f-ion_wax_cover.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:26:13.620Z",
@@ -3119,11 +3119,199 @@
   ],
   "slider": [],
   "settings": {
+    "seoTitle": "Ion Meccanica",
+    "seoDescription": "Doğal taş işleme makineleri ve komple üretim hatları.",
+    "maintenanceMode": false,
+    "maintenanceMessage": {
+      "tr": "Sitemiz kısa bir bakımda. Kısa süre sonra tekrar burada olacağız.",
+      "en": "Our site is under brief maintenance. We'll be back shortly."
+    },
+    "announcementEnabled": false,
+    "announcementText": {
+      "tr": "",
+      "en": ""
+    },
+    "announcementLink": "",
+    "googleAnalyticsId": "",
+    "footerText": {
+      "tr": "Tüm hakları saklıdır.",
+      "en": "All rights reserved."
+    },
     "phone": "",
     "email": "",
     "address": "",
     "instagram": "",
     "facebook": "",
     "linkedin": ""
-  }
+  },
+  "navMenu": [
+    {
+      "id": "nav-engineering",
+      "label": {
+        "tr": "ION ONEFLOW",
+        "en": "ION ONEFLOW"
+      },
+      "href": "/ion-oneflow"
+    },
+    {
+      "id": "nav-machines",
+      "label": {
+        "tr": "Makineler & Hatlar",
+        "en": "Machines & Lines"
+      },
+      "href": "/products",
+      "children": [
+        {
+          "id": "nav-machines-g1",
+          "label": {
+            "tr": "Komple Hatlar",
+            "en": "Complete Lines"
+          },
+          "href": "/category/komple-hatlar",
+          "children": [
+            {
+              "id": "nav-machines-1",
+              "label": {
+                "tr": "Reçine İşleme Hatları",
+                "en": "Resin Treatment Lines"
+              },
+              "href": "/category/recine-hatlari"
+            },
+            {
+              "id": "nav-machines-2",
+              "label": {
+                "tr": "Fayans / Ebatlı Taş Hatları",
+                "en": "Tile Processing Lines"
+              },
+              "href": "/category/fayans-hatlari"
+            },
+            {
+              "id": "nav-machines-3",
+              "label": {
+                "tr": "Entegre Üretim Hatları",
+                "en": "Integrated Production Lines"
+              },
+              "href": "/category/entegre-hatlar"
+            }
+          ]
+        },
+        {
+          "id": "nav-machines-g2",
+          "label": {
+            "tr": "Makineler",
+            "en": "Machines"
+          },
+          "href": "/category/makineler",
+          "children": [
+            {
+              "id": "nav-machines-4",
+              "label": {
+                "tr": "CNC Köprü Kesim",
+                "en": "CNC Bridge Saws"
+              },
+              "href": "/category/cnc-kopru-kesim"
+            },
+            {
+              "id": "nav-machines-5",
+              "label": {
+                "tr": "Su Jeti Kesim Sistemleri",
+                "en": "Waterjet Cutting Systems"
+              },
+              "href": "/category/su-jeti-kesim"
+            },
+            {
+              "id": "nav-machines-6",
+              "label": {
+                "tr": "Taş Kesme & İşleme Makineleri",
+                "en": "Stone Cutting & Processing Machines"
+              },
+              "href": "/category/tas-kesme-isleme"
+            },
+            {
+              "id": "nav-machines-7",
+              "label": {
+                "tr": "Yükleme & Boşaltma Sistemleri",
+                "en": "Loading & Unloading Systems"
+              },
+              "href": "/category/yukleme-bosaltma"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nav-service",
+      "label": {
+        "tr": "Hizmetler",
+        "en": "Service"
+      },
+      "href": "/service"
+    },
+    {
+      "id": "nav-company",
+      "label": {
+        "tr": "Kurumsal",
+        "en": "Company"
+      },
+      "href": "/company",
+      "children": [
+        {
+          "id": "nav-company-1",
+          "label": {
+            "tr": "Hakkımızda",
+            "en": "About Us"
+          },
+          "href": "/company/about-us"
+        },
+        {
+          "id": "nav-company-2",
+          "label": {
+            "tr": "Mühendislik & Üretim",
+            "en": "Engineering & Production"
+          },
+          "href": "/company/engineering-production"
+        },
+        {
+          "id": "nav-company-3",
+          "label": {
+            "tr": "Kalite",
+            "en": "Quality"
+          },
+          "href": "/company/quality"
+        },
+        {
+          "id": "nav-company-4",
+          "label": {
+            "tr": "Yetkinlikler",
+            "en": "Capabilities"
+          },
+          "href": "/company/capabilities"
+        },
+        {
+          "id": "nav-company-5",
+          "label": {
+            "tr": "Kariyer",
+            "en": "Careers"
+          },
+          "href": "/careers"
+        }
+      ]
+    },
+    {
+      "id": "nav-news",
+      "label": {
+        "tr": "Haberler",
+        "en": "News"
+      },
+      "href": "/news"
+    },
+    {
+      "id": "nav-contact",
+      "label": {
+        "tr": "İletişim",
+        "en": "Contact"
+      },
+      "href": "/contact"
+    }
+  ]
 }

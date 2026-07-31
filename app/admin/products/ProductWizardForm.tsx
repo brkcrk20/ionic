@@ -5,7 +5,7 @@ import type { ChangeEvent, Dispatch, SetStateAction, CSSProperties } from "react
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Check, Image as ImageIcon, Loader2, Minus, Plus, Upload, X, Globe, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, Check, Image as ImageIcon, Loader2, Minus, Plus, Upload, X, Globe, Sparkles, Search } from "lucide-react";
 import type { Category, Product, StyledPair, TextStyle, MultiLangString } from "@/lib/db";
 
 type WizardStep = 1 | 2 | 3;
@@ -187,6 +187,8 @@ export default function ProductWizardForm({ product, categories: initialCategori
   const [heroImage, setHeroImage] = useState(initialHero);
   const [categoryId, setCategoryId] = useState(product?.categoryId ?? "");
   const [active, setActive] = useState(product?.active ?? true);
+  const [seoTitle, setSeoTitle] = useState(product?.seoTitle ?? "");
+  const [seoDescription, setSeoDescription] = useState(product?.seoDescription ?? "");
 
   const selectableCategories = useMemo(() => {
     return getLeafCategories(categories || []);
@@ -393,6 +395,8 @@ export default function ProductWizardForm({ product, categories: initialCategori
       heroImage,
       categoryId: categoryId || null,
       active,
+      seoTitle: seoTitle.trim(),
+      seoDescription: seoDescription.trim(),
       nameStyle: POSITRON_NAME_STYLE,
       subtitleStyle: POSITRON_SUBTITLE_STYLE,
       heroDescriptionStyle: POSITRON_DESCRIPTION_STYLE,
@@ -884,6 +888,51 @@ export default function ProductWizardForm({ product, categories: initialCategori
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+            <div className="space-y-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+              <div className="flex items-center gap-2">
+                <Search size={18} className="text-[#B87332]" />
+                <h2 className="text-xl font-extrabold text-[#1A1A1A]">SEO Ayarları</h2>
+              </div>
+              <p className="text-sm text-gray-500">
+                Bu ürünün Google arama sonuçlarında görünecek başlığı ve açıklaması. Boş bırakırsan ürün adından ve alt
+                başlığından otomatik oluşturulur.
+              </p>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-gray-500">
+                  Meta Başlık <span className="font-normal normal-case text-gray-400">({seoTitle.length}/70)</span>
+                </label>
+                <input
+                  type="text"
+                  value={seoTitle}
+                  onChange={(e) => setSeoTitle(e.target.value)}
+                  maxLength={70}
+                  placeholder={`${currentName || "Ürün Adı"} | Ion Meccanica`}
+                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-[#B87332]"
+                />
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-gray-500">
+                  Meta Açıklama <span className="font-normal normal-case text-gray-400">({seoDescription.length}/160)</span>
+                </label>
+                <textarea
+                  value={seoDescription}
+                  onChange={(e) => setSeoDescription(e.target.value)}
+                  maxLength={160}
+                  rows={3}
+                  placeholder={currentSubtitle || "Ürün hakkında kısa ve açıklayıcı bir özet..."}
+                  className="w-full resize-none rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-[#B87332]"
+                />
+              </div>
+
+              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-3">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-gray-400">Google önizlemesi</p>
+                <p className="mt-1.5 truncate text-sm text-[#1a0dab]">{seoTitle || `${currentName || "Ürün Adı"} | Ion Meccanica`}</p>
+                <p className="text-xs text-green-700">ionmeccanica.com/products/...</p>
+                <p className="mt-1 line-clamp-2 text-xs text-gray-600">{seoDescription || currentSubtitle || "Ürün açıklaması burada görünecek."}</p>
               </div>
             </div>
           </div>

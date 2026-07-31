@@ -9,6 +9,9 @@ export type Category = {
   slug: string;
   parentId: string | null;
   image: string | null;
+  // Bu kategori sayfası için özel SEO başlığı/açıklaması — boşsa site genel ayarlarından/otomatik üretilir
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export type TextAlign = "left" | "center" | "right" | "justify";
@@ -69,6 +72,10 @@ export type Product = {
   active: boolean;
   createdAt: string;
 
+  // Bu ürün sayfası için özel SEO başlığı/açıklaması — boşsa ürün adından/açıklamasından otomatik üretilir
+  seoTitle?: string;
+  seoDescription?: string;
+
   nameStyle?: TextStyle;
   subtitleStyle?: TextStyle;
   heroDescriptionStyle?: TextStyle;
@@ -95,12 +102,66 @@ export type SliderItem = {
 };
 
 export type SiteSettings = {
-  phone: string;
-  email: string;
-  address: MultiLangString;
-  instagram: string;
-  facebook: string;
-  linkedin: string;
+  // SEO — sitenin arama motorlarında ve paylaşımlarda görünen başlık/açıklaması
+  seoTitle: string;
+  seoDescription: string;
+  // Bakım modu — açıkken ziyaretçiler siteyi göremez, admin panel etkilenmez
+  maintenanceMode: boolean;
+  maintenanceMessage: MultiLangString;
+  // Duyuru çubuğu — navbar'ın üstünde gösterilen ince bilgilendirme şeridi
+  announcementEnabled: boolean;
+  announcementText: MultiLangString;
+  announcementLink: string;
+  // Google Analytics ölçüm kimliği (ör. G-XXXXXXXXXX) — boşsa hiçbir şey yüklenmez
+  googleAnalyticsId: string;
+  // Footer'da gösterilen telif hakkı metni (yıl otomatik eklenir)
+  footerText: MultiLangString;
+};
+
+export type NavSubItem = {
+  id: string;
+  label: MultiLangString;
+  href: string;
+  // Bir alt başlığın kendi altında da alt başlıkları olabilir (ör. "Komple Hatlar" başlığı altında "Reçine Hatları" vb.)
+  children?: NavSubItem[];
+};
+
+export type NavMenuItem = {
+  id: string;
+  label: MultiLangString;
+  href: string;
+  // Açılır alt menüdeki düzenlenebilir başlık/alt başlıklar (boşsa alt menü gösterilmez)
+  children?: NavSubItem[];
+};
+
+export type NewsItem = {
+  id: string;
+  title: MultiLangString;
+  slug: string;
+  excerpt: MultiLangString;
+  content: MultiLangString;
+  coverImage: string | null;
+  date: string;
+  active: boolean;
+  createdAt: string;
+  seoTitle?: string;
+  seoDescription?: string;
+};
+
+// Kurumsal/sabit sayfalar (Hakkımızda, Yetkinlikler vb.) için içerik bloğu — ürünlerdeki StyledPair ile aynı yapı
+export type SitePage = {
+  id: string;
+  // Sabit sayfa yuvasının anahtarı (bkz. lib/pageSlots.ts) — hangi route'a karşılık geldiğini belirler
+  key: string;
+  title: MultiLangString;
+  description: MultiLangString;
+  heroImage: string | null;
+  coverImage: string | null;
+  contentBlocks: StyledPair[];
+  published: boolean;
+  updatedAt: string;
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export type DB = {
@@ -108,18 +169,71 @@ export type DB = {
   products: Product[];
   slider: SliderItem[];
   settings: SiteSettings;
+  navMenu: NavMenuItem[];
+  news: NewsItem[];
+  pages: SitePage[];
 };
 
 const DB_PATH = path.join(process.cwd(), "data", "db.json");
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  phone: "",
-  email: "",
-  address: { tr: "", en: "" },
-  instagram: "",
-  facebook: "",
-  linkedin: "",
+  seoTitle: "Ion Meccanica",
+  seoDescription: "Doğal taş işleme makineleri ve komple üretim hatları.",
+  maintenanceMode: false,
+  maintenanceMessage: { tr: "Sitemiz kısa bir bakımda. Kısa süre sonra tekrar burada olacağız.", en: "Our site is under brief maintenance. We'll be back shortly." },
+  announcementEnabled: false,
+  announcementText: { tr: "", en: "" },
+  announcementLink: "",
+  googleAnalyticsId: "",
+  footerText: { tr: "Tüm hakları saklıdır.", en: "All rights reserved." },
 };
+
+const DEFAULT_NAV_MENU: NavMenuItem[] = [
+  { id: "nav-engineering", label: { tr: "ION ONEFLOW", en: "ION ONEFLOW" }, href: "/ion-oneflow" },
+  {
+    id: "nav-machines",
+    label: { tr: "Makineler & Hatlar", en: "Machines & Lines" },
+    href: "/products",
+    children: [
+      {
+        id: "nav-machines-g1",
+        label: { tr: "Komple Hatlar", en: "Complete Lines" },
+        href: "/category/komple-hatlar",
+        children: [
+          { id: "nav-machines-1", label: { tr: "Reçine İşleme Hatları", en: "Resin Treatment Lines" }, href: "/category/recine-hatlari" },
+          { id: "nav-machines-2", label: { tr: "Fayans / Ebatlı Taş Hatları", en: "Tile Processing Lines" }, href: "/category/fayans-hatlari" },
+          { id: "nav-machines-3", label: { tr: "Entegre Üretim Hatları", en: "Integrated Production Lines" }, href: "/category/entegre-hatlar" },
+        ],
+      },
+      {
+        id: "nav-machines-g2",
+        label: { tr: "Makineler", en: "Machines" },
+        href: "/category/makineler",
+        children: [
+          { id: "nav-machines-4", label: { tr: "CNC Köprü Kesim", en: "CNC Bridge Saws" }, href: "/category/cnc-kopru-kesim" },
+          { id: "nav-machines-5", label: { tr: "Su Jeti Kesim Sistemleri", en: "Waterjet Cutting Systems" }, href: "/category/su-jeti-kesim" },
+          { id: "nav-machines-6", label: { tr: "Taş Kesme & İşleme Makineleri", en: "Stone Cutting & Processing Machines" }, href: "/category/tas-kesme-isleme" },
+          { id: "nav-machines-7", label: { tr: "Yükleme & Boşaltma Sistemleri", en: "Loading & Unloading Systems" }, href: "/category/yukleme-bosaltma" },
+        ],
+      },
+    ],
+  },
+  { id: "nav-service", label: { tr: "Hizmetler", en: "Service" }, href: "/service" },
+  {
+    id: "nav-company",
+    label: { tr: "Kurumsal", en: "Company" },
+    href: "/company",
+    children: [
+      { id: "nav-company-1", label: { tr: "Hakkımızda", en: "About Us" }, href: "/company/about-us" },
+      { id: "nav-company-2", label: { tr: "Mühendislik & Üretim", en: "Engineering & Production" }, href: "/company/engineering-production" },
+      { id: "nav-company-3", label: { tr: "Kalite", en: "Quality" }, href: "/company/quality" },
+      { id: "nav-company-4", label: { tr: "Yetkinlikler", en: "Capabilities" }, href: "/company/capabilities" },
+      { id: "nav-company-5", label: { tr: "Kariyer", en: "Careers" }, href: "/careers" },
+    ],
+  },
+  { id: "nav-news", label: { tr: "Haberler", en: "News" }, href: "/news" },
+  { id: "nav-contact", label: { tr: "İletişim", en: "Contact" }, href: "/contact" },
+];
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -216,6 +330,8 @@ function normalizeProduct(raw: any): Product {
     images: Array.isArray(raw?.images) ? raw.images.filter((x: unknown) => typeof x === "string") : [],
     active: Boolean(raw?.active ?? true),
     createdAt: String(raw?.createdAt ?? new Date().toISOString()),
+    seoTitle: typeof raw?.seoTitle === "string" && raw.seoTitle.trim() ? raw.seoTitle.trim() : undefined,
+    seoDescription: typeof raw?.seoDescription === "string" && raw.seoDescription.trim() ? raw.seoDescription.trim() : undefined,
     nameStyle: normalizeTextStyle(raw?.nameStyle),
     subtitleStyle: normalizeTextStyle(raw?.subtitleStyle),
     heroDescriptionStyle: normalizeTextStyle(raw?.heroDescriptionStyle),
@@ -242,12 +358,80 @@ function normalizeProduct(raw: any): Product {
   };
 }
 
+function normalizeNewsItem(raw: unknown): NewsItem | null {
+  if (!isObject(raw)) return null;
+  return {
+    id: String(raw.id ?? makeId("news")),
+    title: normalizeMultiLang(raw.title),
+    slug: String(raw.slug ?? ""),
+    excerpt: normalizeMultiLang(raw.excerpt),
+    content: normalizeMultiLang(raw.content),
+    coverImage: typeof raw.coverImage === "string" && raw.coverImage ? raw.coverImage : null,
+    date: typeof raw.date === "string" && raw.date ? raw.date : new Date().toISOString(),
+    active: Boolean(raw.active ?? true),
+    createdAt: String(raw.createdAt ?? new Date().toISOString()),
+    seoTitle: typeof raw.seoTitle === "string" && raw.seoTitle.trim() ? raw.seoTitle.trim() : undefined,
+    seoDescription: typeof raw.seoDescription === "string" && raw.seoDescription.trim() ? raw.seoDescription.trim() : undefined,
+  };
+}
+
+function normalizeSitePage(raw: unknown): SitePage | null {
+  if (!isObject(raw)) return null;
+  const contentBlocks = Array.isArray(raw.contentBlocks)
+    ? raw.contentBlocks.map((item: unknown) => normalizeStyledPair(item)).filter((x: StyledPair | null): x is StyledPair => x !== null)
+    : [];
+  return {
+    id: String(raw.id ?? makeId("page")),
+    key: String(raw.key ?? ""),
+    title: normalizeMultiLang(raw.title),
+    description: normalizeMultiLang(raw.description),
+    heroImage: typeof raw.heroImage === "string" && raw.heroImage ? raw.heroImage : null,
+    coverImage: typeof raw.coverImage === "string" && raw.coverImage ? raw.coverImage : null,
+    contentBlocks,
+    published: Boolean(raw.published ?? false),
+    updatedAt: String(raw.updatedAt ?? new Date().toISOString()),
+    seoTitle: typeof raw.seoTitle === "string" && raw.seoTitle.trim() ? raw.seoTitle.trim() : undefined,
+    seoDescription: typeof raw.seoDescription === "string" && raw.seoDescription.trim() ? raw.seoDescription.trim() : undefined,
+  };
+}
+
+function normalizeNavSubItem(raw: unknown): NavSubItem | null {
+  if (!isObject(raw)) return null;
+  const children = Array.isArray(raw.children)
+    ? raw.children.map((item) => normalizeNavSubItem(item)).filter((x): x is NavSubItem => x !== null)
+    : undefined;
+  return {
+    id: String(raw.id ?? makeId("navsub")),
+    label: normalizeMultiLang(raw.label),
+    href: typeof raw.href === "string" ? raw.href : "/",
+    children: children && children.length > 0 ? children : undefined,
+  };
+}
+
+function normalizeNavMenuItem(raw: unknown): NavMenuItem | null {
+  if (!isObject(raw)) return null;
+  const children = Array.isArray(raw.children)
+    ? raw.children.map((item) => normalizeNavSubItem(item)).filter((x): x is NavSubItem => x !== null)
+    : undefined;
+  return {
+    id: String(raw.id ?? makeId("nav")),
+    label: normalizeMultiLang(raw.label),
+    href: typeof raw.href === "string" ? raw.href : "/",
+    children: children && children.length > 0 ? children : undefined,
+  };
+}
+
 function normalizeDB(parsed: Partial<DB>): DB {
   return {
     categories: Array.isArray(parsed.categories) ? parsed.categories as Category[] : [],
     products: Array.isArray(parsed.products) ? parsed.products.map((p) => normalizeProduct(p)) : [],
     slider: Array.isArray(parsed.slider) ? parsed.slider as SliderItem[] : [],
     settings: { ...DEFAULT_SETTINGS, ...(parsed.settings ?? {}) },
+    navMenu: Array.isArray(parsed.navMenu) && parsed.navMenu.length > 0
+      ? parsed.navMenu.map((item) => normalizeNavMenuItem(item)).filter((x): x is NavMenuItem => x !== null)
+      : DEFAULT_NAV_MENU,
+    news: Array.isArray(parsed.news) ? parsed.news.map((item) => normalizeNewsItem(item)).filter((x): x is NewsItem => x !== null) : [],
+    pages: Array.isArray(parsed.pages) ? parsed.pages.map((item) => normalizeSitePage(item)).filter((x): x is SitePage => x !== null) : [],
   };
 }
 
@@ -257,7 +441,7 @@ async function readDB(): Promise<DB> {
     const parsed = JSON.parse(raw) as Partial<DB>;
     return normalizeDB(parsed);
   } catch {
-    return { categories: [], products: [], slider: [], settings: { ...DEFAULT_SETTINGS } };
+    return { categories: [], products: [], slider: [], settings: { ...DEFAULT_SETTINGS }, navMenu: DEFAULT_NAV_MENU, news: [], pages: [] };
   }
 }
 
@@ -304,6 +488,19 @@ export async function getCategories() { return (await getDB()).categories; }
 export async function getProducts() { return (await getDB()).products; }
 export async function getSlider() { return (await getDB()).slider; }
 export async function getSettings() { return (await getDB()).settings; }
+export async function getNavMenu() { return (await getDB()).navMenu; }
+export async function getNews() { return (await getDB()).news; }
+export async function getPages() { return (await getDB()).pages; }
+
+export async function updateNavMenu(items: unknown[]): Promise<NavMenuItem[]> {
+  const db = await getDB();
+  const normalized = items
+    .map((item) => normalizeNavMenuItem(item))
+    .filter((x): x is NavMenuItem => x !== null);
+  db.navMenu = normalized.length > 0 ? normalized : DEFAULT_NAV_MENU;
+  await updateDB(db);
+  return db.navMenu;
+}
 
 export async function createCategory(input: any) {
   const db = await getDB();
@@ -314,6 +511,8 @@ export async function createCategory(input: any) {
     slug: slugify(rawNameStr || "category"),
     parentId: input.parentId,
     image: input.image,
+    seoTitle: typeof input.seoTitle === "string" && input.seoTitle.trim() ? input.seoTitle.trim() : undefined,
+    seoDescription: typeof input.seoDescription === "string" && input.seoDescription.trim() ? input.seoDescription.trim() : undefined,
   };
   db.categories.push(cat);
   await updateDB(db);
@@ -341,7 +540,7 @@ export async function createProduct(input: any) {
   return prod;
 }
 
-export async function updateCategory(id: string, input: Partial<Pick<Category, "name" | "parentId" | "image">>) {
+export async function updateCategory(id: string, input: Partial<Pick<Category, "name" | "parentId" | "image" | "seoTitle" | "seoDescription">>) {
   const db = await getDB();
   const cat = db.categories.find((c) => c.id === id);
   if (!cat) return null;
@@ -352,6 +551,8 @@ export async function updateCategory(id: string, input: Partial<Pick<Category, "
   }
   if (input.parentId !== undefined) cat.parentId = input.parentId;
   if (input.image !== undefined) cat.image = input.image;
+  if (input.seoTitle !== undefined) cat.seoTitle = input.seoTitle?.trim() ? input.seoTitle.trim() : undefined;
+  if (input.seoDescription !== undefined) cat.seoDescription = input.seoDescription?.trim() ? input.seoDescription.trim() : undefined;
   await updateDB(db);
   return cat;
 }
@@ -419,6 +620,9 @@ export async function updateProduct(id: string, input: Record<string, unknown>) 
   if (Array.isArray(input.images)) prod.images = input.images.filter((x: unknown) => typeof x === "string") as string[];
   if (input.active !== undefined) prod.active = Boolean(input.active);
 
+  if (typeof input.seoTitle === "string") prod.seoTitle = input.seoTitle.trim() ? input.seoTitle.trim() : undefined;
+  if (typeof input.seoDescription === "string") prod.seoDescription = input.seoDescription.trim() ? input.seoDescription.trim() : undefined;
+
   if (input.descriptionSectionTitle !== undefined) prod.descriptionSectionTitle = normalizeMultiLang(input.descriptionSectionTitle);
   if (input.configsSectionTitle !== undefined) prod.configsSectionTitle = normalizeMultiLang(input.configsSectionTitle);
   if (input.versionsSectionTitle !== undefined) prod.versionsSectionTitle = normalizeMultiLang(input.versionsSectionTitle);
@@ -435,4 +639,131 @@ export async function deleteProduct(id: string) {
   db.products = db.products.filter((p) => p.id !== id);
   await updateDB(db);
   return true;
+}
+
+// ---------------------------------------------------------------------------
+// HABERLER (NEWS) — Ürünlere benzer basit bir CRUD
+// ---------------------------------------------------------------------------
+
+async function uniqueNewsSlug(base: string, db: DB, ignoreId?: string): Promise<string> {
+  let slug = base || "haber";
+  let i = 2;
+  while (db.news.some((n) => n.slug === slug && n.id !== ignoreId)) {
+    slug = `${base}-${i}`;
+    i += 1;
+  }
+  return slug;
+}
+
+export async function getNewsBySlug(slug: string) {
+  const db = await getDB();
+  return db.news.find((n) => n.slug === slug) ?? null;
+}
+
+export async function createNews(input: any) {
+  const db = await getDB();
+  const rawTitleStr = typeof input.title === "object" ? input.title?.tr : input.title;
+  const base = slugify(rawTitleStr || "haber");
+  const slug = await uniqueNewsSlug(base, db);
+
+  const news: NewsItem = {
+    id: makeId("news"),
+    title: normalizeMultiLang(input.title),
+    slug,
+    excerpt: normalizeMultiLang(input.excerpt),
+    content: normalizeMultiLang(input.content),
+    coverImage: typeof input.coverImage === "string" && input.coverImage ? input.coverImage : null,
+    date: typeof input.date === "string" && input.date ? input.date : new Date().toISOString(),
+    active: input.active !== undefined ? Boolean(input.active) : true,
+    createdAt: new Date().toISOString(),
+    seoTitle: typeof input.seoTitle === "string" && input.seoTitle.trim() ? input.seoTitle.trim() : undefined,
+    seoDescription: typeof input.seoDescription === "string" && input.seoDescription.trim() ? input.seoDescription.trim() : undefined,
+  };
+
+  db.news.unshift(news);
+  await updateDB(db);
+  return news;
+}
+
+export async function updateNews(id: string, input: Record<string, unknown>) {
+  const db = await getDB();
+  const news = db.news.find((n) => n.id === id);
+  if (!news) return null;
+
+  if (input.title !== undefined) {
+    news.title = normalizeMultiLang(input.title);
+    const rawTitleStr = typeof news.title === "object" ? news.title.tr : news.title;
+    if (rawTitleStr.trim()) {
+      news.slug = await uniqueNewsSlug(slugify(rawTitleStr), db, news.id);
+    }
+  }
+
+  if (input.excerpt !== undefined) news.excerpt = normalizeMultiLang(input.excerpt);
+  if (input.content !== undefined) news.content = normalizeMultiLang(input.content);
+  if (input.coverImage !== undefined) news.coverImage = (input.coverImage as string) || null;
+  if (typeof input.date === "string" && input.date) news.date = input.date;
+  if (input.active !== undefined) news.active = Boolean(input.active);
+  if (typeof input.seoTitle === "string") news.seoTitle = input.seoTitle.trim() ? input.seoTitle.trim() : undefined;
+  if (typeof input.seoDescription === "string") news.seoDescription = input.seoDescription.trim() ? input.seoDescription.trim() : undefined;
+
+  await updateDB(db);
+  return news;
+}
+
+export async function deleteNews(id: string) {
+  const db = await getDB();
+  const exists = db.news.some((n) => n.id === id);
+  if (!exists) return false;
+  db.news = db.news.filter((n) => n.id !== id);
+  await updateDB(db);
+  return true;
+}
+
+// ---------------------------------------------------------------------------
+// SAYFA YÖNETİMİ — About Us, Capabilities, Automation Control gibi sabit
+// kurumsal sayfaların admin panelinden düzenlenebilmesi için basit bir CMS.
+// Sayfalar `key` alanına göre (bkz. lib/pageSlots.ts) sabit "yuva"lara karşılık
+// gelir; silinmezler, sadece düzenlenir ve yayın durumu açılıp kapatılır.
+// ---------------------------------------------------------------------------
+
+export async function getPageByKey(key: string) {
+  const db = await getDB();
+  return db.pages.find((p) => p.key === key) ?? null;
+}
+
+export async function upsertPage(key: string, input: Record<string, unknown>) {
+  const db = await getDB();
+  let page = db.pages.find((p) => p.key === key);
+
+  if (!page) {
+    page = {
+      id: makeId("page"),
+      key,
+      title: { tr: "", en: "" },
+      description: { tr: "", en: "" },
+      heroImage: null,
+      coverImage: null,
+      contentBlocks: [],
+      published: false,
+      updatedAt: new Date().toISOString(),
+    };
+    db.pages.push(page);
+  }
+
+  if (input.title !== undefined) page.title = normalizeMultiLang(input.title);
+  if (input.description !== undefined) page.description = normalizeMultiLang(input.description);
+  if (input.heroImage !== undefined) page.heroImage = (input.heroImage as string) || null;
+  if (input.coverImage !== undefined) page.coverImage = (input.coverImage as string) || null;
+  if (Array.isArray(input.contentBlocks)) {
+    page.contentBlocks = input.contentBlocks
+      .map((item: unknown) => normalizeStyledPair(item))
+      .filter((x: StyledPair | null): x is StyledPair => x !== null);
+  }
+  if (typeof input.seoTitle === "string") page.seoTitle = input.seoTitle.trim() ? input.seoTitle.trim() : undefined;
+  if (typeof input.seoDescription === "string") page.seoDescription = input.seoDescription.trim() ? input.seoDescription.trim() : undefined;
+  if (input.published !== undefined) page.published = Boolean(input.published);
+
+  page.updatedAt = new Date().toISOString();
+  await updateDB(db);
+  return page;
 }

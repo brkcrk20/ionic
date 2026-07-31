@@ -1,6 +1,33 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProducts, getCategories } from "@/lib/db";
+import { getProducts, getCategories, getSettings } from "@/lib/db";
+import { buildProductMeta, buildProductJsonLd, buildBreadcrumbJsonLd, absoluteUrl, getLangText } from "@/lib/seo";
 import DynamicProductDetail from "./DynamicProductDetail";
+
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await props.params;
+  const [products, settings] = await Promise.all([getProducts(), getSettings()]);
+  const product = products.find((p) => p.slug === slug && p.active);
+  if (!product) return {};
+
+  const siteTitle = settings.seoTitle || "Ion Meccanica";
+  const { title, description } = buildProductMeta(product, siteTitle);
+  const url = absoluteUrl(`/products/${product.slug}`);
+  const image = product.heroImage || product.images[0];
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+      images: image ? [{ url: absoluteUrl(image) }] : undefined,
+    },
+  };
+}
 
 export default async function ProductDetailPage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
@@ -13,16 +40,28 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
   }
 
   const category = categories.find((c) => c.id === product.categoryId) ?? null;
+  const categoryNameString = category ? getLangText(category.name) : null;
 
-  // Kategori adını string'e normalize ediyoruz
-  let categoryNameString: string | null = null;
-  if (category?.name) {
-    if (typeof category.name === "string") {
-      categoryNameString = category.name;
-    } else {
-      categoryNameString = category.name.tr || category.name.en || "";
-    }
-  }
+  const productJsonLd = buildProductJsonLd(product, categoryNameString);
+  const breadcrumbItems = [
+    { name: "Ana Sayfa", url: "/" },
+    { name: "Ürünler", url: "/products" },
+    ...(category ? [{ name: categoryNameString || "", url: `/category/${category.slug}` }] : []),
+    { name: getLangText(product.name), url: `/products/${product.slug}` },
+  ];
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd(breadcrumbItems);
 
-  return <DynamicProductDetail product={product} categoryName={categoryNameString} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <DynamicProductDetail product={product} categoryName={categoryNameString} />
+    </>
+  );
 }
