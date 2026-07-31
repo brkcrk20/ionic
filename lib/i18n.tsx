@@ -142,7 +142,7 @@ const translations: Record<Lang, Translations> = {
       contactSales: "İletişim & Satış Ağı",
       careers: "Kariyer",
       portal: "Müşteri Portalı Girişi",
-      addressTitle: "Organize Sanayi Bölgesi, 14. Cadde",
+      addressTitle: "Kocabaş Mah. Mermerciler/3 Sk. No 2/1 Honaz",
       addressSub: "Denizli / Türkiye",
       catLines: "Komple Hatlar",
       resinLines: "Reçine İşleme Hatları",
