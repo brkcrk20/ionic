@@ -192,7 +192,7 @@ const DEFAULT_NAV_MENU: NavMenuItem[] = [
   { id: "nav-engineering", label: { tr: "ION ONEFLOW", en: "ION ONEFLOW" }, href: "/ion-oneflow" },
   {
     id: "nav-machines",
-    label: { tr: "Makineler & Hatlar", en: "Machines & Lines" },
+    label: { tr: "Makineler", en: "Machines" },
     href: "/products",
     children: [
       {

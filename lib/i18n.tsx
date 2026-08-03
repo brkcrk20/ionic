@@ -127,7 +127,7 @@ export interface Translations {
 const translations: Record<Lang, Translations> = {
   TR: {
     nav: {
-      machines: "Makineler & Hatlar",
+      machines: "Makineler",
       engineering: "ION ONEFLOW",
       service: "Hizmetler",
       company: "Kurumsal",

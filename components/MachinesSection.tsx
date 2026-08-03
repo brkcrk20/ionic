@@ -10,11 +10,16 @@ import ImagePlaceholder from "@/components/ImagePlaceholder";
 // NOT: Görseller (resin-line.jpg vb.) public/ klasörüne eklenene kadar
 // ImagePlaceholder kullanılıyor. Görseller eklendiğinde burada bir "image"
 // alanı tanımlayıp aşağıdaki ImagePlaceholder'ı <Image> ile değiştirmeniz yeterli.
+// NOT: "resin" gerçek bir kategoriye (Epoksi Fırın Hatları) karşılık geliyor.
+// "cnc", "waterjet" ve "tile" için ürün kataloğunda henüz karşılık gelen bir
+// kategori yok; bu yüzden bunlar kırık bir kategori sayfasına değil, güvenli
+// bir şekilde genel Ürünler sayfasına yönlendiriliyor. Bu makineler için de
+// bir kategori açılırsa, categorySlug'ı gerçek kategori slug'ıyla değiştirmek yeterli.
 const PRODUCT_META = [
-  { id: "resin", key: "resin", categorySlug: "recine-hatlari" },
-  { id: "cnc", key: "cnc", categorySlug: "cnc-kopru-kesim" },
-  { id: "waterjet", key: "waterjet", categorySlug: "su-jeti-kesim" },
-  { id: "tile", key: "tile", categorySlug: "fayans-hatlari" },
+  { id: "resin", key: "resin", categorySlug: "resin-lines" },
+  { id: "cnc", key: "cnc", categorySlug: null },
+  { id: "waterjet", key: "waterjet", categorySlug: null },
+  { id: "tile", key: "tile", categorySlug: null },
 ] as const;
 
 export default function MachinesSection() {
@@ -80,7 +85,7 @@ export default function MachinesSection() {
               <h3 className="text-[#F3F1EC] text-xl font-bold mt-1">{activeText.name}</h3>
             </div>
             <Link
-              href={`/category/${activeMeta.categorySlug}`}
+              href={activeMeta.categorySlug ? `/category/${activeMeta.categorySlug}` : "/products"}
               className="w-12 h-12 rounded-full bg-[#B87332] flex items-center justify-center text-[#F3F1EC] hover:bg-[#F3F1EC] hover:text-[#3A3A3A] transition-colors shadow-lg"
             >
               <ChevronRight />

@@ -3,8 +3,8 @@
     {
       "id": "cat-makineler-hatlar",
       "name": {
-        "tr": "Makineler & Hatlar",
-        "en": "Machines & Lines"
+        "tr": "Makineler",
+        "en": "Machines"
       },
       "slug": "makineler-hatlar",
       "parentId": null,
@@ -78,7 +78,7 @@
         "tr": "POSITRON",
         "en": "POSITRON"
       },
-      "slug": "positron-2",
+      "slug": "positron",
       "subtitle": {
         "tr": "Plaka Kurutma ve Reçine Kürleme için Döngüsel Fırın",
         "en": "Cyclic Oven for Slab Drying and Resin Curing"
@@ -2347,7 +2347,7 @@
         "tr": "GRAVITON COMBI, reçine uygulamasından önce doğal taş plakaları kurutmak ve reçine işleminden sonra kürlemek için tasarlanmış tam yalıtımlı birleşik statik bir kule fırınıdır.\n\n",
         "en": "GRAVITON COMBI is a fully insulated combined static oven tower designed for drying natural-stone slabs before resin application and curing them after resin treatment.\n\n"
       },
-      "heroImage": "/uploads/products/95c6sa-ion_graviton-combi_background.webp",
+      "heroImage": "/uploads/products/i3tyb1-ion_graviton-combi_background.webp",
       "descriptionParagraphs": [
         {
           "tr": "GRAVITON COMBI, reçine uygulamasından önce doğal taş plakaları kurutmak ve reçine işleminden sonra kürlemek için tasarlanmış tam yalıtımlı birleşik statik bir kule fırınıdır. Makine, iki bağımsız termal prosesi tek bir kompakt dikey yapı içinde birleştirir. Bir oda plaka kurutmaya adanmıştır, ikinci oda ise epoksi veya polyester reçine polimerizasyonu için gerekli kontrollü koşulları sağlar. Kurutma ve kürleme seviyelerinin sayısı, müşterinin gerekli üretim kapasitesine, proses sürelerine ve reçine hattı mimarisine göre yapılandırılır. Tipik bir düzenleme 15 kurutma seviyesi ve 30 kürleme seviyesi içerebilirken, 10+20 veya diğer müşteriye özel kombinasyonlar gibi alternatifler geliştirilebilir.\n\nKurutma ve kürleme kapasitesini tek bir fırın kulesinde birleştirerek, GRAVITON COMBI kurulum alanını azaltırken, plaka işlem sürecinin her aşamasında gerekli kontrollü bekleme süresini sağlar.\n\nKurutma ve kürleme bölümleri fiziksel olarak ayrılmıştır ve bağımsız termal odalar olarak çalışır. Kurutma odası, reçine uygulamasından önce plakadaki kalıntı nemi giderir; bu, taş yüzeyini ve iç çatlaklarını etkili reçine penetrasyonu için hazırlamaya yardımcı olur.\n\nKürleme odası, reçine uygulamasından sonra gerekli kontrollü sıcaklığı korur ve plaka bir sonraki işlem aşamasına geçmeden önce polimerizasyonun ilerlemesine olanak tanır.\n\nHer oda kendi ısıtma ve hava sirkülasyon sistemi ile donatılmıştır. Bu, kurutma ve kürleme sıcaklıklarının taş, reçine formülasyonu ve üretim reçetesine göre bağımsız olarak düzenlenmesini sağlar.\n\nGRAVITON COMBI'nin sabit bir kurutma-kürleme kapasite oranı yoktur. Her odadaki seviye sayısı, saat başına gerekli plaka sayısına, plaka kurutma süresine, reçine kürleme süresine, seçilen reçine formülasyonuna, taş özelliklerine, plaka boyutlarına ve ağırlığına, önceki ve sonraki makine kapasitesine, mevcut fabrika alanına ve yüksekliğe göre seçilir.\n\n",
@@ -2405,7 +2405,7 @@
       "features": [],
       "categoryId": "cat-epoksi-uygulama",
       "images": [
-        "/uploads/products/q2ihls-ion_graviton-combi_cover.webp"
+        "/uploads/products/ksknhx-ion_graviton-combi_cover.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:31:29.546Z",
@@ -2551,7 +2551,7 @@
         "tr": "GRAVITON, reçine uygulamasından önce doğal taş plakaların kontrollü kurutulması veya reçine işleminden sonra plakaların termal kürlenmesi için tasarlanmış tam yalıtımlı statik bir kule fırınıdır.\n\n",
         "en": "GRAVITON is a fully insulated static oven tower designed for the controlled drying of natural-stone slabs before resin application or for the thermal curing of slabs after resin treatment.\n\n"
       },
-      "heroImage": "/uploads/products/lg4qss-ion_graviton_background.webp",
+      "heroImage": "/uploads/products/qlkpkr-ion_graviton_background.webp",
       "descriptionParagraphs": [
         {
           "tr": "GRAVITON, reçine uygulamasından önce doğal taş plakaların kontrollü kurutulması veya reçine işleminden sonra plakaların termal kürlenmesi için tasarlanmış tam yalıtımlı statik bir kule fırınıdır. Kurutma ve kürleme odalarını tek bir yapı içinde birleştiren GRAVITON COMBI'den farklı olarak, her GRAVITON kulesi tek bir termal prosese adanmıştır. Bu nedenle, tam bir reçine işleme hattında, plaka kurutma ve reçine polimerizasyonu için ayrı kuleler yapılandırılabilir ve her kulenin kapasitesi, gerekli işlem süresine ve üretim çıktısına göre bağımsız olarak seçilir. Çalışma sırasında, her tepsi atanmış bir seviyeye yerleştirilir ve programlanmış kurutma veya kürleme süresi tamamlanana kadar orada sabit kalır. Bu statik işlem prensibi, her plaka için kontrollü bekleme süresi sağlar ve hattın kurutma ve reçine kürlemenin farklı süre gereksinimlerini dengelemesine olanak tanır.\n\n",
@@ -2668,7 +2668,7 @@
       ],
       "categoryId": "cat-epoksi-uygulama",
       "images": [
-        "/uploads/products/qv1vyr-ion_graviton_cover.webp"
+        "/uploads/products/l0jh3v-ion_graviton_cover.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:36:09.094Z",
@@ -3163,7 +3163,7 @@
         "tr": "Hatlar",
         "en": "Plants"
       },
-      "href": "/Plants",
+      "href": "/category/plants",
       "children": [
         {
           "id": "navsub-ms8zik0s-1b7p0",

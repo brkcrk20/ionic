@@ -185,32 +185,31 @@ export default function ProductWizardForm({ product, categories: initialCategori
   const [seoDescription, setSeoDescription] = useState(product?.seoDescription ?? "");
 
   const selectableCategories = useMemo(() => {
-    // Admin panelinden veya prop olarak gelen güncel kategorileri/menüyü alıyoruz
-    const menuSource = categories && categories.length > 0 ? categories : [];
+    // Admin panelinden veya prop olarak gelen güncel kategorileri alıyoruz.
+    // Kategoriler burada parentId ile ilişkili düz (flat) bir liste olarak geliyor,
+    // bu yüzden ağacı parentId üzerinden kendimiz kuruyoruz (Kategoriler panelindeki
+    // ağaç ile aynı mantık) ki sıralama ve girinti gerçek hiyerarşiyle uyuşsun.
+    const list = categories && categories.length > 0 ? categories : [];
     const leafNodes: { id: string; name: { tr: string; en: string }; path: string }[] = [];
 
-    function traverse(items: any[], parentPath = "") {
-      for (const item of items) {
-        const currentLabel = item.label || item.name || { tr: "Kategori", en: "Category" };
-        const currentPathName = typeof currentLabel === "string" ? currentLabel : (currentLabel.tr || "Kategori");
-        const fullPath = parentPath ? `${parentPath} > ${currentPathName}` : currentPathName;
+    function traverse(parentId: string | null, parentPath: string) {
+      for (const cat of list.filter((c) => c.parentId === parentId)) {
+        const label = catLabel(cat.name, "tr");
+        const fullPath = parentPath ? `${parentPath} > ${label}` : label;
+        const hasChildren = list.some((c) => c.parentId === cat.id);
 
-        const children = item.children || item.subs || [];
-        
-        // Sadece en alttaki uç (leaf) kategorileri / alt başlıkları seçilebilir yapıyoruz
-        if (children.length === 0) {
-          leafNodes.push({
-            id: item.id || item.href || fullPath,
-            name: typeof currentLabel === "string" ? { tr: currentLabel, en: currentLabel } : currentLabel,
-            path: fullPath,
-          });
+        // Sadece en alttaki uç (leaf) kategorileri seçilebilir yapıyoruz;
+        // grup başlıkları (üst kategoriler) doğrudan seçime çıkmaz.
+        if (!hasChildren) {
+          const nameObj = typeof cat.name === "string" ? { tr: cat.name, en: cat.name } : { tr: cat.name.tr || "", en: cat.name.en || "" };
+          leafNodes.push({ id: cat.id, name: nameObj, path: fullPath });
         } else {
-          traverse(children, fullPath);
+          traverse(cat.id, fullPath);
         }
       }
     }
 
-    traverse(menuSource);
+    traverse(null, "");
     return leafNodes;
   }, [categories]);
 
