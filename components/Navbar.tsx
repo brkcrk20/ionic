@@ -17,6 +17,7 @@ const DEFAULT_NAV_MENU: NavMenuItem[] = [
       { id: "nav-machines-g1", label: { tr: "Epoksi Uygulama", en: "Resin Application" }, href: "/category/epoksi-uygulama" },
       { id: "nav-machines-g2", label: { tr: "Atölye", en: "Fabshop" }, href: "/category/atolye" },
       { id: "nav-machines-g3", label: { tr: "Yükleme & Boşaltma", en: "Loading & Unloading Systems" }, href: "/category/yukleme-bosaltma" },
+      { id: "nav-machines-g4", label: { tr: "Reçineleme", en: "Polishing" }, href: "/category/polishing" },
     ],
   },
   {
@@ -32,7 +33,7 @@ const DEFAULT_NAV_MENU: NavMenuItem[] = [
   {
     id: "nav-company",
     label: { tr: "Hakkımızda", en: "About Us" },
-    href: "/company/about-us",
+    href: "#",
     children: [
       { id: "nav-company-1", label: { tr: "Kurumsal", en: "Company" }, href: "/company" },
       { id: "nav-company-2", label: { tr: "Mühendislik & Teknoloji", en: "Engineering & Technology" }, href: "/company/engineering-production" },
@@ -139,14 +140,25 @@ export default function Navbar({
 
            {menuItems.map((item: NavMenuItem) => {
               const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+              const isNonClickable = !item.href || item.href === "#" || item.href === "/#";
 
               if (hasChildren) {
                 const isGrouped = item.children!.some((sub: NavSubItem) => Array.isArray(sub.children) && sub.children.length > 0);
                 return (
                   <div key={item.id} className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu(item.id)} onMouseLeave={() => setOpenMenu(null)}>
-                    <Link href={item.href} className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
-                      {menuLabel(item)}
-                    </Link>
+                    {isNonClickable ? (
+                      <a
+                        href="#"
+                        onClick={(e) => e.preventDefault()}
+                        className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4 cursor-pointer"
+                      >
+                        {menuLabel(item)}
+                      </a>
+                    ) : (
+                      <Link href={item.href} className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
+                        {menuLabel(item)}
+                      </Link>
+                    )}
                     {openMenu === item.id && isGrouped && (
                       <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-[min(92vw,720px)] bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
                         <div className="grid grid-cols-2 gap-8 px-10 py-8 bg-gradient-to-b from-gray-50/70 to-white">
@@ -268,6 +280,7 @@ export default function Navbar({
                 <div className="flex flex-col divide-y divide-gray-100">
                   {menuItems.map((item: NavMenuItem) => {
                     const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+                    const isNonClickable = !item.href || item.href === "#" || item.href === "/#";
 
                     if (!hasChildren) {
                       return (
@@ -286,13 +299,22 @@ export default function Navbar({
                     return (
                       <div key={item.id}>
                         <div className="flex items-center justify-between py-3.5">
-                          <Link
-                            href={item.href}
-                            onClick={() => setMegaMenuOpen(false)}
-                            className="text-base font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors"
-                          >
-                            {menuLabel(item)}
-                          </Link>
+                          {isNonClickable ? (
+                            <span 
+                              onClick={() => setMobileOpenId(isOpen ? null : item.id)}
+                              className="text-base font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors cursor-pointer select-none flex-1"
+                            >
+                              {menuLabel(item)}
+                            </span>
+                          ) : (
+                            <Link
+                              href={item.href}
+                              onClick={() => setMegaMenuOpen(false)}
+                              className="text-base font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors"
+                            >
+                              {menuLabel(item)}
+                            </Link>
+                          )}
                           <button
                             type="button"
                             onClick={() => setMobileOpenId(isOpen ? null : item.id)}

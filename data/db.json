@@ -21,6 +21,16 @@
       "image": null
     },
     {
+      "id": "cat-polishing",
+      "name": {
+        "tr": "Reçineleme",
+        "en": "Polishing"
+      },
+      "slug": "polishing",
+      "parentId": "cat-makineler-hatlar",
+      "image": null
+    },
+    {
       "id": "cat-atolye",
       "name": {
         "tr": "Atölye",
@@ -1250,7 +1260,7 @@
       },
       "versions": [],
       "features": [],
-      "categoryId": "cat-atolye",
+      "categoryId": "cat-polishing",
       "images": [
         "/uploads/products/3ejfai-ion_ultravion-uv-oven_cover_3.webp"
       ],
@@ -1376,7 +1386,7 @@
       },
       "versions": [],
       "features": [],
-      "categoryId": "cat-atolye",
+      "categoryId": "cat-polishing",
       "images": [
         "/uploads/products/yk4p2u-ion_ir-oven_cover.webp"
       ],
@@ -1976,7 +1986,7 @@
       },
       "versions": [],
       "features": [],
-      "categoryId": "cat-atolye",
+      "categoryId": "cat-epoksi-uygulama",
       "images": [
         "/uploads/products/t4tidy-ion_vacuum_cover.webp"
       ],
@@ -2102,7 +2112,7 @@
       },
       "versions": [],
       "features": [],
-      "categoryId": "cat-atolye",
+      "categoryId": "cat-polishing",
       "images": [
         "/uploads/products/otd16f-ion_wax_cover.webp"
       ],
@@ -3140,12 +3150,12 @@
           "href": "/category/epoksi-uygulama"
         },
         {
-          "id": "navsub-ms8zxwjq-obanx",
+          "id": "navsub-msee3oef-679vt",
           "label": {
-            "tr": "Atölye",
-            "en": "Fabshop"
+            "tr": "Reçineleme",
+            "en": "Polishing"
           },
-          "href": "/category/atolye"
+          "href": "/category/polishing"
         },
         {
           "id": "navsub-ms8zrp37-p18g0",
@@ -3154,6 +3164,14 @@
             "en": "Loading & Unloading Systems"
           },
           "href": "/category/yukleme-bosaltma"
+        },
+        {
+          "id": "navsub-ms8zxwjq-obanx",
+          "label": {
+            "tr": "Atölye",
+            "en": "Fabshop"
+          },
+          "href": "/category/atolye"
         }
       ]
     },
@@ -3197,7 +3215,7 @@
         "tr": "Hakkımızda",
         "en": "About Us"
       },
-      "href": "/",
+      "href": "#",
       "children": [
         {
           "id": "nav-company-1",
