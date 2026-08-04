@@ -188,6 +188,25 @@ const DEFAULT_SETTINGS: SiteSettings = {
   footerText: { tr: "Tüm hakları saklıdır.", en: "All rights reserved." },
 };
 
+// Vercel build hatasını çözen eksik sabit tanımı:
+const DEFAULT_NAV_MENU: NavMenuItem[] = [
+  {
+    id: "nav-1",
+    label: { tr: "Anasayfa", en: "Home" },
+    href: "/",
+  },
+  {
+    id: "nav-2",
+    label: { tr: "Şirket", en: "Company" },
+    href: "/about-us/company",
+  },
+  {
+    id: "nav-3",
+    label: { tr: "İletişim", en: "Contact" },
+    href: "/contact",
+  },
+];
+
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
