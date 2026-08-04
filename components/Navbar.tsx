@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight, FileText } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import type { Category, MultiLangString, NavMenuItem, NavSubItem } from "@/lib/db";
 import { useLanguage } from "@/lib/i18n";
 
@@ -14,38 +14,30 @@ const DEFAULT_NAV_MENU: NavMenuItem[] = [
     label: { tr: "Makineler", en: "Machines" },
     href: "/products",
     children: [
-      {
-        id: "nav-machines-g1",
-        label: { tr: "Komple Hatlar", en: "Complete Lines" },
-        href: "/category/komple-hatlar",
-        children: [
-          { id: "nav-machines-1", label: { tr: "Epoksi Fırın Hatları", en: "Epoxy Oven Lines" }, href: "/category/epoksi-firin-hatlari" },
-          { id: "nav-machines-2", label: { tr: "Plaka Silim Hatları", en: "Slab Polishing Lines" }, href: "/category/plaka-silim-hatlari" },
-        ],
-      },
-      {
-        id: "nav-machines-g2",
-        label: { tr: "Makineler", en: "Machines" },
-        href: "/category/makineler",
-        children: [
-          { id: "nav-machines-4", label: { tr: "Epoksi Uygulama", en: "Epoxy Application" }, href: "/category/epoksi-uygulama" },
-          { id: "nav-machines-5", label: { tr: "Atölye", en: "Workshop" }, href: "/category/atolye" },
-          { id: "nav-machines-6", label: { tr: "Yükleme & Boşaltma", en: "Loading & Unloading" }, href: "/category/yukleme-bosaltma" },
-        ],
-      },
+      { id: "nav-machines-g1", label: { tr: "Epoksi Uygulama", en: "Resin Application" }, href: "/category/epoksi-uygulama" },
+      { id: "nav-machines-g2", label: { tr: "Atölye", en: "Fabshop" }, href: "/category/atolye" },
+      { id: "nav-machines-g3", label: { tr: "Yükleme & Boşaltma", en: "Loading & Unloading Systems" }, href: "/category/yukleme-bosaltma" },
+    ],
+  },
+  {
+    id: "nav-plants",
+    label: { tr: "Hatlar", en: "Plants" },
+    href: "/plants",
+    children: [
+      { id: "nav-plants-1", label: { tr: "Epoksi Fırın Hatları", en: "Resin Treatment Lines" }, href: "/plants?category=resin-lines" },
+      { id: "nav-plants-2", label: { tr: "Plaka Silim Hatları", en: "Slab Polishing Lines" }, href: "/plants?category=polishing-lines" },
     ],
   },
   { id: "nav-service", label: { tr: "Hizmetler", en: "Service" }, href: "/service" },
   {
     id: "nav-company",
-    label: { tr: "Kurumsal", en: "Company" },
-    href: "/company",
+    label: { tr: "Hakkımızda", en: "About Us" },
+    href: "/company/about-us",
     children: [
-      { id: "nav-company-1", label: { tr: "Hakkımızda", en: "About Us" }, href: "/company/about-us" },
-      { id: "nav-company-2", label: { tr: "Mühendislik & Üretim", en: "Engineering & Production" }, href: "/company/engineering-production" },
-      { id: "nav-company-3", label: { tr: "Kalite", en: "Quality" }, href: "/company/quality" },
-      { id: "nav-company-4", label: { tr: "Yetkinlikler", en: "Capabilities" }, href: "/company/capabilities" },
-      { id: "nav-company-5", label: { tr: "Kariyer", en: "Careers" }, href: "/careers" },
+      { id: "nav-company-1", label: { tr: "Kurumsal", en: "Company" }, href: "/company" },
+      { id: "nav-company-2", label: { tr: "Mühendislik & Teknoloji", en: "Engineering & Technology" }, href: "/company/engineering-production" },
+      { id: "nav-company-3", label: { tr: "Ar-Ge ve Doğal Taş Uzmanlığı", en: "Research, Development & Stone Expertise" }, href: "/company/research-development" },
+      { id: "nav-company-4", label: { tr: "Üretim & Kalite", en: "Manufacturing & Quality" }, href: "/company/quality" },
     ],
   },
   { id: "nav-news", label: { tr: "Haberler", en: "News" }, href: "/news" },
@@ -78,6 +70,7 @@ export default function Navbar({
     : "";
   const showAnnouncement = Boolean(announcement && announcementText && !announcementDismissed);
   const menuItems = navMenu && navMenu.length > 0 ? navMenu : DEFAULT_NAV_MENU;
+  
   const menuLabel = (item: NavMenuItem | NavSubItem) => {
     if (typeof item.label === "string") return item.label;
     return (lang === "EN" ? item.label.en : item.label.tr) || item.label.tr || item.label.en;
@@ -92,7 +85,6 @@ export default function Navbar({
     }
   }, [megaMenuOpen]);
 
-  // Gelişmiş Kaydırma Dinleyicisi (Özel kaydırma konteynerlerini de yakalar)
   useEffect(() => {
     const handleScroll = (e: Event) => {
       const target = e.target as HTMLElement;
@@ -109,7 +101,6 @@ export default function Navbar({
     return () => window.removeEventListener("scroll", handleScroll, true);
   }, []);
 
-  // Sadece ana sayfanın en tepesindeyken şeffaf, diğer tüm durumlarda #3A3A3A (Ion Grafit)
   const navBg = isHome && !isScrolled
     ? "bg-transparent"
     : "bg-[#3A3A3A]";
@@ -138,21 +129,19 @@ export default function Navbar({
         {/* MASAÜSTÜ NAVBAR */}
         <div className="hidden xl:flex items-center justify-between max-w-[1850px] mx-auto px-6 lg:px-8 h-22">
           
-          {/* 1. SOL: LOGO */}
           <div className="flex items-center shrink-0">
             <Link href="/" className="flex items-center hover:opacity-80 transition-all">
               <Image src="/logo.svg" alt="Ion Meccanica" width={72} height={72} className="object-contain h-16 w-auto" />
             </Link>
           </div>
 
-          {/* 2. ORTA: ANA MENÜ ELEMANLARI */}
           <div className="flex items-center justify-center gap-5 xl:gap-8 text-[14px] xl:text-[15px] font-montserrat font-bold text-[#F3F1EC] tracking-wide h-full">
 
-           {menuItems.map((item) => {
+           {menuItems.map((item: NavMenuItem) => {
               const hasChildren = Array.isArray(item.children) && item.children.length > 0;
 
               if (hasChildren) {
-                const isGrouped = item.children!.some((sub) => Array.isArray(sub.children) && sub.children.length > 0);
+                const isGrouped = item.children!.some((sub: NavSubItem) => Array.isArray(sub.children) && sub.children.length > 0);
                 return (
                   <div key={item.id} className="relative h-full flex items-center" onMouseEnter={() => setOpenMenu(item.id)} onMouseLeave={() => setOpenMenu(null)}>
                     <Link href={item.href} className="hover:text-[#B87332] transition-colors flex items-center gap-1 py-4">
@@ -161,7 +150,7 @@ export default function Navbar({
                     {openMenu === item.id && isGrouped && (
                       <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-[min(92vw,720px)] bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
                         <div className="grid grid-cols-2 gap-8 px-10 py-8 bg-gradient-to-b from-gray-50/70 to-white">
-                          {item.children!.map((group) => (
+                          {item.children!.map((group: NavSubItem) => (
                             <div key={group.id} className="flex flex-col gap-3.5 group/col">
                               <Link href={group.href} className="font-extrabold text-[#0B1941] text-[13.5px] uppercase tracking-wider border-b border-gray-200/80 pb-2.5 hover:text-[#B87332] transition-colors flex items-center justify-between group-hover/col:border-[#B87332]/50">
                                 <span>{menuLabel(group)}</span>
@@ -169,7 +158,7 @@ export default function Navbar({
                               </Link>
                               {Array.isArray(group.children) && group.children.length > 0 && (
                                 <div className="flex flex-col gap-1.5">
-                                  {group.children.map((leaf) => (
+                                  {group.children.map((leaf: NavSubItem) => (
                                     <Link key={leaf.id} href={leaf.href} className="text-[13px] font-medium text-gray-600 hover:text-[#B87332] hover:translate-x-1 transition-all py-1.5 px-2.5 rounded-md hover:bg-white">
                                       {menuLabel(leaf)}
                                     </Link>
@@ -184,7 +173,7 @@ export default function Navbar({
                     {openMenu === item.id && !isGrouped && (
                       <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0.5 w-84 bg-white/98 backdrop-blur-2xl border-t-2 border-t-[#B87332] border-x border-b border-gray-100 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] z-50 text-black rounded-b-2xl overflow-hidden p-2.5 animate-in fade-in slide-in-from-top-2">
                         <div className="flex flex-col gap-1">
-                          {item.children!.map((sub) => (
+                          {item.children!.map((sub: NavSubItem) => (
                             <Link key={sub.id} href={sub.href} className="group flex items-center justify-between text-[13.5px] font-medium text-gray-700 hover:text-[#B87332] hover:bg-gray-50 transition-all p-3 rounded-xl">
                               <span>{menuLabel(sub)}</span>
                               <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#B87332] group-hover:translate-x-1 transition-all" />
@@ -208,7 +197,6 @@ export default function Navbar({
           </div>
 
           <div className="flex items-center gap-5 xl:gap-6 shrink-0">
-
             <div className="flex items-center gap-1 font-montserrat font-bold text-[14px] text-[#F3F1EC]">
               <button
                 onClick={() => setLang("EN")}
@@ -275,10 +263,10 @@ export default function Navbar({
 
             <div className="max-w-[1500px] w-full mx-auto px-6 lg:px-12 py-6 md:py-8 my-auto">
 
-              {/* MOBİL/TABLET: ANA MENÜ (masaüstünde navbar'da hover ile açılan menülerin karşılığı) */}
+              {/* MOBİL/TABLET: ANA MENÜ */}
               <div className="xl:hidden mb-8 border-b border-gray-200 pb-2">
                 <div className="flex flex-col divide-y divide-gray-100">
-                  {menuItems.map((item) => {
+                  {menuItems.map((item: NavMenuItem) => {
                     const hasChildren = Array.isArray(item.children) && item.children.length > 0;
 
                     if (!hasChildren) {
@@ -316,7 +304,7 @@ export default function Navbar({
                         </div>
                         {isOpen && (
                           <div className="pb-3 pl-3 flex flex-col gap-0.5">
-                            {item.children!.map((sub) => {
+                            {item.children!.map((sub: NavSubItem) => {
                               const subHasChildren = Array.isArray(sub.children) && sub.children.length > 0;
 
                               if (!subHasChildren) {
@@ -354,7 +342,7 @@ export default function Navbar({
                                   </div>
                                   {isSubOpen && (
                                     <div className="pb-2 pl-3 flex flex-col gap-0.5">
-                                      {sub.children!.map((leaf) => (
+                                      {sub.children!.map((leaf: NavSubItem) => (
                                         <Link
                                           key={leaf.id}
                                           href={leaf.href}
@@ -398,65 +386,11 @@ export default function Navbar({
                   </button>
                 </div>
               </div>
-
-              {/* MASAÜSTÜ: EK BAĞLANTILAR (Kurumsal / Neden Biz / Sektörler / vb.) */}
-              <div className="hidden xl:grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
-                
-                <div className="md:col-span-5 flex flex-col gap-3 md:gap-5 font-montserrat">
-                  <Link href="/company" onClick={() => setMegaMenuOpen(false)} className="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors">
-                    {t.groupTitle}
-                  </Link>
-                  <Link href="/why-ion" onClick={() => setMegaMenuOpen(false)} className="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors">
-                    {t.whyUs}
-                  </Link>
-                  <Link href="/sectors" onClick={() => setMegaMenuOpen(false)} className="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors">
-                    {t.sectors}
-                  </Link>
-                </div>
-
-                <div className="md:col-span-4 flex flex-col gap-3 text-xs md:text-sm font-bold tracking-wider uppercase text-[#0B1941]">
-                  <Link href="/news" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors">
-                    {t.news}
-                  </Link>
-                  <Link href="/contact" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors">
-                    {t.contactSales}
-                  </Link>
-                  <Link href="/careers" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors">
-                    {t.careers}
-                  </Link>
-                  <Link href="/portal" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors pt-1">
-                    {t.portal}
-                  </Link>
-                </div>
-
-                <div className="md:col-span-3 flex flex-col gap-4 text-xs md:text-sm text-gray-600 font-medium leading-relaxed">
-                  <div className="flex flex-col gap-0.5 text-gray-700">
-                    <p className="font-semibold text-[#0B1941]">{t.addressTitle}</p>
-                    <p>{t.addressSub}</p>
-                    <p className="pt-1">+90 (258) 814 57 47</p>
-                    <a href="mailto:info@ionmeccanica.com" className="text-[#0B1941] hover:underline font-semibold">
-                      info@ionmeccanica.com
-                    </a>
-                  </div>
-
-                  <div className="flex items-center gap-2 text-xs font-bold text-gray-400 tracking-widest pt-1">
-                    <button onClick={() => setLang("EN")} className={`cursor-pointer hover:text-[#B87332] ${lang === "EN" ? "text-[#0B1941] font-extrabold" : ""}`}>
-                      EN
-                    </button>
-                    /
-                    <button onClick={() => setLang("TR")} className={`cursor-pointer hover:text-[#B87332] ${lang === "TR" ? "text-[#0B1941] font-extrabold" : ""}`}>
-                      TR
-                    </button>
-                  </div>
-                </div>
-
-              </div>
             </div>
-
             <div className="h-4 w-full"></div>
           </div>
         </div>
       )}
-  </>
+    </>
   );
 }

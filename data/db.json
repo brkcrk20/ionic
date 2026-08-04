@@ -3163,7 +3163,7 @@
         "tr": "Hatlar",
         "en": "Plants"
       },
-      "href": "/category/plants",
+      "href": "/plants",
       "children": [
         {
           "id": "navsub-ms8zik0s-1b7p0",
@@ -3171,7 +3171,7 @@
             "tr": "Epoksi Fırın Hatları",
             "en": "Resin Treatment Lines"
           },
-          "href": "/category/resin-lines"
+          "href": "/plants?category=resin-lines"
         },
         {
           "id": "navsub-ms8zkzdt-02lrs",
@@ -3179,7 +3179,7 @@
             "tr": "Plaka Silim Hatları",
             "en": "Slab Polishing Lines"
           },
-          "href": "/category/polishing-lines"
+          "href": "/plants?category=polishing-lines"
         }
       ]
     },
@@ -3194,50 +3194,42 @@
     {
       "id": "nav-company",
       "label": {
-        "tr": "Kurumsal",
-        "en": "Company"
+        "tr": "Hakkımızda",
+        "en": "About Us"
       },
-      "href": "/company",
+      "href": "/",
       "children": [
         {
           "id": "nav-company-1",
           "label": {
-            "tr": "Hakkımızda",
-            "en": "About Us"
+            "tr": "Kurumsal",
+            "en": "Company"
           },
-          "href": "/company/about-us"
+          "href": "/about-us/company"
         },
         {
           "id": "nav-company-2",
           "label": {
-            "tr": "Mühendislik & Üretim",
-            "en": "Engineering & Production"
+            "tr": "Mühendislik & Teknoloji",
+            "en": "Engineering & Technology"
           },
-          "href": "/company/engineering-production"
+          "href": "/about-us/engineering-technology"
         },
         {
           "id": "nav-company-3",
           "label": {
-            "tr": "Kalite",
-            "en": "Quality"
+            "tr": "Araştırma, Geliştirme ve Taş Uzmanlığı",
+            "en": "Research, Development & Stone Expertise"
           },
-          "href": "/company/quality"
-        },
-        {
-          "id": "nav-company-4",
-          "label": {
-            "tr": "Yetkinlikler",
-            "en": "Capabilities"
-          },
-          "href": "/company/capabilities"
+          "href": "/about-us/research-development-stone-expertise"
         },
         {
           "id": "nav-company-5",
           "label": {
-            "tr": "Kariyer",
-            "en": "Careers"
+            "tr": "Üretim ve Kalite",
+            "en": "Manufacturing & Quality"
           },
-          "href": "/careers"
+          "href": "/about-us/manufacturing-quality"
         }
       ]
     },

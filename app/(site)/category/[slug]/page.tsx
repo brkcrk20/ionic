@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { getProductsPageData } from "@/lib/productsData";
 import { getCategories, getSettings, getProducts } from "@/lib/db";
 import {
@@ -10,6 +11,18 @@ import {
   getLangText,
 } from "@/lib/seo";
 import ProductsPageClient from "../../products/ProductsPageClient";
+
+// Hatlar (Plants) artık kendi bağımsız sayfasında (/plants) gösteriliyor;
+// bu kategori ağacına ait eski /category/... bağlantıları oraya yönlendirilir.
+function getPlantsRedirectTarget(categories: Awaited<ReturnType<typeof getCategories>>, slug: string): string | null {
+  const plantsRoot = categories.find((c) => c.slug === "plants");
+  if (!plantsRoot) return null;
+  const category = categories.find((c) => c.slug === slug);
+  if (!category) return null;
+  const plantsIds = getDescendantAndSelfCategoryIds(categories, plantsRoot.id);
+  if (!plantsIds.has(category.id)) return null;
+  return category.id === plantsRoot.id ? "/plants" : `/plants?category=${category.slug}`;
+}
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await props.params;
@@ -46,6 +59,11 @@ export default async function KategoriPage(props: { params: Promise<{ slug: stri
   // /products sayfasına yönlendirmek yerine aynı listeyi doğrudan bu kategoriye
   // filtrelenmiş şekilde gösteriyoruz (client-side redirect yerine).
   const { dbProducts, categories } = await getProductsPageData();
+
+  const plantsRedirectTarget = getPlantsRedirectTarget(categories, slug);
+  if (plantsRedirectTarget) {
+    redirect(plantsRedirectTarget);
+  }
 
   const category = categories.find((c) => c.slug === slug) ?? null;
 

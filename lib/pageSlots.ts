@@ -11,11 +11,11 @@ export type PageSlot = {
   labelEn: string;
 };
 
-export const PAGE_GROUPS = ["Kurumsal", "Teknoloji", "Kariyer", "İletişim"] as const;
+export const PAGE_GROUPS = ["ONEFLOW", "Makineler", "Hatlar", "Hizmetler", "Hakkımızda", "Haberler", "İletişim",] as const;
 
 export const PAGE_SLOTS: PageSlot[] = [
+  { key: "about-us", group: "Hakkımızda", path: "/about-us/company", labelTr: "Hakkımızda", labelEn: "About Us" },
   { key: "company-index", group: "Kurumsal", path: "/company", labelTr: "Kurumsal (Ana Sayfa)", labelEn: "Company (Index)" },
-  { key: "about-us", group: "Kurumsal", path: "/company/about-us", labelTr: "Hakkımızda", labelEn: "About Us" },
   { key: "capabilities", group: "Kurumsal", path: "/company/capabilities", labelTr: "Yetkinlikler", labelEn: "Capabilities" },
   { key: "engineering-production", group: "Kurumsal", path: "/company/engineering-production", labelTr: "Mühendislik & Üretim", labelEn: "Engineering & Production" },
   { key: "quality", group: "Kurumsal", path: "/company/quality", labelTr: "Kalite Politikamız", labelEn: "Quality" },

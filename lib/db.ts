@@ -188,51 +188,6 @@ const DEFAULT_SETTINGS: SiteSettings = {
   footerText: { tr: "Tüm hakları saklıdır.", en: "All rights reserved." },
 };
 
-const DEFAULT_NAV_MENU: NavMenuItem[] = [
-  { id: "nav-engineering", label: { tr: "ION ONEFLOW", en: "ION ONEFLOW" }, href: "/ion-oneflow" },
-  {
-    id: "nav-machines",
-    label: { tr: "Makineler", en: "Machines" },
-    href: "/products",
-    children: [
-      {
-        id: "nav-machines-g1",
-        label: { tr: "Komple Hatlar", en: "Complete Lines" },
-        href: "/category/komple-hatlar",
-        children: [
-          { id: "nav-machines-1", label: { tr: "Epoksi Fırın Hatları", en: "Epoxy Oven Lines" }, href: "/category/epoksi-firin-hatlari" },
-          { id: "nav-machines-2", label: { tr: "Plaka Silim Hatları", en: "Slab Polishing Lines" }, href: "/category/plaka-silim-hatlari" },
-        ],
-      },
-      {
-        id: "nav-machines-g2",
-        label: { tr: "Makineler", en: "Machines" },
-        href: "/category/makineler",
-        children: [
-          { id: "nav-machines-4", label: { tr: "Epoksi Uygulama", en: "Epoxy Application" }, href: "/category/epoksi-uygulama" },
-          { id: "nav-machines-5", label: { tr: "Atölye", en: "Workshop" }, href: "/category/atolye" },
-          { id: "nav-machines-6", label: { tr: "Yükleme & Boşaltma", en: "Loading & Unloading" }, href: "/category/yukleme-bosaltma" },
-        ],
-      },
-    ],
-  },
-  { id: "nav-service", label: { tr: "Hizmetler", en: "Service" }, href: "/service" },
-  {
-    id: "nav-company",
-    label: { tr: "Kurumsal", en: "Company" },
-    href: "/company",
-    children: [
-      { id: "nav-company-1", label: { tr: "Hakkımızda", en: "About Us" }, href: "/company/about-us" },
-      { id: "nav-company-2", label: { tr: "Mühendislik & Üretim", en: "Engineering & Production" }, href: "/company/engineering-production" },
-      { id: "nav-company-3", label: { tr: "Kalite", en: "Quality" }, href: "/company/quality" },
-      { id: "nav-company-4", label: { tr: "Yetkinlikler", en: "Capabilities" }, href: "/company/capabilities" },
-      { id: "nav-company-5", label: { tr: "Kariyer", en: "Careers" }, href: "/careers" },
-    ],
-  },
-  { id: "nav-news", label: { tr: "Haberler", en: "News" }, href: "/news" },
-  { id: "nav-contact", label: { tr: "İletişim", en: "Contact" }, href: "/contact" },
-];
-
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
