@@ -40,6 +40,7 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
   }
 
   const category = categories.find((c) => c.id === product.categoryId) ?? null;
+  // JSON-LD ve metadata için varsayılan bir metin kalabilir
   const categoryNameString = category ? getLangText(category.name) : null;
 
   const productJsonLd = buildProductJsonLd(product, categoryNameString);
@@ -61,7 +62,7 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <DynamicProductDetail product={product} categoryName={categoryNameString} />
+      <DynamicProductDetail product={product} category={category} />
     </>
   );
 }

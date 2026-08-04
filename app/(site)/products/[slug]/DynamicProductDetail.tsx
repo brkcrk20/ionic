@@ -36,9 +36,12 @@ function getLangText(val: MultiLangString | undefined, isTr: boolean): string {
   return isTr ? (val.tr || val.en || "") : (val.en || val.tr || "");
 }
 
-export default function DynamicProductDetail({ product, categoryName }: { product: Product; categoryName: string | null }) {
+export default function DynamicProductDetail({ product, category }: { product: Product; category: any | null }) {
   const { lang } = useLanguage();
   const isTr = lang === "TR";
+
+  // categoryName değişkenini burada isTr'ye göre dinamik olarak üretiyoruz:
+  const categoryName = category ? getLangText(category.name, isTr) : null;
 
   const [openSections, setOpenSections] = useState<{ [key: number]: boolean }>({ 0: true });
   const toggleSection = (index: number) => setOpenSections((prev) => ({ ...prev, [index]: !prev[index] }));
