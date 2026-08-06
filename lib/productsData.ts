@@ -15,7 +15,6 @@ export async function getProductsPageData() {
     .filter((p) => p.active)
     .map((p) => {
       const cat = categories.find((c) => c.id === p.categoryId);
-      const catName = getLangText(cat?.name, "tr");
       return {
         id: p.id,
         name: p.name, 
