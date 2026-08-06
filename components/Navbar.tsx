@@ -11,7 +11,7 @@ const DEFAULT_NAV_MENU: NavMenuItem[] = [
   { id: "nav-engineering", label: { tr: "ION ONEFLOW", en: "ION ONEFLOW" }, href: "/ion-oneflow" },
   {
     id: "nav-machines",
-    label: { tr: "Makineler", en: "Machines" },
+    label: { tr: "Ürünler", en: "Products" },
     href: "/products",
     children: [
       { id: "nav-machines-g1", label: { tr: "Epoksi Uygulama", en: "Resin Application" }, href: "/category/epoksi-uygulama" },
@@ -392,7 +392,7 @@ export default function Navbar({
                 <div className="flex flex-col gap-0.5 text-gray-700">
                   <p className="font-semibold text-[#0B1941]">{t.addressTitle}</p>
                   <p>{t.addressSub}</p>
-                  <p className="pt-1">+90 (258) 814 57 47</p>
+                  <p className="pt-1">+90 258 373 0120</p>
                   <a href="mailto:info@ionmeccanica.com" className="text-[#0B1941] hover:underline font-semibold">
                     info@ionmeccanica.com
                   </a>
@@ -443,7 +443,7 @@ export default function Navbar({
                   <div className="flex flex-col gap-0.5 text-gray-700">
                     <p className="font-semibold text-[#0B1941]">{t.addressTitle}</p>
                     <p>{t.addressSub}</p>
-                    <p className="pt-1">+90 (258) 814 57 47</p>
+                    <p className="pt-1">+90 258 373 0120</p>
                     <a href="mailto:info@ionmeccanica.com" className="text-[#0B1941] hover:underline font-semibold">
                       info@ionmeccanica.com
                     </a>

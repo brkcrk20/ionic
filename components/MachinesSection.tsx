@@ -1,26 +1,71 @@
 // components/MachinesSection.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
-const PRODUCT_META = [
-  { id: "resin", key: "resin", categorySlug: "resin-lines", image: "/A - 1 Kule Reçine Hattı.webp" },
-  { id: "cnc", key: "cnc", categorySlug: "epoksi-uygulama", image: "/ion_graviton-combi_cover.webp" },
-  { id: "waterjet", key: "waterjet", categorySlug: "polishing", image: "/ion_wax_cover.webp" },
-  { id: "tile", key: "tile", categorySlug: "yukleme-bosaltma", image: "/ion_aranea_cover.webp" },
-] as const;
+type ProductMetaItem = {
+  id: string;
+  key: "resin" | "cnc" | "waterjet" | "tile";
+  categorySlug: string;
+  images: string[];
+};
+
+const PRODUCT_META: ProductMetaItem[] = [
+  { 
+    id: "resin", 
+    key: "resin", 
+    categorySlug: "resin-lines", 
+    images: ["/uploads/products/A-1 Kule Reçine Hattı.webp", "/uploads/products/d6i9hb-2-kule.webp", "/uploads/products/jdxkz0-3-kule.webp", "/uploads/products/mxglou-4-kule-a.webp", "/uploads/products/w6i6jc-5-kule-a.webp"]
+  },
+  { 
+    id: "cnc", 
+    key: "cnc", 
+    categorySlug: "epoksi-uygulama", 
+    images: ["/ion_graviton-combi_cover.webp", "/uploads/products/cf5hvn-ion_positron_cover.webp", "/uploads/products/ktf694-ion_buffer_cover_2.webp"] 
+  },
+  { id: "waterjet", key: "waterjet", categorySlug: "polishing", images: ["/ion_wax_cover.webp"] },
+  { id: "tile", key: "tile", categorySlug: "yukleme-bosaltma", images: ["/ion_aranea_cover.webp" ,"/uploads/products/3k0lyl-ion_manta-l_cover.webp", "/uploads/products/tgbbkd-ion_volta_cover.webp"] },
+];
 
 export default function MachinesSection() {
   const { t } = useLanguage();
   const items = t.home.machines.items;
-  const [activeId, setActiveId] = useState<(typeof PRODUCT_META)[number]["id"]>(PRODUCT_META[0].id);
+  
+  const [activeId, setActiveId] = useState<string>(PRODUCT_META[0].id);
+  const [currentImage, setCurrentImage] = useState<string>("");
 
   const activeMeta = PRODUCT_META.find((p) => p.id === activeId)!;
   const activeText = items[activeMeta.key];
+
+  useEffect(() => {
+    if (!activeMeta.images || activeMeta.images.length === 0) {
+      setCurrentImage("");
+      return;
+    }
+
+    const getRandomImage = (excludeImg?: string) => {
+      const images = activeMeta.images;
+      const filtered = images.length > 1 
+        ? images.filter(img => img !== excludeImg) 
+        : images;
+      const randomIndex = Math.floor(Math.random() * filtered.length);
+      return filtered[randomIndex];
+    };
+
+    setCurrentImage((prev) => getRandomImage(prev));
+
+    if (activeMeta.images.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentImage((prev) => getRandomImage(prev));
+      }, 4500);
+
+      return () => clearInterval(interval);
+    }
+  }, [activeId]);
 
   return (
     <section className="w-full min-h-screen md:h-screen md:snap-start shrink-0 bg-[#3A3A3A] flex flex-col justify-center items-center py-20 px-6 relative overflow-hidden">
@@ -68,18 +113,19 @@ export default function MachinesSection() {
         </div>
 
         {/* SAĞ: Aktif Kategori Görseli */}
-        <div className="lg:col-span-8 h-[50vh] lg:h-[75vh] w-full relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group bg-[#F3F1EC]">
+        <div className="lg:col-span-8 h-[50vh] lg:h-[75vh] w-full relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group bg-[#F3F1EC] flex items-center justify-center">
           
-          {/* object-contain ile resim kırpılmadan alana ortalanır */}
-          <Image
-            key={activeMeta.image}
-            src={activeMeta.image}
-            alt={activeText.name}
-            fill
-            sizes="(max-width: 1024px) 100vw, 66vw"
-            className="object-contain p-4 transition-transform duration-700 group-hover:scale-105"
-            priority
-          />
+          {currentImage && (
+            <Image
+              key={currentImage}
+              src={currentImage}
+              alt={activeText.name}
+              fill
+              sizes="(max-width: 1024px) 100vw, 66vw"
+              className="object-contain p-4 transition-transform duration-700 group-hover:scale-105"
+              priority
+            />
+          )}
 
           {/* Görsel Altı Bilgi Kartı */}
           <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-10 lg:left-10 lg:right-auto bg-[#3A3A3A]/90 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex items-center justify-between gap-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0 z-20">

@@ -148,7 +148,7 @@ export default function Home() {
 
         <div className="mt-16 z-10">
           <Link
-            href="/ion-oneflow"
+            href="/about-us/company"
             className="bg-[#B87332] hover:bg-[#a06228] text-white font-bold tracking-wider uppercase text-sm px-8 py-4 rounded-full shadow-lg transition-all flex items-center gap-2"
           >
             {home.capabilities.cta} <ArrowRight size={18} />
@@ -218,98 +218,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. BÖLÜM: SHOWROOM / SANAL TUR */}
-      <section className="snap-section w-full min-h-dvh md:h-dvh md:snap-start shrink-0 relative bg-white flex flex-col pt-24">
-        <div className="max-w-[1400px] w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 z-10 text-center md:text-left">
-          <div className="flex flex-col items-center md:items-start">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-[#3A3A3A] mb-6 font-montserrat">
-              {home.showroom.factoryTitleLine1} <br className="hidden md:block" /> {home.showroom.factoryTitleLine2}
-            </h2>
-            <Link href="/virtual-tour" className="inline-flex items-center gap-3 text-[#3A3A3A] hover:text-[#B87332] font-bold transition-colors text-lg">
-              <div className="w-10 h-10 rounded-full bg-[#3A3A3A] text-[#F3F1EC] flex items-center justify-center hover:bg-[#B87332] transition-colors">
-                <ArrowRight size={18} />
-              </div>
-              {home.showroom.factoryCta}
-            </Link>
-          </div>
-
-          <div className="flex flex-col items-center md:items-start">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-[#3A3A3A] mb-6 font-montserrat">
-              {home.showroom.eventTitleLine1} <br className="hidden md:block" /> {home.showroom.eventTitleLine2}
-            </h2>
-            <Link href="/virtual-tour-marmomac" className="inline-flex items-center gap-3 text-[#3A3A3A] hover:text-[#B87332] font-bold transition-colors text-lg">
-              <div className="w-10 h-10 rounded-full bg-[#3A3A3A] text-[#F3F1EC] flex items-center justify-center hover:bg-[#B87332] transition-colors">
-                <ArrowRight size={18} />
-              </div>
-              {home.showroom.eventCta}
-            </Link>
-          </div>
-        </div>
-
-        <div className="relative flex-1 w-full mt-12 min-h-[280px] sm:min-h-[340px]">
-          <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-white to-transparent z-10" />
-          <ImagePlaceholder />
-        </div>
-      </section>
-
-      {/* 7. BÖLÜM: YAZILIM / SİSTEM VURGUSU */}
-      <section className="snap-section w-full min-h-dvh md:snap-start shrink-0 bg-[#3A3A3A] flex flex-col justify-center items-center py-24 px-6 relative">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-[#F3F1EC] mb-12 text-center font-montserrat">
-          {home.mes.sectionTitle}
-        </h2>
-
-        <div className="max-w-[1400px] w-full flex flex-col lg:flex-row items-stretch rounded-2xl overflow-hidden shadow-2xl">
-          <div className="lg:w-2/5 bg-[#F3F1EC] p-10 lg:p-16 flex flex-col justify-center">
-            <h3 className="text-3xl md:text-4xl font-extrabold text-[#3A3A3A] mb-6 font-montserrat tracking-wide">{home.mes.productName}</h3>
-            <h4 className="text-lg md:text-xl font-bold text-[#3A3A3A] mb-4">{home.mes.subtitle}</h4>
-            <p className="text-gray-600 mb-10 leading-relaxed text-sm md:text-base">{home.mes.description}</p>
-            <Link href="/automation-control" className="inline-flex items-center gap-3 text-[#3A3A3A] hover:text-[#B87332] font-bold transition-colors mt-auto">
-              <div className="w-10 h-10 rounded-full bg-[#3A3A3A] text-[#F3F1EC] flex items-center justify-center hover:bg-[#B87332] transition-colors shadow-md">
-                <ArrowRight size={18} />
-              </div>
-              {home.mes.cta}
-            </Link>
-          </div>
-
-          <div className="lg:w-3/5 relative min-h-[350px] lg:min-h-full bg-[#2A2A2A]">
-            <ImagePlaceholder label="ION-MES Dashboard" />
-          </div>
-        </div>
-      </section>
-
+      
       {/* 8. BÖLÜM: FOOTER */}
-      <footer className="snap-section w-full min-h-dvh md:h-dvh md:snap-start shrink-0 bg-[#F3F1EC] flex flex-col justify-between pt-24 pb-12 px-6 lg:px-16 text-[#3A3A3A] font-montserrat">
-        <div className="max-w-[1600px] w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 my-auto">
-          <div className="flex flex-col gap-8 justify-center">
-            <Image src="/logo-2.svg" alt="ION MECCANICA" width={200} height={70} className="object-contain w-36 h-auto sm:w-[200px]" />
-            <div className="flex gap-5 text-[#3A3A3A]">
+      <footer className="snap-section w-full min-h-dvh md:h-dvh md:snap-start shrink-0 bg-[#F3F1EC] flex flex-col justify-between pt-20 pb-12 px-6 lg:px-16 text-[#3A3A3A] font-montserrat">
+        <div className="max-w-[1600px] w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 my-auto items-start">
+          
+          {/* Sütun 1: Logo ve Sosyal Medya */}
+          <div className="flex flex-col gap-6 justify-start">
+            <Image src="/logo-2.svg" alt="ION MECCANICA" width={200} height={70} className="object-contain w-40 h-auto sm:w-[220px]" />
+            <p className="text-base text-gray-700 font-medium leading-relaxed">
+              {home.footer.tagline || "Innovative solutions for mechanical engineering and production."}
+            </p>
+            <div className="flex gap-5 text-[#3A3A3A] pt-2">
               <a href="#" className="hover:text-[#B87332] transition-colors" aria-label="Youtube">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 7.1C2.3 8.3 2 10.1 2 12s.3 3.7.5 4.9c.3 1.6 1.4 2.8 3 3.1 2.2.3 6.5.3 6.5.3s4.3 0 6.5-.3c1.6-.3 2.7-1.5 3-3.1.2-1.2.5-3 .5-4.9s-.3-3.7-.5-4.9c-.3-1.6-1.4-2.8-3-3.1-2.2-.3-6.5-.3-6.5-.3s-4.3 0-6.5.3c-1.6.3-2.7 1.5-3 3.1z"/><path d="M9.75 15.02l5.75-3.02-5.75-3.02v6.04z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 7.1C2.3 8.3 2 10.1 2 12s.3 3.7.5 4.9c.3 1.6 1.4 2.8 3 3.1 2.2.3 6.5.3 6.5.3s4.3 0 6.5-.3c1.6-.3 2.7-1.5 3-3.1.2-1.2.5-3 .5-4.9s-.3-3.7-.5-4.9c-.3-1.6-1.4-2.8-3-3.1-2.2-.3-6.5-.3-6.5-.3s-4.3 0-6.5.3c-1.6.3-2.7 1.5-3 3.1z"/><path d="M9.75 15.02l5.75-3.02-5.75-3.02v6.04z"/></svg>
               </a>
               <a href="#" className="hover:text-[#B87332] transition-colors" aria-label="Linkedin">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               </a>
               <a href="#" className="hover:text-[#B87332] transition-colors" aria-label="Instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 justify-center">
-            <div>
-              <h4 className="font-extrabold text-base mb-2">ION MECCANICA</h4>
-              <p className="text-sm text-gray-600 leading-relaxed font-medium">
+          {/* Sütun 2: Merkez / İletişim */}
+          <div className="flex flex-col gap-6 justify-start">
+            <div className="flex flex-col gap-2">
+              <h4 className="font-extrabold text-lg text-[#3A3A3A] tracking-wide">ION MECCANICA</h4>
+              <p className="text-base text-gray-700 leading-relaxed font-medium">
                 {t.nav.addressTitle}
                 <br />
                 {t.nav.addressSub}
               </p>
-              <p className="text-sm text-gray-600 mt-2 font-semibold">+90 (258) 814 57 47</p>
-              <p className="text-sm text-gray-600 font-semibold">info@ionmeccanica.com</p>
+              <p className="text-base text-gray-700 font-bold mt-1">+90 258 373 0120</p>
+              <p className="text-base text-gray-700 font-bold">info@ionmeccanica.com</p>
             </div>
-            <div>
-              <h4 className="font-extrabold text-base mb-2">{home.footer.serviceTitle}</h4>
-              <p className="text-sm text-gray-600 leading-relaxed font-medium">
-                +90 (258) 814 57 47
+          </div>
+
+          {/* Sütun 3: Servis & Yedek Parça */}
+          <div className="flex flex-col gap-6 justify-start">
+            <div className="flex flex-col gap-2">
+              <h4 className="font-extrabold text-lg text-[#3A3A3A] tracking-wide">{home.footer.serviceTitle}</h4>
+              <p className="text-base text-gray-700 leading-relaxed font-medium">
+                +90 258 373 0120
                 <br />
                 service@ionmeccanica.com
                 <br />
@@ -318,29 +270,23 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2.5 justify-center">
-            <h4 className="font-extrabold text-base mb-2">{home.footer.linksTitle}</h4>
-            <Link href="/news" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkNews}</Link>
-            <Link href="/contact" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkContacts}</Link>
-            <Link href="/careers" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkCareers}</Link>
-            <Link href="/portal" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.linkPortal}</Link>
-            <div className="mt-4 flex flex-col gap-2">
-              <Link href="/privacy" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.privacy}</Link>
-              <Link href="/cookies" className="text-sm font-medium text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.cookies}</Link>
+          {/* Sütun 4: Bağlantılar ve Kurumsal */}
+          <div className="flex flex-col gap-3 justify-start">
+            <h4 className="font-extrabold text-lg text-[#3A3A3A] tracking-wide mb-1">{home.footer.linksTitle}</h4>
+            <Link href="/news" className="text-base font-semibold text-gray-700 hover:text-[#B87332] transition-colors">{home.footer.linkNews}</Link>
+            <Link href="/contact" className="text-base font-semibold text-gray-700 hover:text-[#B87332] transition-colors">{home.footer.linkContacts}</Link>
+            <Link href="/careers" className="text-base font-semibold text-gray-700 hover:text-[#B87332] transition-colors">{home.footer.linkCareers}</Link>
+            <Link href="/portal" className="text-base font-semibold text-gray-700 hover:text-[#B87332] transition-colors">{home.footer.linkPortal}</Link>
+            <div className="mt-3 flex flex-col gap-2 pt-2 border-t border-gray-300/60">
+              <Link href="/privacy" className="text-sm font-semibold text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.privacy}</Link>
+              <Link href="/cookies" className="text-sm font-semibold text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.cookies}</Link>
             </div>
           </div>
 
-          <div className="flex items-start gap-4 justify-start lg:justify-end pt-4">
-            <div className="w-20 h-20 border border-gray-300 rounded-lg flex items-center justify-center text-xs text-center text-gray-500 font-bold bg-white/50 shadow-xs">
-              ISO 9001
-            </div>
-            <div className="w-20 h-20 border border-gray-300 rounded-lg flex items-center justify-center text-xs text-center text-gray-500 font-bold bg-white/50 shadow-xs">
-              CE CERT
-            </div>
-          </div>
         </div>
 
-        <div className="max-w-[1600px] w-full mx-auto border-t border-gray-300/80 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-semibold text-gray-500 shrink-0">
+        {/* Alt Telif Alanı */}
+        <div className="max-w-[1600px] w-full mx-auto border-t border-gray-300/80 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-semibold text-gray-600 shrink-0">
           <p>{home.footer.copyright(new Date().getFullYear())}</p>
           <p>{home.footer.tagline}</p>
         </div>

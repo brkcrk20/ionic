@@ -3,8 +3,8 @@
     {
       "id": "cat-makineler-hatlar",
       "name": {
-        "tr": "Makineler",
-        "en": "Machines"
+        "tr": "Ürünler",
+        "en": "Products"
       },
       "slug": "makineler-hatlar",
       "parentId": null,
@@ -967,7 +967,7 @@
       "features": [],
       "categoryId": "cat-epoksi-uygulama",
       "images": [
-        "/uploads/products/s9qi34-ion_buffer_cover_2.webp",
+        "/uploads/products/ktf694-ion_buffer_cover_2.webp",
         "/uploads/products/3ukdnl-1.webp",
         "/uploads/products/m5ikg7-2.webp",
         "/uploads/products/tsa6up-3.webp"
@@ -3481,6 +3481,94 @@
         "tr": "",
         "en": ""
       }
+    },
+    {
+      "id": "prod-mshh7xhl-p62p2",
+      "name": {
+        "tr": "2 Kuleli Fırın Hattı",
+        "en": "2 Tower Resin Line"
+      },
+      "slug": "2-kuleli-firin-hatti",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "heroDescription": {
+        "tr": "",
+        "en": ""
+      },
+      "heroImage": "/uploads/products/u0dq7d-2-kule.webp",
+      "descriptionParagraphs": [],
+      "configs": [],
+      "configNote": {
+        "tr": "",
+        "en": ""
+      },
+      "configNote2": {
+        "tr": "",
+        "en": ""
+      },
+      "versions": [],
+      "features": [],
+      "categoryId": "cat-epoksi-firin-hatlari",
+      "images": [
+        "/uploads/products/d6i9hb-2-kule.webp"
+      ],
+      "active": true,
+      "createdAt": "2026-08-06T12:12:43.977Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [],
+      "configBlocks": [],
+      "versionBlocks": [],
+      "featureBlocks": [],
+      "descriptionSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "configsSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "versionsSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "featuresSectionTitle": {
+        "tr": "",
+        "en": ""
+      }
     }
   ],
   "slider": [],
@@ -3522,8 +3610,8 @@
     {
       "id": "nav-machines",
       "label": {
-        "tr": "Makineler",
-        "en": "Machines"
+        "tr": "Ürünler",
+        "en": "Products"
       },
       "href": "/products",
       "children": [

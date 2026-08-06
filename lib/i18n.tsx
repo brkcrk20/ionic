@@ -78,7 +78,7 @@ export interface Translations {
       description: string;
       cta: string;
       items: Record<
-        "resin" | "cnc" | "waterjet" | "tile" | "handling" | "custom",
+        "resin" | "cnc" | "waterjet" | "tile",
         { name: string; category: string }
       >;
     };
@@ -207,11 +207,9 @@ const translations: Record<Lang, Translations> = {
         cta: "Tüm Ürünleri Keşfet",
         items: {
           resin: { name: "Epoksi Fırın Hatları", category: "Komple Hatlar" },
-          cnc: { name: "Epoksi Uygulama Makineleri", category: "Makineler" },
-          waterjet: { name: "Reçineleme Makineleri", category: "Makineler" },
-          tile: { name: "Yükleme ve Boşaltma Sistemleri", category: "Komple Hatlar" },
-          handling: { name: "Taşıma & Otomasyon Sistemleri", category: "Otomasyon" },
-          custom: { name: "Özel Makineler & Entegre Hatlar", category: "Özel Çözümler" },
+          cnc: { name: "Epoksi Uygulama", category: "Makineler" },
+          waterjet: { name: "Reçineleme", category: "Makineler" },
+          tile: { name: "Yükleme ve Boşaltma", category: "Komple Hatlar" },
         },
       },
       news: {
@@ -353,11 +351,9 @@ const translations: Record<Lang, Translations> = {
         cta: "Explore All Products",
         items: {
           resin: { name: "Resin Treatment Lines", category: "Complete Lines" },
-          cnc: { name: "Resin Application Machines", category: "Machines" },
-          waterjet: { name: "Polishing Machines", category: "Machines" },
-          tile: { name: "Loading & Unloading Systems", category: "Complete Lines" },
-          handling: { name: "Handling & Automation Systems", category: "Automation" },
-          custom: { name: "Custom Machinery & Integrated Lines", category: "Custom Solutions" },
+          cnc: { name: "Resin Application", category: "Machines" },
+          waterjet: { name: "Polishing", category: "Machines" },
+          tile: { name: "Loading & Unloading", category: "Complete Lines" },
         },
       },
       news: {
