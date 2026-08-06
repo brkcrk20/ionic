@@ -40,7 +40,7 @@ export default function ContactPage() {
             className="group relative block aspect-[21/6] md:aspect-[14/5] w-full overflow-hidden bg-gray-100 shadow-sm transition-transform hover:scale-[1.01]"
           >
             <Image 
-              src="/harita.png" 
+              src="/harita.webp" 
               alt="Google Maps Konum" 
               fill 
               className="object-cover transition-transform duration-500 group-hover:scale-105" 

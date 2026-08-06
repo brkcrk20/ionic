@@ -104,7 +104,7 @@ function AboutRow({
         >
           {/* Gerçek resim gösterimi için Next.js Image bileşeni */}
           <Image
-            src="/yerleske.png" // Kendi görsel yolunuzu girin
+            src="/yerleske.webp" // Kendi görsel yolunuzu girin
             alt={title}
             fill
             className="object-cover"/>

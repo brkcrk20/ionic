@@ -101,7 +101,7 @@ function AboutRow({
           }`}
         >
           <Image
-                      src="/arge.png" // Kendi görsel yolunuzu girin
+                      src="/arge.webp" // Kendi görsel yolunuzu girin
                       alt={title}
                       fill
                       className="object-cover"/>

@@ -101,7 +101,7 @@ function AboutRow({
                         >
                           {/* Gerçek resim gösterimi için Next.js Image bileşeni */}
                           <Image
-                            src="/laser.png" // Kendi görsel yolunuzu girin
+                            src="/laser.webp" // Kendi görsel yolunuzu girin
                             alt={title}
                             fill
                             className="object-cover"/>
