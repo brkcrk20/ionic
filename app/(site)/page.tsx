@@ -10,13 +10,18 @@ import { useLanguage } from "@/lib/i18n";
 import { Settings, Wrench, Cpu, ArrowRight } from "lucide-react";
 
 export default function Home() {
-  const { t } = useLanguage();
+  const languageContext = useLanguage() as any;
+  const { t } = languageContext;
   const home = t.home;
+  
+  // Dil bilgisini i18n context'inden tam tespit etme
+  const activeLang = languageContext.lang || languageContext.locale || languageContext.language || (t?.home?.brand?.title?.includes("Gelecek") ? "tr" : "en");
+  const isTr = activeLang === "tr" || activeLang === "TR";
 
-  // Aktif bölümü takip etmek için state (Toplam 8 bölüm var)
+  // Aktif bölümü takip etmek için state (Toplam 6 bölüm var)
   const [activeSection, setActiveSection] = useState(0);
 
-  const sectionsCount = 8;
+  const sectionsCount = 6;
 
   useEffect(() => {
     const handleScroll = (e: Event) => {
@@ -78,10 +83,10 @@ export default function Home() {
       {/* 2. BÖLÜM: MARKA MESAJI */}
       <section className="snap-section w-full min-h-dvh md:h-dvh md:snap-start shrink-0 relative flex flex-col justify-start pt-28 md:pt-36 overflow-hidden bg-white">
         
-        {/* 1. ARKAPLAN RESMİ VE TÜL (OVERLAY) KATMANI */}
+        {/* ARKAPLAN RESMİ VE TÜL KATMANI */}
         <div className="absolute inset-0 w-full h-full z-0">
           <Image
-            src="/brand-hero-2.webp" // Kendi görsel yolun
+            src="/brand-hero-2.webp"
             alt="Ion Meccanica Production"
             fill
             sizes="100vw"
@@ -89,14 +94,11 @@ export default function Home() {
             priority
           />
           
-          {/* Videodakine benzer hafif siyah/koyu tül katmanı (Görselin parlaklığını dengeler) */}
           <div className="absolute inset-0 bg-black/55 z-10 pointer-events-none" />
-
-          {/* Üst kısımdaki yazıların arkasındaki beyaz geçiş degrade alanı */}
           <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent h-[60%] z-20 pointer-events-none" />
         </div>
 
-        {/* 2. ÖN PLAN METİN ALANI */}
+        {/* ÖN PLAN METİN ALANI */}
         <div className="max-w-6xl mx-auto px-6 text-center z-30 relative">
           <h2 className="text-4xl md:text-5xl lg:text-[4rem] font-extrabold text-[#3A3A3A] tracking-tighter mb-6 font-montserrat">
             {home.brand.title}
@@ -218,13 +220,12 @@ export default function Home() {
         </div>
       </section>
 
-      
-      {/* 8. BÖLÜM: FOOTER */}
+      {/* 6. BÖLÜM: FOOTER */}
       <footer className="snap-section w-full min-h-dvh md:h-dvh md:snap-start shrink-0 bg-[#F3F1EC] flex flex-col justify-between pt-20 pb-12 px-6 lg:px-16 text-[#3A3A3A] font-montserrat">
-        <div className="max-w-[1600px] w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 my-auto items-start">
+        <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 my-auto items-start">
           
-          {/* Sütun 1: Logo ve Sosyal Medya */}
-          <div className="flex flex-col gap-6 justify-start">
+          {/* Sütun 1: Logo & Sosyal Medya */}
+          <div className="flex flex-col gap-6">
             <Image src="/logo-2.svg" alt="ION MECCANICA" width={200} height={70} className="object-contain w-40 h-auto sm:w-[220px]" />
             <p className="text-base text-gray-700 font-medium leading-relaxed">
               {home.footer.tagline || "Innovative solutions for mechanical engineering and production."}
@@ -242,51 +243,50 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Sütun 2: Merkez / İletişim */}
-          <div className="flex flex-col gap-6 justify-start">
-            <div className="flex flex-col gap-2">
-              <h4 className="font-extrabold text-lg text-[#3A3A3A] tracking-wide">ION MECCANICA</h4>
-              <p className="text-base text-gray-700 leading-relaxed font-medium">
-                {t.nav.addressTitle}
-                <br />
-                {t.nav.addressSub}
+          {/* Sütun 2: Merkez Ofis */}
+          <div className="flex flex-col gap-4">
+            <h4 className="font-extrabold text-xl text-[#3A3A3A] tracking-wide mb-1">
+              {isTr ? "Merkez Ofis" : "Headquarters"}
+            </h4>
+            <div className="flex flex-col gap-2.5 text-base text-gray-700 font-medium leading-relaxed">
+              <p className="font-bold text-[#3A3A3A]">ION Meccanica</p>
+              <p>Kocabaş Mah., Mermerciler/3. Sk.</p>
+              <p>No: 2/1, 20330 Honaz Denizli Türkiye</p>
+              <p className="font-bold text-[#3A3A3A] pt-1">
+                <a href="tel:+902583730120" className="hover:text-[#B87332] transition-colors">T: +90 258 373 0120</a>
               </p>
-              <p className="text-base text-gray-700 font-bold mt-1">+90 258 373 0120</p>
-              <p className="text-base text-gray-700 font-bold">info@ionmeccanica.com</p>
-            </div>
-          </div>
-
-          {/* Sütun 3: Servis & Yedek Parça */}
-          <div className="flex flex-col gap-6 justify-start">
-            <div className="flex flex-col gap-2">
-              <h4 className="font-extrabold text-lg text-[#3A3A3A] tracking-wide">{home.footer.serviceTitle}</h4>
-              <p className="text-base text-gray-700 leading-relaxed font-medium">
-                +90 258 373 0120
-                <br />
-                service@ionmeccanica.com
-                <br />
-                spareparts@ionmeccanica.com
+              <p className="font-bold text-[#3A3A3A]">
+                <a href="mailto:info@ionmeccanica.com" className="hover:text-[#B87332] transition-colors">E: ion@ionmeccanica.com</a>
               </p>
             </div>
           </div>
 
-          {/* Sütun 4: Bağlantılar ve Kurumsal */}
-          <div className="flex flex-col gap-3 justify-start">
-            <h4 className="font-extrabold text-lg text-[#3A3A3A] tracking-wide mb-1">{home.footer.linksTitle}</h4>
-            <Link href="/news" className="text-base font-semibold text-gray-700 hover:text-[#B87332] transition-colors">{home.footer.linkNews}</Link>
-            <Link href="/contact" className="text-base font-semibold text-gray-700 hover:text-[#B87332] transition-colors">{home.footer.linkContacts}</Link>
-            <Link href="/careers" className="text-base font-semibold text-gray-700 hover:text-[#B87332] transition-colors">{home.footer.linkCareers}</Link>
-            <Link href="/portal" className="text-base font-semibold text-gray-700 hover:text-[#B87332] transition-colors">{home.footer.linkPortal}</Link>
-            <div className="mt-3 flex flex-col gap-2 pt-2 border-t border-gray-300/60">
-              <Link href="/privacy" className="text-sm font-semibold text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.privacy}</Link>
-              <Link href="/cookies" className="text-sm font-semibold text-gray-600 hover:text-[#B87332] transition-colors">{home.footer.cookies}</Link>
+          {/* Sütun 3: Satış Sonrası Destek */}
+          <div className="flex flex-col gap-4">
+            <h4 className="font-extrabold text-xl text-[#3A3A3A] tracking-wide mb-1">
+              {isTr ? "Satış Sonrası Destek" : "After-sales assistance"}
+            </h4>
+            <div className="flex flex-col gap-2.5 text-base text-gray-700 font-medium leading-relaxed">
+              <p>
+                {isTr 
+                  ? "Teknik destek, yedek parça ve servis talepleriniz için." 
+                  : "For technical support, spare parts, and service requests."}
+              </p>
+              <p className="font-bold text-[#3A3A3A] pt-1">
+                <a href="tel:+902583730120" className="hover:text-[#B87332] transition-colors">T: +90 258 373 0120</a>
+              </p>
+              <p className="font-bold text-[#3A3A3A]">
+                <a href="mailto:service@ionmeccanica.com" className="hover:text-[#B87332] transition-colors">E: service@ionmeccanica.com</a>
+              </p>
+              <p className="font-bold text-[#3A3A3A]">
+                <a href="mailto:spareparts@ionmeccanica.com" className="hover:text-[#B87332] transition-colors">E: spareparts@ionmeccanica.com</a>
+              </p>
             </div>
           </div>
-
         </div>
 
         {/* Alt Telif Alanı */}
-        <div className="max-w-[1600px] w-full mx-auto border-t border-gray-300/80 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-semibold text-gray-600 shrink-0">
+        <div className="max-w-[1400px] w-full mx-auto border-t border-gray-300/80 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-semibold text-gray-600 shrink-0">
           <p>{home.footer.copyright(new Date().getFullYear())}</p>
           <p>{home.footer.tagline}</p>
         </div>

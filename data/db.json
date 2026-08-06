@@ -23,7 +23,7 @@
     {
       "id": "cat-polishing",
       "name": {
-        "tr": "Reçineleme",
+        "tr": "Cila",
         "en": "Polishing"
       },
       "slug": "polishing",
@@ -3138,11 +3138,11 @@
       },
       "slug": "1-kuleli-firin-hatti",
       "subtitle": {
-        "tr": "",
-        "en": ""
+        "tr": "Mermer ve Granit Plakalar İçin Kompakt Reçine Uygulama Hattı",
+        "en": "Compact Resin Treatment Line for Marble and Granite Slabs"
       },
       "heroDescription": {
-        "tr": "",
+        "tr": "Bu kompakt hat, orta düzey üretim ihtiyaçları için temel reçineleme aşamalarını tek bir termal kule etrafında birleştirir.",
         "en": ""
       },
       "heroImage": "/uploads/products/j1x4hw-a-1-kule-recine-hatti-1.webp",
@@ -3197,25 +3197,79 @@
         "lineHeight": "1.7",
         "letterSpacing": "0px"
       },
-      "descriptionBlocks": [],
-      "configBlocks": [],
-      "versionBlocks": [],
-      "featureBlocks": [],
+      "descriptionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "1 Kuleli Reçine Hattı; doğal taş plakaların kurutulması, reçine uygulanması ve kontrollü kürlenmesi için kompakt ve esnek bir sistemdir. Orta düzey üretim gereksinimleri olan veya kurulum alanı kısıtlı fabrikalar için tasarlanmış olup, temel plaka reçineleme aşamalarını tek bir termal kule etrafında birleştirir. Fırın, POSITRON döngülü fırın olarak yapılandırılmıştır.\n\nHat, plakanın tek veya her iki yüzeyini işleyebilir. Çift taraflı işlem için plaka arka yüzünden kurutulur, takviye edilir ve kürlenir, otomatik olarak çevrilir ve ardından görünen yüzeyinde işlenip kürlenir.\n\nModüler yapı, hattın mermer, granit ve hassas ile yoğun çatlaklı malzemeler dahil diğer doğal taşlara uyarlanmasını sağlar. Taş özelliklerine ve gerekli otomasyon seviyesine göre ek işlem modülleri eklenebilir.",
+            "en": "The 1 Tower Resin Line is a compact and flexible system for drying, resin application and controlled curing of natural-stone slabs. Designed for factories with moderate production requirements or limited installation space, it combines the essential slab-resining stages around one thermal tower. The oven is configured as a POSITRON cyclic oven.\n\nThe line can process one or both surfaces of the slab. For double-sided treatment, the slab is dried, reinforced and cured on the reverse side, turned automatically, and then treated and cured on its visible surface.\n\nThe modular structure allows the line to be adapted to marble, granite and other natural stones, including delicate and heavily fissured materials. Additional treatment modules may be incorporated according to the stone characteristics and required automation level."
+          }
+        }
+      ],
+      "configBlocks": [
+        {
+          "title": {
+            "tr": "Standart konfigürasyon",
+            "en": "Standard configuration"
+          },
+          "text": {
+            "tr": "Tek taraflı işlem: saatte 15 plakaya kadar\n\nÇift taraflı işlem: saatte 10 plakaya kadar",
+            "en": "- One-side treatment: up to 15 slabs/hour\n\n\n- Double-side treatment: up to 10 slabs/hour"
+          }
+        },
+        {
+          "title": {
+            "tr": "Speedy (Hızlı) konfigürasyon",
+            "en": "Speedy configuration"
+          },
+          "text": {
+            "tr": "Tek taraflı işlem: saatte 22 plakaya kadar\n\nÇift taraflı işlem: saatte 15 plakaya kadar",
+            "en": "- One-side treatment: up to 22 slabs/hour\n\n\n- Double-side treatment: up to 15 slabs/hour"
+          }
+        }
+      ],
+      "versionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "ARANEA    — Doğrudan katrak makinelerinden besleyen gezer plaka elleçleme robotu\n\nPOSITRON  — (Belirtilmemiş)\n\nPBU01     — Plaka Tampon İstasyonu\n\nRESINBOT  — Otomatik Reçine Uygulama Robotu\n\n(Diğer)   — Otomatik File Uygulama Sistemi\n\nPCK01     — Çift taraflı işlem için Plaka Çevirme Konveyörü\n\nVAC01     — Vakum Odası\n\nMANTA-U   — Otomatik Plaka Boşaltma Robotu",
+            "en": "- ARANEA — Overhead Slab Handling Robot, directly from gangsaws\n\n\n- POSITRON\n\n\n- PBU01 — Slab Buffer Station\n\n\n- RESINBOT— Automatic Resin Application Robot\n\n\n- Automatic Mesh Application System\n\n\n- PCK01 — Slab Rotating Conveyor for double-side treatment\n\n\n- VAC01 — Vacuum Chamber\n\n\n- MANTA-U — Automatic Slab Unloading Robot"
+          }
+        }
+      ],
+      "featureBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "- Kompakt üretim hattı yerleşimi\n- Düşük ilk yatırım maliyeti\n- Tek ve çift taraflı işlem konfigürasyonları\n- Modüler ekipman seçimi\n- Mermer ve granite uygunluk\n- Üretim gereksinimleri arttıkça genişletilebilirlik",
+            "en": "- Compact production-line layout\n\n\n- Lower initial investment\n\n\n- One-side and double-side treatment configurations\n\n\n- Modular equipment selection\n\n\n- Suitable for marble and granite\n\n\n- Expandable as production requirements increase"
+          }
+        }
+      ],
       "descriptionSectionTitle": {
         "tr": "",
         "en": ""
       },
       "configsSectionTitle": {
-        "tr": "",
-        "en": ""
+        "tr": "Kapasite",
+        "en": "Capacity"
       },
       "versionsSectionTitle": {
-        "tr": "",
-        "en": ""
+        "tr": "Tipik ve Opsiyonel ION Ekipmanları",
+        "en": "Typical and Optional ION Equipment"
       },
       "featuresSectionTitle": {
-        "tr": "",
-        "en": ""
+        "tr": "Başlıca Avantajlar",
+        "en": "Main Advantages"
       }
     },
     {
@@ -3613,41 +3667,7 @@
         "tr": "Ürünler",
         "en": "Products"
       },
-      "href": "/products",
-      "children": [
-        {
-          "id": "nav-machines-g1",
-          "label": {
-            "tr": "Epoksi Uygulama",
-            "en": "Resin Application"
-          },
-          "href": "/category/epoksi-uygulama"
-        },
-        {
-          "id": "navsub-msee3oef-679vt",
-          "label": {
-            "tr": "Reçineleme",
-            "en": "Polishing"
-          },
-          "href": "/category/polishing"
-        },
-        {
-          "id": "navsub-ms8zrp37-p18g0",
-          "label": {
-            "tr": "Yükleme & Boşaltma",
-            "en": "Loading & Unloading Systems"
-          },
-          "href": "/category/yukleme-bosaltma"
-        },
-        {
-          "id": "navsub-ms8zxwjq-obanx",
-          "label": {
-            "tr": "Atölye",
-            "en": "Fabshop"
-          },
-          "href": "/category/atolye"
-        }
-      ]
+      "href": "/products"
     },
     {
       "id": "nav-ms8zhi0l-xy9gm",
@@ -3655,25 +3675,7 @@
         "tr": "Hatlar",
         "en": "Plants"
       },
-      "href": "/plants",
-      "children": [
-        {
-          "id": "navsub-ms8zik0s-1b7p0",
-          "label": {
-            "tr": "Epoksi Fırın Hatları",
-            "en": "Resin Treatment Lines"
-          },
-          "href": "/plants?category=resin-lines"
-        },
-        {
-          "id": "navsub-ms8zkzdt-02lrs",
-          "label": {
-            "tr": "Plaka Silim Hatları",
-            "en": "Slab Polishing Lines"
-          },
-          "href": "/plants?category=polishing-lines"
-        }
-      ]
+      "href": "/plants"
     },
     {
       "id": "nav-service",
@@ -3689,41 +3691,7 @@
         "tr": "Hakkımızda",
         "en": "About Us"
       },
-      "href": "#",
-      "children": [
-        {
-          "id": "nav-company-1",
-          "label": {
-            "tr": "Kurumsal",
-            "en": "Company"
-          },
-          "href": "/about-us/company"
-        },
-        {
-          "id": "nav-company-2",
-          "label": {
-            "tr": "Mühendislik & Teknoloji",
-            "en": "Engineering & Technology"
-          },
-          "href": "/about-us/engineering-technology"
-        },
-        {
-          "id": "nav-company-3",
-          "label": {
-            "tr": "Araştırma, Geliştirme ve Taş Uzmanlığı",
-            "en": "Research, Development & Stone Expertise"
-          },
-          "href": "/about-us/research-development-stone-expertise"
-        },
-        {
-          "id": "nav-company-5",
-          "label": {
-            "tr": "Üretim ve Kalite",
-            "en": "Manufacturing & Quality"
-          },
-          "href": "/about-us/manufacturing-quality"
-        }
-      ]
+      "href": "about-us"
     },
     {
       "id": "nav-news",

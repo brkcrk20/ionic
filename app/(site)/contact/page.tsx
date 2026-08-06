@@ -69,41 +69,40 @@ export default function ContactPage() {
           </div>
 
           {/* Sütun 2: Merkez Ofis */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             <h4 className="font-extrabold text-xl text-[#3A3A3A] tracking-wide mb-1">
               {isTr ? "Merkez Ofis" : "Headquarters"}
             </h4>
-            <p className="text-base text-gray-700 leading-relaxed font-medium">
-              ION Meccanica
-              <br />
-              Kocabaş mahallesi, mermerciler 3. sokak
-              <br />
-              No: 2/1, 20330 Honaz / Denizli
-            </p>
-            <div className="pt-2 flex flex-col gap-1">
-              <p className="text-base font-bold text-gray-800">
-                <a href="tel:+902583730120" className="hover:text-[#B87332] transition-colors">+90 258 373 0120</a>
+            <div className="flex flex-col gap-2.5 text-base text-gray-700 font-medium leading-relaxed">
+              <p className="font-bold text-[#3A3A3A]">ION Meccanica</p>
+              <p>Kocabaş Mah., Mermerciler/3. Sk.</p>
+              <p>No: 2/1, 20330 Honaz Denizli Türkiye</p>
+              <p className="font-bold text-[#3A3A3A] pt-1">
+                <a href="tel:+902583730120" className="hover:text-[#B87332] transition-colors">T: +90 258 373 0120</a>
               </p>
-              <p className="text-base font-bold text-gray-800">
-                <a href="mailto:info@ionmeccanica.com" className="hover:text-[#B87332] transition-colors">info@ionmeccanica.com</a>
+              <p className="font-bold text-[#3A3A3A]">
+                <a href="mailto:info@ionmeccanica.com" className="hover:text-[#B87332] transition-colors">E: info@ionmeccanica.com</a>
               </p>
             </div>
           </div>
 
           {/* Sütun 3: Satış Sonrası Destek */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             <h4 className="font-extrabold text-xl text-[#3A3A3A] tracking-wide mb-1">
               {isTr ? "Satış Sonrası Destek" : "After-sales assistance"}
             </h4>
-            <p className="text-base text-gray-700 leading-relaxed font-medium">
-              {isTr ? "Teknik destek, yedek parça ve servis talepleriniz için." : "For technical support, spare parts, and service requests."}
-            </p>
-            <div className="pt-2 flex flex-col gap-1">
-              <p className="text-base font-bold text-gray-800">
-                <a href="tel:+902583730120" className="hover:text-[#B87332] transition-colors">+90 258 373 0120</a>
+            <div className="flex flex-col gap-2.5 text-base text-gray-700 font-medium leading-relaxed">
+              <p>
+                {isTr ? "Teknik destek, yedek parça ve servis talepleriniz için." : "For technical support, spare parts, and service requests."}
               </p>
-              <p className="text-base font-bold text-gray-800">
-                <a href="mailto:service@ionmeccanica.com" className="hover:text-[#B87332] transition-colors">service@ionmeccanica.com</a>
+              <p className="font-bold text-[#3A3A3A] pt-1">
+                <a href="tel:+902583730120" className="hover:text-[#B87332] transition-colors">T: +90 258 373 0120</a>
+              </p>
+              <p className="font-bold text-[#3A3A3A]">
+                <a href="mailto:service@ionmeccanica.com" className="hover:text-[#B87332] transition-colors">E: service@ionmeccanica.com</a>
+              </p>
+              <p className="font-bold text-[#3A3A3A]">
+                <a href="mailto:spareparts@ionmeccanica.com" className="hover:text-[#B87332] transition-colors">E: spareparts@ionmeccanica.com</a>
               </p>
             </div>
           </div>

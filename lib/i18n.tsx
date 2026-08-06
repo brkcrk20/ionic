@@ -208,7 +208,7 @@ const translations: Record<Lang, Translations> = {
         items: {
           resin: { name: "Epoksi Fırın Hatları", category: "Komple Hatlar" },
           cnc: { name: "Epoksi Uygulama", category: "Makineler" },
-          waterjet: { name: "Reçineleme", category: "Makineler" },
+          waterjet: { name: "Cila", category: "Makineler" },
           tile: { name: "Yükleme ve Boşaltma", category: "Komple Hatlar" },
         },
       },

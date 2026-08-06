@@ -1,24 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
 import { useLanguage } from "@/lib/i18n";
 
 // ---------------------------------------------------------------------------
 // SAYFA İÇERİĞİ
 // ---------------------------------------------------------------------------
-// Tüm başlık/metin alanlarını buradan TR ve EN olarak güncelleyebilirsin.
-// Görseller için ImagePlaceholder kullanılan yerlere, gerçek görsel
-// geldiğinde <Image src="..." fill /> koymak yeterli.
-//
-// NOT: Eyebrow etiketlerinde CSS "uppercase" class'ı KULLANILMIYOR.
-// Türkçe küçük "i" harfi CSS text-transform:uppercase ile "I" olarak
-// büyütülüyor (doğrusu "İ" olmalı). Bu yüzden metinler zaten istenen
-// büyük/küçük harfle burada yazılıyor, tarayıcıya harf dönüştürme
-// yaptırılmıyor.
-// ---------------------------------------------------------------------------
-
 const CONTENT = {
   hero: {
     tr: {
@@ -43,6 +32,7 @@ const CONTENT = {
         "Yedek parçalar, yerinde müdahaleler, yazılım değişiklikleri ve ek mühendislik çalışmaları ayrıca fiyatlandırılır.",
       ],
       imageLabel: "Uzaktan Destek Görseli",
+      imageSrc: "/Programmer.webp",
     },
     en: {
       title: "Remote Assistance",
@@ -54,6 +44,7 @@ const CONTENT = {
         "Spare parts, on-site interventions, software modifications and additional engineering work are quoted separately.",
       ],
       imageLabel: "Remote Assistance Image",
+      imageSrc: "/Programmer.webp",
     },
   },
   spareParts: {
@@ -75,6 +66,7 @@ const CONTENT = {
         "Değişim ve yeniden devreye alma sırasında uzaktan destek",
       ],
       imageLabel: "Yedek Parça Görseli",
+      imageSrc: "/IMG_1990.webp",
     },
     en: {
       title: "Spare Parts and Component Availability",
@@ -94,6 +86,7 @@ const CONTENT = {
         "Remote support during replacement and recommissioning",
       ],
       imageLabel: "Spare Parts Image",
+      imageSrc: "/IMG_1990.webp",
     },
   },
   contactCta: {
@@ -103,7 +96,7 @@ const CONTENT = {
 };
 
 // ---------------------------------------------------------------------------
-// Metin solda, görsel sağda (ya da tersi): hizmet bölümleri için ortak satır.
+// Hizmet Satırı Bileşeni
 // ---------------------------------------------------------------------------
 function ServiceRow({
   title,
@@ -111,29 +104,35 @@ function ServiceRow({
   text,
   listIntro,
   items,
-  imageLabel,
+  imageSrc,
+  imageAlt,
   ctaLabel,
   imageLeft = false,
+  imageContainerClassName = "w-full max-w-[500px]",
 }: {
   title: string;
   subtitle?: string;
   text: string[];
   listIntro?: string;
   items?: string[];
-  imageLabel: string;
+  imageSrc: string;
+  imageAlt: string;
   ctaLabel: string;
   imageLeft?: boolean;
+  imageContainerClassName?: string;
 }) {
   return (
     <div className="max-w-[1400px] mx-auto px-6 py-16 md:py-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+      {/* items-start ile başlık ve resmin üst hizaları birebir eşitlendi */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+        {/* Metin Kolonu */}
         <div className={`text-left order-2 ${imageLeft ? "md:order-2" : "md:order-1"}`}>
           <h2 className="text-xl md:text-2xl font-extrabold text-[#3A3A3A] tracking-tight mb-2">{title}</h2>
           {subtitle && (
             <p className="text-sm md:text-base font-bold text-[#B87332] tracking-wide mb-5">{subtitle}</p>
           )}
 
-          <div className="space-y-4 mb-1">
+          <div className="space-y-4 mb-4">
             {text.map((p, i) => (
               <p key={i} className="text-sm md:text-base text-gray-600 leading-relaxed">
                 {p}
@@ -141,14 +140,18 @@ function ServiceRow({
             ))}
           </div>
 
+          {/* Mini Başlık Biçimi */}
           {listIntro && (
-            <p className="text-sm md:text-base text-gray-600 leading-relaxed mt-4 mb-3">{listIntro}</p>
+            <p className="text-sm md:text-base font-bold text-[#3A3A3A] leading-relaxed mt-5 mb-2">
+              {listIntro}
+            </p>
           )}
 
+          {/* Araları Sıkılaştırılmış Liste */}
           {items && items.length > 0 && (
-            <ul className="space-y-2 mb-5">
+            <ul className="space-y-1.5 mb-6">
               {items.map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-gray-700 text-sm md:text-base leading-relaxed">
+                <li key={i} className="flex items-start gap-2 text-gray-700 text-sm md:text-base leading-snug">
                   <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#B87332] shrink-0" />
                   <span>{item}</span>
                 </li>
@@ -158,19 +161,26 @@ function ServiceRow({
 
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 text-sm font-bold text-[#3A3A3A] hover:text-[#B87332] transition-colors mt-2 group"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#3A3A3A] hover:text-[#B87332] transition-colors mt-1 group"
           >
             {ctaLabel}
             <ArrowRight size={16} className="text-[#B87332] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        <div
-          className={`relative w-full h-[280px] md:h-[380px] rounded-2xl overflow-hidden order-1 ${
-            imageLeft ? "md:order-1" : "md:order-2"
-          }`}
-        >
-          <ImagePlaceholder label={imageLabel} />
+        {/* Görsel Kolonu (KARE FORM / ASPECT-SQUARE) */}
+        <div className={`flex justify-center order-1 ${imageLeft ? "md:order-1" : "md:order-2"}`}>
+          <div
+            className={`relative aspect-square rounded-2xl overflow-hidden shadow-md bg-gray-100 ${imageContainerClassName}`}
+          >
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -178,13 +188,14 @@ function ServiceRow({
 }
 
 export default function ServicePage() {
-  const { lang } = useLanguage();
-  const isTr = lang === "TR";
+  const languageContext = useLanguage() as any;
+  const activeLang = languageContext?.lang || languageContext?.locale || languageContext?.language || "tr";
+  const isTr = activeLang.toLowerCase() === "tr";
   const L = isTr ? "tr" : "en";
 
   return (
     <div className="w-full bg-white font-montserrat pt-16 xl:pt-22">
-      {/* 1. ÜST BAŞLIK ALANI (hero video yok) */}
+      {/* 1. ÜST BAŞLIK ALANI */}
       <div className="w-full bg-[#3A3A3A] text-[#F3F1EC] py-20 md:py-28 px-6 relative overflow-hidden">
         <div className="max-w-[1000px] mx-auto relative z-10 flex flex-col items-center text-center">
           <span className="block text-xs font-bold tracking-[0.15em] text-[#B87332] mb-4">
@@ -204,7 +215,8 @@ export default function ServicePage() {
         title={CONTENT.remoteAssistance[L].title}
         subtitle={CONTENT.remoteAssistance[L].subtitle}
         text={CONTENT.remoteAssistance[L].text}
-        imageLabel={CONTENT.remoteAssistance[L].imageLabel}
+        imageSrc={CONTENT.remoteAssistance[L].imageSrc}
+        imageAlt={CONTENT.remoteAssistance[L].imageLabel}
         ctaLabel={CONTENT.contactCta[L]}
       />
 
@@ -215,7 +227,8 @@ export default function ServicePage() {
         text={CONTENT.spareParts[L].text}
         listIntro={CONTENT.spareParts[L].listIntro}
         items={CONTENT.spareParts[L].items}
-        imageLabel={CONTENT.spareParts[L].imageLabel}
+        imageSrc={CONTENT.spareParts[L].imageSrc}
+        imageAlt={CONTENT.spareParts[L].imageLabel}
         ctaLabel={CONTENT.contactCta[L]}
         imageLeft
       />
