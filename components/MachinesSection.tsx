@@ -1,25 +1,17 @@
 // components/MachinesSection.tsx
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
 
-// Slug bilgisi dilden bağımsızdır; isim/kategori metinleri i18n'den gelir.
-// NOT: Görseller (resin-line.jpg vb.) public/ klasörüne eklenene kadar
-// ImagePlaceholder kullanılıyor. Görseller eklendiğinde burada bir "image"
-// alanı tanımlayıp aşağıdaki ImagePlaceholder'ı <Image> ile değiştirmeniz yeterli.
-// NOT: "resin" gerçek bir kategoriye (Epoksi Fırın Hatları) karşılık geliyor.
-// "cnc", "waterjet" ve "tile" için ürün kataloğunda henüz karşılık gelen bir
-// kategori yok; bu yüzden bunlar kırık bir kategori sayfasına değil, güvenli
-// bir şekilde genel Ürünler sayfasına yönlendiriliyor. Bu makineler için de
-// bir kategori açılırsa, categorySlug'ı gerçek kategori slug'ıyla değiştirmek yeterli.
 const PRODUCT_META = [
-  { id: "resin", key: "resin", categorySlug: "resin-lines" },
-  { id: "cnc", key: "cnc", categorySlug: null },
-  { id: "waterjet", key: "waterjet", categorySlug: null },
-  { id: "tile", key: "tile", categorySlug: null },
+  { id: "resin", key: "resin", categorySlug: "resin-lines", image: "/A - 1 Kule Reçine Hattı.webp" },
+  { id: "cnc", key: "cnc", categorySlug: "epoksi-uygulama", image: "/ion_graviton-combi_cover.webp" },
+  { id: "waterjet", key: "waterjet", categorySlug: "polishing", image: "/ion_wax_cover.webp" },
+  { id: "tile", key: "tile", categorySlug: "yukleme-bosaltma", image: "/ion_aranea_cover.webp" },
 ] as const;
 
 export default function MachinesSection() {
@@ -76,10 +68,21 @@ export default function MachinesSection() {
         </div>
 
         {/* SAĞ: Aktif Kategori Görseli */}
-        <div className="lg:col-span-8 h-[50vh] lg:h-[75vh] w-full relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
-          <ImagePlaceholder label={activeText.name} className="transition-transform duration-700 group-hover:scale-105" />
+        <div className="lg:col-span-8 h-[50vh] lg:h-[75vh] w-full relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group bg-[#F3F1EC]">
+          
+          {/* object-contain ile resim kırpılmadan alana ortalanır */}
+          <Image
+            key={activeMeta.image}
+            src={activeMeta.image}
+            alt={activeText.name}
+            fill
+            sizes="(max-width: 1024px) 100vw, 66vw"
+            className="object-contain p-4 transition-transform duration-700 group-hover:scale-105"
+            priority
+          />
+
           {/* Görsel Altı Bilgi Kartı */}
-          <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-10 lg:left-10 lg:right-auto bg-[#3A3A3A]/90 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex items-center justify-between gap-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
+          <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-10 lg:left-10 lg:right-auto bg-[#3A3A3A]/90 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex items-center justify-between gap-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0 z-20">
             <div>
               <span className="text-[#B87332] text-xs font-bold uppercase tracking-widest">{activeText.category}</span>
               <h3 className="text-[#F3F1EC] text-xl font-bold mt-1">{activeText.name}</h3>

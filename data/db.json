@@ -88,7 +88,7 @@
         "tr": "POSITRON",
         "en": "POSITRON"
       },
-      "slug": "positron",
+      "slug": "positron-2",
       "subtitle": {
         "tr": "Plaka Kurutma ve Reçine Kürleme için Döngüsel Fırın",
         "en": "Cyclic Oven for Slab Drying and Resin Curing"
@@ -164,7 +164,11 @@
       ],
       "categoryId": "cat-epoksi-uygulama",
       "images": [
-        "/uploads/products/cf5hvn-ion_positron_cover.webp"
+        "/uploads/products/cf5hvn-ion_positron_cover.webp",
+        "/uploads/products/l6oluj-1.webp",
+        "/uploads/products/sjyvid-2.webp",
+        "/uploads/products/acgt27-3.webp",
+        "/uploads/products/ai5tq5-4.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T13:26:02.003Z",
@@ -392,7 +396,15 @@
       ],
       "categoryId": "cat-yukleme-bosaltma",
       "images": [
-        "/uploads/products/khxutx-ion_aranea_cover.webp"
+        "/uploads/products/khxutx-ion_aranea_cover.webp",
+        "/uploads/products/o8rhz1-1.webp",
+        "/uploads/products/9zd370-2.webp",
+        "/uploads/products/4ob9zj-3.webp",
+        "/uploads/products/omto94-4.webp",
+        "/uploads/products/90vo1o-5.webp",
+        "/uploads/products/2us3ut-6.webp",
+        "/uploads/products/20nhe4-7.webp",
+        "/uploads/products/fqkyoj-8.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T13:51:41.435Z",
@@ -611,7 +623,11 @@
       "features": [],
       "categoryId": "cat-yukleme-bosaltma",
       "images": [
-        "/uploads/products/3k0lyl-ion_manta-l_cover.webp"
+        "/uploads/products/3k0lyl-ion_manta-l_cover.webp",
+        "/uploads/products/6tfvtk-1.webp",
+        "/uploads/products/6jsvyz-2.webp",
+        "/uploads/products/xec831-3.webp",
+        "/uploads/products/l1za10-4.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T13:55:10.442Z",
@@ -779,7 +795,11 @@
       "features": [],
       "categoryId": "cat-yukleme-bosaltma",
       "images": [
-        "/uploads/products/ninqoz-ion_manta-u_cover.webp"
+        "/uploads/products/ninqoz-ion_manta-u_cover.webp",
+        "/uploads/products/bdn3bj-1.webp",
+        "/uploads/products/kng633-2.webp",
+        "/uploads/products/v1juzb-3.webp",
+        "/uploads/products/442yir-4.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T13:57:55.108Z",
@@ -947,7 +967,10 @@
       "features": [],
       "categoryId": "cat-epoksi-uygulama",
       "images": [
-        "/uploads/products/s9qi34-ion_buffer_cover_2.png"
+        "/uploads/products/s9qi34-ion_buffer_cover_2.png",
+        "/uploads/products/3ukdnl-1.webp",
+        "/uploads/products/m5ikg7-2.webp",
+        "/uploads/products/tsa6up-3.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:01:41.451Z",
@@ -1115,7 +1138,8 @@
       "features": [],
       "categoryId": "cat-epoksi-uygulama",
       "images": [
-        "/uploads/products/5uqdkd-ion_pck01_cover.webp"
+        "/uploads/products/5uqdkd-ion_pck01_cover.webp",
+        "/uploads/products/qhgw0d-1.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:03:38.286Z",
@@ -1262,7 +1286,9 @@
       "features": [],
       "categoryId": "cat-polishing",
       "images": [
-        "/uploads/products/3ejfai-ion_ultravion-uv-oven_cover_3.webp"
+        "/uploads/products/3ejfai-ion_ultravion-uv-oven_cover_3.webp",
+        "/uploads/products/swnpis-1.webp",
+        "/uploads/products/61rxgo-2.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:05:04.340Z",
@@ -1388,7 +1414,9 @@
       "features": [],
       "categoryId": "cat-polishing",
       "images": [
-        "/uploads/products/yk4p2u-ion_ir-oven_cover.webp"
+        "/uploads/products/yk4p2u-ion_ir-oven_cover.webp",
+        "/uploads/products/xp91ki-1.webp",
+        "/uploads/products/2fkl8p-2.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:06:30.367Z",
@@ -1862,7 +1890,8 @@
       "features": [],
       "categoryId": "cat-epoksi-uygulama",
       "images": [
-        "/uploads/products/jsu43l-ion_otomatik-file_cover.webp"
+        "/uploads/products/jsu43l-ion_otomatik-file_cover.webp",
+        "/uploads/products/v6vjd1-1.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:23:58.132Z",
@@ -1988,7 +2017,9 @@
       "features": [],
       "categoryId": "cat-epoksi-uygulama",
       "images": [
-        "/uploads/products/t4tidy-ion_vacuum_cover.webp"
+        "/uploads/products/t4tidy-ion_vacuum_cover.webp",
+        "/uploads/products/q9wkbs-1.webp",
+        "/uploads/products/eefrt4-2.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:25:07.081Z",
@@ -2114,7 +2145,10 @@
       "features": [],
       "categoryId": "cat-polishing",
       "images": [
-        "/uploads/products/otd16f-ion_wax_cover.webp"
+        "/uploads/products/otd16f-ion_wax_cover.webp",
+        "/uploads/products/ai3mpx-1.webp",
+        "/uploads/products/t913dd-2.webp",
+        "/uploads/products/f4mm9f-3.webp"
       ],
       "active": true,
       "createdAt": "2026-07-28T14:26:13.620Z",
@@ -3090,6 +3124,94 @@
       "versionsSectionTitle": {
         "tr": "Ana Özellikler",
         "en": "Main Features"
+      },
+      "featuresSectionTitle": {
+        "tr": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "prod-msh75v0s-twru5",
+      "name": {
+        "tr": "1 Kuleli Fırın Hattı",
+        "en": "1 Tower Resin Line"
+      },
+      "slug": "1-kuleli-firin-hatti",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "heroDescription": {
+        "tr": "",
+        "en": ""
+      },
+      "heroImage": "/uploads/products/j1x4hw-a-1-kule-recine-hatti-1.webp",
+      "descriptionParagraphs": [],
+      "configs": [],
+      "configNote": {
+        "tr": "",
+        "en": ""
+      },
+      "configNote2": {
+        "tr": "",
+        "en": ""
+      },
+      "versions": [],
+      "features": [],
+      "categoryId": "cat-epoksi-firin-hatlari",
+      "images": [
+        "/uploads/products/nlwbqz-a-1-kule-recine-hatti-1_2.webp"
+      ],
+      "active": true,
+      "createdAt": "2026-08-06T07:31:11.308Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [],
+      "configBlocks": [],
+      "versionBlocks": [],
+      "featureBlocks": [],
+      "descriptionSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "configsSectionTitle": {
+        "tr": "",
+        "en": ""
+      },
+      "versionsSectionTitle": {
+        "tr": "",
+        "en": ""
       },
       "featuresSectionTitle": {
         "tr": "",

@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import type { CSSProperties } from "react";
+import { useState, useRef, useEffect } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
-import { ChevronRight, Plus, Minus } from "lucide-react";
+import { ChevronRight, Plus, Minus, X, ChevronLeft } from "lucide-react";
 import type { Product, TextStyle, MultiLangString } from "@/lib/db";
 import RichTextContent from "@/components/RichTextContent";
 
 const styles = {
-  sectionEyebrow: "text-2xl md:text-3xl font-extrabold tracking-tight text-[#B87332] mb-5",
+  sectionEyebrow: "text-2xl md:text-3xl font-extrabold tracking-tight text-[#B87332] mb-0",
   body: "text-sm text-[#3A3A3A] leading-relaxed font-semibold",
   bodyStack: "space-y-3 text-sm text-[#3A3A3A] leading-relaxed font-semibold",
 };
@@ -40,11 +40,116 @@ export default function DynamicProductDetail({ product, category }: { product: P
   const { lang } = useLanguage();
   const isTr = lang === "TR";
 
-  // categoryName değişkenini burada isTr'ye göre dinamik olarak üretiyoruz:
   const categoryName = category ? getLangText(category.name, isTr) : null;
 
   const [openSections, setOpenSections] = useState<{ [key: number]: boolean }>({ 0: true });
   const toggleSection = (index: number) => setOpenSections((prev) => ({ ...prev, [index]: !prev[index] }));
+
+  // Büyük önizleme (Lightbox) için seçilen görselin indeksi
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+  const hasMoved = useRef(false);
+  
+  const velocity = useRef(0);
+  const lastX = useRef(0);
+  const lastTime = useRef(0);
+  const animationFrameId = useRef<number | null>(null);
+
+  const stopMomentum = () => {
+    if (animationFrameId.current) {
+      cancelAnimationFrame(animationFrameId.current);
+      animationFrameId.current = null;
+    }
+  };
+
+  const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    if (!sliderRef.current) return;
+    stopMomentum();
+    isDragging.current = true;
+    hasMoved.current = false;
+    startX.current = e.pageX - sliderRef.current.offsetLeft;
+    scrollLeft.current = sliderRef.current.scrollLeft;
+    lastX.current = e.pageX;
+    lastTime.current = performance.now();
+  };
+
+  const handleMouseLeave = () => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+
+    const applyMomentum = () => {
+      if (Math.abs(velocity.current) > 0.1 && sliderRef.current) {
+        sliderRef.current.scrollLeft -= velocity.current;
+        velocity.current *= 0.95;
+        animationFrameId.current = requestAnimationFrame(applyMomentum);
+      } else {
+        stopMomentum();
+      }
+    };
+    applyMomentum();
+  };
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!isDragging.current || !sliderRef.current) return;
+    e.preventDefault();
+
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = x - startX.current;
+
+    if (Math.abs(walk) > 5) {
+      hasMoved.current = true;
+    }
+
+    const now = performance.now();
+    const dt = now - lastTime.current;
+    const dx = e.pageX - lastX.current;
+
+    if (dt > 0) {
+      velocity.current = (dx / dt) * 15;
+    }
+
+    lastX.current = e.pageX;
+    lastTime.current = now;
+
+    sliderRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  const scrollGallery = (direction: "left" | "right") => {
+    if (!sliderRef.current) return;
+    stopMomentum();
+    const scrollAmount = 400;
+    sliderRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
+  // Klavye olayları (Sağ, Sol ve Esc tuşları)
+  useEffect(() => {
+    if (selectedImageIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") {
+        setSelectedImageIndex((prev) => (prev !== null && prev < galleryImages.length - 1 ? prev + 1 : 0));
+      } else if (e.key === "ArrowLeft") {
+        setSelectedImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : galleryImages.length - 1));
+      } else if (e.key === "Escape") {
+        setSelectedImageIndex(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImageIndex]);
 
   const hasDescription = (product.descriptionBlocks?.length ?? 0) > 0 || product.descriptionParagraphs.length > 0;
   const hasConfigs = (product.configBlocks?.length ?? 0) > 0 || product.configs.length > 0 || Boolean(product.configNote) || Boolean(product.configNote2);
@@ -225,19 +330,119 @@ export default function DynamicProductDetail({ product, category }: { product: P
         </section>
       )}
 
+      {/* FOTOĞRAF GALERİSİ */}
       {galleryImages.length > 0 && (
-        <section className="w-full bg-white px-6 py-20 lg:pl-16 lg:pr-16">
+        <section className="w-full bg-white px-6 py-20 lg:pl-16 lg:pr-16 border-t border-gray-100">
           <div className="mx-auto w-full max-w-5xl">
-            <h2 className={styles.sectionEyebrow}>{isTr ? "Örnek Görseller" : "Sample Images"}</h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            
+            <div className="mb-8 border-b border-gray-200 pb-6">
+              <h2 className={styles.sectionEyebrow}>
+                {isTr ? "Fotoğraflar & Videolar" : "Photos & Videos"}
+              </h2>
+            </div>
+
+            <div
+              ref={sliderRef}
+              onMouseDown={handleMouseDown}
+              onMouseLeave={handleMouseLeave}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              style={{ WebkitOverflowScrolling: "touch" }}
+              className="flex gap-5 overflow-x-auto pb-4 pt-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] cursor-grab active:cursor-grabbing select-none [overflow-anchor:none]"
+            >
               {galleryImages.map((src, index) => (
-                <div key={`${src}-${index}`} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-sm">
-                  <Image src={src} alt={`${productName} ${index + 1}`} fill className="object-cover" />
+                <div
+                  key={`${src}-${index}`}
+                  onClick={() => {
+                    if (!hasMoved.current) {
+                      setSelectedImageIndex(index);
+                    }
+                  }}
+                  className="relative aspect-[4/3] w-[300px] md:w-[380px] shrink-0 cursor-pointer overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-sm transition-transform hover:scale-[1.02]"
+                >
+                  <Image src={src} alt={`${productName} ${index + 1}`} fill className="object-cover pointer-events-none" />
                 </div>
               ))}
             </div>
+
+            <div className="flex items-center gap-2 mt-6">
+              <button
+                onClick={() => scrollGallery("left")}
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#B87332] bg-white text-[#B87332] shadow-sm transition-colors hover:bg-[#B87332] hover:text-white"
+                aria-label="Önceki Görsel"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={() => scrollGallery("right")}
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#B87332] bg-white text-[#B87332] shadow-sm transition-colors hover:bg-[#B87332] hover:text-white"
+                aria-label="Sonraki Görsel"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+
           </div>
         </section>
+      )}
+
+      {/* BÜYÜK BOY ÖNİZLEME (LIGHTBOX) - KLAVYE VE OK DESTEKLİ */}
+      {selectedImageIndex !== null && (
+        <div 
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={() => setSelectedImageIndex(null)}
+        >
+          <div className="relative max-h-[90vh] max-w-[90vw] overflow-hidden rounded-2xl bg-black shadow-2xl flex items-center justify-center p-12" onClick={(e) => e.stopPropagation()}>
+            
+            {/* Kapat Butonu */}
+            <button
+              onClick={() => setSelectedImageIndex(null)}
+              className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white transition-colors hover:bg-[#B87332]"
+              aria-label="Kapat"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Sol Ok */}
+            {galleryImages.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : galleryImages.length - 1));
+                }}
+                className="absolute left-4 z-20 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white transition-colors hover:bg-[#B87332]"
+                aria-label="Önceki"
+              >
+                <ChevronLeft size={28} />
+              </button>
+            )}
+
+            {/* Aktif Büyük Görsel */}
+            <div className="relative h-[80vh] w-[80vw]">
+              <Image 
+                src={galleryImages[selectedImageIndex]} 
+                alt="Önizleme" 
+                fill 
+                className="object-contain" 
+              />
+            </div>
+
+            {/* Sağ Ok */}
+            {galleryImages.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImageIndex((prev) => (prev !== null && prev < galleryImages.length - 1 ? prev + 1 : 0));
+                }}
+                className="absolute right-4 z-20 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white transition-colors hover:bg-[#B87332]"
+                aria-label="Sonraki"
+              >
+                <ChevronRight size={28} />
+              </button>
+            )}
+
+          </div>
+        </div>
       )}
     </div>
   );

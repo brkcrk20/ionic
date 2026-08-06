@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = `Ürünler | ${siteTitle}`;
   const description =
     settings.seoDescription ||
-    "Doğal taş işleme makineleri, CNC köprü kesim, su jeti kesim ve komple üretim hatları — tüm ürün gamımızı inceleyin.";
+    "Doğal taş işleme makineleri";
 
   return {
     title,

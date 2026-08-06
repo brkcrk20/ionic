@@ -408,7 +408,62 @@ export default function Navbar({
                   </button>
                 </div>
               </div>
+
+              {/* MASAÜSTÜ: EK BAĞLANTILAR (Açılır Menü İçinde) */}
+              <div className="hidden xl:grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+                
+                <div className="md:col-span-5 flex flex-col gap-3 md:gap-5 font-montserrat">
+                  <Link href="/company" onClick={() => setMegaMenuOpen(false)} className="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors">
+                    {t.groupTitle}
+                  </Link>
+                  <Link href="/why-ion" onClick={() => setMegaMenuOpen(false)} className="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors">
+                    {t.whyUs}
+                  </Link>
+                  <Link href="/sectors" onClick={() => setMegaMenuOpen(false)} className="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#0B1941] hover:text-[#B87332] transition-colors">
+                    {t.sectors}
+                  </Link>
+                </div>
+
+                <div className="md:col-span-4 flex flex-col gap-3 text-xs md:text-sm font-bold tracking-wider uppercase text-[#0B1941]">
+                  <Link href="/news" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors">
+                    {t.news}
+                  </Link>
+                  <Link href="/contact" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors">
+                    {t.contactSales}
+                  </Link>
+                  <Link href="/careers" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors">
+                    {t.careers}
+                  </Link>
+                  <Link href="/portal" onClick={() => setMegaMenuOpen(false)} className="hover:text-[#B87332] transition-colors pt-1">
+                    {t.portal}
+                  </Link>
+                </div>
+
+                <div className="md:col-span-3 flex flex-col gap-4 text-xs md:text-sm text-gray-600 font-medium leading-relaxed">
+                  <div className="flex flex-col gap-0.5 text-gray-700">
+                    <p className="font-semibold text-[#0B1941]">{t.addressTitle}</p>
+                    <p>{t.addressSub}</p>
+                    <p className="pt-1">+90 (258) 814 57 47</p>
+                    <a href="mailto:info@ionmeccanica.com" className="text-[#0B1941] hover:underline font-semibold">
+                      info@ionmeccanica.com
+                    </a>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-xs font-bold text-gray-400 tracking-widest pt-1">
+                    <button onClick={() => setLang("EN")} className={`cursor-pointer hover:text-[#B87332] ${lang === "EN" ? "text-[#0B1941] font-extrabold" : ""}`}>
+                      EN
+                    </button>
+                    /
+                    <button onClick={() => setLang("TR")} className={`cursor-pointer hover:text-[#B87332] ${lang === "TR" ? "text-[#0B1941] font-extrabold" : ""}`}>
+                      TR
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
+
             <div className="h-4 w-full"></div>
           </div>
         </div>
