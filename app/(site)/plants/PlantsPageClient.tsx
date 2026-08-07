@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
-import { Search, Filter, ChevronDown, ArrowRight } from "lucide-react";
+import { Search, Filter, ArrowRight } from "lucide-react";
 import type { Category } from "@/lib/db";
+import CategoryFilterSelect from "@/components/CategoryFilterSelect";
 
 function getLangText(val: any, lang: string = "tr"): string {
   if (!val) return "";
@@ -73,6 +74,10 @@ export default function PlantsPageClient({
   // Hatlar (Plants) kök kategorisi ve onun tüm alt kategorileri.
   const rootCategory = categories.find((c) => c.slug === PLANTS_ROOT_SLUG) || null;
   const scopedIds = rootCategory ? getDescendantAndSelfIds(categories, rootCategory.id) : null;
+  const categoryOptions = flattenCategoryOptions(
+    categories,
+    rootCategory ? rootCategory.id : null
+  ).map(({ cat, depth }) => ({ slug: cat.slug, label: getLangText(cat.name, currentLang), depth }));
 
   const seen = new Set<string>();
   const PRODUCTS_DATA = dbProducts
@@ -174,20 +179,12 @@ export default function PlantsPageClient({
           ) : (
             <div className="flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
               <div className="relative w-full md:max-w-sm">
-                <select
+                <CategoryFilterSelect
+                  options={categoryOptions}
                   value={selectedCategorySlug || "all"}
-                  onChange={(e) => setSelectedCategorySlug(e.target.value === "all" ? "" : e.target.value)}
-                  className="w-full appearance-none bg-white text-gray-800 text-sm font-semibold py-3.5 pl-5 pr-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3A3A3A] cursor-pointer"
-                >
-                  <option value="all">{isTr ? "Tüm Hatlar" : "All Lines"}</option>
-                  {flattenCategoryOptions(categories, rootCategory ? rootCategory.id : null).map(({ cat, depth }) => (
-                    <option key={cat.id} value={cat.slug}>
-                      {"— ".repeat(depth)}
-                      {getLangText(cat.name, currentLang)}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                  onChange={(slug) => setSelectedCategorySlug(slug === "all" ? "" : slug)}
+                  allLabel={isTr ? "Tüm Hatlar" : "All Lines"}
+                />
               </div>
 
               {selectedCategorySlug && selectedCategorySlug !== "all" && (

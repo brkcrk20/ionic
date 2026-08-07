@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
-import { Search, Filter, ChevronDown, ArrowRight } from "lucide-react";
+import { Search, Filter, ArrowRight } from "lucide-react";
 import type { Category } from "@/lib/db";
+import CategoryFilterSelect from "@/components/CategoryFilterSelect";
 
 function getLangText(val: any, lang: string = "tr"): string {
   if (!val) return "";
@@ -32,21 +33,36 @@ function getDescendantAndSelfIds(categories: Category[], rootId: string): Set<st
   return result;
 }
 
+// "Hatlar" (plants) kök kategorisinin id'sini buluyoruz — slug'ı tam olarak "plants" olan kategori.
+// Not: substring ("hat" geçiyor mu) kontrolü kullanmıyoruz çünkü ana ürün kök kategorisinin
+// slug'ı da "makineler-hatlar" olduğu için "hat" içeriyor ve yanlışlıkla tüm kategoriler elenip
+// filtre menüsü bomboş kalıyordu.
+function getPlantsExcludedIds(categories: Category[]): Set<string> {
+  const plantsRoot = categories.find((c) => c.slug === "plants");
+  return plantsRoot ? getDescendantAndSelfIds(categories, plantsRoot.id) : new Set<string>();
+}
+
+// Ürünler tek bir kök kategori altında toplandığı için ("Ürünler"), bu kök başlığı
+// filtre listesinde ayrı bir satır olarak göstermiyoruz — direkt altındaki
+// Epoksi Uygulama, Cila, Atölye gibi gerçek kategorileri listeliyoruz.
+function getVisibleRootId(categories: Category[]): string | null {
+  const topLevel = categories.filter((c) => c.parentId === null);
+  return topLevel.length === 1 ? topLevel[0].id : null;
+}
+
 function flattenCategoryOptions(
   categories: Category[],
+  excludedIds: Set<string>,
   parentId: string | null = null,
   depth = 0
 ): { cat: Category; depth: number }[] {
   const result: { cat: Category; depth: number }[] = [];
+  
   for (const c of categories.filter((x) => x.parentId === parentId)) {
-    // Hat kategorilerini ürünler filtre listesine sokmuyoruz
-    const nameTr = typeof c.name === "string" ? c.name : c.name?.tr || "";
-    const nameEn = typeof c.name === "string" ? c.name : c.name?.en || "";
-    const isPlantCat = c.slug.includes("plant") || c.slug.includes("hat") || nameTr.toLowerCase().includes("hat") || nameEn.toLowerCase().includes("line");
-    if (!isPlantCat) {
-      result.push({ cat: c, depth });
-      result.push(...flattenCategoryOptions(categories, c.id, depth + 1));
-    }
+    if (excludedIds.has(c.id)) continue;
+
+    result.push({ cat: c, depth });
+    result.push(...flattenCategoryOptions(categories, excludedIds, c.id, depth + 1));
   }
   return result;
 }
@@ -73,27 +89,25 @@ export default function ProductsPageClient({
   const [selectedCategorySlug, setSelectedCategorySlug] = useState(initialCategory);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const plantsExcludedIds = getPlantsExcludedIds(categories);
+  const visibleRootId = getVisibleRootId(categories);
+  const categoryOptions = flattenCategoryOptions(categories, plantsExcludedIds, visibleRootId).map(
+    ({ cat, depth }) => ({ slug: cat.slug, label: getLangText(cat.name, currentLang), depth })
+  );
+
   const seen = new Set<string>();
   const PRODUCTS_DATA = dbProducts.filter((product) => {
     if (seen.has(product.slug)) return false;
-    seen.add(product.slug);
 
-    // Kategori kontrolü (Eğer ürünün kategorisi hat/plant ise veya adı hat içeriyorsa kesinlikle eliyoruz)
-    const currentCat = categories.find((c) => c.id === product.categoryId);
-    const catNameTr = currentCat ? (typeof currentCat.name === "string" ? currentCat.name : currentCat.name?.tr || "") : "";
-    const catNameEn = currentCat ? (typeof currentCat.name === "string" ? currentCat.name : currentCat.name?.en || "") : "";
-    const prodNameTr = getLangText(product.name, "tr").toLowerCase();
-    
-    const isPlant = 
-      product.type === "plant" || 
-      product.isPlant || 
-      (currentCat && (currentCat.slug.includes("plant") || currentCat.slug.includes("hat") || catNameTr.toLowerCase().includes("hat") || catNameEn.toLowerCase().includes("line"))) ||
-      prodNameTr.includes("hatsı") ||
-      prodNameTr.includes("fırın hattı") ||
-      prodNameTr.includes("hattı");
+    // Hatlar (plants) kategori ağacındaki ürünleri listeden çıkarıyoruz
+    const isPlant =
+      product.type === "plant" ||
+      product.isPlant ||
+      (product.categoryId && plantsExcludedIds.has(product.categoryId));
 
     if (isPlant) return false;
 
+    seen.add(product.slug);
     return true;
   });
 
@@ -187,20 +201,12 @@ export default function ProductsPageClient({
           ) : (
             <div className="flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
               <div className="relative w-full md:max-w-sm">
-                <select
+                <CategoryFilterSelect
+                  options={categoryOptions}
                   value={selectedCategorySlug || "all"}
-                  onChange={(e) => setSelectedCategorySlug(e.target.value === "all" ? "" : e.target.value)}
-                  className="w-full appearance-none bg-white text-gray-800 text-sm font-semibold py-3.5 pl-5 pr-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3A3A3A] cursor-pointer"
-                >
-                  <option value="all">{isTr ? "Tüm Kategoriler" : "All Categories"}</option>
-                  {flattenCategoryOptions(categories).map(({ cat, depth }) => (
-                    <option key={cat.id} value={cat.slug}>
-                      {"— ".repeat(depth)}
-                      {getLangText(cat.name, currentLang)}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                  onChange={(slug) => setSelectedCategorySlug(slug === "all" ? "" : slug)}
+                  allLabel={isTr ? "Tüm Ürünler" : "All Products"}
+                />
               </div>
 
               {selectedCategorySlug && selectedCategorySlug !== "all" && (
