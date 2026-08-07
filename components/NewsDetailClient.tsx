@@ -67,7 +67,7 @@ export default function NewsDetailClient({ news }: { news: NewsItem }) {
           {/* Metin Kolonu */}
           <div className="text-left order-2 md:order-1">
             
-            {/* Tarih Etiketi (Metnin tam üstüne taşındı) */}
+            {/* Tarih Etiketi */}
             {news.date && (
               <span className="block text-xs font-bold tracking-[0.15em] text-[#B87332] uppercase mb-3">
                 {formatDate(news.date, lang)}
@@ -93,12 +93,13 @@ export default function NewsDetailClient({ news }: { news: NewsItem }) {
             <div className="flex justify-center order-1 md:order-2">
               <div className="relative w-full max-w-[560px] aspect-square mx-auto rounded-2xl overflow-hidden shadow-md bg-gray-100">
                 <Image
-                  src={news.coverImage}
+                  src={news.coverImage?.startsWith("/") ? news.coverImage : `/${news.coverImage}`}
                   alt={title}
                   fill
                   sizes="(max-width: 768px) 100vw, 560px"
                   className="object-cover"
                   priority
+                  unoptimized
                 />
               </div>
             </div>
