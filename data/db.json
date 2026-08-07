@@ -88,7 +88,7 @@
         "tr": "POSITRON",
         "en": "POSITRON"
       },
-      "slug": "positron-2",
+      "slug": "positron",
       "subtitle": {
         "tr": "Plaka Kurutma ve Reçine Kürleme için Döngüsel Fırın",
         "en": "Cyclic Oven for Slab Drying and Resin Curing"
@@ -3143,7 +3143,7 @@
       },
       "heroDescription": {
         "tr": "Bu kompakt hat, orta düzey üretim ihtiyaçları için temel reçineleme aşamalarını tek bir termal kule etrafında birleştirir.",
-        "en": ""
+        "en": "This compact line combines the essential slab-resining stages around one thermal tower, for factories with moderate production requirements or limited installation space."
       },
       "heroImage": "/uploads/products/j1x4hw-a-1-kule-recine-hatti-1.webp",
       "descriptionParagraphs": [],
@@ -3204,7 +3204,7 @@
             "en": ""
           },
           "text": {
-            "tr": "1 Kuleli Reçine Hattı; doğal taş plakaların kurutulması, reçine uygulanması ve kontrollü kürlenmesi için kompakt ve esnek bir sistemdir. Orta düzey üretim gereksinimleri olan veya kurulum alanı kısıtlı fabrikalar için tasarlanmış olup, temel plaka reçineleme aşamalarını tek bir termal kule etrafında birleştirir. Fırın, POSITRON döngülü fırın olarak yapılandırılmıştır.\n\nHat, plakanın tek veya her iki yüzeyini işleyebilir. Çift taraflı işlem için plaka arka yüzünden kurutulur, takviye edilir ve kürlenir, otomatik olarak çevrilir ve ardından görünen yüzeyinde işlenip kürlenir.\n\nModüler yapı, hattın mermer, granit ve hassas ile yoğun çatlaklı malzemeler dahil diğer doğal taşlara uyarlanmasını sağlar. Taş özelliklerine ve gerekli otomasyon seviyesine göre ek işlem modülleri eklenebilir.",
+            "tr": "1 Kuleli Reçine Hattı; doğal taş plakaların kurutulması, reçine uygulanması ve kontrollü kürlenmesi için kompakt ve esnek bir sistemdir. Orta düzey üretim gereksinimleri olan veya kurulum alanı kısıtlı fabrikalar için tasarlanmış olup, temel plaka reçineleme aşamalarını tek bir termal kule etrafında birleştirir. Fırın, POSITRON döngülü fırın olarak yapılandırılmıştır.\n\nHat, plakanın tek veya her iki yüzeyini işleyebilir. Çift taraflı işlemde plaka arka yüzünden kurutulur, güçlendirilir ve kürlenir; ardından otomatik olarak çevrilir ve görünen yüzeyinde işlenip kürlenir.\n\nModüler yapı, hattın mermer, granit ve hassas ile yoğun çatlaklı malzemeler dahil diğer doğal taşlara uyarlanmasını sağlar. Taş özelliklerine ve gerekli otomasyon seviyesine göre ek işlem modülleri eklenebilir.",
             "en": "The 1 Tower Resin Line is a compact and flexible system for drying, resin application and controlled curing of natural-stone slabs. Designed for factories with moderate production requirements or limited installation space, it combines the essential slab-resining stages around one thermal tower. The oven is configured as a POSITRON cyclic oven.\n\nThe line can process one or both surfaces of the slab. For double-sided treatment, the slab is dried, reinforced and cured on the reverse side, turned automatically, and then treated and cured on its visible surface.\n\nThe modular structure allows the line to be adapted to marble, granite and other natural stones, including delicate and heavily fissured materials. Additional treatment modules may be incorporated according to the stone characteristics and required automation level."
           }
         }
@@ -3216,8 +3216,8 @@
             "en": "Standard configuration"
           },
           "text": {
-            "tr": "Tek taraflı işlem: saatte 15 plakaya kadar\n\nÇift taraflı işlem: saatte 10 plakaya kadar",
-            "en": "- One-side treatment: up to 15 slabs/hour\n\n\n- Double-side treatment: up to 10 slabs/hour"
+            "tr": "• Tek taraflı işlem: saatte 15 plakaya kadar\n• Çift taraflı işlem: saatte 10 plakaya kadar",
+            "en": "• One-side treatment: up to 15 slabs/hour\n• Double-side treatment: up to 10 slabs/hour"
           }
         },
         {
@@ -3226,8 +3226,8 @@
             "en": "Speedy configuration"
           },
           "text": {
-            "tr": "Tek taraflı işlem: saatte 22 plakaya kadar\n\nÇift taraflı işlem: saatte 15 plakaya kadar",
-            "en": "- One-side treatment: up to 22 slabs/hour\n\n\n- Double-side treatment: up to 15 slabs/hour"
+            "tr": "• Tek taraflı işlem: saatte 22 plakaya kadar\n• Çift taraflı işlem: saatte 15 plakaya kadar",
+            "en": "• One-side treatment: up to 22 slabs/hour\n• Double-side treatment: up to 15 slabs/hour"
           }
         }
       ],
@@ -3238,8 +3238,8 @@
             "en": ""
           },
           "text": {
-            "tr": "ARANEA    — Doğrudan katrak makinelerinden besleyen gezer plaka elleçleme robotu\n\nPOSITRON  — (Belirtilmemiş)\n\nPBU01     — Plaka Tampon İstasyonu\n\nRESINBOT  — Otomatik Reçine Uygulama Robotu\n\n(Diğer)   — Otomatik File Uygulama Sistemi\n\nPCK01     — Çift taraflı işlem için Plaka Çevirme Konveyörü\n\nVAC01     — Vakum Odası\n\nMANTA-U   — Otomatik Plaka Boşaltma Robotu",
-            "en": "- ARANEA — Overhead Slab Handling Robot, directly from gangsaws\n\n\n- POSITRON\n\n\n- PBU01 — Slab Buffer Station\n\n\n- RESINBOT— Automatic Resin Application Robot\n\n\n- Automatic Mesh Application System\n\n\n- PCK01 — Slab Rotating Conveyor for double-side treatment\n\n\n- VAC01 — Vacuum Chamber\n\n\n- MANTA-U — Automatic Slab Unloading Robot"
+            "tr": "• ARANEA — Katrak makinelerinden doğrudan besleme yapan üstten raylı plaka elleçleme robotu\n• POSITRON\n• PBU01 — Plaka Tampon İstasyonu\n• RESINBOT — Otomatik Reçine Uygulama Robotu\n• Otomatik File Uygulama Sistemi\n• PCK01 — Çift taraflı işlem için Plaka Çevirme Konveyörü\n• VAC01 — Vakum Odası\n• MANTA-U — Otomatik Plaka Boşaltma Robotu",
+            "en": "• ARANEA — Overhead Slab Handling Robot, directly from gangsaws\n• POSITRON\n• PBU01 — Slab Buffer Station\n• RESINBOT — Automatic Resin Application Robot\n• Automatic Mesh Application System\n• PCK01 — Slab Rotating Conveyor for double-side treatment\n• VAC01 — Vacuum Chamber\n• MANTA-U — Automatic Slab Unloading Robot"
           }
         }
       ],
@@ -3250,14 +3250,14 @@
             "en": ""
           },
           "text": {
-            "tr": "- Kompakt üretim hattı yerleşimi\n- Düşük ilk yatırım maliyeti\n- Tek ve çift taraflı işlem konfigürasyonları\n- Modüler ekipman seçimi\n- Mermer ve granite uygunluk\n- Üretim gereksinimleri arttıkça genişletilebilirlik",
-            "en": "- Compact production-line layout\n\n\n- Lower initial investment\n\n\n- One-side and double-side treatment configurations\n\n\n- Modular equipment selection\n\n\n- Suitable for marble and granite\n\n\n- Expandable as production requirements increase"
+            "tr": "• Kompakt üretim hattı yerleşimi\n• Düşük ilk yatırım maliyeti\n• Tek ve çift taraflı işlem konfigürasyonları\n• Modüler ekipman seçimi\n• Mermer ve granit için uygunluk\n• Üretim gereksinimleri arttıkça genişletilebilirlik",
+            "en": "• Compact production-line layout\n• Lower initial investment\n• One-side and double-side treatment configurations\n• Modular equipment selection\n• Suitable for marble and granite\n• Expandable as production requirements increase"
           }
         }
       ],
       "descriptionSectionTitle": {
-        "tr": "",
-        "en": ""
+        "tr": "Açıklama",
+        "en": "Description"
       },
       "configsSectionTitle": {
         "tr": "Kapasite",
@@ -3273,270 +3273,6 @@
       }
     },
     {
-      "id": "prod-mshfffpy-ckrwj",
-      "name": {
-        "tr": "3 Kuleli Fırın Hattı",
-        "en": "3 Tower Resin Line"
-      },
-      "slug": "3-kuleli-firin-hatti",
-      "subtitle": {
-        "tr": "",
-        "en": ""
-      },
-      "heroDescription": {
-        "tr": "",
-        "en": ""
-      },
-      "heroImage": "/uploads/products/jdxkz0-3-kule.webp",
-      "descriptionParagraphs": [],
-      "configs": [],
-      "configNote": {
-        "tr": "",
-        "en": ""
-      },
-      "configNote2": {
-        "tr": "",
-        "en": ""
-      },
-      "versions": [],
-      "features": [],
-      "categoryId": "cat-epoksi-firin-hatlari",
-      "images": [
-        "/uploads/products/onypq8-3-kule.webp"
-      ],
-      "active": true,
-      "createdAt": "2026-08-06T11:22:34.966Z",
-      "nameStyle": {
-        "color": "#FFFFFF",
-        "fontSize": "48px",
-        "fontFamily": "Montserrat, sans-serif",
-        "fontWeight": "800",
-        "fontStyle": "normal",
-        "textDecoration": "none",
-        "textAlign": "left",
-        "lineHeight": "1",
-        "letterSpacing": "-0.02em"
-      },
-      "subtitleStyle": {
-        "color": "#B87332",
-        "fontSize": "24px",
-        "fontFamily": "Montserrat, sans-serif",
-        "fontWeight": "700",
-        "fontStyle": "normal",
-        "textDecoration": "none",
-        "textAlign": "left",
-        "lineHeight": "1.2",
-        "letterSpacing": "0px"
-      },
-      "heroDescriptionStyle": {
-        "color": "rgba(255,255,255,0.9)",
-        "fontSize": "16px",
-        "fontFamily": "Montserrat, sans-serif",
-        "fontWeight": "500",
-        "fontStyle": "normal",
-        "textDecoration": "none",
-        "textAlign": "left",
-        "lineHeight": "1.7",
-        "letterSpacing": "0px"
-      },
-      "descriptionBlocks": [],
-      "configBlocks": [],
-      "versionBlocks": [],
-      "featureBlocks": [],
-      "descriptionSectionTitle": {
-        "tr": "",
-        "en": ""
-      },
-      "configsSectionTitle": {
-        "tr": "",
-        "en": ""
-      },
-      "versionsSectionTitle": {
-        "tr": "",
-        "en": ""
-      },
-      "featuresSectionTitle": {
-        "tr": "",
-        "en": ""
-      }
-    },
-    {
-      "id": "prod-mshfg3js-loifj",
-      "name": {
-        "tr": "4 Kule Fırın Hattı",
-        "en": "4 Tower Resin Line"
-      },
-      "slug": "4-kule-firin-hatti",
-      "subtitle": {
-        "tr": "",
-        "en": ""
-      },
-      "heroDescription": {
-        "tr": "",
-        "en": ""
-      },
-      "heroImage": "/uploads/products/1uu0hh-4-kule-a.webp",
-      "descriptionParagraphs": [],
-      "configs": [],
-      "configNote": {
-        "tr": "",
-        "en": ""
-      },
-      "configNote2": {
-        "tr": "",
-        "en": ""
-      },
-      "versions": [],
-      "features": [],
-      "categoryId": "cat-epoksi-firin-hatlari",
-      "images": [
-        "/uploads/products/mxglou-4-kule-a.webp"
-      ],
-      "active": true,
-      "createdAt": "2026-08-06T11:23:05.848Z",
-      "nameStyle": {
-        "color": "#FFFFFF",
-        "fontSize": "48px",
-        "fontFamily": "Montserrat, sans-serif",
-        "fontWeight": "800",
-        "fontStyle": "normal",
-        "textDecoration": "none",
-        "textAlign": "left",
-        "lineHeight": "1",
-        "letterSpacing": "-0.02em"
-      },
-      "subtitleStyle": {
-        "color": "#B87332",
-        "fontSize": "24px",
-        "fontFamily": "Montserrat, sans-serif",
-        "fontWeight": "700",
-        "fontStyle": "normal",
-        "textDecoration": "none",
-        "textAlign": "left",
-        "lineHeight": "1.2",
-        "letterSpacing": "0px"
-      },
-      "heroDescriptionStyle": {
-        "color": "rgba(255,255,255,0.9)",
-        "fontSize": "16px",
-        "fontFamily": "Montserrat, sans-serif",
-        "fontWeight": "500",
-        "fontStyle": "normal",
-        "textDecoration": "none",
-        "textAlign": "left",
-        "lineHeight": "1.7",
-        "letterSpacing": "0px"
-      },
-      "descriptionBlocks": [],
-      "configBlocks": [],
-      "versionBlocks": [],
-      "featureBlocks": [],
-      "descriptionSectionTitle": {
-        "tr": "",
-        "en": ""
-      },
-      "configsSectionTitle": {
-        "tr": "",
-        "en": ""
-      },
-      "versionsSectionTitle": {
-        "tr": "",
-        "en": ""
-      },
-      "featuresSectionTitle": {
-        "tr": "",
-        "en": ""
-      }
-    },
-    {
-      "id": "prod-mshfgs12-0v6u1",
-      "name": {
-        "tr": "5 Kule Fırın Hattı",
-        "en": "5 Tower Resin Line"
-      },
-      "slug": "5-kule-firin-hatti",
-      "subtitle": {
-        "tr": "",
-        "en": ""
-      },
-      "heroDescription": {
-        "tr": "",
-        "en": ""
-      },
-      "heroImage": "/uploads/products/peywkr-5-kule-a.webp",
-      "descriptionParagraphs": [],
-      "configs": [],
-      "configNote": {
-        "tr": "",
-        "en": ""
-      },
-      "configNote2": {
-        "tr": "",
-        "en": ""
-      },
-      "versions": [],
-      "features": [],
-      "categoryId": "cat-epoksi-firin-hatlari",
-      "images": [
-        "/uploads/products/w6i6jc-5-kule-a.webp"
-      ],
-      "active": true,
-      "createdAt": "2026-08-06T11:23:37.574Z",
-      "nameStyle": {
-        "color": "#FFFFFF",
-        "fontSize": "48px",
-        "fontFamily": "Montserrat, sans-serif",
-        "fontWeight": "800",
-        "fontStyle": "normal",
-        "textDecoration": "none",
-        "textAlign": "left",
-        "lineHeight": "1",
-        "letterSpacing": "-0.02em"
-      },
-      "subtitleStyle": {
-        "color": "#B87332",
-        "fontSize": "24px",
-        "fontFamily": "Montserrat, sans-serif",
-        "fontWeight": "700",
-        "fontStyle": "normal",
-        "textDecoration": "none",
-        "textAlign": "left",
-        "lineHeight": "1.2",
-        "letterSpacing": "0px"
-      },
-      "heroDescriptionStyle": {
-        "color": "rgba(255,255,255,0.9)",
-        "fontSize": "16px",
-        "fontFamily": "Montserrat, sans-serif",
-        "fontWeight": "500",
-        "fontStyle": "normal",
-        "textDecoration": "none",
-        "textAlign": "left",
-        "lineHeight": "1.7",
-        "letterSpacing": "0px"
-      },
-      "descriptionBlocks": [],
-      "configBlocks": [],
-      "versionBlocks": [],
-      "featureBlocks": [],
-      "descriptionSectionTitle": {
-        "tr": "",
-        "en": ""
-      },
-      "configsSectionTitle": {
-        "tr": "",
-        "en": ""
-      },
-      "versionsSectionTitle": {
-        "tr": "",
-        "en": ""
-      },
-      "featuresSectionTitle": {
-        "tr": "",
-        "en": ""
-      }
-    },
-    {
       "id": "prod-mshh7xhl-p62p2",
       "name": {
         "tr": "2 Kuleli Fırın Hattı",
@@ -3544,12 +3280,12 @@
       },
       "slug": "2-kuleli-firin-hatti",
       "subtitle": {
-        "tr": "",
-        "en": ""
+        "tr": "Yüksek Verimli Reçine Uygulama Hattı",
+        "en": "High-Productivity Resin Treatment Line"
       },
       "heroDescription": {
-        "tr": "",
-        "en": ""
+        "tr": "İki fırın kulesi arasında kurutma ve kürleme işlemlerini paylaştırarak daha yüksek termal kapasite ve proses esnekliği sunar.",
+        "en": "Provides greater thermal capacity and process flexibility by distributing slab drying and resin curing between two oven towers."
       },
       "heroImage": "/uploads/products/u0dq7d-2-kule.webp",
       "descriptionParagraphs": [],
@@ -3603,25 +3339,915 @@
         "lineHeight": "1.7",
         "letterSpacing": "0px"
       },
-      "descriptionBlocks": [],
-      "configBlocks": [],
-      "versionBlocks": [],
-      "featureBlocks": [],
+      "descriptionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "2 Kuleli Reçine Hattı, plaka kurutma ve reçine kürleme işlemlerini iki fırın kulesi arasında paylaştırarak daha yüksek termal kapasite ve proses esnekliği sağlar.\n\nTek taraflı işlemde, iki kule sayesinde kurutma ve kürleme aşamaları birbirinden bağımsız olarak yönetilebilir; bu da daha yüksek üretim çıktısını ve daha kararlı bekleme sürelerini destekler. Çift taraflı işlemde ise hat; kurutma, arka yüz reçine ve file uygulaması, ilk kürleme, otomatik plaka çevirme, görünen yüz reçine uygulaması ve son kürleme aşamalarını tek bir koordineli üretim sistemi içinde gerçekleştirir.\n\nİki kuleli mimari, kompakt tek kuleli hatta göre daha yüksek üretim çıktısı gerektiren, ancak yine de nispeten verimli bir fabrika alanı kullanımı isteyen tesisler için uygundur.",
+            "en": "The 2 Tower Resin Line provides greater thermal capacity and process flexibility by distributing slab drying and resin curing between two oven towers.\n\nFor one-side treatment, the two towers allow the drying and curing stages to be managed independently, supporting higher production output and more stable residence times. For double-side treatment, the line carries out drying, reverse-side resin and mesh application, first curing, automatic slab turning, visible-face resin application and final curing within one coordinated production system.\n\nThe two-tower architecture is suitable for factories requiring higher output than a compact single-tower line while retaining a relatively efficient factory footprint."
+          }
+        }
+      ],
+      "configBlocks": [
+        {
+          "title": {
+            "tr": "Standart konfigürasyon",
+            "en": "Standard configuration"
+          },
+          "text": {
+            "tr": "• Tek taraflı işlem: saatte 30 plakaya kadar\n• Çift taraflı işlem: saatte 15 plakaya kadar",
+            "en": "• One-side treatment: up to 30 slabs/hour\n• Double-side treatment: up to 15 slabs/hour"
+          }
+        },
+        {
+          "title": {
+            "tr": "Speedy (Hızlı) konfigürasyon",
+            "en": "Speedy configuration"
+          },
+          "text": {
+            "tr": "• Tek taraflı işlem: saatte 45 plakaya kadar\n• Çift taraflı işlem: saatte 22 plakaya kadar",
+            "en": "• One-side treatment: up to 45 slabs/hour\n• Double-side treatment: up to 22 slabs/hour"
+          }
+        }
+      ],
+      "versionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• ARANEA — Katrak makinelerinden doğrudan otomatik plaka yükleme\n• İki POSITRON döngülü fırın kulesi\n• PBU01 — Plaka Tampon ve İlk Jelleşme İstasyonu\n• RESINBOT — Otomatik Reçine Uygulama Robotu\n• Otomatik File Uygulama Sistemi\n• Manuel kontrol ve reçine rötuş istasyonları\n• PCK01 — Çift taraflı işlem için Plaka Çevirme Konveyörü\n• VAC01 — Vakum Uygulaması, opsiyonel\n• MANTA-U — Otomatik Plaka Boşaltma",
+            "en": "• ARANEA — Automatic Slab Loading directly from gangsaws\n• Two POSITRON cyclic ovens towers\n• PBU01 — Slab Buffer and Initial Gelation Station\n• RESINBOT — Automatic Resin Application Robot\n• Automatic Mesh Application System\n• Manual inspection and resin touch-up stations\n• PCK01 — Slab Rotating Conveyor for double-side treatment\n• VAC01 — Vacuum Treatment, optional\n• MANTA-U — Automatic Slab Unloading"
+          }
+        }
+      ],
+      "featureBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• Tek kuleli hatta göre daha yüksek üretim çıktısı\n• Bağımsız kurutma ve kürleme kapasitesi\n• Tek ve çift taraflı işlem\n• Dengeli proses bekleme süreleri\n• Otomatik plaka çevirme ve taşıma\n• Modüler vakum, basınç ve reçine uygulama seçenekleri",
+            "en": "• Higher output than the single-tower line\n• Independent drying and curing capacity\n• One-side and double-side treatment\n• Balanced process residence times\n• Automatic slab turning and transfer\n• Modular vacuum, pressure and resin-application options"
+          }
+        }
+      ],
       "descriptionSectionTitle": {
-        "tr": "",
-        "en": ""
+        "tr": "Açıklama",
+        "en": "Description"
       },
       "configsSectionTitle": {
-        "tr": "",
-        "en": ""
+        "tr": "Kapasite",
+        "en": "Capacity"
       },
       "versionsSectionTitle": {
+        "tr": "Tipik ve Opsiyonel ION Ekipmanları",
+        "en": "Typical and Optional ION Equipment"
+      },
+      "featuresSectionTitle": {
+        "tr": "Başlıca Avantajlar",
+        "en": "Main Advantages"
+      }
+    },
+    {
+      "id": "prod-mshfffpy-ckrwj",
+      "name": {
+        "tr": "3 Kuleli Fırın Hattı",
+        "en": "3 Tower Resin Line"
+      },
+      "slug": "3-kuleli-firin-hatti",
+      "subtitle": {
+        "tr": "Otomatik Çift Taraflı Reçine Uygulama Hattı",
+        "en": "Automated Double-Side Resin Treatment Line"
+      },
+      "heroDescription": {
+        "tr": "Mermer, granit ve diğer doğal taş plakaların yüksek verimli, çift taraflı reçine işlemi için tasarlanmıştır.",
+        "en": "Designed for high-productivity, double-sided resin treatment of marble, granite and other natural-stone slabs."
+      },
+      "heroImage": "/uploads/products/jdxkz0-3-kule.webp",
+      "descriptionParagraphs": [],
+      "configs": [],
+      "configNote": {
         "tr": "",
         "en": ""
       },
-      "featuresSectionTitle": {
+      "configNote2": {
         "tr": "",
         "en": ""
+      },
+      "versions": [],
+      "features": [],
+      "categoryId": "cat-epoksi-firin-hatlari",
+      "images": [
+        "/uploads/products/onypq8-3-kule.webp"
+      ],
+      "active": true,
+      "createdAt": "2026-08-06T11:22:34.966Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "3 Kuleli Reçine Hattı, mermer, granit ve diğer doğal taş plakaların yüksek verimli, çift taraflı reçine işlemi için tasarlanmıştır.\n\nÜç termal kule, temel ısıtma aşamalarının plaka kurutma, arka yüz kürleme ve görünen yüzey işleminden sonraki son kürleme arasında dağıtılmasına olanak tanır. Bu ayrım, hattın diğer bölümlerinde gereksiz kesintiler oluşturmadan her aşamaya ihtiyaç duyduğu bekleme süresini sağlar.\n\nBu konfigürasyon, arka yüzeyde takviye filesi gerektiren ve görünen yüzeyde kontrollü bir bitiş isteyen hassas, gözenekli veya yoğun çatlaklı malzemeleri işleyen fabrikalar için özellikle uygundur.",
+            "en": "The 3 Tower Resin Line is designed for high-productivity, double-sided resin treatment of marble, granite and other natural-stone slabs.\n\nThree thermal towers allow the principal heating stages to be distributed between slab drying, reverse-side curing and final curing after treatment of the visible surface. This separation gives each stage the residence time required without creating unnecessary interruptions elsewhere in the line.\n\nThe configuration is particularly suitable for factories processing delicate, porous or heavily fissured materials that require reinforcement mesh on the reverse side and a controlled finish on the visible surface."
+          }
+        }
+      ],
+      "configBlocks": [
+        {
+          "title": {
+            "tr": "Standart konfigürasyon",
+            "en": "Standard configuration"
+          },
+          "text": {
+            "tr": "• Çift taraflı işlem: saatte 30 plakaya kadar",
+            "en": "• Double-side treatment: up to 30 slabs/hour"
+          }
+        },
+        {
+          "title": {
+            "tr": "Speedy (Hızlı) konfigürasyon",
+            "en": "Speedy configuration"
+          },
+          "text": {
+            "tr": "• Çift taraflı işlem: saatte 45 plakaya kadar",
+            "en": "• Double-side treatment: up to 45 slabs/hour"
+          }
+        }
+      ],
+      "versionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• ARANEA — Katrak makinelerinden doğrudan otomatik plaka yükleme\n• Üç POSITRON döngülü fırın kulesi\n• PBU01 — Plaka Tampon ve Jelleşme İstasyonu\n• RESINBOT — Otomatik Reçine Uygulama Robotu\n• Otomatik File Uygulama Sistemi\n• Manuel kontrol ve onarım istasyonları\n• VAC01 — Hat İçi Vakum Odası, opsiyonel\n• HBAC01 — Hiperbarik Emprenye Odası, opsiyonel\n• PCK01 — Otomatik Plaka Çevirme\n• MANTA-U veya ARANEA — Otomatik Plaka Boşaltma\n• Otomatik konveyörler, tepsiler ve tepsi geri dönüş devresi\n• Merkezi endüstriyel kontrol sistemi",
+            "en": "• ARANEA — Automatic Slab Loading directly from gangsaws\n• Three POSITRON cyclic ovens towers\n• PBU01 — Slab Buffer and Gelation Station\n• RESINBOT — Automatic Resin Application Robot\n• Automatic Mesh Application System\n• Manual inspection and repair stations\n• VAC01 — Inline Vacuum Chamber, optional\n• HBAC01 — Hyperbaric Impregnation Chamber, optional\n• PCK01 — Automatic Slab Rotation\n• MANTA-U or ARANEA — Automatic Slab Unloading\n• Automatic conveyors, trays and tray-return circuit\n• Central industrial control system"
+          }
+        }
+      ],
+      "featureBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• Her ana proses aşaması için özel termal kapasite\n• Yüksek çıktılı çift taraflı işlem\n• Kurutma ve kürleme arasında geliştirilmiş denge\n• Otomatik reçine, file ve plaka taşıma\n• Hassas ve yoğun çatlaklı malzemeler için uygunluk\n• Standart ve Speedy üretim konfigürasyonları",
+            "en": "• Dedicated thermal capacity for each principal process stage\n• High-output double-side treatment\n• Improved balance between drying and curing\n• Automatic resin, mesh and slab handling\n• Suitable for delicate and heavily fissured materials\n• Standard and Speedy production configurations"
+          }
+        }
+      ],
+      "descriptionSectionTitle": {
+        "tr": "Açıklama",
+        "en": "Description"
+      },
+      "configsSectionTitle": {
+        "tr": "Kapasite",
+        "en": "Capacity"
+      },
+      "versionsSectionTitle": {
+        "tr": "Tipik ve Opsiyonel ION Ekipmanları",
+        "en": "Typical and Optional ION Equipment"
+      },
+      "featuresSectionTitle": {
+        "tr": "Başlıca Avantajlar",
+        "en": "Main Advantages"
+      }
+    },
+    {
+      "id": "prod-mshfg3js-loifj",
+      "name": {
+        "tr": "4 Kule Fırın Hattı",
+        "en": "4 Tower Resin Line"
+      },
+      "slug": "4-kule-firin-hatti",
+      "subtitle": {
+        "tr": "Ara Honlama Özellikli Gelişmiş Reçine Hattı",
+        "en": "Advanced Resin Treatment Line with Intermediate Honing"
+      },
+      "heroDescription": {
+        "tr": "Doğal taş plakaların zorlu çift taraflı işlemi için geliştirilmiş yüksek kapasiteli bir konfigürasyondur.",
+        "en": "A high-capacity configuration developed for demanding double-sided treatment of natural-stone slabs."
+      },
+      "heroImage": "/uploads/products/1uu0hh-4-kule-a.webp",
+      "descriptionParagraphs": [],
+      "configs": [],
+      "configNote": {
+        "tr": "Dördüncü kule, temel olarak standart üç kuleli hattın üzerinde belirtilen nominal üretim hızını artırmaktan çok, termal esneklik ve proses kararlılığı katar.",
+        "en": "The fourth tower primarily adds thermal flexibility and process stability rather than increasing the stated nominal throughput above the standard three-tower line."
+      },
+      "configNote2": {
+        "tr": "",
+        "en": ""
+      },
+      "versions": [],
+      "features": [],
+      "categoryId": "cat-epoksi-firin-hatlari",
+      "images": [
+        "/uploads/products/mxglou-4-kule-a.webp"
+      ],
+      "active": true,
+      "createdAt": "2026-08-06T11:23:05.848Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "4 Kuleli Reçine Hattı, doğal taş plakaların zorlu çift taraflı işlemi için geliştirilmiş yüksek kapasiteli bir konfigürasyondur.\n\nDört termal kule, kurutma ve kürleme kapasitesinin dağıtılmasında ek esneklik sağlar. Mimari, arka yüz ve görünen yüz işlem bölümleri arasına yerleştirilmiş bir ara honlama makinesi içerir. Ara honlama, yüzey düzensizliklerini gidererek görünen yüz işlenmeden önce daha homojen bir üst yüzey oluşturur. Bu, yaygın çatlaklara veya düzensiz yüzeylere sahip plakalar için özellikle değerlidir ve sonraki reçine uygulama aşamasına hazırlığı iyileştirebilir. Hat ortasında honlama makinesi bulunan dört kuleli yerleşimler, yeni kurulan fabrikalar için giderek daha önemli hale gelen bir mimari olarak entegre hat çalışmasında tanımlanmaktadır.",
+            "en": "The 4 Tower Resin Line is a high-capacity configuration developed for demanding double-sided treatment of natural-stone slabs.\n\nFour thermal towers provide additional flexibility in allocating drying and curing capacity. The architecture incorporates an intermediate honing machine between the reverse-side and visible-face treatment sections. Intermediate honing removes surface irregularities and creates a more uniform upper surface before the visible face is treated. This is particularly valuable for slabs with widespread cracking or uneven surfaces and can improve preparation for the subsequent resin-application stage. Four-tower layouts incorporating a mid-line honing machine are identified in the integrated-line study as an increasingly important architecture for newly established factories."
+          }
+        }
+      ],
+      "configBlocks": [
+        {
+          "title": {
+            "tr": "Standart konfigürasyon",
+            "en": "Standard configuration"
+          },
+          "text": {
+            "tr": "• Çift taraflı işlem: saatte 30 plakaya kadar",
+            "en": "• Double-side treatment: up to 30 slabs/hour"
+          }
+        },
+        {
+          "title": {
+            "tr": "Speedy (Hızlı) konfigürasyon",
+            "en": "Speedy configuration"
+          },
+          "text": {
+            "tr": "• Çift taraflı işlem: saatte 45 plakaya kadar",
+            "en": "• Double-side treatment: up to 45 slabs/hour"
+          }
+        }
+      ],
+      "versionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• ARANEA — Katrak makinelerinden doğrudan otomatik plaka yükleme\n• Dört POSITRON döngülü fırın kulesi\n• PBU01 — Plaka Tampon İstasyonları\n• RESINBOT — Otomatik Reçine Uygulama Robotu\n• Otomatik File Uygulama Sistemi\n• VAC01 — Vakum Odası, opsiyonel\n• PCK01 — Plaka Çevirme Konveyörü\n• MANTA-U veya ARANEA — Otomatik Boşaltma",
+            "en": "• ARANEA — Automatic Slab Loading directly from gangsaws\n• Four POSITRON cyclic ovens towers\n• PBU01 — Slab Buffer Stations\n• RESINBOT — Automatic Resin Application Robot\n• Automatic Mesh Application System\n• VAC01 — Vacuum Chamber, optional\n• PCK01 — Slab Rotating Conveyor\n• MANTA-U or ARANEA — Automatic Unloading"
+          }
+        }
+      ],
+      "featureBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• Dört kuleli kontrollü termal mimari\n• Çift taraflı reçine işlemi\n• Ara honlama kapasitesi\n• Yoğun çatlaklı plakalar için gelişmiş hazırlık\n• Kürleme kapasitesi dağılımında daha fazla esneklik\n• Yüksek otomasyon ve azaltılmış manuel taşıma",
+            "en": "• Four-tower controlled thermal architecture\n• Double-side resin treatment\n• Intermediate honing capability\n• Improved preparation of highly cracked slabs\n• Greater flexibility in curing-capacity allocation\n• High automation and reduced manual handling"
+          }
+        }
+      ],
+      "descriptionSectionTitle": {
+        "tr": "Açıklama",
+        "en": "Description"
+      },
+      "configsSectionTitle": {
+        "tr": "Kapasite",
+        "en": "Capacity"
+      },
+      "versionsSectionTitle": {
+        "tr": "Tipik ve Opsiyonel ION Ekipmanları",
+        "en": "Typical and Optional ION Equipment"
+      },
+      "featuresSectionTitle": {
+        "tr": "Başlıca Avantajlar",
+        "en": "Main Advantages"
+      }
+    },
+    {
+      "id": "prod-mshfgs12-0v6u1",
+      "name": {
+        "tr": "5 Kule Fırın Hattı",
+        "en": "5 Tower Resin Line"
+      },
+      "slug": "5-kule-firin-hatti",
+      "subtitle": {
+        "tr": "Doğrudan Cilalama Entegrasyonu İçin Uzatılmış Kürlemeli Reçine Hattı",
+        "en": "Extended-Curing Resin Line for Direct Polishing Integration"
+      },
+      "heroDescription": {
+        "tr": "ION Meccanica'nın en gelişmiş reçine işleme mimarisidir.",
+        "en": "ION Meccanica's most advanced resin-treatment architecture."
+      },
+      "heroImage": "/uploads/products/peywkr-5-kule-a.webp",
+      "descriptionParagraphs": [],
+      "configs": [],
+      "configNote": {
+        "tr": "Ek beşinci kule, yayınlanan nominal üretim hızından çok, kontrollü kürleme süresini ve toplam termal depolama kapasitesini artırır.",
+        "en": "The additional fifth tower increases controlled curing duration and total thermal storage capacity rather than the published nominal production speed."
+      },
+      "configNote2": {
+        "tr": "",
+        "en": ""
+      },
+      "versions": [],
+      "features": [],
+      "categoryId": "cat-epoksi-firin-hatlari",
+      "images": [
+        "/uploads/products/w6i6jc-5-kule-a.webp"
+      ],
+      "active": true,
+      "createdAt": "2026-08-06T11:23:37.574Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "5 Kuleli Reçine Hattı, ION Meccanica'nın en gelişmiş reçine işleme mimarisidir. Dört kuleli sürece ek bir termal kürleme kulesi ekleyerek, işlenen plakaların cilalamadan önce kontrollü sıcaklık ve hava akışı koşulları altında kalma süresini uzatır.\n\nBeşinci kulenin temel amacı, saatlik üretim çıktısını standart üç veya dört kuleli konfigürasyonun ötesine taşımak değildir. Asıl amacı, epoksi polimerizasyonunun hat içinde daha fazla ilerleyebilmesi için uzatılmış kontrollü kürleme bekleme süresi sağlamaktır.\n\nBu, reçine işleminden sonra plakaların boşaltılıp harici olarak devam eden kürleme için depolanması ve daha sonra cilalama hattına tekrar yüklenmesi yönündeki geleneksel gerekliliği azaltabilir veya ortadan kaldırabilir. Ek kule konsepti, ION ONEFLOW'un termal temelini oluşturur ve reçine işlemi ile cilalama arasında doğrudan bağlantı kurulmasını sağlar.",
+            "en": "The 5 Tower Resin Line is ION Meccanica's most advanced resin-treatment architecture. It adds an additional thermal-curing tower to the four-tower process, increasing the time that treated slabs remain under controlled temperature and airflow conditions before polishing.\n\nThe fifth tower is not principally intended to increase hourly throughput beyond the three- or four-tower standard configuration. Its main purpose is to provide extended controlled curing residence time so that epoxy polymerisation can progress further inside the line.\n\nThis can reduce or eliminate the conventional requirement to unload slabs after resin treatment, store them externally for continued curing and reload them later onto the polishing line. The additional-tower concept forms the thermal foundation of ION ONEFLOW and enables direct connection between resin treatment and polishing."
+          }
+        }
+      ],
+      "configBlocks": [
+        {
+          "title": {
+            "tr": "Standart konfigürasyon",
+            "en": "Standard configuration"
+          },
+          "text": {
+            "tr": "• Çift taraflı işlem: saatte 30 plakaya kadar",
+            "en": "• Double-side treatment: up to 30 slabs/hour"
+          }
+        },
+        {
+          "title": {
+            "tr": "Speedy (Hızlı) konfigürasyon",
+            "en": "Speedy configuration"
+          },
+          "text": {
+            "tr": "• Çift taraflı işlem: saatte 45 plakaya kadar",
+            "en": "• Double-side treatment: up to 45 slabs/hour"
+          }
+        }
+      ],
+      "versionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• ARANEA — Katrak makinelerinden doğrudan otomatik plaka yükleme\n• Beş POSITRON döngülü fırın\n• PBU01 — Tampon ve İlk Jelleşme İstasyonları\n• RESINBOT — Otomatik Reçine Uygulama Robotu\n• Otomatik File Uygulama Sistemi\n• VAC01 — Vakum Destekli Reçine Nüfuziyeti, opsiyonel\n• PCK01 — Otomatik Plaka Çevirme\n• Cilalama hattı ile doğrudan arayüz\n• MANTA-U — Otomatik bitmiş plaka taşıma",
+            "en": "• ARANEA — Automatic Slab Loading directly from gangsaws\n• Five POSITRON cyclic ovens\n• PBU01 — Buffer and Initial Gelation Stations\n• RESINBOT — Automatic Resin Application Robot\n• Automatic Mesh Application System\n• VAC01 — Vacuum-Assisted Resin Penetration, optional\n• PCK01 — Automatic Slab Rotation\n• Direct interface with the polishing line\n• MANTA-U — automated finished-slab handling"
+          }
+        }
+      ],
+      "featureBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• Beş kuleli uzatılmış termal kürleme mimarisi\n• Cilalamadan önce kontrollü polimerizasyon\n• Azaltılmış harici kürleme-depolama ihtiyacı\n• Sonraki cilalama hattına doğrudan bağlantı\n• Azaltılmış boşaltma, depolama ve yeniden yükleme\n• Geliştirilmiş üretim sürekliliği ve izlenebilirlik\n• ION ONEFLOW için temel konfigürasyon\n• Standart ve Speedy hat versiyonları",
+            "en": "• Five-tower extended thermal-curing architecture\n• Controlled polymerisation before polishing\n• Reduced external curing-storage requirement\n• Direct connection to downstream polishing\n• Reduced unloading, storage and reloading\n• Improved production continuity and traceability\n• Core configuration for ION ONEFLOW\n• Standard and Speedy line versions"
+          }
+        }
+      ],
+      "descriptionSectionTitle": {
+        "tr": "Açıklama",
+        "en": "Description"
+      },
+      "configsSectionTitle": {
+        "tr": "Kapasite",
+        "en": "Capacity"
+      },
+      "versionsSectionTitle": {
+        "tr": "Tipik ve Opsiyonel ION Ekipmanları",
+        "en": "Typical and Optional ION Equipment"
+      },
+      "featuresSectionTitle": {
+        "tr": "Başlıca Avantajlar",
+        "en": "Main Advantages"
+      }
+    },
+    {
+      "id": "prod-19fdb1206b6-iry02",
+      "name": {
+        "tr": "1 Kuleli Statik Fırın Hattı",
+        "en": "1-Tower Static Resin Line"
+      },
+      "slug": "1-kuleli-statik-firin-hatti",
+      "subtitle": {
+        "tr": "Birleşik Plaka Kurutma ve Reçine Kürlemeli Kompakt Reçine Hattı",
+        "en": "Compact Resin Treatment Line with Combined Slab Drying and Resin Curing"
+      },
+      "heroDescription": {
+        "tr": "Tek bir GRAVITON COMBI statik fırın kulesi etrafında tasarlanmış kompakt bir doğal taş reçine işleme sistemidir.",
+        "en": "A compact natural-stone resin-treatment system designed around one GRAVITON COMBI static oven tower."
+      },
+      "heroImage": "",
+      "descriptionParagraphs": [],
+      "configs": [],
+      "configNote": {
+        "tr": "Nominal üretim kapasitesi, seçilen GRAVITON COMBI konfigürasyonuna ve kurutma/kürleme seviyelerinin dağılımına bağlıdır. Gerçek çıktı; taşa, reçine formülasyonuna, gerekli termal bekleme süresine, plaka ölçülerine ve seçilen otomasyon seviyesine bağlıdır.",
+        "en": "The nominal production capacity depends on the selected GRAVITON COMBI configuration and the distribution of drying and curing levels. Actual output depends on the stone, resin formulation, required thermal residence time, slab dimensions and selected automation level."
+      },
+      "configNote2": {
+        "tr": "",
+        "en": ""
+      },
+      "versions": [],
+      "features": [],
+      "categoryId": "cat-epoksi-firin-hatlari",
+      "images": [],
+      "active": true,
+      "createdAt": "2026-08-07T00:00:00.000Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "1 Kuleli Statik Fırın Hattı, tek bir GRAVITON COMBI statik fırın kulesi etrafında tasarlanmış kompakt bir doğal taş reçine işleme sistemidir.\n\nGRAVITON COMBI, tek bir yalıtımlı dikey yapı içinde iki ayrı termal odayı bir araya getirir. Odalardan biri reçine uygulamasından önce plakaların kurutulmasına ayrılmışken, ikincisi epoksi reçine kürlemesi için kontrollü termal koşullar sağlar.\n\nKurutma ve kürleme seviyelerinin sayısı, müşterinin gerekli üretim kapasitesine, işlem sürelerine ve fabrika yerleşimine göre yapılandırılır. Tipik düzenlemeler arasında 10+20, 15+30 veya diğer projeye özel kombinasyonlar bulunabilir.\n\nHat, tek taraflı veya çift taraflı plaka işlemi için yapılandırılabilir. Çift taraflı işlemde arka yüz kurutulur, reçine ile işlenir ve gerektiğinde file ile güçlendirilir. Ardından plaka kürlenir, otomatik olarak çevrilir ve son kürleme aşamasını tamamlamadan önce görünen yüzde işlenir.\n\nKurutma ve kürlemeyi tek bir kule içinde birleştiren sistem, kompakt bir fabrika alanı korurken kontrollü statik işlem sağlar.",
+            "en": "The 1-Tower Static Resin Line is a compact natural-stone resin-treatment system designed around one GRAVITON COMBI static oven tower.\n\nGRAVITON COMBI integrates two separate thermal chambers within one insulated vertical structure. One chamber is dedicated to drying slabs before resin application, while the second provides controlled thermal conditions for epoxy resin curing.\n\nThe number of drying and curing levels is configured according to the customer's required production capacity, treatment times and factory layout. Typical arrangements may include 10+20, 15+30 or other project-specific combinations.\n\nThe line can be configured for one-side or double-side slab treatment. In a double-side process, the reverse face is dried, resin-treated and reinforced with mesh where required. The slab is then cured, turned automatically and treated on the visible face before completing the final curing stage.\n\nBy combining drying and curing within one tower, the system provides controlled static treatment while maintaining a compact factory footprint."
+          }
+        }
+      ],
+      "configBlocks": [
+        {
+          "title": {
+            "tr": "Tek Taraflı İşlem",
+            "en": "One-Side Treatment"
+          },
+          "text": {
+            "tr": "• Tipik çevrim süresi: plaka başına yaklaşık 4–5 dakika\n• Üretim kapasitesi: saatte 15 plakaya kadar",
+            "en": "• Typical cycle time: approximately 4–5 minutes per slab\n• Production capacity: up to 15 slabs/hour"
+          }
+        },
+        {
+          "title": {
+            "tr": "Çift Taraflı İşlem",
+            "en": "Double-Side Treatment"
+          },
+          "text": {
+            "tr": "• Tipik çevrim süresi: plaka başına yaklaşık 6–8 dakika\n• Üretim kapasitesi: saatte 10 plakaya kadar",
+            "en": "• Typical cycle time: approximately 6–8 minutes per slab\n• Production capacity: up to 10 slabs/hour"
+          }
+        }
+      ],
+      "versionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• ARANEA — Gerektiğinde katrak makinelerinden doğrudan yükleme dahil, üstten raylı plaka elleçleme robotu\n• GRAVITON COMBI — Plaka Kurutma ve Reçine Kürleme için Birleşik Statik Fırın Kulesi\n• PBU01 — Plaka Tampon ve İlk Jelleşme İstasyonu\n• RESINBOT — Otomatik Reçine Uygulama Robotu\n• Otomatik File Uygulama Sistemi\n• PCK01 — Çift taraflı işlem için Plaka Çevirme Konveyörü\n• VAC01 — Hat İçi Vakum Odası, opsiyonel\n• MANTA-U — Otomatik Plaka Boşaltma Robotu",
+            "en": "• ARANEA — Overhead Slab Handling Robot, including direct loading from gangsaws where applicable\n• GRAVITON COMBI — Combined Static Oven Tower for Slab Drying and Resin Curing\n• PBU01 — Slab Buffer and Initial Gelation Station\n• RESINBOT — Automatic Resin Application Robot\n• Automatic Mesh Application System\n• PCK01 — Slab Rotating Conveyor for double-side treatment\n• VAC01 — Inline Vacuum Chamber, optional\n• MANTA-U — Automatic Slab Unloading Robot"
+          }
+        }
+      ],
+      "featureBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• Kompakt statik reçine hattı mimarisi\n• Tek kule içinde ayrı kurutma ve kürleme odaları\n• Müşteriye özel kurutma ve kürleme seviyesi dağılımı\n• Tek ve çift taraflı işlem konfigürasyonları\n• Her plaka için kontrollü termal bekleme süresi\n• Azaltılmış kurulum alanı\n• Mermer ve granit için uygunluk\n• Modüler otomasyon ve reçine işleme seçenekleri\n• Gelecekteki üretim gereksinimlerine göre genişletilebilirlik",
+            "en": "• Compact static resin-line architecture\n• Separate drying and curing chambers within one tower\n• Customer-specific allocation of drying and curing levels\n• One-side and double-side treatment configurations\n• Controlled thermal residence time for each slab\n• Reduced installation footprint\n• Suitable for marble and granite\n• Modular automation and resin-treatment options\n• Expandable according to future production requirements"
+          }
+        }
+      ],
+      "descriptionSectionTitle": {
+        "tr": "Açıklama",
+        "en": "Description"
+      },
+      "configsSectionTitle": {
+        "tr": "Kapasite",
+        "en": "Capacity"
+      },
+      "versionsSectionTitle": {
+        "tr": "Tipik ve Opsiyonel ION Ekipmanları",
+        "en": "Typical and Optional ION Equipment"
+      },
+      "featuresSectionTitle": {
+        "tr": "Başlıca Avantajlar",
+        "en": "Main Advantages"
+      }
+    },
+    {
+      "id": "prod-19fdb1206b6-h8sc9",
+      "name": {
+        "tr": "2 Kuleli Statik Fırın Hattı",
+        "en": "2-Tower Static Resin Line"
+      },
+      "slug": "2-kuleli-statik-firin-hatti",
+      "subtitle": {
+        "tr": "Ayrılmış Statik Plaka Kurutma ve Reçine Kürleme Hattı",
+        "en": "Separated Static Slab Drying and Resin Curing Line"
+      },
+      "heroDescription": {
+        "tr": "Plaka kurutma ve reçine kürlemeyi iki statik fırın kulesi arasında ayırarak daha yüksek termal kapasite ve proses esnekliği sunar.",
+        "en": "Provides greater thermal capacity and process flexibility by separating slab drying and resin curing between two static oven towers."
+      },
+      "heroImage": "",
+      "descriptionParagraphs": [],
+      "configs": [],
+      "configNote": {
+        "tr": "Standart iki kuleli konfigürasyon, tek taraflı işlem için plaka başına yaklaşık 2,5 dakikalık nominal bir çevrim süresiyle çalışır. Gerçek kapasite; her kuledeki seviye sayısına, gerekli işlem sürelerine, taş özelliklerine, reçine formülasyonuna ve hat otomasyonuna bağlıdır.",
+        "en": "The standard two-tower configuration operates with a nominal cycle time of approximately 2.5 minutes per slab for one-side processing. Actual capacity depends on the number of levels in each tower, required treatment periods, stone characteristics, resin formulation and line automation."
+      },
+      "configNote2": {
+        "tr": "Mevcut Termal Mimariler — İki GRAVITON Kulesi: Bir statik fırın kulesi plaka kurutmaya, ikincisi reçine kürlemeye ayrılır. GRAVITON TANDEM: İki statik fırın kulesi, ortak bir merkezi asansör ve tepsi transfer sisteminin iki yanına yerleştirilir.",
+        "en": "Available Thermal Architectures — Two GRAVITON Towers: One static oven tower is dedicated to slab drying and the second to resin curing. GRAVITON TANDEM: Two static oven towers are positioned on either side of one shared central elevator and tray-transfer system."
+      },
+      "versions": [],
+      "features": [],
+      "categoryId": "cat-epoksi-firin-hatlari",
+      "images": [],
+      "active": true,
+      "createdAt": "2026-08-07T00:00:00.000Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "2 Kuleli Statik Fırın Hattı, plaka kurutma ve reçine kürlemeyi iki statik fırın kulesi arasında ayırarak daha yüksek termal kapasite ve proses esnekliği sağlar.\n\nGenellikle bir kule reçine uygulamasından önce plakaların kurutulmasına ayrılırken, ikincisi reçine polimerizasyonu için gerekli kontrollü termal ortamı sağlar. Böylece iki işlemin sıcaklığı, hava akışı ve bekleme süresi birbirinden bağımsız olarak yönetilebilir.\n\nSistem, iki bağımsız GRAVITON kulesi ile ya da bir GRAVITON TANDEM düzeni olarak kurulabilir. Tandem konfigürasyonunda, yan yana yerleştirilmiş iki fırın kulesi ortak bir merkezi asansör ve tepsi transfer sistemi tarafından beslenir; bu da temel taşıma ekipmanının tekrarını önlerken toplam kapasiteyi artırır.\n\nTek taraflı işlemde plakalar kurutma kulesinden reçine uygulamasına, ardından kürleme kulesine geçer. Çift taraflı işlemde ise aynı hat; arka yüz güçlendirmesi, otomatik plaka çevirme, görünen yüz reçine uygulaması ve gerekli sonraki kürleme aşamalarını da içerir. Her kuledeki tepsi seviyesi sayısı; gerekli üretim çıktısına, kurutma süresine, kürleme süresine ve reçine hattı mimarisine göre seçilir.",
+            "en": "The 2-Tower Static Resin Line provides greater thermal capacity and process flexibility by separating slab drying and resin curing between two static oven towers.\n\nOne tower is typically dedicated to drying slabs before resin application, while the second provides the controlled thermal environment required for resin polymerisation. The temperature, airflow and residence time of the two processes can therefore be managed independently.\n\nThe system can be built with two standalone GRAVITON towers or as a GRAVITON TANDEM arrangement. In the Tandem configuration, two adjacent oven towers are served by one shared central elevator and tray-transfer system, increasing total capacity while avoiding duplication of the principal handling equipment.\n\nFor one-side treatment, slabs move from the drying tower to resin application and then to the curing tower. For double-side treatment, the same line also incorporates reverse-side reinforcement, automatic slab turning, visible-face resin application and the required subsequent curing stages. The number of tray levels in each tower is selected according to the required production output, drying time, curing time and resin-line architecture."
+          }
+        }
+      ],
+      "configBlocks": [
+        {
+          "title": {
+            "tr": "Tek Taraflı İşlem",
+            "en": "One-Side Treatment"
+          },
+          "text": {
+            "tr": "• Üretim kapasitesi: saatte 24 plakaya kadar",
+            "en": "• Production capacity: up to 24 slabs/hour"
+          }
+        },
+        {
+          "title": {
+            "tr": "Çift Taraflı İşlem",
+            "en": "Double-Side Treatment"
+          },
+          "text": {
+            "tr": "• Üretim kapasitesi: saatte 12 plakaya kadar",
+            "en": "• Production capacity: up to 12 slabs/hour"
+          }
+        }
+      ],
+      "versionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• ARANEA — Gerektiğinde katrak makinelerinden doğrudan yükleme dahil, üstten raylı plaka elleçleme robotu\n• İki GRAVITON statik fırın kulesi veya bir GRAVITON TANDEM sistemi\n• PBU01 — Plaka Tampon ve İlk Jelleşme İstasyonu\n• RESINBOT — Otomatik Reçine Uygulama Robotu\n• Otomatik File Uygulama Sistemi\n• PCK01 — Çift taraflı işlem için Plaka Çevirme Konveyörü\n• VAC01 — Hat İçi Vakum Odası, opsiyonel\n• MANTA-U veya ARANEA — Otomatik Plaka Boşaltma",
+            "en": "• ARANEA — Overhead Slab Handling Robot, including direct loading from gangsaws where applicable\n• Two GRAVITON static oven towers or one GRAVITON TANDEM system\n• PBU01 — Slab Buffer and Initial Gelation Station\n• RESINBOT — Automatic Resin Application Robot\n• Automatic Mesh Application System\n• PCK01 — Slab Rotating Conveyor for double-side treatment\n• VAC01 — Inline Vacuum Chamber, optional\n• MANTA-U or ARANEA — Automatic Slab Unloading"
+          }
+        }
+      ],
+      "featureBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• Plaka kurutma ve reçine kürlemenin bağımsız kontrolü\n• Tek kuleli statik hatta göre daha yüksek termal kapasite\n• Tek ve çift taraflı işlem konfigürasyonları\n• Müşteriye özel tepsi seviyesi sayısı\n• Her plaka için kontrollü statik bekleme süresi\n• Bağımsız veya paylaşımlı asansörlü Tandem mimarisi\n• Dengeli kurutma ve kürleme kapasitesi",
+            "en": "• Independent control of slab drying and resin curing\n• Greater thermal capacity than a single-tower static line\n• One-side and double-side treatment configurations\n• Customer-specific number of tray levels\n• Controlled static residence time for each slab\n• Standalone or shared-elevator Tandem architecture\n• Balanced drying and curing capacity"
+          }
+        }
+      ],
+      "descriptionSectionTitle": {
+        "tr": "Açıklama",
+        "en": "Description"
+      },
+      "configsSectionTitle": {
+        "tr": "Kapasite",
+        "en": "Capacity"
+      },
+      "versionsSectionTitle": {
+        "tr": "Tipik ve Opsiyonel ION Ekipmanları",
+        "en": "Typical and Optional ION Equipment"
+      },
+      "featuresSectionTitle": {
+        "tr": "Başlıca Avantajlar",
+        "en": "Main Advantages"
+      }
+    },
+    {
+      "id": "prod-19fdb1206b6-bghkl",
+      "name": {
+        "tr": "3 Kuleli Statik Fırın Hattı",
+        "en": "3-Tower Static Resin Line"
+      },
+      "slug": "3-kuleli-statik-firin-hatti",
+      "subtitle": {
+        "tr": "Yüksek Kapasiteli Çift Taraflı Reçine Uygulama Hattı",
+        "en": "High-Capacity Double-Side Resin Treatment Line"
+      },
+      "heroDescription": {
+        "tr": "Mermer, granit ve diğer doğal taş plakaların otomatik çift taraflı reçine işlemi için tasarlanmıştır.",
+        "en": "Designed for automated double-side resin treatment of marble, granite and other natural-stone slabs."
+      },
+      "heroImage": "",
+      "descriptionParagraphs": [],
+      "configs": [],
+      "configNote": {
+        "tr": "Tipik Termal Dağılım — Kule 1: Reçine uygulamasından önce plaka kurutma. Kule 2: Arka yüz reçine ve file uygulamasından sonra kürleme. Kule 3: Görünen yüz reçine işleminden sonraki son kürleme. Her kuledeki tepsi seviyesi sayısı, gerekli proses dengesine ve üretim kapasitesine göre seçilir.",
+        "en": "Typical Thermal Allocation — Tower 1: slab drying before resin application. Tower 2: curing after reverse-side resin and mesh application. Tower 3: final curing after visible-face resin treatment. The number of tray levels in each tower is selected according to the required process balance and production capacity."
+      },
+      "configNote2": {
+        "tr": "3 Kuleli Statik Fırın Hattı, standart iki kuleli konfigürasyonla aynı nominal üretim çevrimini kullanır. Üçüncü kulenin başlıca avantajı, daha yüksek nominal saatlik çıktıdan çok, daha fazla proses ayrımı, termal kapasite ve üretim kararlılığıdır. Gerçek kapasite; tepsi seviyesi sayısına, reçine kürleme gereksinimlerine, taş özelliklerine, plaka formatına ve seçilen otomasyona bağlıdır.",
+        "en": "The 3-Tower Static Resin Line uses the same nominal production cycle as the standard two-tower configuration. The principal advantage of the third tower is greater process separation, thermal capacity and production stability rather than a higher nominal hourly output. Actual capacity depends on the number of tray levels, resin-curing requirements, stone characteristics, slab format and selected automation."
+      },
+      "versions": [],
+      "features": [],
+      "categoryId": "cat-epoksi-firin-hatlari",
+      "images": [],
+      "active": true,
+      "createdAt": "2026-08-07T00:00:00.000Z",
+      "nameStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "48px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "800",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1",
+        "letterSpacing": "-0.02em"
+      },
+      "subtitleStyle": {
+        "color": "#B87332",
+        "fontSize": "24px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.2",
+        "letterSpacing": "0px"
+      },
+      "heroDescriptionStyle": {
+        "color": "rgba(255,255,255,0.9)",
+        "fontSize": "16px",
+        "fontFamily": "Montserrat, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "lineHeight": "1.7",
+        "letterSpacing": "0px"
+      },
+      "descriptionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "3 Kuleli Statik Fırın Hattı, mermer, granit ve diğer doğal taş plakaların otomatik çift taraflı reçine işlemi için tasarlanmıştır.\n\nÜç statik fırın kulesi, temel termal aşamaların plaka kurutma, arka yüz reçine kürlemesi ve görünen yüzey işleminden sonraki son kürleme arasında ayrılmasına olanak tanır.\n\nTipik bir işlem, reçine uygulamasından önce kontrollü plaka kurutmasıyla başlar. Arka yüz daha sonra işlenir ve gerektiğinde file ile güçlendirilir, ardından ilk kürleme kulesine girer. Kürlemenin ardından plaka otomatik olarak çevrilir, görünen yüzünde işlenir ve son kürleme kulesine aktarılır.\n\nBu ayrım, her ana aşama için özel termal kapasite sağlar. Kurutma ve kürleme işlemleri arasındaki rekabeti azaltır ve her prosesin gerekli bekleme süresinin bağımsız olarak yönetilmesine olanak tanır.\n\nHat, üç bağımsız GRAVITON kulesiyle ya da bir GRAVITON TANDEM sistemi ile bir bağımsız GRAVITON kulesinin birleşimiyle yapılandırılabilir. 3 Kuleli Statik Fırın Hattı, her iki plaka yüzeyinde kontrollü güçlendirme gerektiren gözenekli, çatlaklı veya yapısal olarak hassas malzemeler için özellikle uygundur.",
+            "en": "The 3-Tower Static Resin Line is designed for automated double-side resin treatment of marble, granite and other natural-stone slabs.\n\nThree static oven towers allow the principal thermal stages to be separated between slab drying, reverse-side resin curing and final curing after treatment of the visible surface.\n\nA typical process begins with controlled slab drying before resin application. The reverse face is then treated and reinforced with mesh where required before entering the first curing tower. After curing, the slab is turned automatically, treated on its visible face and transferred to the final curing tower.\n\nThis separation provides dedicated thermal capacity for each principal stage. It reduces competition between drying and curing operations and allows the required residence time of each process to be managed independently.\n\nThe line can be configured with three standalone GRAVITON towers or with one GRAVITON TANDEM system combined with one standalone GRAVITON tower. The 3-Tower Static Resin Line is particularly suitable for porous, fissured or structurally delicate materials requiring controlled reinforcement on both slab surfaces."
+          }
+        }
+      ],
+      "configBlocks": [
+        {
+          "title": {
+            "tr": "Çift Taraflı İşlem",
+            "en": "Double-Side Treatment"
+          },
+          "text": {
+            "tr": "• Üretim kapasitesi: saatte 24 plakaya kadar",
+            "en": "• Production capacity: up to 24 slabs/hour"
+          }
+        }
+      ],
+      "versionBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• ARANEA — Gerektiğinde katrak makinelerinden doğrudan yükleme dahil, üstten raylı plaka elleçleme robotu\n• Üç GRAVITON statik fırın kulesi\n• Alternatif olarak, bir GRAVITON TANDEM sistemi ve bir bağımsız GRAVITON kulesi\n• PBU01 — Plaka Tampon ve İlk Jelleşme İstasyonu\n• RESINBOT — Otomatik Reçine Uygulama Robotu\n• Otomatik File Uygulama Sistemi\n• Manuel kontrol ve reçine onarım istasyonları\n• PCK01 — Otomatik Plaka Çevirme Konveyörü\n• VAC01 — Hat İçi Vakum Odası, opsiyonel\n• MANTA-U veya ARANEA — Otomatik Plaka Boşaltma\n• Otomatik konveyörler, plaka tepsileri ve tepsi geri dönüş devresi\n• Merkezi endüstriyel kontrol ve üretim izleme sistemi",
+            "en": "• ARANEA — Overhead Slab Handling Robot, including direct loading from gangsaws where applicable\n• Three GRAVITON static oven towers\n• Alternatively, one GRAVITON TANDEM system and one standalone GRAVITON tower\n• PBU01 — Slab Buffer and Initial Gelation Station\n• RESINBOT — Automatic Resin Application Robot\n• Automatic Mesh Application System\n• Manual inspection and resin repair stations\n• PCK01 — Automatic Slab Rotating Conveyor\n• VAC01 — Inline Vacuum Chamber, optional\n• MANTA-U or ARANEA — Automatic Slab Unloading\n• Automatic conveyors, slab trays and tray-return circuit\n• Central industrial control and production-monitoring system"
+          }
+        }
+      ],
+      "featureBlocks": [
+        {
+          "title": {
+            "tr": "",
+            "en": ""
+          },
+          "text": {
+            "tr": "• Bağımsız olarak yapılandırılabilen üç statik fırın kulesi\n• Özel kurutma, arka yüz kürleme ve son kürleme aşamaları\n• Kontrollü çift taraflı plaka reçine işlemi\n• Daha yüksek termal kapasite ve proses kararlılığı\n• Müşteriye özel tepsi seviyesi sayısı\n• Her plaka için kontrollü statik bekleme süresi\n• Bağımsız veya paylaşımlı asansörlü Tandem mimarisi\n• Kurutma ve reçine polimerizasyonu arasında geliştirilmiş denge\n• Gözenekli, çatlaklı ve yapısal olarak hassas malzemeler için uygunluk\n• Otomatik reçine uygulama, file yerleştirme, plaka çevirme ve taşıma",
+            "en": "• Three independently configurable static oven towers\n• Dedicated drying, reverse-side curing and final-curing stages\n• Controlled double-side slab resin treatment\n• Greater thermal capacity and process stability\n• Customer-specific number of tray levels\n• Static residence time controlled for every slab\n• Standalone or shared-elevator Tandem architecture\n• Improved balance between drying and resin polymerisation\n• Suitable for porous, fissured and structurally delicate materials\n• Automatic resin application, mesh placement, slab turning and handling"
+          }
+        }
+      ],
+      "descriptionSectionTitle": {
+        "tr": "Açıklama",
+        "en": "Description"
+      },
+      "configsSectionTitle": {
+        "tr": "Kapasite",
+        "en": "Capacity"
+      },
+      "versionsSectionTitle": {
+        "tr": "Tipik ve Opsiyonel ION Ekipmanları",
+        "en": "Typical and Optional ION Equipment"
+      },
+      "featuresSectionTitle": {
+        "tr": "Başlıca Avantajlar",
+        "en": "Main Advantages"
       }
     }
   ],
@@ -3659,7 +4285,8 @@
         "tr": "ION ONEFLOW",
         "en": "ION ONEFLOW"
       },
-      "href": "/ion-oneflow"
+      "href": "/ion-oneflow",
+      "hidden": true
     },
     {
       "id": "nav-machines",
@@ -3667,7 +4294,8 @@
         "tr": "Ürünler",
         "en": "Products"
       },
-      "href": "/products"
+      "href": "/products",
+      "hidden": false
     },
     {
       "id": "nav-ms8zhi0l-xy9gm",
@@ -3675,7 +4303,8 @@
         "tr": "Hatlar",
         "en": "Plants"
       },
-      "href": "/plants"
+      "href": "/plants",
+      "hidden": false
     },
     {
       "id": "nav-service",
@@ -3683,7 +4312,8 @@
         "tr": "Hizmetler",
         "en": "Service"
       },
-      "href": "/service"
+      "href": "/service",
+      "hidden": false
     },
     {
       "id": "nav-company",
@@ -3691,7 +4321,8 @@
         "tr": "Hakkımızda",
         "en": "About Us"
       },
-      "href": "about-us"
+      "href": "about-us",
+      "hidden": false
     },
     {
       "id": "nav-news",
@@ -3699,7 +4330,8 @@
         "tr": "Haberler",
         "en": "News"
       },
-      "href": "/news"
+      "href": "/news",
+      "hidden": false
     },
     {
       "id": "nav-contact",
@@ -3707,9 +4339,89 @@
         "tr": "İletişim",
         "en": "Contact"
       },
-      "href": "/contact"
+      "href": "/contact",
+      "hidden": false
     }
   ],
-  "news": [],
-  "pages": []
+  "news": [
+    {
+      "id": "news-recine-hatlari-firin",
+      "title": {
+        "tr": "Reçine Hatları: Bir Fırından Daha Fazlası",
+        "en": "Resin Treatment Lines: More Than an Oven"
+      },
+      "slug": "recine-hatlari-bir-firindan-daha-fazlasi",
+      "excerpt": {
+        "tr": "Reçineleme yalnızca kurutma ve kürleme değildir. ION Meccanica, plaka taşıma, termal proses ve otomasyonu entegre bir doğal taş reçine hattında birleştirir.",
+        "en": "Resin treatment is more than drying and curing. ION Meccanica combines slab handling, thermal processing and automation within one integrated natural stone resin line."
+      },
+      "content": {
+        "tr": "<p>Doğal taş reçineleme işlemi yalnızca plakanın kurutulması ve uygulanan reçinenin kürlenmesinden ibaret değildir. Nihai kalite; yükleme, nem giderme, ön ısıtma, reçine uygulama, dinlendirme, kürleme ve boşaltma aşamalarının birbiriyle doğru şekilde koordine edilmesine bağlıdır.</p><p>ION Meccanica, mermer, granit, kuvarsit ve diğer doğal taş plakaların işlenmesi için entegre reçine hatları geliştirir. Bu sistemler; doğal çatlakların ve boşlukların doldurulmasına, kırılgan plakaların güçlendirilmesine ve malzemenin sonraki polisaj ve yüzey işleme aşamalarına hazırlanmasına yardımcı olur.</p><p>Bir ION Meccanica reçine hattı, proje gereksinimlerine göre otomatik yükleme ve boşaltma sistemlerini, plaka taşıma ekipmanlarını, kurutma ve ön ısıtma fırınlarını, reçine uygulama alanlarını, dinlendirme ve jelleşme ünitelerini, kontrollü kürleme sistemlerini ve üretim otomasyonunu tek bir proses akışı içerisinde bir araya getirebilir.</p><p>Her doğal taş fabrikasının üretim koşulları farklıdır. İşlenen taşın özellikleri, plaka ölçüleri, reçine türü, hedef kapasite, otomasyon seviyesi ve mevcut fabrika alanı doğru hat mimarisinin belirlenmesinde önemli rol oynar. Bu nedenle ION Meccanica reçine hatları standart bir yerleşimin tekrarı olarak değil, tesisin gerçek üretim ihtiyacına göre yapılandırılır.</p><p>Üretim kapasitesi ve proses gereksinimlerine bağlı olarak hatlarda GRAVITON dıştan asansörlü fırınları, POSITRON içten hareketli kurutma ve kürleme sistemleri, otomatik plaka taşıma robotları ve farklı sayıda proses kulesi kullanılabilir. Amaç yalnızca daha fazla ekipman eklemek değil; kurutma kapasitesi, reçine uygulama süresi, kürleme performansı ve plaka hareketleri arasında doğru dengeyi kurmaktır.</p><p>Başarılı bir reçineleme prosesi yalnızca yüksek sıcaklık gerektirmez. Homojen hava dolaşımı, kontrollü plaka sıcaklığı, doğru nem giderme, uygun bekleme süresi ve hassas malzeme taşıma, nihai sonucun kalitesini doğrudan etkiler.</p><p>ION Meccanica; doğal taş işleme tecrübesini, termal proses mühendisliğini, otomasyonu ve makine tasarımını bir araya getirerek güvenilir, sürdürülebilir ve gerçek fabrika koşullarına uyarlanmış mermer ve granit reçine hatları geliştirir.</p>",
+        "en": "<p>Natural stone resin treatment involves much more than drying a slab and curing the applied resin. The quality of the finished material depends on the correct coordination of loading, moisture removal, preheating, resin application, settling, curing and unloading.</p><p>ION Meccanica develops integrated resin treatment lines for marble, granite, quartzite and other natural stone slabs. These systems help reinforce fragile materials, fill natural cracks and cavities, and prepare the slabs for subsequent polishing and surface-finishing operations.</p><p>Depending on the project requirements, an ION Meccanica resin line can combine automatic loading and unloading systems, slab-handling equipment, drying and preheating ovens, resin-application areas, settling and gelification units, controlled curing systems and production automation within one coordinated process flow.</p><p>Every natural stone factory operates under different conditions. Stone characteristics, slab dimensions, resin type, required production capacity, automation level and available factory space all influence the correct line architecture. For this reason, ION Meccanica resin lines are not based on repeating a single standard layout. Each system is configured around the actual production requirements of the plant.</p><p>Depending on capacity and process needs, a line may incorporate GRAVITON static tower ovens, POSITRON cyclic drying and curing systems, automatic slab-handling robots and different numbers of process towers. The objective is not simply to add more equipment, but to achieve the correct balance between drying capacity, resin-application time, curing performance and slab movement.</p><p>Successful resin treatment also requires more than high temperature. Uniform airflow, controlled slab temperature, effective moisture removal, appropriate residence time and careful material handling all contribute directly to the quality of the final result.</p><p>ION Meccanica combines natural stone processing experience, thermal-process engineering, automation and machine design to develop reliable and maintainable resin treatment lines for marble and granite factories, adapted to real industrial operating conditions.</p>"
+      },
+      "coverImage": "/haber_1.webp",
+      "date": "2026-08-07T06:51:44.233820Z",
+      "active": true,
+      "createdAt": "2026-08-07T06:51:44.233820Z"
+    },
+    {
+      "id": "news-uc-entegre-hat-oneflow",
+      "title": {
+        "tr": "Üç Entegre Hat Deneyiminden ION ONEFLOW'a",
+        "en": "From Three Integrated Lines to ION ONEFLOW"
+      },
+      "slug": "uc-entegre-hat-deneyiminden-ion-oneflowa",
+      "excerpt": {
+        "tr": "Üç entegre üretim hattından elde edilen saha deneyimi, slab depolamadan polisaja kadar tüm süreci birbirine bağlayan ION ONEFLOW mimarisine dönüştü.",
+        "en": "Field experience from three integrated production lines has evolved into ION ONEFLOW, connecting slab storage, resin treatment, thermal curing and polishing within one coordinated factory architecture."
+      },
+      "content": {
+        "tr": "<p>ION Meccanica ekibinin, 2019 yılında iki ve 2023 yılında bir tesiste devreye alınan üç entegre üretim hattı projesinde edindiği saha deneyimi, ION ONEFLOW – The Connected Stone Factory konseptinin temelini oluşturdu.</p><p>Bu projelerde slab taşıma, reçine uygulaması, kurutma, kürleme, ara bekletme ve polisaj süreçleri birbirinden bağımsız makineler olarak değil, aynı üretim akışının parçaları olarak ele alındı. Böylece yalnızca tek bir makinenin performansına değil, hattın tamamındaki malzeme hareketine, proses sürelerine ve üretim sürekliliğine odaklanıldı.</p><p>ION ONEFLOW, ham slabın seçilmesinden bitmiş yüzeyin hazırlanmasına kadar üretim emirlerini, makineleri, slab hareketlerini ve proses verilerini tek bir koordineli fabrika mimarisi içinde birleştirir. Sistem; slab depolama, otomatik taşıma, reçineleme, kontrollü kurutma ve kürleme, uzatılmış termal kürleme, polisaj ve bitmiş ürün yönetimi aşamalarını birbirine bağlayabilir.</p><p>Konseptin önemli unsurlarından biri, reçineleme ile polisaj arasındaki geleneksel bekleme sürecini azaltmaktır. Uzatılmış termal kürleme sayesinde slabların prosesler arasında uzun süreli ara stokta bekletilmesi, tekrar tekrar yüklenip boşaltılması ve fabrika içinde gereksiz yere taşınması azaltılabilir.</p><p>Proje gereksinimlerine göre ION ONEFLOW; dıştan asansörlü GRAVITON kule sistemlerini, içten hareketli POSITRON fırınlarını, otomatik slab taşıma robotlarını, slab depolama sistemlerini ve AGV çözümlerini entegre edebilir.</p><p>Amaç yalnızca daha fazla otomasyon kurmak değildir. Amaç; daha düşük yarı mamul stok, daha az manuel taşıma, daha kısa üretim süresi, daha yüksek izlenebilirlik ve daha dengeli bir fabrika akışı oluşturmaktır.</p>",
+        "en": "<p>The field experience gained by the team now operating within ION Meccanica through three integrated production-line projects—two commissioned in 2019 and one in 2023—formed the foundation of ION ONEFLOW – The Connected Stone Factory.</p><p>In these projects, slab handling, resin application, drying, curing, intermediate waiting and polishing were not treated as separate machines or isolated departments. They were considered as connected stages within the same production flow. The focus was therefore not only on the performance of an individual machine, but also on material movement, process timing and continuity across the complete line.</p><p>ION ONEFLOW connects production orders, machines, slab movements and process data within one coordinated factory architecture, from raw slab selection to the finished polished surface. Depending on the project, the system can integrate slab storage, automatic handling, resin treatment, controlled drying and curing, extended thermal curing, polishing and finished-product management.</p><p>One of the central objectives is to reduce the traditional interruption between resin treatment and polishing. Extended thermal curing can reduce the need for slabs to remain in long-term intermediate storage, be repeatedly loaded and unloaded, or undergo unnecessary movements inside the factory.</p><p>According to the production requirement, ION ONEFLOW can integrate GRAVITON external-elevator tower systems, POSITRON internally moving ovens, automatic slab-handling robots, slab-storage systems and AGV solutions.</p><p>The purpose is not simply to add more automation. It is to create a more balanced production flow with lower work in progress, less manual handling, shorter lead times and greater production traceability.</p>"
+      },
+      "coverImage": "/integrated.webp",
+      "date": "2026-08-07T06:51:44.233820Z",
+      "active": true,
+      "createdAt": "2026-08-07T06:51:44.233820Z"
+    },
+    {
+      "id": "news-graviton-positron",
+      "title": {
+        "tr": "GRAVITON ve POSITRON: Reçine Hatları İçin İki Farklı Fırın Mimarisi",
+        "en": "GRAVITON and POSITRON: Two Oven Architectures for Resin Treatment Lines"
+      },
+      "slug": "graviton-ve-positron-recine-hatlari-icin-iki-farkli-firin-mimarisi",
+      "excerpt": {
+        "tr": "GRAVITON dıştan asansörlü kule sistemleri ve POSITRON içten hareketli fırınları, farklı kapasite ve proses ihtiyaçlarına uygun doğal taş reçine hattı çözümleri sunar.",
+        "en": "GRAVITON external-elevator tower systems and POSITRON internally moving ovens provide natural stone resin-line solutions for different production capacities and process requirements."
+      },
+      "content": {
+        "tr": "<p>Doğal taş reçine hatlarında doğru fırın sisteminin seçimi; işlenen malzemeye, hedef üretim kapasitesine, kurutma ve kürleme sürelerine, otomasyon seviyesine ve fabrika yerleşimine bağlıdır.</p><p>ION Meccanica, mermer, granit, kuvarsit ve diğer doğal taş plakaların reçine işlemleri için iki farklı sistem mimarisi sunar: GRAVITON dıştan asansörlü kule sistemleri ve POSITRON içten hareketli kurutma ve kürleme fırınları.</p><p><strong>GRAVITON: Dıştan Asansörlü Kule Sistemleri</strong></p><p>GRAVITON ailesinde slablar, kule dışında çalışan bir asansör ve tepsi transfer sistemi aracılığıyla uygun fırın seviyelerine yerleştirilir. Her slab, belirlenen proses süresi boyunca sabit konumda kalır.</p><p>Bu mimari; uzun kurutma veya kürleme süreleri, farklı proses aşamalarının ayrılması ve esnek hat konfigürasyonları için uygundur. GRAVITON sistemleri yalnızca kurutma veya yalnızca kürleme için kullanılabileceği gibi, kurutma ve kürleme bölümlerini aynı kule içinde birleştiren GRAVITON COMBI şeklinde de yapılandırılabilir. GRAVITON TANDEM ise yan yana yerleştirilmiş iki kuleyi ortak bir merkezi asansör ve tepsi transfer sistemiyle birleştirir. Üretim ihtiyacına göre iki kule aynı proses için, ayrı kurutma ve kürleme prosesleri için veya özel bir kule ile bir COMBI kulenin birlikte kullanılması şeklinde düzenlenebilir.</p><p><strong>POSITRON: İçten Hareketli Fırın Teknolojisi</strong></p><p>POSITRON sisteminde slablar, fırın içindeki seviyeler boyunca kontrollü olarak hareket eder. Kurutma ve reçine kürleme bölümleri, birbirinden bağımsız sıcak hava sirkülasyon sistemleriyle yönetilir.</p><p>İçten hareketli mimari; düzenli üretim akışı, yüksek kapasite ve tekrarlanabilir proses koşulları gerektiren tesisler için geliştirilmiştir. Farklı slab ölçülerine, üretim kapasitelerine ve mermer veya granit uygulamalarına göre yapılandırılabilir.</p><p><strong>Doğru Mimari, Doğru Proses</strong></p><p>Dıştan asansörlü ve içten hareketli sistemler birbirinin alternatifi olmaktan çok, farklı üretim ihtiyaçlarına cevap veren iki ayrı mühendislik yaklaşımıdır.</p><p>ION Meccanica, her proje için taşın özelliklerini, reçine sistemini, proses sürelerini, hedef kapasiteyi ve mevcut fabrika alanını değerlendirerek uygun doğal taş kurutma ve reçine kürleme fırını mimarisini belirler.</p>",
+        "en": "<p>Selecting the correct oven system for a natural stone resin line depends on the material, required production capacity, drying and curing times, automation level and available factory layout.</p><p>ION Meccanica offers two different system architectures for the resin treatment of marble, granite, quartzite and other natural stone slabs: GRAVITON external-elevator tower systems and POSITRON internally moving drying and curing ovens.</p><p><strong>GRAVITON: External-Elevator Tower Systems</strong></p><p>In the GRAVITON family, slabs are placed at the required oven levels by an elevator and tray-transfer system operating outside the tower. Each slab remains stationary during its defined process time.</p><p>This architecture is suitable for longer drying or curing periods, separated process stages and flexible resin-line configurations. GRAVITON towers may be dedicated entirely to drying or curing, while GRAVITON COMBI combines separate drying and curing sections within one tower. GRAVITON TANDEM connects two adjacent towers through one shared central elevator and tray-transfer system. The towers can be configured for the same process, as separate drying and curing towers, or as one dedicated tower combined with one COMBI tower.</p><p><strong>POSITRON: Internally Moving Oven Technology</strong></p><p>In the POSITRON system, slabs move in a controlled sequence through the internal oven levels. Drying and resin-curing sections are managed by two independent hot-air circulation systems.</p><p>The internally moving architecture is designed for plants requiring a regular production flow, high capacity and repeatable process conditions. Different configurations are available according to slab dimensions, production requirements and marble or granite applications.</p><p><strong>The Right Architecture for the Right Process</strong></p><p>External-elevator and internally moving systems are not simply competing alternatives. They are two different engineering approaches developed for different production requirements.</p><p>For each project, ION Meccanica evaluates the stone characteristics, resin system, process times, required capacity and available factory space to determine the most appropriate natural stone drying and resin-curing oven architecture.</p>"
+      },
+      "coverImage": "/uploads/products/46oseg-2oven.webp",
+      "date": "2026-08-07T00:00:00.000Z",
+      "active": true,
+      "createdAt": "2026-08-07T06:51:44.233820Z"
+    }
+  ],
+  "pages": [
+    {
+      "id": "page-msip5jsr-jx1tk",
+      "key": "ion-oneflow",
+      "title": {
+        "tr": "",
+        "en": ""
+      },
+      "description": {
+        "tr": "",
+        "en": ""
+      },
+      "heroImage": null,
+      "coverImage": null,
+      "contentBlocks": [],
+      "published": false,
+      "updatedAt": "2026-08-07T09:04:46.190Z"
+    }
+  ]
 }

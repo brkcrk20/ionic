@@ -45,8 +45,7 @@ function flattenCategoryOptions(
   return result;
 }
 
-// Hatlar/Plants bölümünün kök kategorisi. lib/productsData.ts + data/db.json içindeki
-// gerçek kategori ağacına göre sabittir (bkz. cat-hatlar / slug: "plants").
+// Hatlar/Plants bölümünün kök kategorisi.
 const PLANTS_ROOT_SLUG = "plants";
 
 export default function PlantsPageClient({
@@ -245,9 +244,7 @@ export default function PlantsPageClient({
 
                   <div className="p-8 flex flex-col flex-1 justify-between bg-white">
                     <div>
-                      <span className="text-xs font-bold text-[#B87332] tracking-wider uppercase block mb-1">
-                        {product.code}
-                      </span>
+                      {/* Üstteki turuncu alt başlık/kod alanı tamamen kaldırıldı */}
                       <h3 className="text-[#3A3A3A] text-xl font-extrabold group-hover:text-[#B87332] transition-colors mb-3">
                         {getLangText(product.name, currentLang)}
                       </h3>

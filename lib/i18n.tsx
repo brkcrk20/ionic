@@ -260,7 +260,7 @@ const translations: Record<Lang, Translations> = {
         privacy: "Gizlilik Politikası",
         cookies: "Çerez Politikası",
         copyright: (year: number) => `Telif Hakkı © ${year} ION MECCANICA. Tüm hakları saklıdır.`,
-        tagline: "Doğal Taş Endüstrisi İçin Tasarlandı.",
+        tagline: "Doğal Taş İçin Mühendislik.",
       },
     },
     pages: {
@@ -286,7 +286,7 @@ const translations: Record<Lang, Translations> = {
       contactSales: "Contacts & Sales Network",
       careers: "Careers",
       portal: "Customer Portal Login",
-      addressTitle: "Kocabaş mah. mermerciler sokak",
+      addressTitle: "Kocabaş Mah. Mermerciler/3 Sk. No 2/1 Honaz",
       addressSub: "Denizli / Turkiye",
       catLines: "Complete Lines",
       resinLines: "Resin Treatment Lines",
@@ -404,7 +404,7 @@ const translations: Record<Lang, Translations> = {
         privacy: "Privacy Policy",
         cookies: "Cookie Policy",
         copyright: (year: number) => `Copyright © ${year} ION MECCANICA. All rights reserved.`,
-        tagline: "Engineered for the Natural Stone Industry.",
+        tagline: "Engineered for the Natural Stone.",
       },
     },
     pages: {

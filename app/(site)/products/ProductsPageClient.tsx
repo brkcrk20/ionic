@@ -39,8 +39,14 @@ function flattenCategoryOptions(
 ): { cat: Category; depth: number }[] {
   const result: { cat: Category; depth: number }[] = [];
   for (const c of categories.filter((x) => x.parentId === parentId)) {
-    result.push({ cat: c, depth });
-    result.push(...flattenCategoryOptions(categories, c.id, depth + 1));
+    // Hat kategorilerini ürünler filtre listesine sokmuyoruz
+    const nameTr = typeof c.name === "string" ? c.name : c.name?.tr || "";
+    const nameEn = typeof c.name === "string" ? c.name : c.name?.en || "";
+    const isPlantCat = c.slug.includes("plant") || c.slug.includes("hat") || nameTr.toLowerCase().includes("hat") || nameEn.toLowerCase().includes("line");
+    if (!isPlantCat) {
+      result.push({ cat: c, depth });
+      result.push(...flattenCategoryOptions(categories, c.id, depth + 1));
+    }
   }
   return result;
 }
@@ -57,7 +63,6 @@ export default function ProductsPageClient({
   const { lang } = useLanguage();
   const [currentLang, setCurrentLang] = useState(lang);
 
-  // Dil değiştiğinde tetiklenmesi için
   useEffect(() => {
     setCurrentLang(lang);
   }, [lang]);
@@ -72,6 +77,23 @@ export default function ProductsPageClient({
   const PRODUCTS_DATA = dbProducts.filter((product) => {
     if (seen.has(product.slug)) return false;
     seen.add(product.slug);
+
+    // Kategori kontrolü (Eğer ürünün kategorisi hat/plant ise veya adı hat içeriyorsa kesinlikle eliyoruz)
+    const currentCat = categories.find((c) => c.id === product.categoryId);
+    const catNameTr = currentCat ? (typeof currentCat.name === "string" ? currentCat.name : currentCat.name?.tr || "") : "";
+    const catNameEn = currentCat ? (typeof currentCat.name === "string" ? currentCat.name : currentCat.name?.en || "") : "";
+    const prodNameTr = getLangText(product.name, "tr").toLowerCase();
+    
+    const isPlant = 
+      product.type === "plant" || 
+      product.isPlant || 
+      (currentCat && (currentCat.slug.includes("plant") || currentCat.slug.includes("hat") || catNameTr.toLowerCase().includes("hat") || catNameEn.toLowerCase().includes("line"))) ||
+      prodNameTr.includes("hatsı") ||
+      prodNameTr.includes("fırın hattı") ||
+      prodNameTr.includes("hattı");
+
+    if (isPlant) return false;
+
     return true;
   });
 
@@ -235,9 +257,6 @@ export default function ProductsPageClient({
 
                   <div className="p-8 flex flex-col flex-1 justify-between bg-white">
                     <div>
-                      <span className="text-xs font-bold text-[#B87332] tracking-wider uppercase block mb-1">
-                        {product.code}
-                      </span>
                       <h3 className="text-[#3A3A3A] text-xl font-extrabold group-hover:text-[#B87332] transition-colors mb-3">
                         {getLangText(product.name, currentLang)}
                       </h3>

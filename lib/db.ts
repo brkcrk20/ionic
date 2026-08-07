@@ -124,6 +124,8 @@ export type NavSubItem = {
   href: string;
   // Bir alt başlığın kendi altında da alt başlıkları olabilir (ör. "Komple Hatlar" başlığı altında "Reçine Hatları" vb.)
   children?: NavSubItem[];
+  // true ise bu öğe navbar'da gösterilmez (silinmeden gizlenir)
+  hidden?: boolean;
 };
 
 export type NavMenuItem = {
@@ -132,6 +134,8 @@ export type NavMenuItem = {
   href: string;
   // Açılır alt menüdeki düzenlenebilir başlık/alt başlıklar (boşsa alt menü gösterilmez)
   children?: NavSubItem[];
+  // true ise bu öğe navbar'da gösterilmez (silinmeden gizlenir)
+  hidden?: boolean;
 };
 
 export type NewsItem = {
@@ -377,6 +381,7 @@ function normalizeNavSubItem(raw: unknown): NavSubItem | null {
     label: normalizeMultiLang(raw.label),
     href: typeof raw.href === "string" ? raw.href : "/",
     children: children && children.length > 0 ? children : undefined,
+    hidden: Boolean(raw.hidden),
   };
 }
 
@@ -390,6 +395,7 @@ function normalizeNavMenuItem(raw: unknown): NavMenuItem | null {
     label: normalizeMultiLang(raw.label),
     href: typeof raw.href === "string" ? raw.href : "/",
     children: children && children.length > 0 ? children : undefined,
+    hidden: Boolean(raw.hidden),
   };
 }
 

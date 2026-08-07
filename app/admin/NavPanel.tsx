@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Save, Plus, Trash2, ArrowUp, ArrowDown, ChevronDown, ChevronUp } from "lucide-react";
+import { Save, Plus, Trash2, ArrowUp, ArrowDown, ChevronDown, ChevronUp, Eye, EyeOff } from "lucide-react";
 
 type Lang = { tr: string; en: string };
 
@@ -8,6 +8,7 @@ type NavLeaf = {
   id: string;
   label: Lang;
   href: string;
+  hidden?: boolean;
 };
 
 type NavSubItem = {
@@ -15,6 +16,7 @@ type NavSubItem = {
   label: Lang;
   href: string;
   children?: NavLeaf[];
+  hidden?: boolean;
 };
 
 type NavMenuItem = {
@@ -22,7 +24,34 @@ type NavMenuItem = {
   label: Lang;
   href: string;
   children?: NavSubItem[];
+  hidden?: boolean;
 };
+
+// Gizle/Göster butonu — ortak, küçük bir bileşen
+function VisibilityToggle({
+  hidden,
+  onToggle,
+  size = "normal",
+}: {
+  hidden?: boolean;
+  onToggle: () => void;
+  size?: "normal" | "small";
+}) {
+  const iconSize = size === "small" ? 12 : 14;
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      title={hidden ? "Navbar'da Göster" : "Navbar'da Gizle"}
+      className={`flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-bold transition-colors cursor-pointer ${
+        hidden ? "bg-gray-100 text-gray-500 hover:bg-gray-200" : "bg-green-50 text-green-700 hover:bg-green-100"
+      }`}
+    >
+      {hidden ? <EyeOff size={iconSize} /> : <Eye size={iconSize} />}
+      {hidden ? "Gizli" : "Görünür"}
+    </button>
+  );
+}
 
 function makeId(prefix: string) {
   return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
@@ -98,6 +127,7 @@ export default function NavPanel() {
   };
   const addItem = () => setItems((prev) => [...prev, { id: makeId("nav"), label: { tr: "", en: "" }, href: "/", children: [] }]);
   const removeItem = (id: string) => setItems((prev) => prev.filter((it) => it.id !== id));
+  const toggleItemHidden = (id: string) => setItems((prev) => prev.map((it) => (it.id === id ? { ...it, hidden: !it.hidden } : it)));
 
   // --- Alt başlık (level 2) ---
   const addSub = (parentId: string) => {
@@ -124,6 +154,11 @@ export default function NavPanel() {
   };
   const removeSub = (parentId: string, subId: string) => {
     setItems((prev) => prev.map((it) => (it.id === parentId ? { ...it, children: (it.children ?? []).filter((s) => s.id !== subId) } : it)));
+  };
+  const toggleSubHidden = (parentId: string, subId: string) => {
+    setItems((prev) =>
+      prev.map((it) => (it.id === parentId ? { ...it, children: (it.children ?? []).map((s) => (s.id === subId ? { ...s, hidden: !s.hidden } : s)) } : it))
+    );
   };
 
   // --- Alt başlığın alt başlığı (level 3 / leaf) ---
@@ -171,6 +206,20 @@ export default function NavPanel() {
       )
     );
   };
+  const toggleLeafHidden = (parentId: string, subId: string, leafId: string) => {
+    setItems((prev) =>
+      prev.map((it) =>
+        it.id === parentId
+          ? {
+              ...it,
+              children: (it.children ?? []).map((s) =>
+                s.id === subId ? { ...s, children: (s.children ?? []).map((l) => (l.id === leafId ? { ...l, hidden: !l.hidden } : l)) } : s
+              ),
+            }
+          : it
+      )
+    );
+  };
 
   const handleSave = async () => {
     setLoading(true);
@@ -194,6 +243,8 @@ export default function NavPanel() {
       <p className="text-sm text-gray-500">
         Navbar&apos;daki menüleri, açılır menülerdeki başlıkları ve o başlıkların altındaki alt başlıkları buradan düzenleyebilirsiniz.
         Bir başlığın altına alt başlık eklersen, o başlık kalın bir grup başlığı olarak; eklemezsen tıklanabilir tekli bir bağlantı olarak görünür.
+        <br />
+        Her öğenin yanındaki <strong>Görünür / Gizli</strong> butonuyla, o menüyü silmeden anında navbar&apos;dan kaldırabilir veya geri getirebilirsiniz.
       </p>
 
       <div className="flex flex-col gap-3">
@@ -201,7 +252,11 @@ export default function NavPanel() {
           const subs = item.children ?? [];
           const open = expanded[item.id];
           return (
-            <div key={item.id} className="border border-gray-200 rounded-lg p-4 flex flex-col gap-3 bg-white">
+            <div key={item.id} className={`border rounded-lg p-4 flex flex-col gap-3 bg-white ${item.hidden ? "border-gray-200 opacity-60" : "border-gray-200"}`}>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs font-bold text-gray-400">Menü {index + 1}</span>
+                <VisibilityToggle hidden={item.hidden} onToggle={() => toggleItemHidden(item.id)} />
+              </div>
               <LabelHrefFields
                 label={item.label}
                 href={item.href}
@@ -223,7 +278,10 @@ export default function NavPanel() {
                       const leafKey = `${item.id}:${sub.id}`;
                       const leafOpen = expanded[leafKey];
                       return (
-                        <div key={sub.id} className="flex flex-col gap-2 bg-gray-50 rounded-md p-3">
+                        <div key={sub.id} className={`flex flex-col gap-2 bg-gray-50 rounded-md p-3 ${sub.hidden ? "opacity-60" : ""}`}>
+                          <div className="flex items-center justify-end">
+                            <VisibilityToggle hidden={sub.hidden} onToggle={() => toggleSubHidden(item.id, sub.id)} size="small" />
+                          </div>
                           <LabelHrefFields
                             label={sub.label}
                             href={sub.href}
@@ -242,7 +300,10 @@ export default function NavPanel() {
                             {leafOpen && (
                               <div className="flex flex-col gap-2 mt-2 pl-3 border-l-2 border-gray-200">
                                 {leaves.map((leaf, leafIndex) => (
-                                  <div key={leaf.id} className="flex flex-col gap-1.5 bg-white border border-gray-200 rounded-md p-2.5">
+                                  <div key={leaf.id} className={`flex flex-col gap-1.5 bg-white border border-gray-200 rounded-md p-2.5 ${leaf.hidden ? "opacity-60" : ""}`}>
+                                    <div className="flex items-center justify-end">
+                                      <VisibilityToggle hidden={leaf.hidden} onToggle={() => toggleLeafHidden(item.id, sub.id, leaf.id)} size="small" />
+                                    </div>
                                     <LabelHrefFields
                                       label={leaf.label}
                                       href={leaf.href}

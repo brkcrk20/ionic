@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { getNews, getSettings } from "@/lib/db";
 import { absoluteUrl } from "@/lib/seo";
-import NewsListClient from "@/components/NewsListClient";
+import NewsPageClient from "@/components/NewsPageClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings();
   const siteTitle = settings.seoTitle || "Ion Meccanica";
-  const title = `Haberler | ${siteTitle}`;
-  const description = "ION MECCANICA'dan en son haberler, duyurular ve gelişmeler.";
+  const title = `Haberler & Projeler | ${siteTitle}`;
+  const description = settings.seoDescription || "ION Meccanica haberler ve projeler";
 
   return {
     title,
@@ -18,10 +18,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function NewsPage() {
-  const allNews = await getNews();
-  const activeNews = allNews
-    .filter((n) => n.active)
+  const newsList = await getNews();
+  const activeNews = newsList
+    .filter((item) => item.active)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  return <NewsListClient news={activeNews} />;
+  return <NewsPageClient news={activeNews} />;
 }

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import RichTextContent from "@/components/RichTextContent";
 import type { NewsItem, MultiLangString } from "@/lib/db";
@@ -34,27 +33,76 @@ export default function NewsDetailClient({ news }: { news: NewsItem }) {
   const content = getLangText(news.content, lang);
 
   return (
-    <div className="w-full min-h-screen bg-[#F3F1EC] pb-24">
-      <div className="relative flex min-h-[38vh] w-full items-end overflow-hidden bg-[#1A1A1A] pt-32">
-        {news.coverImage && (
-          <>
-            <Image src={news.coverImage} alt={title} fill className="object-cover opacity-60" priority />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/40 to-transparent" />
-          </>
-        )}
-        <div className="relative z-10 mx-auto w-full max-w-3xl px-6 pb-12">
-          <Link href="/news" className="mb-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white/70 hover:text-white">
-            <ArrowLeft size={14} /> {lang === "tr" ? "Tüm Haberler" : "All News"}
-          </Link>
-          <span className="mb-3 block text-xs font-bold uppercase tracking-widest text-[#B87332]">{formatDate(news.date, lang)}</span>
-          <h1 className="font-montserrat text-3xl font-extrabold text-white md:text-4xl">{title}</h1>
+    <div className="w-full bg-[#F3F1EC] font-montserrat pt-16 xl:pt-22 pb-24">
+      {/* 1. ÜST HERO ALANI */}
+      <div className="w-full bg-[#3A3A3A] text-[#F3F1EC] py-16 px-6 relative overflow-hidden">
+        <div className="max-w-[1400px] mx-auto relative z-10 flex flex-col items-center text-center">
+          
+          {/* Breadcrumb */}
+          <div className="text-xs uppercase tracking-widest text-[#F3F1EC]/60 mb-4 flex items-center gap-2 flex-wrap justify-center">
+            <Link href="/" className="hover:text-[#B87332] transition-colors">
+              {lang === "tr" ? "Anasayfa" : "Homepage"}
+            </Link>
+            <span>/</span>
+            <Link href="/news" className="hover:text-[#B87332] transition-colors">
+              {lang === "tr" ? "Haberler & Projeler" : "News & Projects"}
+            </Link>
+            <span>/</span>
+            <span className="text-[#B87332] font-bold truncate max-w-[200px] md:max-w-[400px]">
+              {title}
+            </span>
+          </div>
+
+          {/* Ana Başlık */}
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#F3F1EC] max-w-4xl mx-auto leading-tight">
+            {title}
+          </h1>
+
         </div>
       </div>
 
-      <div className="mx-auto mt-12 max-w-3xl px-6">
-        <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
-          {excerpt && <p className="mb-6 text-lg font-medium text-gray-600">{excerpt}</p>}
-          <RichTextContent value={content} className="prose max-w-none text-gray-700" />
+      {/* 2. İÇERİK ALANI & GÖRSEL */}
+      <div className="max-w-[1400px] mx-auto px-6 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+          {/* Metin Kolonu */}
+          <div className="text-left order-2 md:order-1">
+            
+            {/* Tarih Etiketi (Metnin tam üstüne taşındı) */}
+            {news.date && (
+              <span className="block text-xs font-bold tracking-[0.15em] text-[#B87332] uppercase mb-3">
+                {formatDate(news.date, lang)}
+              </span>
+            )}
+
+            {/* Turuncu Özet Metin */}
+            {excerpt && (
+              <p className="text-base md:text-lg font-bold text-[#B87332] tracking-wide mb-6 leading-relaxed">
+                {excerpt}
+              </p>
+            )}
+            
+            {/* Haber Metni */}
+            <RichTextContent 
+              value={content} 
+              className="prose max-w-none text-gray-600 text-sm md:text-base leading-relaxed space-y-4" 
+            />
+          </div>
+
+          {/* Görsel Kolonu (560x560 px Kare) */}
+          {news.coverImage && (
+            <div className="flex justify-center order-1 md:order-2">
+              <div className="relative w-full max-w-[560px] aspect-square mx-auto rounded-2xl overflow-hidden shadow-md bg-gray-100">
+                <Image
+                  src={news.coverImage}
+                  alt={title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 560px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

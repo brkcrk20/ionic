@@ -95,17 +95,17 @@ function AboutRow({
         </div>
 
         <div
-                          className={`relative w-full max-w-[560px] aspect-square mx-auto rounded-2xl overflow-hidden order-1 ${
-                            imageLeft ? "md:order-1" : "md:order-2"
-                          }`}
-                        >
-                          {/* Gerçek resim gösterimi için Next.js Image bileşeni */}
-                          <Image
-                            src="/laser.webp" // Kendi görsel yolunuzu girin
-                            alt={title}
-                            fill
-                            className="object-cover"/>
-                        </div>
+          className={`relative w-full max-w-[560px] aspect-square mx-auto rounded-2xl overflow-hidden order-1 ${
+            imageLeft ? "md:order-1" : "md:order-2"
+          }`}
+          >
+          {/* Gerçek resim gösterimi için Next.js Image bileşeni */}
+          <Image
+            src="/laser.webp" // Kendi görsel yolunuzu girin
+            alt={title}
+            fill
+            className="object-cover"/>
+        </div>
       </div>
     </div>
   );

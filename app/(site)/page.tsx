@@ -5,9 +5,60 @@ import Image from "next/image";
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 import MachinesSection from "@/components/MachinesSection";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
 import { useLanguage } from "@/lib/i18n";
 import { Settings, Wrench, Cpu, ArrowRight } from "lucide-react";
+
+// ---------------------------------------------------------------------------
+// Ana sayfa "Haberler" bölümü — Haberler sayfasındaki (/news) ilk 2 gerçek
+// haberle birebir aynı içerik. Görseller: /arge.webp, /yerleske.webp
+// ---------------------------------------------------------------------------
+const HOME_NEWS = [
+  {
+    slug: "recine-hatlari-bir-firindan-daha-fazlasi",
+    anchor: "news-1",
+    image: "/haber_1.webp",
+    tr: {
+      badge: "AR-GE",
+      title: "Reçine Hatları: Bir Fırından Daha Fazlası",
+      desc: "Doğal taş plakaların kurutulması, güçlendirilmesi ve kontrollü kürlenmesi için entegre proses çözümleri.",
+    },
+    en: {
+      badge: "R&D",
+      title: "Resin Treatment Lines: More Than an Oven",
+      desc: "Integrated process solutions for drying, reinforcing and controlled curing of natural stone slabs.",
+    },
+  },
+  {
+    slug: "uc-entegre-hat-deneyiminden-ion-oneflowa",
+    anchor: "news-2",
+    image: "/integrated.webp",
+    tr: {
+      badge: "ION ONEFLOW",
+      title: "Üç Entegre Hat Deneyiminden ION ONEFLOW'a",
+      desc: "Doğal taş fabrikasında kesintisiz ve izlenebilir üretim akışı.",
+    },
+    en: {
+      badge: "ION ONEFLOW",
+      title: "From Three Integrated Lines to ION ONEFLOW",
+      desc: "A continuous and traceable production flow for the natural stone factory.",
+    },
+  },
+  {
+    slug: "graviton-ve-positron-recine-hatlari-icin-iki-farkli-firin-mimarisi",
+    anchor: "news-3",
+    image: "/2oven.webp",
+    tr: {
+      badge: "GRAVITON / POSITRON",
+      title: "GRAVITON ve POSITRON: Reçine Hatları İçin İki Farklı Fırın Mimarisi",
+      desc: "Farklı kapasite, proses süresi ve fabrika yerleşimlerine uyarlanabilen kurutma ve kürleme çözümleri.",
+    },
+    en: {
+      badge: "GRAVITON / POSITRON",
+      title: "GRAVITON and POSITRON: Two Oven Architectures for Resin Treatment Lines",
+      desc: "Drying and curing solutions adapted to different capacities, process times and factory layouts.",
+    },
+  },
+];
 
 export default function Home() {
   const languageContext = useLanguage() as any;
@@ -150,7 +201,7 @@ export default function Home() {
 
         <div className="mt-16 z-10">
           <Link
-            href="/about-us/company"
+            href="/about-us"
             className="bg-[#B87332] hover:bg-[#a06228] text-white font-bold tracking-wider uppercase text-sm px-8 py-4 rounded-full shadow-lg transition-all flex items-center gap-2"
           >
             {home.capabilities.cta} <ArrowRight size={18} />
@@ -170,53 +221,33 @@ export default function Home() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1400px] w-full">
-          {/* News Card 1 */}
-          <Link href="/projects/detail-1" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
-            <div className="relative h-44 sm:h-60 w-full overflow-hidden">
-              <ImagePlaceholder className="group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute top-4 left-4 bg-[#B87332] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                {home.news.card1.badge}
-              </div>
-            </div>
-            <div className="p-8 flex flex-col flex-1">
-              <span className="text-gray-400 text-xs font-bold mb-3">{home.news.card1.date}</span>
-              <h3 className="text-[#3A3A3A] text-xl font-bold mb-3 leading-snug group-hover:text-[#B87332] transition-colors">{home.news.card1.title}</h3>
-              <p className="text-gray-600 text-sm mb-6 flex-1">{home.news.card1.desc}</p>
-              <span className="text-[#B87332] font-bold text-sm flex items-center gap-1">{home.news.readMore} <ArrowRight size={16} /></span>
-            </div>
-          </Link>
-
-          {/* News Card 2 */}
-          <Link href="/projects/detail-2" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
-            <div className="relative h-44 sm:h-60 w-full overflow-hidden">
-              <ImagePlaceholder className="group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute top-4 left-4 bg-[#B87332] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                {home.news.card2.badge}
-              </div>
-            </div>
-            <div className="p-8 flex flex-col flex-1">
-              <span className="text-gray-400 text-xs font-bold mb-3">{home.news.card2.date}</span>
-              <h3 className="text-[#3A3A3A] text-xl font-bold mb-3 leading-snug group-hover:text-[#B87332] transition-colors">{home.news.card2.title}</h3>
-              <p className="text-gray-600 text-sm mb-6 flex-1">{home.news.card2.desc}</p>
-              <span className="text-[#B87332] font-bold text-sm flex items-center gap-1">{home.news.readMore} <ArrowRight size={16} /></span>
-            </div>
-          </Link>
-
-          {/* News Card 3 */}
-          <Link href="/projects/detail-3" className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col">
-            <div className="relative h-44 sm:h-60 w-full overflow-hidden">
-              <ImagePlaceholder className="group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute top-4 left-4 bg-[#B87332] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                {home.news.card3.badge}
-              </div>
-            </div>
-            <div className="p-8 flex flex-col flex-1">
-              <span className="text-gray-400 text-xs font-bold mb-3">{home.news.card3.date}</span>
-              <h3 className="text-[#3A3A3A] text-xl font-bold mb-3 leading-snug group-hover:text-[#B87332] transition-colors">{home.news.card3.title}</h3>
-              <p className="text-gray-600 text-sm mb-6 flex-1">{home.news.card3.desc}</p>
-              <span className="text-[#B87332] font-bold text-sm flex items-center gap-1">{home.news.readMore} <ArrowRight size={16} /></span>
-            </div>
-          </Link>
+          {HOME_NEWS.map((item) => {
+            const c = isTr ? item.tr : item.en;
+            return (
+              <Link
+                key={item.slug}
+                href={`/news#${item.anchor}`}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group flex flex-col"
+              >
+                <div className="relative h-44 sm:h-60 w-full overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={c.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 450px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4 bg-[#B87332] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                    {c.badge}
+                  </div>
+                </div>
+                <div className="p-8 flex flex-col flex-1">
+                  <h3 className="text-[#3A3A3A] text-xl font-bold mb-3 leading-snug group-hover:text-[#B87332] transition-colors">{c.title}</h3>
+                  <p className="text-gray-600 text-sm flex-1">{c.desc}</p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -228,11 +259,11 @@ export default function Home() {
           <div className="flex flex-col gap-6">
             <Image src="/logo-2.svg" alt="ION MECCANICA" width={200} height={70} className="object-contain w-40 h-auto sm:w-[220px]" />
             <p className="text-base text-gray-700 font-medium leading-relaxed">
-              {home.footer.tagline || "Innovative solutions for mechanical engineering and production."}
+              {home.footer.tagline || "Engineering for the Natural Stone."}
             </p>
             <div className="flex gap-5 text-[#3A3A3A] pt-2">
               <a href="#" className="hover:text-[#B87332] transition-colors" aria-label="Youtube">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 7.1C2.3 8.3 2 10.1 2 12s.3 3.7.5 4.9c.3 1.6 1.4 2.8 3 3.1 2.2.3 6.5.3 6.5.3s4.3 0 6.5-.3c1.6-.3 2.7-1.5 3-3.1.2-1.2.5-3 .5-4.9s-.3-3.7-.5-4.9c-.3-1.6-1.4-2.8-3-3.1-2.2-.3-6.5-.3-6.5-.3s-4.3 0-6.5.3c-1.6.3-2.7 1.5-3 3.1z"/><path d="M9.75 15.02l5.75-3.02-5.75-3.02v6.04z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 7.1C2.3 8.3 2 10.1 2 12s.3 3.7.5 4.9c.3 1.6 1.4 2.8 3 3.1 2.2.3 6.5.3 6.5.3s4.3 0 6.5-.3c1.6-.3 2.7-1.5 3-3.1.2-1.2.5-3 .5-4.9s-.3-3.7-.5-4.9c-.3-1.6-1.4-2.8-3-3.1-2.2-.3-6.5-.3-6.5-.3s-4.3 0-6.5.3c-1.6.3-2.7 1.5-3 3.1z"/><path d="M9.75 15.02l5.75-3.02-5.75-3.02v6。04z"/></svg>
               </a>
               <a href="#" className="hover:text-[#B87332] transition-colors" aria-label="Linkedin">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
