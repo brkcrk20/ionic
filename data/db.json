@@ -3859,8 +3859,8 @@
       "descriptionParagraphs": [],
       "configs": [],
       "configNote": {
-        "tr": "Nominal üretim kapasitesi, seçilen GRAVITON COMBI konfigürasyonuna ve kurutma/kürleme seviyelerinin dağılımına bağlıdır. Gerçek çıktı; taşa, reçine formülasyonuna, gerekli termal bekleme süresine, plaka ölçülerine ve seçilen otomasyon seviyesine bağlıdır.",
-        "en": "The nominal production capacity depends on the selected GRAVITON COMBI configuration and the distribution of drying and curing levels. Actual output depends on the stone, resin formulation, required thermal residence time, slab dimensions and selected automation level."
+        "tr": "",
+        "en": ""
       },
       "configNote2": {
         "tr": "",
@@ -3869,7 +3869,9 @@
       "versions": [],
       "features": [],
       "categoryId": "cat-epoksi-firin-hatlari",
-      "images": [],
+      "images": [
+        "/uploads/products/z7avoq-resimsiz.webp"
+      ],
       "active": true,
       "createdAt": "2026-08-07T00:00:00.000Z",
       "nameStyle": {
@@ -3999,17 +4001,19 @@
       "descriptionParagraphs": [],
       "configs": [],
       "configNote": {
-        "tr": "Standart iki kuleli konfigürasyon, tek taraflı işlem için plaka başına yaklaşık 2,5 dakikalık nominal bir çevrim süresiyle çalışır. Gerçek kapasite; her kuledeki seviye sayısına, gerekli işlem sürelerine, taş özelliklerine, reçine formülasyonuna ve hat otomasyonuna bağlıdır.",
-        "en": "The standard two-tower configuration operates with a nominal cycle time of approximately 2.5 minutes per slab for one-side processing. Actual capacity depends on the number of levels in each tower, required treatment periods, stone characteristics, resin formulation and line automation."
+        "tr": "",
+        "en": ""
       },
       "configNote2": {
-        "tr": "Mevcut Termal Mimariler — İki GRAVITON Kulesi: Bir statik fırın kulesi plaka kurutmaya, ikincisi reçine kürlemeye ayrılır. GRAVITON TANDEM: İki statik fırın kulesi, ortak bir merkezi asansör ve tepsi transfer sisteminin iki yanına yerleştirilir.",
-        "en": "Available Thermal Architectures — Two GRAVITON Towers: One static oven tower is dedicated to slab drying and the second to resin curing. GRAVITON TANDEM: Two static oven towers are positioned on either side of one shared central elevator and tray-transfer system."
+        "tr": "",
+        "en": ""
       },
       "versions": [],
       "features": [],
       "categoryId": "cat-epoksi-firin-hatlari",
-      "images": [],
+      "images": [
+        "/uploads/products/5u4qqp-resimsiz.webp"
+      ],
       "active": true,
       "createdAt": "2026-08-07T00:00:00.000Z",
       "nameStyle": {
@@ -4139,17 +4143,19 @@
       "descriptionParagraphs": [],
       "configs": [],
       "configNote": {
-        "tr": "Tipik Termal Dağılım — Kule 1: Reçine uygulamasından önce plaka kurutma. Kule 2: Arka yüz reçine ve file uygulamasından sonra kürleme. Kule 3: Görünen yüz reçine işleminden sonraki son kürleme. Her kuledeki tepsi seviyesi sayısı, gerekli proses dengesine ve üretim kapasitesine göre seçilir.",
-        "en": "Typical Thermal Allocation — Tower 1: slab drying before resin application. Tower 2: curing after reverse-side resin and mesh application. Tower 3: final curing after visible-face resin treatment. The number of tray levels in each tower is selected according to the required process balance and production capacity."
+        "tr": "",
+        "en": ""
       },
       "configNote2": {
-        "tr": "3 Kuleli Statik Fırın Hattı, standart iki kuleli konfigürasyonla aynı nominal üretim çevrimini kullanır. Üçüncü kulenin başlıca avantajı, daha yüksek nominal saatlik çıktıdan çok, daha fazla proses ayrımı, termal kapasite ve üretim kararlılığıdır. Gerçek kapasite; tepsi seviyesi sayısına, reçine kürleme gereksinimlerine, taş özelliklerine, plaka formatına ve seçilen otomasyona bağlıdır.",
-        "en": "The 3-Tower Static Resin Line uses the same nominal production cycle as the standard two-tower configuration. The principal advantage of the third tower is greater process separation, thermal capacity and production stability rather than a higher nominal hourly output. Actual capacity depends on the number of tray levels, resin-curing requirements, stone characteristics, slab format and selected automation."
+        "tr": "",
+        "en": ""
       },
       "versions": [],
       "features": [],
       "categoryId": "cat-epoksi-firin-hatlari",
-      "images": [],
+      "images": [
+        "/uploads/products/v8wn9k-resimsiz.webp"
+      ],
       "active": true,
       "createdAt": "2026-08-07T00:00:00.000Z",
       "nameStyle": {
